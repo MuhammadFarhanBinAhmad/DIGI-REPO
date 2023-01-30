@@ -1,0 +1,4 @@
+Insertion algorithm
+
+Sorting value from lowest to highest by comparing the value 
+above and below current index and shifting them accordingly

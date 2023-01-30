@@ -1,0 +1,6 @@
+(Fact)orial
+Formula - n! = n * (n-1) * (n-2) * (n-3) ... * 1
+
+The factorial of a non-negative int is the product of all positive int less than or equal to b
+
+

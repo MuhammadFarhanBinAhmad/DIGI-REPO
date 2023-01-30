@@ -1,0 +1,70 @@
+Please enter total value: You did not type in the correct format in terms of dollars and cents.
+Please enter total value: You did not type in the correct format in terms of dollars and cents.
+Please enter total value: You did not type in the correct format in terms of dollars and cents.
+Please enter total value: You did not type in the correct format in terms of dollars and cents.
+Please enter total value: The cents part specified must be between 0...99 (inclusive).
+Please enter total value: The dollars part specified must be non-negative.
+Please enter total value: 
++----+--------------+-------+
+| #  | Denomination | Count |
++----+--------------+-------+
+| 1  |       100.00 |     0 |
+| 2  |        50.00 |     0 |
+| 3  |        10.00 |     0 |
+| 4  |         5.00 |     0 |
+| 5  |         2.00 |     0 |
+| 6  |         1.00 |     0 |
+| 7  |         0.50 |     0 |
+| 8  |         0.20 |     0 |
+| 9  |         0.10 |     0 |
+| 10 |         0.05 |     0 |
+| 11 |         0.01 |     0 |
++----+--------------+-------+
+Please enter total value: 
++----+--------------+-------+
+| #  | Denomination | Count |
++----+--------------+-------+
+| 1  |       100.00 |     0 |
+| 2  |        50.00 |     0 |
+| 3  |        10.00 |     1 |
+| 4  |         5.00 |     0 |
+| 5  |         2.00 |     1 |
+| 6  |         1.00 |     0 |
+| 7  |         0.50 |     0 |
+| 8  |         0.20 |     1 |
+| 9  |         0.10 |     1 |
+| 10 |         0.05 |     0 |
+| 11 |         0.01 |     4 |
++----+--------------+-------+
+Please enter total value: 
++----+--------------+-------+
+| #  | Denomination | Count |
++----+--------------+-------+
+| 1  |       100.00 |     4 |
+| 2  |        50.00 |     1 |
+| 3  |        10.00 |     0 |
+| 4  |         5.00 |     0 |
+| 5  |         2.00 |     2 |
+| 6  |         1.00 |     0 |
+| 7  |         0.50 |     0 |
+| 8  |         0.20 |     1 |
+| 9  |         0.10 |     1 |
+| 10 |         0.05 |     1 |
+| 11 |         0.01 |     3 |
++----+--------------+-------+
+Please enter total value: 
++----+--------------+-------+
+| #  | Denomination | Count |
++----+--------------+-------+
+| 1  |       100.00 | 12345 |
+| 2  |        50.00 |     1 |
+| 3  |        10.00 |     1 |
+| 4  |         5.00 |     1 |
+| 5  |         2.00 |     1 |
+| 6  |         1.00 |     0 |
+| 7  |         0.50 |     1 |
+| 8  |         0.20 |     1 |
+| 9  |         0.10 |     1 |
+| 10 |         0.05 |     1 |
+| 11 |         0.01 |     4 |
++----+--------------+-------+

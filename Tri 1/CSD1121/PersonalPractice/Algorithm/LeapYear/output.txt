@@ -1,0 +1,5 @@
+1996 is a leap year
+2000 is a leap year
+1234 is not a leap year
+1200 is a leap year
+1998 is not a leap year

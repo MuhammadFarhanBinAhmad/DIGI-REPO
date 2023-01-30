@@ -1,0 +1,7 @@
+﻿  GameObject.cpp
+C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\CSD1130_Asteroids\Src\GameObject.cpp(20,13): warning C4244: 'return': conversion from 'double' to 'f32', possible loss of data
+C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\CSD1130_Asteroids\Src\GameObject.cpp(63,24): warning C4459: declaration of 'friction' hides global declaration
+C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\CSD1130_Asteroids\Src\GameObject.cpp(6,12): message : see declaration of 'friction'
+  GameState_Asteroids.cpp
+  Generating Code...
+  CSD1130_Asteroids.vcxproj -> C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\Bin\CSD1130_AsteroidsD.exe

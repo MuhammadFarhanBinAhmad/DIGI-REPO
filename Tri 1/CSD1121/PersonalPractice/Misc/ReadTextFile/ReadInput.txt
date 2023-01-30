@@ -1,0 +1,19 @@
+SCANF IS THE BAIN OF MY EXISTENCE
+Or maybe cause i just suck
+
+Scanf Note:
+1.Remember, you need to access the memory(&value) to modify it
+2.EOF - END OF FILE: Will continue reading till it reach the last readable text
+3.%*d - %* can be use to ignore certain type of value or data type
+eg:
+//Find 1st and 3rd value
+Input:1 2 3
+printf("%d%*d",i);
+output:1,3
+
+//find int value and ignoring all the text
+Input:aonojnjvvd 25 
+int a;
+scanf("%*s %d", &a);//%*s is use to ignore all the text till the next space or newline
+printf("Input value read : a=%d", a);
+Output:25

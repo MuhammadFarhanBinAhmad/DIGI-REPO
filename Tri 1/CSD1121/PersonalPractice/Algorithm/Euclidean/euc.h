@@ -1,0 +1,1 @@
+int euclidean_Algorithm(int dividend,int divisor);

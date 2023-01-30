@@ -1,0 +1,17 @@
+I dont like string in c.
+		 but you know	industrystandard
+and stuff.
+12345678910
+total char: 52
+
+total punt: 2
+
+total number: 11
+
+total newline: 3
+
+total tab: 3
+
+total return: 3
+
+total space: 9

@@ -1,0 +1,35 @@
+Practice Answers for Pointers:
+
+Question 1:
+a) Run Time Error (Segmentation Fault)
+b) Compile Error
+c) Compile Error (Different Type, no cast done)
+d) Compilable
+e) Compilable
+f) Compilable
+g) Compile Error
+h) Compile Error
+i) Compile Error
+j) Compilable
+k) Compilable
+l) Compilable
+m) Compile Error
+n) Compile Error
+o) Compile Error
+p) Compile Error
+q) Compile Error
+r) Compile Error
+s) Compilable
+t) Compilable
+
+
+Question 2:
+Answer: 12 12
+
+
+Question 3:
+Answer: 1
+
+
+Question 4:
+Answer: 8

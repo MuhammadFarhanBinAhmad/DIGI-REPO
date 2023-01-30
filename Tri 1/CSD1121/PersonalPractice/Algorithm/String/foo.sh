@@ -1,0 +1,1 @@
+gcc -Wall -Werror -Wextra -Wconversion -Wstrict-prototypes -pedantic-errors -std=c11 qdriver.c FString.c -o q.out

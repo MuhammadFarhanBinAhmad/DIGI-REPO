@@ -1,0 +1,7 @@
+﻿  main.c
+C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\CProject\CProject\Src\main.c(34,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\CProject\CProject\Src\main.c(35,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  CProject.vcxproj -> C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\CProject\CProject\bin\Debug-x64\CProject.exe
+  1 File(s) copied
+  1 File(s) copied
+  1 File(s) copied

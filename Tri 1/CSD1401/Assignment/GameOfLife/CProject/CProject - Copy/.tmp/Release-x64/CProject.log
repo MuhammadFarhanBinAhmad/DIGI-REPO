@@ -1,0 +1,10 @@
+﻿  game.c
+  main.c
+  Generating code
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  CProject.vcxproj -> C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\GameOfLife\CProject\CProject - Copy\bin\Release-x64\CProject.exe
+  1 File(s) copied
+  1 File(s) copied
+  1 File(s) copied

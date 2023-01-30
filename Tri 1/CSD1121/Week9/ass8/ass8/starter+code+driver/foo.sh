@@ -1,0 +1,1 @@
+gcc -std=c11 -pedantic-errors -Wstrict-prototypes -Wall -Wextra -Werror -Wconversion q.c qdriver.c -o q.out

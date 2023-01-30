@@ -1,0 +1,4 @@
+I dont like string in c.
+		 but you know	industrystandard
+and stuff.
+12345678910
