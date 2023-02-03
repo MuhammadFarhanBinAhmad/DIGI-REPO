@@ -1,12 +1,12 @@
 /******************************************************************************/
 /*!
 \file		Main.cpp
-\author 	DigiPen
-\par    	email: digipen\@digipen.edu
-\date   	January 01, 20xx
-\brief		ToDo: give a brief explanation here
+\author 	MuhammadFarhanBinAhmad(2200544)
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	February 02, 2023
+\brief		Program main file.
 
-Copyright (C) 20xx DigiPen Institute of Technology.
+Copyright (C) 2023 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
  */
@@ -34,9 +34,6 @@ int WINAPI WinMain(HINSTANCE instanceH, HINSTANCE prevInstanceH, LPSTR command_l
 	//#if defined(DEBUG) | defined(_DEBUG)
 	//	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	//#endif
-
-	//int * pi = new int;
-	////delete pi;
 
 
 	// Initialize the system

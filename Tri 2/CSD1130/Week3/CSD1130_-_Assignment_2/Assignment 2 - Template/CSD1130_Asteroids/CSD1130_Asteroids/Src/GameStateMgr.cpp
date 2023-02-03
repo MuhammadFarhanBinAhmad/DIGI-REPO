@@ -1,12 +1,14 @@
 /******************************************************************************/
 /*!
 \file		GameStateMgr.cpp
-\author 	DigiPen
-\par    	email: digipen\@digipen.edu
-\date   	January 01, 20xx
-\brief		ToDo: give a brief explanation here
-
-Copyright (C) 20xx DigiPen Institute of Technology.
+\author 	MuhammadFarhanBinAhmad(2200544)
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	February 02, 2023
+\brief		Hold all the game state in the game
+			GameStateMgrInit- Initialize all the game state and function pointers
+			GameStateMgrUpdate - GameManager update function. Dictate which state is currently being
+			run base on the current condition it state is in
+Copyright (C) 2023 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
  */
