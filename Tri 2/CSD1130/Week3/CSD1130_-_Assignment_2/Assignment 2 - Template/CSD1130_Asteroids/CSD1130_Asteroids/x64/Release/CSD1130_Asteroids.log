@@ -1,9 +1,0 @@
-﻿  GameState_Asteroids.cpp
-C:\Others\DIGI-REPO\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\CSD1130_Asteroids\Src\GameState_Asteroids.cpp(189,7): warning C4101: 'strBuffer': unreferenced local variable
-C:\Others\DIGI-REPO\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\CSD1130_Asteroids\Src\GameState_Asteroids.cpp(400,14): warning C4244: 'initializing': conversion from 'f32' to 'int', possible loss of data
-  Generating code
-  1 of 19 functions ( 5.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  CSD1130_Asteroids.vcxproj -> C:\Others\DIGI-REPO\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\CSD1130_Asteroids\Bin\CSD1130_Asteroids.exe

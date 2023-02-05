@@ -1,0 +1,26 @@
+1.Increasing difficulty:
+The closer the player is to winning(score getting nearer to 5000), the harder the game gets as
+Spilt to 3 phases:
+1st phase: Score < 2500
+2nd phase: 2500 > Score < 3500
+3rd phase: Score > 3500
+-Rate spawn of the asteroid increases in speed
+-More asteroid will spawn
+-Speed of asteroid increases
+
+2.Combo system:
+When the player hit 20 asteroid without getting hit, the player will gain 1 extra health.
+Console will indicate current status of current combo and if life is obtain
+
+3.Multiple weapon
+Press 1 for semi-auto fire
+Press 2 for auto fire
+
+4.Invicibility
+Player can buy a invicibility shield for 500 points. The shield last for 5 sec.(Press I).
+Console will indicate if item is bought and is active/inactive
+
+5.Texture
+Texture for asteroid and bullet
+
+
