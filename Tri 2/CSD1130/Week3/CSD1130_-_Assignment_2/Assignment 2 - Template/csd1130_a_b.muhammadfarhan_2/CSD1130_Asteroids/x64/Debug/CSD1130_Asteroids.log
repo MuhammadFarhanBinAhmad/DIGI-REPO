@@ -1,0 +1,4 @@
+﻿  GameState_Asteroids.cpp
+C:\Others\DIGI-REPO\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\csd1130_a_b.muhammadfarhan_2\CSD1130_Asteroids\Src\GameState_Asteroids.cpp(188,7): warning C4101: 'strBuffer': unreferenced local variable
+C:\Others\DIGI-REPO\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\csd1130_a_b.muhammadfarhan_2\CSD1130_Asteroids\Src\GameState_Asteroids.cpp(398,14): warning C4244: 'initializing': conversion from 'f32' to 'int', possible loss of data
+  CSD1130_Asteroids.vcxproj -> C:\Others\DIGI-REPO\Tri 2\CSD1130\Week3\CSD1130_-_Assignment_2\Assignment 2 - Template\csd1130_a_b.muhammadfarhan_2\Bin\CSD1130_AsteroidsD.exe
