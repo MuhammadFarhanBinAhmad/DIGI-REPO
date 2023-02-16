@@ -1,0 +1,348 @@
+#include <stdio.h>
+#include <string.h>
+//
+// DISCLAIMER: The code you see below are just examples
+// and is in no way an indication on a 'good' way
+// to write an API. 
+// Again: THEY ARE EXAMPLES to show basics of data serialization.
+//
+// Let's say we want to read/write the following data
+// Things that need to be saved:
+// - name: some form of string?
+// - hp: some form of unsigned int?
+// - position: two floats?
+typedef struct  {
+	char name[32];   // must be null terminated
+	unsigned int hp;
+	float position_x;
+	float position_y;
+} SaveData;
+
+static void PrintSaveData(SaveData s) {
+	printf("Name: %s\nHp: %d\nPosition X: %f\nPosition Y: %f\n", 
+		   s.name, s.hp, s.position_x, s.position_y);
+}
+
+// NOTE: Reading and writing to binary is really straightforward
+// in the best care scenario as you can see in the simplicity of the
+// code below (when the structure is fixed). 
+// 
+// This, however, might have compatibility issues because memory 
+// representation between different archetecture varies.
+// Example:
+// - Endianess.
+// - Size of certain variables might differ between 32-bit/64-bit/etc systems.
+// 
+static SaveData ReadBinarySaveData(const char* filename) 
+{
+	SaveData ret = {0};
+	
+	FILE* file; 
+	if (fopen_s(&file, filename, "rb") == 0) // zero is success
+	{
+		fread(&ret, 1, sizeof(SaveData), file);
+		fclose(file);
+	}
+	
+	return ret;
+}
+
+static void WriteBinarySaveData(const char* filename, SaveData s) {
+	FILE* file; 
+	if (fopen_s(&file, filename, "wb") == 0) // zero is success
+	{
+		fwrite(&s, sizeof(SaveData), 1, file);
+		fclose(file);
+	}
+}
+
+// NOTE: reading and writing to text in that following format.
+// The problem with text serialization is that every d*** thing is a string.
+// Let's also say that these values can be rearranged in any order.
+// 
+// NAME=Gerald
+// HP=10
+// POSITION_X=2.5
+// POSITION_Y=0.125
+//
+static void WriteTextSaveData(const char* filename, SaveData s) {
+	FILE* file; 
+	if (fopen_s(&file, filename, "w") == 0) // zero is success
+	{
+		char buffer[256];
+		
+		// Luckily we have sprintf_s to help us
+		sprintf_s(buffer, 256, 
+				  "NAME=%s\nHP=%d\nPOSITION_X=%f\nPOSITION_Y=%f\n", 
+				  s.name, s.hp, s.position_x, s.position_y);
+		
+		// Remember to include null terminating value so that
+		// reading is easier
+		fwrite(buffer, strlen(buffer)+1, 1, file); 
+		
+		
+		fclose(file);
+		
+		
+	}
+	
+}
+
+// NOTE: This is not meant to be amazingly accurate
+// or fast. It just needs to be portable and compilable.
+// atof() or strtod() are suitable standard library replacements.
+// There's probably some really fast ones online as well
+// but I haven't tested them thoroughly enough to recommend to others.
+//
+static float StringToFloat(char* s, size_t len) {
+	float ret = 0.f;
+	
+	int is_negative = (*s) == '-';
+	if (is_negative) ++s;
+	
+	
+	int decimal_found = 0;
+	size_t decimal_index = 0;
+	
+	for (size_t i = 0; i < len; ++i) {
+		// We stop at the '.' character, if any
+		if (s[i] == '.') {
+			decimal_found = 1;
+			decimal_index = i;
+			break;
+		}
+		
+		unsigned int digit = s[i] - '0'; // ascii value to int
+		// TODO: check if digit is a legit value?
+		ret = (ret * 10) + digit;
+	}
+	
+	if (decimal_found) {					
+		size_t places = 10;
+		for (size_t i = decimal_index + 1; i < len; ++i) {
+			// We stop at the '.' character, if any
+			if (s[i] == '.') {
+				decimal_found = 0;
+				decimal_index = i;
+				break;
+			}
+			
+			float digit = (float)(s[i] - '0'); // ascii value to int
+			// TODO: check if digit is a legit value?
+			ret += digit/places;
+			places *= 10;;
+		}	
+	}
+	
+	if (is_negative) {
+		ret = -ret;
+	}
+	
+	return ret;
+}
+
+static SaveData ReadTextSaveData(const char* filename) {
+	SaveData ret = {0};
+	//
+	// First, figure out the design of the data, then we try 
+	// to parse them there.
+	// Our text file is in the format of:
+	//
+	//	KEY=VALUE
+	//	KEY=VALUE
+	//    ...
+	// 
+	// so we can take this understanding and implement accordingly
+	//
+	
+	FILE* file; 
+	if (fopen_s(&file, filename, "r") == 0) // zero is success
+	{
+		char buffer[256];
+		
+		// Get line by line...
+		// Luckily, we have fgets()
+		while(fgets(buffer, 256, file) != NULL) {
+			// assume that the line, if we get it, is in
+			// the format: KEY=VALUE
+			// So we have to parse KEY first (ie search for '=')
+			// We can use strtok() and its variations for this,
+			// but I prefer to do it manually because strtok()
+			// does really stuff to your c-string.
+			// 
+			
+			// Find the '=' sign
+			size_t equal_index = 0;
+			size_t line_len = strlen(buffer) - 1; // We expect and ignore '\n'
+			for (int i = 0; buffer[i] != '\0'; ++i) {
+				if(buffer[i] == '=') {
+					equal_index = i;
+					break;
+				}
+			}
+			
+			
+			
+			// TODO: We should do some form of error checking here.
+			// For now, we assume that the data file is 100% correct.
+			
+			if (equal_index == 0) {
+				return ret;
+			}
+			
+			size_t value_start_index = equal_index + 1;
+			size_t value_len = line_len - value_start_index;
+			
+			
+			// KEY is in the range of buffer[0] to buffer[equal_index-1]
+			// VALUE is in the range of buffer[equal_index+1] to buffer[line_len]
+			if(!strncmp(buffer, "NAME", equal_index)) {
+				// NAME is expected to be a null-terminated string.
+				// So we should be able to strcpy over
+				// Remember to ignore the '\n' character!
+				//
+				// TODO: check for cases where VALUE is too long?
+				//
+				strncpy_s(ret.name, 
+						  sizeof(ret.name)/sizeof(ret.name[0]),
+						  buffer + value_start_index, 
+						  value_len); 
+				
+			}
+			else if(!strncmp(buffer, "HP", equal_index)) {
+				// HP is expected to be an unsigned int
+				// We can allocate a buffer and use atoi but I'm too lazy 
+				// to deal with atoi and strtod portability and I prefer not 
+				// to allocate memory when we can avoid it.
+				char* itr = buffer + value_start_index;
+				unsigned int hp = 0;
+				for (size_t i = 0; i < value_len; ++i) {
+					unsigned int digit = itr[i] - '0'; // ascii value to int
+					// TODO: check if digit is a legit value?
+					hp = (hp * 10) + digit;
+				}
+				
+				ret.hp = hp;
+			}
+			else if(!strncmp(buffer, "POSITION_X", equal_index)) {
+				// Same with HP. I'm too lazy to deal with atof portability
+				// and I prefer not to allocate memory.
+				
+#if 0
+				// original code for converting string to float
+				char* itr = buffer + value_start_index;
+				float pos = 0.f;
+				
+				int decimal_found = 0;
+				size_t decimal_index = 0;
+				
+				for (size_t i = 0; i < value_len; ++i) {
+					// We stop at the '.' character, if any
+					if (itr[i] == '.') {
+						decimal_found = 1;
+						decimal_index = i;
+						break;
+					}
+					
+					unsigned int digit = itr[i] - '0'; // ascii value to int
+					// TODO: check if digit is a legit value?
+					pos = (pos * 10) + digit;
+				}
+				
+				if (decimal_found) {					
+					size_t places = 10;
+					for (size_t i = decimal_index + 1; i < value_len; ++i) {
+						// We stop at the '.' character, if any
+						if (itr[i] == '.') {
+							decimal_found = 0;
+							decimal_index = i;
+							break;
+						}
+						
+						float digit = (float)(itr[i] - '0'); // ascii value to int
+						// TODO: check if digit is a legit value?
+						pos += digit/places;
+						places *= 10;
+					}	
+				}
+				ret.position_x = pos;
+#else
+				ret.position_x = StringToFloat(buffer + value_start_index, value_len);
+#endif
+				
+			}
+			else if(!strncmp(buffer, "POSITION_Y", equal_index)) {
+				// Ditto POSITION_X
+				// We should really expose the float conversion
+				// into a proper function!
+				ret.position_y = StringToFloat(buffer + value_start_index, value_len);
+				
+			}
+			
+			
+		}
+		
+		
+		
+		fclose(file);
+		
+		
+	}
+	
+	return ret;
+	
+}
+
+
+
+int main() {
+#if 0
+	// Write
+	{
+		printf("Writing save data into binary...\n");
+		SaveData to_write;
+		if (strcpy_s(to_write.name, sizeof(to_write.name), "Gerald") != 0) {
+			printf("Name probably too long\n");
+			return 1;
+		}
+		to_write.hp = 123;
+		to_write.position_x = 2.5f;
+		to_write.position_y = 0.125f;
+		
+		WriteBinarySaveData("binary_save_data", to_write);
+	}
+	
+	// Read
+	{
+		printf("Reading binary into save_data..\n");
+		SaveData to_read = ReadBinarySaveData("binary_save_data");
+		PrintSaveData(to_read);
+	}
+#else 
+	// Write
+	{
+		printf("Writing save data into text...\n");
+		SaveData to_write;
+		if (strcpy_s(to_write.name, sizeof(to_write.name), "Gerald") != 0) {
+			printf("Name probably too long\n");
+			return 1;
+		}
+		to_write.hp = 123;
+		to_write.position_x = 2.5f;
+		to_write.position_y = -0.1f;
+		
+		WriteTextSaveData("text_save_data.txt", to_write);
+	}
+	
+	// Read
+	{
+		printf("Reading text into save_data..\n");
+		SaveData to_read = ReadTextSaveData("text_save_data.txt");
+		PrintSaveData(to_read);
+	}
+	
+#endif
+	
+	
+	return 0;
+}
