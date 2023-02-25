@@ -156,6 +156,7 @@ static GameObjInst		*pHero;
 void					EnemyStateMachine(GameObjInst *pInst);
 
 std::string length, height;
+bool is_grounded;
 
 /******************************************************************************/
 /*!
@@ -397,16 +398,26 @@ void GameStatePlatformInit(void)
 void GameStatePlatformUpdate(void)
 {
 	int i, j;
-	GameObjInst *pInst;
+	GameObjInst *pInst ;
 
 	if (AEInputCheckReleased(AEVK_RIGHT))
 	{
-		pInst->velCurr.x = MOVE_VELOCITY_HERO * g_dt + pInst->velCurr.x;
+		pHero->velCurr.x = MOVE_VELOCITY_HERO;
 	}
 	else if (AEInputCheckReleased(AEVK_LEFT))
 	{
-		pInst->velCurr.x = -
-			MOVE_VELOCITY_HERO * g_dt + pInst->velCurr.x;
+		pHero->velCurr.x = -MOVE_VELOCITY_HERO;
+	}
+	else
+		pHero->velCurr.x = -MOVE_VELOCITY_HERO;
+
+	if (AEInputCheckTriggered(AEVK_SPACE))
+	{
+		pHero->velCurr.y = JUMP_VELOCITY;
+	}
+	if (AEInputCheckTriggered(AEVK_ESCAPE))
+	{
+		gGameStateNext = GS_QUIT;
 	}
 	//Handle Input
 	/***********
@@ -545,7 +556,6 @@ void GameStatePlatformUpdate(void)
 
 		
 	}
-
 	
 	// Update Camera position, for Level2
 		// To follow the player's position
@@ -606,7 +616,6 @@ void GameStatePlatformDraw(void)
 				// Choose the transform to use
 				AEGfxSetTransform(cellFinalTransformation.m);
 				AEGfxMeshDraw(pBlackInstance->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
-				std::cout << x << ',' << y << '\n';
 			}
 			if (GetCellValue(x, y) == TYPE_OBJECT_COLLISION)
 			{
