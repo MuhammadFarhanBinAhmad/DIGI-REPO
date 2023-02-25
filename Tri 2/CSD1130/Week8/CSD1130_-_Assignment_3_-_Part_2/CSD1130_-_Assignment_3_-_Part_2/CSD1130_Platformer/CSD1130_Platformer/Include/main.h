@@ -31,8 +31,6 @@ extern double	g_appTime;
 #include "GameStateMgr.h"
 #include "GameState_Platform.h"
 #include "Collision.h"
-
-
 #endif // CSD1130_MAIN_H_
 
 

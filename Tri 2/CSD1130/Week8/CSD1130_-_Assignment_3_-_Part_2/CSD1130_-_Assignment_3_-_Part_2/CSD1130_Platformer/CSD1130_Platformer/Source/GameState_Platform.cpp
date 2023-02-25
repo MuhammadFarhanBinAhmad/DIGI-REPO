@@ -50,6 +50,7 @@ enum TYPE_OBJECT
 	TYPE_OBJECT_HERO,			//2
 	TYPE_OBJECT_ENEMY1,			//3
 	TYPE_OBJECT_COIN			//4
+	
 };
 
 //State machine states
@@ -306,8 +307,7 @@ void GameStatePlatformLoad(void)
 /******************************************************************************/
 void GameStatePlatformInit(void)
 {
-	int i, j;
-	UNREFERENCED_PARAMETER(j);
+	int x{}, y{};
 
 	pHero = 0;
 	pBlackInstance = 0;
@@ -362,9 +362,30 @@ void GameStatePlatformInit(void)
 			Set its position depending on its array indices in MapData
 			
 	***********/
-	for(i = 0; i < BINARY_MAP_WIDTH; ++i)
-		for(j = 0; j < BINARY_MAP_HEIGHT; ++j)
+	for(x = 0; x < BINARY_MAP_WIDTH; ++x)
+		for(y = 0; y < BINARY_MAP_HEIGHT; ++y)
 		{
+			switch (MapData[x][y])
+			{
+				case TYPE_OBJECT_HERO:
+				{
+					AEVec2 pos = { (f32)y,(f32)x};
+					pHero = gameObjInstCreate(TYPE_OBJECT_HERO, 1.0f, &pos, &pos, 0.0f, STATE_NONE);
+					continue;
+				}
+				case TYPE_OBJECT_ENEMY1:
+				{
+					AEVec2 pos = { (f32)y,(f32)x };
+					gameObjInstCreate(TYPE_OBJECT_ENEMY1, 1.0f, &pos, &pos, 0.0f, STATE_NONE);
+					continue;
+				}
+				case TYPE_OBJECT_COIN:
+				{
+					AEVec2 pos = { (f32)y,(f32)x };
+					gameObjInstCreate(TYPE_OBJECT_COIN, 1.0f, &pos, &pos, 0.0f, STATE_NONE);
+					continue;
+				}
+			}
 		}
 }
 
@@ -380,7 +401,12 @@ void GameStatePlatformUpdate(void)
 
 	if (AEInputCheckReleased(AEVK_RIGHT))
 	{
-
+		pInst->velCurr.x = MOVE_VELOCITY_HERO * g_dt + pInst->velCurr.x;
+	}
+	else if (AEInputCheckReleased(AEVK_LEFT))
+	{
+		pInst->velCurr.x = -
+			MOVE_VELOCITY_HERO * g_dt + pInst->velCurr.x;
 	}
 	//Handle Input
 	/***********
@@ -409,7 +435,7 @@ void GameStatePlatformUpdate(void)
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
 
-
+		pInst->velCurr.y = GRAVITY* g_dt + pInst->velCurr.y;
 		/****************
 		Apply gravity
 			Velocity Y = Gravity * Frame Time + Velocity Y
@@ -535,11 +561,8 @@ void GameStatePlatformUpdate(void)
 void GameStatePlatformDraw(void)
 {
 	//Drawing the tile map (the grid)
-	int i, j;
+	int x, y;
 	AEMtx33 cellTranslation, cellFinalTransformation;
-
-	UNREFERENCED_PARAMETER(cellTranslation);
-	UNREFERENCED_PARAMETER(cellFinalTransformation);
 
 	//Drawing the tile map
 
@@ -561,10 +584,50 @@ void GameStatePlatformDraw(void)
 			Use the black instance in case the cell's value is TYPE_OBJECT_EMPTY
 			Use the white instance in case the cell's value is TYPE_OBJECT_COLLISION
 	*********/
-	for(i = 0; i < BINARY_MAP_WIDTH; ++i)
-		for(j = 0; j < BINARY_MAP_HEIGHT; ++j)
+	for(x = 0; x < BINARY_MAP_WIDTH; ++x)
+		for(y = 0; y < BINARY_MAP_HEIGHT; ++y)
 		{
+			if (GetCellValue(x, y) == TYPE_OBJECT_EMPTY)
+			{
+				AEGfxSetRenderMode(AE_GFX_RM_COLOR);
+				AEGfxSetTintColor(1.f, 1.f, 1.f, 1.0f);//Setcolour
+				AEGfxSetBlendMode(AE_GFX_BM_BLEND);
+				AEGfxSetTransparency(1);//SetTransperancy
 
+				AEMtx33 b_scale = { 0 };
+				AEMtx33Scale(&b_scale, 10, 10);
+				AEMtx33 b_rotate = { 0 };
+				AEMtx33Rot(&b_rotate, 0);
+				// Create a translation matrix that translates by
+				AEMtx33Trans(&cellTranslation, x*10, y*10);
+				// Concat the matrices (TRS)
+				AEMtx33Concat(&cellFinalTransformation, &b_rotate, &b_scale);
+				AEMtx33Concat(&cellFinalTransformation, &cellTranslation, &cellFinalTransformation);
+				// Choose the transform to use
+				AEGfxSetTransform(cellFinalTransformation.m);
+				AEGfxMeshDraw(pBlackInstance->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
+				std::cout << x << ',' << y << '\n';
+			}
+			if (GetCellValue(x, y) == TYPE_OBJECT_COLLISION)
+			{
+				AEGfxSetRenderMode(AE_GFX_RM_COLOR);
+				AEGfxSetTintColor(1.f, 1.f, 1.f, 1.0f);//Setcolour
+				AEGfxSetBlendMode(AE_GFX_BM_BLEND);
+				AEGfxSetTransparency(1);//SetTransperancy
+
+				AEMtx33 b_scale = { 0 };
+				AEMtx33Scale(&b_scale, 1, 1);
+				AEMtx33 b_rotate = { 0 };
+				AEMtx33Rot(&b_rotate, 0);
+				// Create a translation matrix that translates by
+				AEMtx33Trans(&cellTranslation, x, y);
+				// Concat the matrices (TRS)
+				AEMtx33Concat(&cellFinalTransformation, &b_rotate, &b_scale);
+				AEMtx33Concat(&cellFinalTransformation, &cellTranslation, &cellFinalTransformation);
+				// Choose the transform to use
+				AEGfxSetTransform(cellFinalTransformation.m);
+				AEGfxMeshDraw(pWhiteInstance->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
+			}
 		}
 
 
@@ -576,13 +639,37 @@ void GameStatePlatformDraw(void)
 		Send the resultant matrix to the graphics manager using "AEGfxSetTransform"
 		Draw the instance's shape using "AEGfxMeshDraw"
 	**********/
-	for (i = 0; i < GAME_OBJ_INST_NUM_MAX; i++)
+	for (x = 0; x < GAME_OBJ_INST_NUM_MAX; x++)
 	{
-		GameObjInst* pInst = sGameObjInstList + i;
+		GameObjInst* pInst = sGameObjInstList + x;
 
 		// skip non-active object
 		if (0 == (pInst->flag & FLAG_ACTIVE) || 0 == (pInst->flag & FLAG_VISIBLE))
 			continue;
+		if (pInst != nullptr)
+		{
+			//render ship
+			AEGfxSetRenderMode(AE_GFX_RM_COLOR);
+			AEGfxSetTintColor(1.f, 1.f, 1.f, 1.0f);//Setcolour
+			AEGfxSetBlendMode(AE_GFX_BM_BLEND);
+			AEGfxSetTransparency(1);//SetTransperancy
+
+			AEMtx33 b_scale = { 0 };
+			AEMtx33Scale(&b_scale, pInst->scale, pInst->scale);
+			AEMtx33 b_rotate = { 0 };
+			AEMtx33Rot(&b_rotate, pInst->dirCurr);
+			// Create a translation matrix that translates by
+			AEMtx33 b_translate = { 0 };
+			AEMtx33Trans(&b_translate, pInst->posCurr.x, pInst->posCurr.y);
+			// Concat the matrices (TRS)
+			AEMtx33 b_transform = { 0 };
+			AEMtx33Concat(&b_transform, &b_rotate, &b_scale);
+			AEMtx33Concat(&b_transform, &b_translate, &b_transform);
+			// Choose the transform to use
+			AEGfxSetTransform(b_transform.m);
+			//Actually drawing the mesh 
+			AEGfxMeshDraw(pInst->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
+		}
 		
 		//Don't forget to concatenate the MapTransform matrix with the transformation of each game object instance
 
