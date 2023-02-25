@@ -276,7 +276,7 @@ void GameStatePlatformLoad(void)
 	BINARY_MAP_HEIGHT = 0;
 
 	//Importing Data
-	if(!ImportMapDataFromFile("Resources/Levels/Exported.txt"))
+	if(!ImportMapDataFromFile("..//Resources//Levels//Exported.txt"))
 		gGameStateNext = GS_QUIT;
 
 
@@ -378,8 +378,10 @@ void GameStatePlatformUpdate(void)
 	int i, j;
 	GameObjInst *pInst;
 
-	UNREFERENCED_PARAMETER(j);
-	UNREFERENCED_PARAMETER(pInst);
+	if (AEInputCheckReleased(AEVK_RIGHT))
+	{
+
+	}
 	//Handle Input
 	/***********
 	if right is pressed
@@ -442,7 +444,18 @@ void GameStatePlatformUpdate(void)
 		// skip non-active object instances
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
-
+		if (COLLISION_RIGHT)
+		{
+		}
+		if (COLLISION_LEFT)
+		{
+		}
+		if (COLLISION_BOTTOM)
+		{
+		}
+		if (COLLISION_TOP)
+		{
+		}
 		/*************
 		Update grid collision flag
 
@@ -506,8 +519,7 @@ void GameStatePlatformUpdate(void)
 
 		
 	}
-	
-	
+
 	
 	// Update Camera position, for Level2
 		// To follow the player's position
@@ -552,6 +564,7 @@ void GameStatePlatformDraw(void)
 	for(i = 0; i < BINARY_MAP_WIDTH; ++i)
 		for(j = 0; j < BINARY_MAP_HEIGHT; ++j)
 		{
+
 		}
 
 
@@ -807,7 +820,7 @@ int ImportMapDataFromFile(char *FileName)
 			}
 		}
 	}
-	//read_File.close();
+	read_File.close();
 
 	return 1;
 }
@@ -865,6 +878,36 @@ void EnemyStateMachine(GameObjInst *pInst)
 	STATE_GOING_RIGHT is basically the same, with few modifications.
 
 	***********/
-
+	switch (STATE_GOING_LEFT)
+	{
+		case INNER_STATE_ON_ENTER:
+		{
+			pInst->posCurr.x += -MOVE_VELOCITY_ENEMY;
+			break;
+		}
+		case INNER_STATE_ON_UPDATE:
+		{
+			break;
+		}
+		case INNER_STATE_ON_EXIT:
+		{
+			break;
+		}
+	}
+	switch (STATE_GOING_RIGHT)
+	{
+		case INNER_STATE_ON_ENTER:
+		{
+			break;
+		}
+		case INNER_STATE_ON_UPDATE:
+		{
+			break;
+		}
+		case INNER_STATE_ON_EXIT:
+		{
+			break;
+		}
+	}
 	UNREFERENCED_PARAMETER(pInst);
 }
