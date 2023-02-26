@@ -294,11 +294,14 @@ void GameStatePlatformLoad(void)
 	Compute a scaling matrix and save it in "scale". The scale must account for the window width and height.
 		Alpha engine has 2 helper functions to get the window width and height: AEGetWindowWidth() and AEGetWindowHeight()
 	Concatenate scale and translate and save the result in "MapTransform"
-	***********/
+	***********/ 
 	AEMtx33 scale, trans;
 
-	UNREFERENCED_PARAMETER(scale);
-	UNREFERENCED_PARAMETER(trans);
+	MapTransform = { 0 };
+	trans = { 0 };
+	scale = { 0 };
+	AEMtx33Trans(&trans, -AEGetWindowWidth()/2, -AEGetWindowHeight() / 2);
+	AEMtx33Scale(&scale, AEGetWindowWidth() / BINARY_MAP_WIDTH, AEGetWindowWidth() / BINARY_MAP_HEIGHT);
 }
 
 /******************************************************************************/
@@ -483,15 +486,23 @@ void GameStatePlatformUpdate(void)
 			continue;
 		if (COLLISION_RIGHT)
 		{
+			SnapToCell(&pInst->posCurr.x);
+			pInst->velCurr.x = 0;
 		}
 		if (COLLISION_LEFT)
 		{
+			SnapToCell(&pInst->posCurr.x);
+			pInst->velCurr.x = 0;
 		}
 		if (COLLISION_BOTTOM)
 		{
+			SnapToCell(&pInst->posCurr.y);
+			pInst->velCurr.y = 0;
 		}
 		if (COLLISION_TOP)
 		{
+			SnapToCell(&pInst->posCurr.y);
+			pInst->velCurr.y = 0;
 		}
 		/*************
 		Update grid collision flag
@@ -1005,5 +1016,4 @@ void EnemyStateMachine(GameObjInst *pInst)
 			break;
 		}
 	}
-	UNREFERENCED_PARAMETER(pInst);
 }
