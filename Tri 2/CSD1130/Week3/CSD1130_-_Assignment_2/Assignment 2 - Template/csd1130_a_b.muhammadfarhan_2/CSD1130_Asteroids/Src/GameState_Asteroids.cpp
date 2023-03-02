@@ -297,16 +297,16 @@ void GameStateAsteroidsUpdate(void)
 	{
 		if (ship_CurrentMagnitude > ship_MaxSpeed)
 		{
-			ship_CurrentMagnitude = ship_MaxSpeed;
+			//ship_CurrentMagnitude = ship_MaxSpeed;
 		}
 		if (AEInputCheckCurr(AEVK_UP))
 		{
 			AEVec2 dirvec = { 0,0 };//Direction vector of ship
 			AEVec2Set(&dirvec, cosf(player_Ship->dirCurr), sinf(player_Ship->dirCurr));//Set movement direction of ship
 			AEVec2Scale(&dirvec, &dirvec, SHIP_ACCEL_FORWARD);//Ship acceleration
-			AEVec2Scale(&dirvec, &dirvec, g_dt);
+			//AEVec2Scale(&dirvec, &dirvec, g_dt);
 			AEVec2Add(&player_Ship->velCurr, &player_Ship->velCurr, &dirvec);//Move player foward
-			AEVec2Scale(&player_Ship->velCurr, &player_Ship->velCurr, 0.99f);//Ships "friction"
+			//AEVec2Scale(&player_Ship->velCurr, &player_Ship->velCurr, 0.99f);//Ships "friction"
 		}
 		if (AEInputCheckCurr(AEVK_DOWN))
 		{

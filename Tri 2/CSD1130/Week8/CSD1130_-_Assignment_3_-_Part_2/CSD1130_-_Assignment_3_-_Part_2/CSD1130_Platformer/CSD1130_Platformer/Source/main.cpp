@@ -13,6 +13,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /******************************************************************************/
 
 #include "main.h"
+#include <memory>
 
 
 // ---------------------------------------------------------------------------
@@ -20,7 +21,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 float	 g_dt;
 double	 g_appTime;
 
-
+char font;
 /******************************************************************************/
 /*!
 	Starting point of the application
@@ -28,14 +29,19 @@ double	 g_appTime;
 /******************************************************************************/
 int WINAPI WinMain(HINSTANCE instanceH, HINSTANCE prevInstanceH, LPSTR command_line, int show)
 {
-	UNREFERENCED_PARAMETER(prevInstanceH);
-	UNREFERENCED_PARAMETER(command_line);
 	// Initialize the system
 	AESysInit (instanceH, show, 800, 600, 1, 60, false, NULL);
 	
 	//Create your font here, and use it for all your levels
+	font = AEGfxCreateFont("..//Resources//Fonts//Arial Italic.ttf",20);
 
-	GameStateMgrInit(GS_PLATFORM);
+	//MY BEST FRIEND AND WORST ENEMY :)
+	// Enable run-time memory check for debug builds.
+	//#if defined(DEBUG) | defined(_DEBUG)
+	//	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+	//#endif
+
+	GameStateMgrInit(GS_MENU);
 
 	while(gGameStateCurr != GS_QUIT)
 	{
@@ -66,9 +72,6 @@ int WINAPI WinMain(HINSTANCE instanceH, HINSTANCE prevInstanceH, LPSTR command_l
 			
 			AESysFrameEnd();
 
-			// check if forcing the application to quit
-			if ((AESysDoesWindowExist() == false) || AEInputCheckTriggered(AEVK_ESCAPE))
-				gGameStateNext = GS_QUIT;
 
 			g_dt = (f32)AEFrameRateControllerGetFrameTime();
 			
@@ -89,7 +92,7 @@ int WINAPI WinMain(HINSTANCE instanceH, HINSTANCE prevInstanceH, LPSTR command_l
 	}
 
 	//free you font here
-
+	AEGfxDestroyFont(font);
 	// free the system
 	AESysExit();
 }

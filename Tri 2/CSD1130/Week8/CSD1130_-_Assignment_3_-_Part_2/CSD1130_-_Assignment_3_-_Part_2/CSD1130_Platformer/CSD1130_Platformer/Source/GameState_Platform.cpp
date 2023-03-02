@@ -15,11 +15,13 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "main.h"
 #include <iostream>
 #include <fstream>
+#include "Collision.h"
 /******************************************************************************/
 /*!
 	Defines
 */
 /******************************************************************************/
+#define POOL 25
 const unsigned int	GAME_OBJ_NUM_MAX		= 32;	//The total number of different objects (Shapes)
 const unsigned int	GAME_OBJ_INST_NUM_MAX	= 2048;	//The total number of different game object instances
 
@@ -39,7 +41,7 @@ const unsigned int	FLAG_NON_COLLIDABLE		= 0x00000004;
 //Collision flags
 const unsigned int	COLLISION_LEFT			= 0x00000001;	//0001
 const unsigned int	COLLISION_RIGHT			= 0x00000002;	//0010
-const unsigned int	COLLISION_TOP			= 0x00000004;	//0100
+const unsigned int	COLLISION_TOP			= 0x00000004;	//0100|
 const unsigned int	COLLISION_BOTTOM		= 0x00000008;	//1000
 
 
@@ -49,8 +51,8 @@ enum TYPE_OBJECT
 	TYPE_OBJECT_COLLISION,		//1
 	TYPE_OBJECT_HERO,			//2
 	TYPE_OBJECT_ENEMY1,			//3
-	TYPE_OBJECT_COIN			//4
-	
+	TYPE_OBJECT_COIN,			//4
+	TYPE_OBJECT_PARTICLE
 };
 
 //State machine states
@@ -78,6 +80,7 @@ struct GameObj
 {
 	unsigned int		type;		// object type
 	AEGfxVertexList *	pMesh;		// pbject
+
 };
 
 
@@ -107,8 +110,19 @@ struct GameObjInst
 	//General purpose counter (This variable will be used for the enemy state machine)
 	double			counter;
 };
+struct Particle
+{
+	AEVec2	posCurr;
+	AEVec2	velCurr;
+	AEMtx33	transform;
+	AEGfxVertexList* pMesh;
 
+	float speed;
+	float lifetime;
+	float scale;
 
+	bool is_Alive;
+};
 /******************************************************************************/
 /*!
 	File globals
@@ -118,13 +132,15 @@ static int				HeroLives;
 static int				Hero_Initial_X;
 static int				Hero_Initial_Y;
 static int				TotalCoins;
-
+int				CurrentScene;
+const float				Camera_View_Size = 20.f;
 // list of original objects
 static GameObj			*sGameObjList;
 static unsigned int		sGameObjNum;
 
 // list of object instances
 static GameObjInst		*sGameObjInstList;
+
 static unsigned int		sGameObjInstNum;
 
 //Binary map data
@@ -134,7 +150,9 @@ static int				BINARY_MAP_WIDTH;
 static int				BINARY_MAP_HEIGHT;
 static GameObjInst		*pBlackInstance;
 static GameObjInst		*pWhiteInstance;
+
 static AEMtx33			MapTransform;
+const float				BOUNDING_RECT_SIZE = .5f;         // this is the normalized bounding rectangle (width and height) sizes - AABB collision data
 
 int						GetCellValue(int X, int Y);
 int						CheckInstanceBinaryMapCollision(float PosX, float PosY, 
@@ -156,13 +174,123 @@ static GameObjInst		*pHero;
 void					EnemyStateMachine(GameObjInst *pInst);
 
 std::string length, height;
-bool is_grounded;
 
+float Current_EmmisionTime = 0;;
+float EmmisionTime = 0.1f;
+Particle Master_Particle;
+Particle part[POOL];
+
+
+bool can_WallJump;
+bool has_WallJump;
+float time_WallJump = 1.f;
+float currenttime_WallJump = 0.f;
+
+void CreateMasterParticle(float lt, float sp, float scale_);
+void CreateParticle(Particle& par);
+void ParticleUpdate();
+void ResetParticle(Particle& par);
 /******************************************************************************/
 /*!
 
 */
 /******************************************************************************/
+void CreateMasterParticle(float lt,float sp,float scale_)
+{
+	Master_Particle.lifetime = lt;
+	Master_Particle.speed = sp;
+	Master_Particle.scale = scale_;
+	//Creating the Particle object
+
+
+	AEGfxMeshStart();
+	AEGfxTriAdd(
+		-0.5f, -0.5f, 0xFFFF0000, 0.0f, 0.0f,
+		0.5f, -0.5f, 0xFF00FF00, 0.0f, 0.0f,
+		-0.5f, 0.5f, 0xFF00FF, 0.0f, 0.0f);
+
+	AEGfxTriAdd(
+		-0.5f, 0.5f, 0xFFFF0000, 0.0f, 0.0f,
+		0.5f, -0.5f, 0xFF00FF00, 0.0f, 0.0f,
+		0.5f, 0.5f, 0xFF0000FF, 0.0f, 0.0f);
+
+	Master_Particle.pMesh = AEGfxMeshEnd();
+	Master_Particle.posCurr.x = 0;
+	Master_Particle.posCurr.y = 0;
+	Master_Particle.velCurr.x = 0;
+	Master_Particle.velCurr.y = 0;
+	Master_Particle.transform = MapTransform;
+}
+void CreateParticle(Particle& par)
+{
+	par.is_Alive = false;
+	par.lifetime = Master_Particle.lifetime;
+	par.speed = Master_Particle.speed / 100.f;
+	par.transform = Master_Particle.transform;
+	par.posCurr = Master_Particle.posCurr;
+	par.velCurr = Master_Particle.velCurr;
+	par.scale = Master_Particle.scale;
+
+}
+void ParticleUpdate()
+{
+	for (int i = 0; i < POOL; i++)
+	{
+		if (!part[i].is_Alive)
+		{
+			continue;
+		}
+		else
+		{
+			part[i].velCurr.y += (part[i].speed);
+			part[i].posCurr.y = part[i].velCurr.y + pHero->posCurr.y + 0.75f;
+			part[i].posCurr.x = pHero->posCurr.x;
+			part[i].scale -= g_dt;
+			
+			part[i].lifetime -= g_dt;
+			if (part[i].lifetime <= 0)
+			{
+				ResetParticle(part[i]);
+			}
+		}
+	}
+}
+void ResetParticle(Particle& par)
+{
+	par.is_Alive = false;
+	par.lifetime = Master_Particle.lifetime;
+	par.speed = Master_Particle.speed / 100.f;
+	par.transform = Master_Particle.transform;
+	par.posCurr = Master_Particle.posCurr;
+	par.velCurr = Master_Particle.velCurr;
+	par.scale = Master_Particle.scale;
+
+}
+void ParticleDraw()
+{
+	AEMtx33 scale, trans, matrix;
+
+	for (int i = 0; i < POOL; i++)
+	{
+		if (!part[i].is_Alive)
+			continue;
+
+		AEGfxSetRenderMode(AE_GFX_RM_COLOR);
+		AEGfxSetTintColor(1.f, 1.f, 1.f, 1.0f);//Setcolour
+		AEGfxSetBlendMode(AE_GFX_BM_BLEND);
+		AEGfxSetTransparency(part[i].lifetime);//SetTransperancy
+
+		AEMtx33Scale(&scale, part[i].scale, part[i].scale);
+		AEMtx33Trans(&trans, part[i].posCurr.x, part[i].posCurr.y);
+		AEMtx33Concat(&matrix, &trans, &scale);
+		AEMtx33Concat(&matrix, &MapTransform, &matrix);
+		AEGfxSetTransform(matrix.m);
+
+
+		AEGfxMeshDraw(Master_Particle.pMesh, AE_GFX_MDM_TRIANGLES);
+
+	}
+}
 void GameStatePlatformLoad(void)
 {
 	sGameObjList = (GameObj *)calloc(GAME_OBJ_NUM_MAX, sizeof(GameObj));
@@ -271,15 +399,32 @@ void GameStatePlatformLoad(void)
 	pObj->pMesh = AEGfxMeshEnd();
 	AE_ASSERT_MESG(pObj->pMesh, "fail to create object!!");
 
+
 	//Setting intital binary map values
 	MapData = 0;
 	BinaryCollisionArray = 0;
 	BINARY_MAP_WIDTH = 0;
 	BINARY_MAP_HEIGHT = 0;
-
+	
 	//Importing Data
-	if(!ImportMapDataFromFile("..//Resources//Levels//Exported.txt"))
-		gGameStateNext = GS_QUIT;
+	switch (gGameStateCurr)
+	{
+		case GS_PLATFORM_LVL_1:
+		{
+			if (!ImportMapDataFromFile("..//Resources//Levels//Exported.txt"))
+				gGameStateNext = GS_QUIT;
+
+			break;
+		}
+		case GS_PLATFORM_LVL_2:
+		{
+			if (!ImportMapDataFromFile("..//Resources//Levels//Exported2.txt"))
+				gGameStateNext = GS_QUIT;
+
+			break;
+		}
+
+	}
 
 
 	//Computing the matrix which take a point out of the normalized coordinates system
@@ -300,8 +445,9 @@ void GameStatePlatformLoad(void)
 	MapTransform = { 0 };
 	trans = { 0 };
 	scale = { 0 };
-	AEMtx33Trans(&trans, -AEGetWindowWidth()/2, -AEGetWindowHeight() / 2);
-	AEMtx33Scale(&scale, AEGetWindowWidth() / BINARY_MAP_WIDTH, AEGetWindowWidth() / BINARY_MAP_HEIGHT);
+	AEMtx33Scale(&scale, (float) (AEGetWindowWidth() / Camera_View_Size), (float)(AEGetWindowHeight() / Camera_View_Size));
+	AEMtx33Trans(&trans, -(Camera_View_Size/2.f), -(Camera_View_Size / 2.f));
+	AEMtx33Concat(&MapTransform, &scale, &trans);
 }
 
 /******************************************************************************/
@@ -332,14 +478,11 @@ void GameStatePlatformInit(void)
 	pWhiteInstance->flag ^= FLAG_VISIBLE;
 	pWhiteInstance->flag |= FLAG_NON_COLLIDABLE;
 
+	//Pass base data to all particle
+
 	//Setting the inital number of hero lives
 	HeroLives = HERO_LIVES;
 
-	GameObjInst *pInst;
-	AEVec2 Pos;
-
-	UNREFERENCED_PARAMETER(pInst);
-	UNREFERENCED_PARAMETER(Pos);
 
 	// creating the main character, the enemies and the coins according 
 	// to their initial positions in MapData
@@ -369,28 +512,38 @@ void GameStatePlatformInit(void)
 	for(x = 0; x < BINARY_MAP_WIDTH; ++x)
 		for(y = 0; y < BINARY_MAP_HEIGHT; ++y)
 		{
-			switch (MapData[x][y])
+			switch (MapData[y][x])
 			{
 				case TYPE_OBJECT_HERO:
 				{
-					AEVec2 pos = { (f32)y,(f32)x};
-					pHero = gameObjInstCreate(TYPE_OBJECT_HERO, 1.0f, &pos, &pos, 0.0f, STATE_NONE);
-					continue;
+					AEVec2 pos = { (f32)x+0.5f,(f32)y+0.5f};
+					pHero = gameObjInstCreate(TYPE_OBJECT_HERO, 1.0f, &pos, 0, 0.0f, STATE_NONE);
+					Hero_Initial_X = x;
+					Hero_Initial_Y = y;
+ 					break;
 				}
 				case TYPE_OBJECT_ENEMY1:
 				{
-					AEVec2 pos = { (f32)y,(f32)x };
-					gameObjInstCreate(TYPE_OBJECT_ENEMY1, 1.0f, &pos, &pos, 0.0f, STATE_NONE);
-					continue;
+					AEVec2 pos = { (f32)x+0.5f,(f32)y+0.5f};
+					gameObjInstCreate(TYPE_OBJECT_ENEMY1, 1.0f, &pos, 0, 0.0f, STATE_GOING_LEFT);
+					break;
 				}
 				case TYPE_OBJECT_COIN:
 				{
-					AEVec2 pos = { (f32)y,(f32)x };
-					gameObjInstCreate(TYPE_OBJECT_COIN, 1.0f, &pos, &pos, 0.0f, STATE_NONE);
-					continue;
+					AEVec2 pos = { (f32)x+0.5f,(f32)y+0.5f};
+					gameObjInstCreate(TYPE_OBJECT_COIN, 1.0f, &pos, 0, 0.0f, STATE_NONE);
+					TotalCoins++;
+					break;
 				}
 			}
 		}
+
+	//PARTICLE
+	CreateMasterParticle(1.f, 5.f, 1.f);
+	for (int i = 0; i < POOL; i++)
+	{
+		CreateParticle(part[i]);
+	}
 }
 
 /******************************************************************************/
@@ -400,27 +553,59 @@ void GameStatePlatformInit(void)
 /******************************************************************************/
 void GameStatePlatformUpdate(void)
 {
-	int i, j;
+	int i;
 	GameObjInst *pInst ;
 
-	if (AEInputCheckReleased(AEVK_RIGHT))
+	if (AEInputCheckCurr(AEVK_RIGHT))
 	{
 		pHero->velCurr.x = MOVE_VELOCITY_HERO;
 	}
-	else if (AEInputCheckReleased(AEVK_LEFT))
+	else if (AEInputCheckCurr(AEVK_LEFT))
 	{
 		pHero->velCurr.x = -MOVE_VELOCITY_HERO;
 	}
 	else
-		pHero->velCurr.x = -MOVE_VELOCITY_HERO;
+		pHero->velCurr.x = 0;
 
-	if (AEInputCheckTriggered(AEVK_SPACE))
+	if (AEInputCheckTriggered(AEVK_SPACE) && (pHero->gridCollisionFlag & COLLISION_BOTTOM) ||
+		AEInputCheckTriggered(AEVK_SPACE) && (pHero->gridCollisionFlag & COLLISION_RIGHT) && can_WallJump && !has_WallJump||
+		AEInputCheckTriggered(AEVK_SPACE) && (pHero->gridCollisionFlag & COLLISION_LEFT) && can_WallJump && !has_WallJump)
 	{
 		pHero->velCurr.y = JUMP_VELOCITY;
+		if (can_WallJump)
+		{
+			has_WallJump = true;
+			currenttime_WallJump = 0;
+		}
 	}
 	if (AEInputCheckTriggered(AEVK_ESCAPE))
 	{
-		gGameStateNext = GS_QUIT;
+		gGameStateNext = GS_MENU;
+	}
+	if (pHero->gridCollisionFlag & COLLISION_RIGHT || pHero->gridCollisionFlag & COLLISION_LEFT )
+	{
+		if (!can_WallJump && !has_WallJump)
+		{
+			can_WallJump = true;
+			currenttime_WallJump = time_WallJump;
+		}
+	}
+
+	if (currenttime_WallJump > 0.1f)
+	{
+		currenttime_WallJump -= g_dt;
+	}
+	//else
+	{
+		pHero->velCurr.y = (GRAVITY * g_dt) + pHero->velCurr.y;
+	}
+	if (currenttime_WallJump <= 0)
+	{
+		can_WallJump = false;
+	}
+	if ((pHero->gridCollisionFlag & COLLISION_BOTTOM) && has_WallJump)
+	{
+		has_WallJump = false;
 	}
 	//Handle Input
 	/***********
@@ -440,6 +625,8 @@ void GameStatePlatformUpdate(void)
 	***********/
 
 
+	//pHero->velCurr.y = (GRAVITY * g_dt) + pHero->velCurr.y;
+
 	//Update object instances physics and behavior
 	for(i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
 	{
@@ -449,7 +636,10 @@ void GameStatePlatformUpdate(void)
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
 
-		pInst->velCurr.y = GRAVITY* g_dt + pInst->velCurr.y;
+		if (pInst->pObject->type == TYPE_OBJECT_ENEMY1)
+		{
+			EnemyStateMachine(pInst);
+		}
 		/****************
 		Apply gravity
 			Velocity Y = Gravity * Frame Time + Velocity Y
@@ -468,6 +658,14 @@ void GameStatePlatformUpdate(void)
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
 
+		pInst->posCurr.x += pInst->velCurr.x * g_dt;
+		pInst->posCurr.y += pInst->velCurr.y * g_dt;
+
+		pInst->boundingBox.min.x = -BOUNDING_RECT_SIZE * pInst->scale + pInst->posCurr.x;
+		pInst->boundingBox.min.y = -BOUNDING_RECT_SIZE * pInst->scale + pInst->posCurr.y;
+		pInst->boundingBox.max.x = BOUNDING_RECT_SIZE * pInst->scale + pInst->posCurr.x;
+		pInst->boundingBox.max.y = BOUNDING_RECT_SIZE * pInst->scale + pInst->posCurr.y;
+
 		/**********
 		update the position using: P1 = V1*dt + P0
 		Get the bouding rectangle of every active instance:
@@ -481,28 +679,33 @@ void GameStatePlatformUpdate(void)
 	{
 		pInst = sGameObjInstList + i;
 
+		pInst->gridCollisionFlag = CheckInstanceBinaryMapCollision(pInst->posCurr.x, pInst->posCurr.y, pInst->scale,pInst->scale);
+
 		// skip non-active object instances
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
-		if (COLLISION_RIGHT)
+		//& - BITWISE AND comparison
+		if (pInst->gridCollisionFlag & COLLISION_RIGHT)
 		{
 			SnapToCell(&pInst->posCurr.x);
 			pInst->velCurr.x = 0;
 		}
-		if (COLLISION_LEFT)
+		if (pInst->gridCollisionFlag & COLLISION_LEFT)
 		{
 			SnapToCell(&pInst->posCurr.x);
 			pInst->velCurr.x = 0;
+
 		}
-		if (COLLISION_BOTTOM)
+		if (pInst->gridCollisionFlag & COLLISION_BOTTOM)
 		{
 			SnapToCell(&pInst->posCurr.y);
 			pInst->velCurr.y = 0;
 		}
-		if (COLLISION_TOP)
+		if (pInst->gridCollisionFlag & COLLISION_TOP)
 		{
 			SnapToCell(&pInst->posCurr.y);
 			pInst->velCurr.y = 0;
+
 		}
 		/*************
 		Update grid collision flag
@@ -525,7 +728,6 @@ void GameStatePlatformUpdate(void)
 		*************/
 	}
 
-
 	//Checking for collision among object instances:
 	//Hero against enemies
 	//Hero against coins
@@ -545,33 +747,115 @@ void GameStatePlatformUpdate(void)
 				Go to level2, in case no more coins are left and you are at Level1.
 				Quit the game level to the main menu, in case no more coins are left and you are at Level2.
 	**********/
-	
+	if (AEInputCheckTriggered(AEVK_R))
+	{
+		gGameStateNext = GS_RESTART;
+	}
 	for(i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
 	{
+		pInst = sGameObjInstList + i;
+
+		// skip non-active object
+		if (!(pInst->flag & FLAG_ACTIVE) || pInst->flag & FLAG_NON_COLLIDABLE)
+			continue;
+
+		if (pInst->pObject->type == TYPE_OBJECT_ENEMY1)
+		{
+			if (CollisionIntersection_RectRect(pHero->boundingBox, pHero->velCurr,
+				pInst->boundingBox, pInst->velCurr))
+			{
+				if (HeroLives > 0)
+				{
+					HeroLives--;
+					AEVec2Set(&pHero->posCurr, (f32)Hero_Initial_X, (f32)Hero_Initial_Y);
+				}
+				else
+				{
+
+					gGameStateNext = GS_RESTART;
+				}
+			}
+		}
+		if (pInst->pObject->type == TYPE_OBJECT_COIN)
+		{
+			if (CollisionIntersection_RectRect(pHero->boundingBox, pHero->velCurr,
+				pInst->boundingBox, pInst->velCurr))
+			{
+				gameObjInstDestroy(pInst);
+				TotalCoins--;
+			}
+			if (TotalCoins == 0)
+			{
+				switch (gGameStateCurr)
+				{
+					case GS_PLATFORM_LVL_1:
+						gGameStateNext = GS_PLATFORM_LVL_2;
+						break;
+					case GS_PLATFORM_LVL_2:
+						gGameStateNext = GS_MENU;
+						break;
+				}
+			}
+		}
 	}
 
 	
 	//Computing the transformation matrices of the game object instances
-	for(i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
+	for (unsigned long j = 0; j < GAME_OBJ_INST_NUM_MAX; j++)
 	{
-		AEMtx33 scale, rot, trans;
-		pInst = sGameObjInstList + i;
+		GameObjInst* pInst = sGameObjInstList + j;
+		AEMtx33		 trans, rot, scale;
 
 		// skip non-active object
-		if (0 == (pInst->flag & FLAG_ACTIVE))
+		if ((pInst->flag & FLAG_ACTIVE) == 0)
 			continue;
 
-		AEMtx33Scale(&scale, pInst->scale, pInst->scale);
-		AEMtx33Rot(&rot, pInst->dirCurr);
-		AEMtx33Trans(&trans, pInst->posCurr.x, pInst->posCurr.y);
 
-		
+		scale = { 0 };
+		AEMtx33Scale(&scale, pInst->scale, pInst->scale);
+		// Create a rotation matrix that rotates by 45 degrees
+		rot = { 0 };
+		AEMtx33Rot(&rot, pInst->dirCurr);
+		// Create a translation matrix that translates by
+		trans = { 0 };
+		AEMtx33Trans(&trans, pInst->posCurr.x, pInst->posCurr.y);
+		// Concat the matrices (TRS)
+		AEMtx33 transform = { 0 };
+		AEMtx33Concat(&pInst->transform, &rot, &scale);
+		AEMtx33Concat(&pInst->transform, &trans, &pInst->transform);
 	}
-	
+	if (gGameStateCurr == GS_PLATFORM_LVL_2)
+	{
+		AEVec2 cam_Pos{0,0};
+
+		cam_Pos.x = AEClamp(pHero->posCurr.x,  Camera_View_Size / 2.f, BINARY_MAP_WIDTH - Camera_View_Size /2.f );
+		cam_Pos.y = AEClamp(pHero->posCurr.y, Camera_View_Size/ 2.f, BINARY_MAP_HEIGHT - Camera_View_Size /2.f);
+		AEMtx33MultVec(&cam_Pos, &MapTransform, &cam_Pos);
+
+		AEGfxSetCamPosition(cam_Pos.x, cam_Pos.y);
+	}
 	// Update Camera position, for Level2
 		// To follow the player's position
 		// To clamp the position at the level's borders, between (0,0) and and maximum camera position
 			// You may use an alpha engine helper function to clamp the camera position: AEClamp()
+	if (Current_EmmisionTime > 0)
+	{
+		Current_EmmisionTime -= g_dt;
+	}
+	else
+	{
+		for (int j = 0; j < POOL; j++)
+		{
+			if (!part[j].is_Alive)
+			{
+				part[j].is_Alive = true;
+				Current_EmmisionTime = EmmisionTime;
+				break;
+			}
+		}
+	}
+	ParticleUpdate();
+
 }
 
 /******************************************************************************/
@@ -605,8 +889,8 @@ void GameStatePlatformDraw(void)
 			Use the black instance in case the cell's value is TYPE_OBJECT_EMPTY
 			Use the white instance in case the cell's value is TYPE_OBJECT_COLLISION
 	*********/
-	for(x = 0; x < BINARY_MAP_WIDTH; ++x)
-		for(y = 0; y < BINARY_MAP_HEIGHT; ++y)
+	for(x = 0; x < BINARY_MAP_WIDTH; x++)
+		for(y = 0; y < BINARY_MAP_HEIGHT; y++)
 		{
 			if (GetCellValue(x, y) == TYPE_OBJECT_EMPTY)
 			{
@@ -615,15 +899,10 @@ void GameStatePlatformDraw(void)
 				AEGfxSetBlendMode(AE_GFX_BM_BLEND);
 				AEGfxSetTransparency(1);//SetTransperancy
 
-				AEMtx33 b_scale = { 0 };
-				AEMtx33Scale(&b_scale, 10, 10);
-				AEMtx33 b_rotate = { 0 };
-				AEMtx33Rot(&b_rotate, 0);
 				// Create a translation matrix that translates by
-				AEMtx33Trans(&cellTranslation, x*10, y*10);
+				AEMtx33Trans(&cellTranslation, x+0.5f, y+0.5f);
 				// Concat the matrices (TRS)
-				AEMtx33Concat(&cellFinalTransformation, &b_rotate, &b_scale);
-				AEMtx33Concat(&cellFinalTransformation, &cellTranslation, &cellFinalTransformation);
+				AEMtx33Concat(&cellFinalTransformation, &MapTransform, &cellTranslation);
 				// Choose the transform to use
 				AEGfxSetTransform(cellFinalTransformation.m);
 				AEGfxMeshDraw(pBlackInstance->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
@@ -635,15 +914,10 @@ void GameStatePlatformDraw(void)
 				AEGfxSetBlendMode(AE_GFX_BM_BLEND);
 				AEGfxSetTransparency(1);//SetTransperancy
 
-				AEMtx33 b_scale = { 0 };
-				AEMtx33Scale(&b_scale, 1, 1);
-				AEMtx33 b_rotate = { 0 };
-				AEMtx33Rot(&b_rotate, 0);
 				// Create a translation matrix that translates by
-				AEMtx33Trans(&cellTranslation, x, y);
+				AEMtx33Trans(&cellTranslation, x+0.5f, y+0.5f);
 				// Concat the matrices (TRS)
-				AEMtx33Concat(&cellFinalTransformation, &b_rotate, &b_scale);
-				AEMtx33Concat(&cellFinalTransformation, &cellTranslation, &cellFinalTransformation);
+				AEMtx33Concat(&cellFinalTransformation, &MapTransform, &cellTranslation);
 				// Choose the transform to use
 				AEGfxSetTransform(cellFinalTransformation.m);
 				AEGfxMeshDraw(pWhiteInstance->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
@@ -666,40 +940,32 @@ void GameStatePlatformDraw(void)
 		// skip non-active object
 		if (0 == (pInst->flag & FLAG_ACTIVE) || 0 == (pInst->flag & FLAG_VISIBLE))
 			continue;
-		if (pInst != nullptr)
-		{
-			//render ship
+			AEGfxSetPosition(0,0);
 			AEGfxSetRenderMode(AE_GFX_RM_COLOR);
 			AEGfxSetTintColor(1.f, 1.f, 1.f, 1.0f);//Setcolour
-			AEGfxSetBlendMode(AE_GFX_BM_BLEND);
+			AEGfxSetBlendMode(AE_GFX_BM_NONE);
 			AEGfxSetTransparency(1);//SetTransperancy
 
-			AEMtx33 b_scale = { 0 };
-			AEMtx33Scale(&b_scale, pInst->scale, pInst->scale);
-			AEMtx33 b_rotate = { 0 };
-			AEMtx33Rot(&b_rotate, pInst->dirCurr);
 			// Create a translation matrix that translates by
-			AEMtx33 b_translate = { 0 };
-			AEMtx33Trans(&b_translate, pInst->posCurr.x, pInst->posCurr.y);
 			// Concat the matrices (TRS)
-			AEMtx33 b_transform = { 0 };
-			AEMtx33Concat(&b_transform, &b_rotate, &b_scale);
-			AEMtx33Concat(&b_transform, &b_translate, &b_transform);
+			AEMtx33Concat(&pInst->transform, &MapTransform, &pInst->transform);
 			// Choose the transform to use
-			AEGfxSetTransform(b_transform.m);
-			//Actually drawing the mesh 
+			AEGfxSetTransform(pInst->transform.m);
 			AEGfxMeshDraw(pInst->pObject->pMesh, AE_GFX_MDM_TRIANGLES);
-		}
-		
+			
 		//Don't forget to concatenate the MapTransform matrix with the transformation of each game object instance
 
 	}
+	ParticleDraw();
 
 	char strBuffer[100];
 	memset(strBuffer, 0, 100*sizeof(char));
+	AEGfxSetBlendMode(AE_GFX_BM_BLEND);
+
 	sprintf_s(strBuffer, "Lives:  %i", HeroLives);
-	//AEGfxPrint(650, 30, (u32)-1, strBuffer);	
-	printf("%s \n", strBuffer);
+	AEGfxPrint(font, strBuffer, 0.6f, 0.9f, 1.0f, 0.0f, 0.0f, 1.0f);
+	sprintf_s(strBuffer, "Coins:  %i", TotalCoins);
+	AEGfxPrint(font, strBuffer, -.8f, 0.9f, 1.0f, 0.0f, 0.0f, 1.0f);
 }
 
 /******************************************************************************/
@@ -721,13 +987,17 @@ void GameStatePlatformFree(void)
 /******************************************************************************/
 void GameStatePlatformUnload(void)
 {
-	// free all CREATED mesh
+	// kill all object in the list
 	for (u32 i = 0; i < sGameObjNum; i++)
 		AEGfxMeshFree(sGameObjList[i].pMesh);
 
-	/*********
-	Free the map data
-	*********/
+
+	free(sGameObjList);
+	free(sGameObjInstList);
+
+	AEGfxMeshFree(Master_Particle.pMesh);
+
+	FreeMapData();
 }
 
 /******************************************************************************/
@@ -946,6 +1216,7 @@ void FreeMapData(void)
 		delete[] MapData[i];
 		delete[] BinaryCollisionArray[i];
 	}
+
 	//Deleting remaining alllocated memory
 	delete[] MapData;
 	delete[] BinaryCollisionArray;
@@ -956,7 +1227,7 @@ void FreeMapData(void)
 
 */
 /******************************************************************************/
-void EnemyStateMachine(GameObjInst *pInst)
+void EnemyStateMachine(GameObjInst* pInst)
 {
 	/***********
 	This state machine has 2 states: STATE_GOING_LEFT and STATE_GOING_RIGHT
@@ -985,35 +1256,73 @@ void EnemyStateMachine(GameObjInst *pInst)
 	STATE_GOING_RIGHT is basically the same, with few modifications.
 
 	***********/
-	switch (STATE_GOING_LEFT)
+	switch (pInst->state)
 	{
-		case INNER_STATE_ON_ENTER:
+		case STATE_GOING_LEFT:
 		{
-			pInst->posCurr.x += -MOVE_VELOCITY_ENEMY;
-			break;
+			switch (pInst->innerState)
+			{
+				case INNER_STATE_ON_ENTER:
+				{
+					pInst->velCurr.x = -MOVE_VELOCITY_ENEMY;
+					pInst->innerState = INNER_STATE_ON_UPDATE;
+					break;
+				}
+				case INNER_STATE_ON_UPDATE:
+				{
+					if (GetCellValue((int)(pInst->posCurr.x - 0.5f), (int)(pInst->posCurr.y - 1)) == TYPE_OBJECT_EMPTY || pInst->gridCollisionFlag & COLLISION_LEFT)
+					{
+						pInst->innerState = INNER_STATE_ON_EXIT;
+						pInst->velCurr.x = 0;
+						pInst->counter = ENEMY_IDLE_TIME;
+					}
+					break;
+				}
+				case INNER_STATE_ON_EXIT:
+				{
+					pInst->counter -= g_dt;
+					if (pInst->counter <= 0)
+					{
+						pInst->state = STATE_GOING_RIGHT;
+						pInst->innerState = INNER_STATE_ON_ENTER;
+					}
+					break;
+				}
+			}
 		}
-		case INNER_STATE_ON_UPDATE:
+		break;
+		case STATE_GOING_RIGHT:
 		{
-			break;
+			switch (pInst->innerState)
+			{
+			case INNER_STATE_ON_ENTER:
+				{
+					pInst->velCurr.x = MOVE_VELOCITY_ENEMY;
+					pInst->innerState = INNER_STATE_ON_UPDATE;
+					break;
+				}
+				case INNER_STATE_ON_UPDATE:
+				{
+					if (GetCellValue((int)(pInst->posCurr.x + 0.5f), (int)(pInst->posCurr.y - 1)) == TYPE_OBJECT_EMPTY || pInst->gridCollisionFlag & COLLISION_RIGHT)
+					{
+						pInst->innerState = INNER_STATE_ON_EXIT;
+						pInst->velCurr.x = 0;
+						pInst->counter = ENEMY_IDLE_TIME;
+					}
+					break;
+				}
+				case INNER_STATE_ON_EXIT:
+				{
+					pInst->counter -= g_dt;
+					if (pInst->counter <= 0)
+					{
+						pInst->state = STATE_GOING_LEFT;
+						pInst->innerState = INNER_STATE_ON_ENTER;
+					}
+					break;
+				}
+			}
 		}
-		case INNER_STATE_ON_EXIT:
-		{
-			break;
-		}
-	}
-	switch (STATE_GOING_RIGHT)
-	{
-		case INNER_STATE_ON_ENTER:
-		{
-			break;
-		}
-		case INNER_STATE_ON_UPDATE:
-		{
-			break;
-		}
-		case INNER_STATE_ON_EXIT:
-		{
-			break;
-		}
+		break;
 	}
 }

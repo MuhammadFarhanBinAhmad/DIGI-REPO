@@ -62,13 +62,30 @@ void GameStateMgrUpdate()
 
 	switch (gGameStateCurr)
 	{
-	case GS_PLATFORM:
+	case GS_MENU:
+		GameStateLoad = GameStateMenuLoad;
+		GameStateInit = GameStateMenuInit;
+		GameStateUpdate = GameStateMenuUpdate;
+		GameStateDraw = GameStateMenuDraw;
+		GameStateFree = GameStateMenuFree;
+		GameStateUnload = GameStateMenuUnload;
+		break;
+	//USE GAMESTATEPLATFORM INSTEAD OF MAKING ANOTHER FILE.JUST CHANGE/RESET STATS 
+	case GS_PLATFORM_LVL_1:
 		GameStateLoad	= GameStatePlatformLoad;
 		GameStateInit	= GameStatePlatformInit;
 		GameStateUpdate	= GameStatePlatformUpdate;
 		GameStateDraw	= GameStatePlatformDraw;
 		GameStateFree	= GameStatePlatformFree;
 		GameStateUnload	= GameStatePlatformUnload;
+		break;
+	case GS_PLATFORM_LVL_2:
+		GameStateLoad = GameStatePlatformLoad;
+		GameStateInit = GameStatePlatformInit;
+		GameStateUpdate = GameStatePlatformUpdate;
+		GameStateDraw = GameStatePlatformDraw;
+		GameStateFree = GameStatePlatformFree;
+		GameStateUnload = GameStatePlatformUnload;
 		break;
 	default:
 		AE_FATAL_ERROR("invalid state!!");

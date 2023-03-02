@@ -22,6 +22,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 extern float	g_dt;
 extern double	g_appTime;
 
+extern char font;
+
 // ---------------------------------------------------------------------------
 // includes
 
@@ -30,6 +32,7 @@ extern double	g_appTime;
 
 #include "GameStateMgr.h"
 #include "GameState_Platform.h"
+#include "GameState_Menu.h"
 #include "Collision.h"
 #endif // CSD1130_MAIN_H_
 
