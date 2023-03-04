@@ -167,9 +167,6 @@
     <ClCompile Include="Source\GameState_Menu.cpp" />
     <ClCompile Include="Source\GameState_Platform.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\Particle.cpp" />
-    <ClCompile Include="Source\ParticleSystem.cpp" />
-    <ClCompile Include="Source\RenderingSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\Collision.h" />
@@ -178,9 +175,6 @@
     <ClInclude Include="Include\GameState_Menu.h" />
     <ClInclude Include="Include\GameState_Platform.h" />
     <ClInclude Include="Include\main.h" />
-    <ClInclude Include="Include\Particle.h" />
-    <ClInclude Include="Include\ParticleSystem.h" />
-    <ClInclude Include="Include\RenderingSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

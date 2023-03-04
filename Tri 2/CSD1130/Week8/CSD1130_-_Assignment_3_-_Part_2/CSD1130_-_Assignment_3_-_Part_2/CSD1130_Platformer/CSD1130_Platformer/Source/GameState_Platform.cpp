@@ -1,16 +1,16 @@
 /******************************************************************************/
 /*!
-\file		GameState_Asteroids.cpp
-\author 	DigiPen
-\par    	email: digipen\@digipen.edu
-\date   	February 01, 20xx
+\file		GameState_Platform.cpp
+\author 	Muhammad Farhan Bin Ahmad(ID: 2200544)
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	February 03, 2023
 \brief
 
-Copyright (C) 20xx DigiPen Institute of Technology.
+Copyright (C) 2023 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
  */
-/******************************************************************************/
+ /******************************************************************************/
 
 #include "main.h"
 #include <iostream>
@@ -52,7 +52,7 @@ enum TYPE_OBJECT
 	TYPE_OBJECT_HERO,			//2
 	TYPE_OBJECT_ENEMY1,			//3
 	TYPE_OBJECT_COIN,			//4
-	TYPE_OBJECT_PARTICLE
+	TYPE_OBJECT_PARTICLE		//5
 };
 
 //State machine states
@@ -132,8 +132,7 @@ static int				HeroLives;
 static int				Hero_Initial_X;
 static int				Hero_Initial_Y;
 static int				TotalCoins;
-int				CurrentScene;
-const float				Camera_View_Size = 20.f;
+static float			Camera_View_Size = 20.f;
 // list of original objects
 static GameObj			*sGameObjList;
 static unsigned int		sGameObjNum;
@@ -175,21 +174,17 @@ void					EnemyStateMachine(GameObjInst *pInst);
 
 std::string length, height;
 
-float Current_EmmisionTime = 0;;
+//Particle Effect variables
+float Current_EmmisionTime = 0;
 float EmmisionTime = 0.1f;
-Particle Master_Particle;
-Particle part[POOL];
+Particle Master_Particle;	//Master Particle for all particle to copy
+Particle part[POOL];	//Set Particle Pool
 
-
-bool can_WallJump;
-bool has_WallJump;
-float time_WallJump = 1.f;
-float currenttime_WallJump = 0.f;
-
-void CreateMasterParticle(float lt, float sp, float scale_);
-void CreateParticle(Particle& par);
-void ParticleUpdate();
-void ResetParticle(Particle& par);
+//Particle System Function
+void CreateMasterParticle(float lt, float sp, float scale_);//Create Master Particle
+void CreateParticle(Particle& par);//Create normal particle
+void ParticleUpdate();//Update particle variable
+void ResetParticle(Particle& par);//Reset particle variables
 /******************************************************************************/
 /*!
 
@@ -197,11 +192,12 @@ void ResetParticle(Particle& par);
 /******************************************************************************/
 void CreateMasterParticle(float lt,float sp,float scale_)
 {
+	//Set Master particle varaibles
 	Master_Particle.lifetime = lt;
 	Master_Particle.speed = sp;
 	Master_Particle.scale = scale_;
-	//Creating the Particle object
 
+	//Creating the Particle object
 
 	AEGfxMeshStart();
 	AEGfxTriAdd(
@@ -567,45 +563,24 @@ void GameStatePlatformUpdate(void)
 	else
 		pHero->velCurr.x = 0;
 
-	if (AEInputCheckTriggered(AEVK_SPACE) && (pHero->gridCollisionFlag & COLLISION_BOTTOM) ||
-		AEInputCheckTriggered(AEVK_SPACE) && (pHero->gridCollisionFlag & COLLISION_RIGHT) && can_WallJump && !has_WallJump||
-		AEInputCheckTriggered(AEVK_SPACE) && (pHero->gridCollisionFlag & COLLISION_LEFT) && can_WallJump && !has_WallJump)
+	if (AEInputCheckTriggered(AEVK_SPACE))
 	{
-		pHero->velCurr.y = JUMP_VELOCITY;
-		if (can_WallJump)
+		if (pHero->gridCollisionFlag & COLLISION_BOTTOM)
 		{
-			has_WallJump = true;
-			currenttime_WallJump = 0;
+			pHero->velCurr.y = JUMP_VELOCITY;
+		}
+		if (pHero->gridCollisionFlag & COLLISION_RIGHT && AEInputCheckTriggered(AEVK_LEFT))
+		{
+			pHero->velCurr.y = JUMP_VELOCITY;
+		}
+		if (pHero->gridCollisionFlag & COLLISION_LEFT && AEInputCheckTriggered(AEVK_RIGHT))
+		{
+			pHero->velCurr.y = JUMP_VELOCITY;
 		}
 	}
 	if (AEInputCheckTriggered(AEVK_ESCAPE))
 	{
 		gGameStateNext = GS_MENU;
-	}
-	if (pHero->gridCollisionFlag & COLLISION_RIGHT || pHero->gridCollisionFlag & COLLISION_LEFT )
-	{
-		if (!can_WallJump && !has_WallJump)
-		{
-			can_WallJump = true;
-			currenttime_WallJump = time_WallJump;
-		}
-	}
-
-	if (currenttime_WallJump > 0.1f)
-	{
-		currenttime_WallJump -= g_dt;
-	}
-	//else
-	{
-		pHero->velCurr.y = (GRAVITY * g_dt) + pHero->velCurr.y;
-	}
-	if (currenttime_WallJump <= 0)
-	{
-		can_WallJump = false;
-	}
-	if ((pHero->gridCollisionFlag & COLLISION_BOTTOM) && has_WallJump)
-	{
-		has_WallJump = false;
 	}
 	//Handle Input
 	/***********
@@ -625,7 +600,7 @@ void GameStatePlatformUpdate(void)
 	***********/
 
 
-	//pHero->velCurr.y = (GRAVITY * g_dt) + pHero->velCurr.y;
+	pHero->velCurr.y = (GRAVITY * g_dt) + pHero->velCurr.y;
 
 	//Update object instances physics and behavior
 	for(i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
@@ -834,6 +809,11 @@ void GameStatePlatformUpdate(void)
 
 		AEGfxSetCamPosition(cam_Pos.x, cam_Pos.y);
 	}
+	else
+	{
+		//reset cam for level 1
+		AEGfxSetCamPosition(0, 0);
+	}
 	// Update Camera position, for Level2
 		// To follow the player's position
 		// To clamp the position at the level's borders, between (0,0) and and maximum camera position
@@ -869,6 +849,8 @@ void GameStatePlatformDraw(void)
 	int x, y;
 	AEMtx33 cellTranslation, cellFinalTransformation;
 
+
+	
 	//Drawing the tile map
 
 	/******REMINDER*****

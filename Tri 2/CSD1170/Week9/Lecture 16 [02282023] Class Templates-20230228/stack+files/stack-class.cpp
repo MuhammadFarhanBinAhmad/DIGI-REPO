@@ -34,7 +34,7 @@ void StackChar::push(const_reference val) {
   v[top_idx++] = val;
 }
 
-void StackChar::pop() {
+char StackChar::pop() {
   --top_idx;
 }
 

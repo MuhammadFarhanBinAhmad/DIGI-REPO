@@ -1,2 +1,4 @@
-﻿  GameState_Menu.cpp
+﻿  GameState_Platform.cpp
+C:\Others\DIGI-REPO\Tri 2\CSD1130\Week8\CSD1130_-_Assignment_3_-_Part_2\CSD1130_-_Assignment_3_-_Part_2\CSD1130_Platformer\CSD1130_Platformer\Source\GameState_Platform.cpp(784,24): warning C4456: declaration of 'pInst' hides previous local declaration
+C:\Others\DIGI-REPO\Tri 2\CSD1130\Week8\CSD1130_-_Assignment_3_-_Part_2\CSD1130_-_Assignment_3_-_Part_2\CSD1130_Platformer\CSD1130_Platformer\Source\GameState_Platform.cpp(556,15): message : see declaration of 'pInst'
   CSD1130_Platformer.vcxproj -> C:\Others\DIGI-REPO\Tri 2\CSD1130\Week8\CSD1130_-_Assignment_3_-_Part_2\CSD1130_-_Assignment_3_-_Part_2\CSD1130_Platformer\Bin\CSD1130_PlatformerD.exe

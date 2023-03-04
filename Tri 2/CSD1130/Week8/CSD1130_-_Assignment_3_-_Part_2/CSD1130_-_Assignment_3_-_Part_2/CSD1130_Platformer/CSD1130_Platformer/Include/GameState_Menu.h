@@ -1,9 +1,9 @@
 #pragma once
 /******************************************************************************/
 /*!
-\file		GameState_Platform.h
+\file		GameState_Menu.h
 \author 	Muhammad Farhan Bin Ahmad(ID: 2200544)
-\par    	email: b,muhammadfarhan@digipen.edu
+\par    	email: b.muhammadfarhan@digipen.edu
 \date   	February 03, 2023
 \brief
 
