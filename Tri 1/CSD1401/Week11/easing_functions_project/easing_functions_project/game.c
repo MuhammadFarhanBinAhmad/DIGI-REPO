@@ -82,7 +82,7 @@ void GameInit(void)
 {
 	direction = FORWARD;
 	timer = 0.f;
-	duration = 2.f;
+	duration = 10.f;
 	min_x = 150.f;
 	max_x = 650.f;
 	min_size = 50;
