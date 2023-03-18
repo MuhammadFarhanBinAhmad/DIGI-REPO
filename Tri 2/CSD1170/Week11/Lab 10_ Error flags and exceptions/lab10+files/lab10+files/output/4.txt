@@ -1,0 +1,7 @@
+Calling function #1; result: 30.
+Calling function #2; result: 20.
+Calling function #3; result: 15.
+Calling function #4.
+
+Exception was thrown: Division by zero: 60 / 0!
+

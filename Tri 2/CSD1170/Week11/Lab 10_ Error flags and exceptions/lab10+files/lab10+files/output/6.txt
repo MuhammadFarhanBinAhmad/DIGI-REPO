@@ -1,0 +1,5 @@
+Calling function #1; result: 60.
+Calling function #2; result: 30.
+Calling function #3; result: 20.
+Calling function #4; result: 15.
+Calling function #5; result: 12.
