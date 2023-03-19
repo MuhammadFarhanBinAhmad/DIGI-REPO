@@ -48,6 +48,7 @@ namespace CSD1130
 		Vector2D& operator -= (const Vector2D &rhs);
 		Vector2D& operator *= (float rhs);
 		Vector2D& operator /= (float rhs);
+		Vector2D& operator = (const AEVec2& vec);
 
 		// Unary operators
 		Vector2D operator -() const;
@@ -66,6 +67,8 @@ namespace CSD1130
 	Vector2D operator * (const Vector2D &lhs, float rhs);
 	Vector2D operator * (float lhs, const Vector2D &rhs);
 	Vector2D operator / (const Vector2D &lhs, float rhs);
+
+
 
 	/**************************************************************************/
 	/*!

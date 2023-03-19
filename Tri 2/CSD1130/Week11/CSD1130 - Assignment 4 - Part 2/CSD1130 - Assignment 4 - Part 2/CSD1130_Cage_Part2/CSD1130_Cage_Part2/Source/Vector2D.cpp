@@ -41,6 +41,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
  /******************************************************************************/
 
 #include "Vector2D.h"
+#include "AEVec2.h"
 #include <math.h>
 namespace CSD1130
 {
@@ -80,7 +81,13 @@ namespace CSD1130
 
 		return *this;
 	}
+	Vector2D& Vector2D::operator=(const AEVec2& vec)
+	{
+		this->x = vec.x;
+		this->y = vec.y;
 
+		return *this;
+	}
 	// Unary operators
 	Vector2D Vector2D::operator-() const
 	{

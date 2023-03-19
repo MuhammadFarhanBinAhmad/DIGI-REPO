@@ -24,8 +24,13 @@ void BuildLineSegment(LineSegment &lineSegment,
 	const AEVec2& p0,
 	const AEVec2& p1)
 {
+
 	lineSegment.m_pt0 = p0;
 	lineSegment.m_pt1 = p1;
+
+	CSD1130::Vector2D length = lineSegment.m_pt1 - lineSegment.m_pt0;
+
+	CSD1130::Vector2DNormalize
 
 	float length_x = lineSegment.m_pt1.x - lineSegment.m_pt0.x;
 	float length_y = lineSegment.m_pt1.y - lineSegment.m_pt0.y;
@@ -52,8 +57,10 @@ int CollisionIntersection_CircleLineSegment(const Circle &circle,
 	float &interTime,
 	bool & checkLineEdges)
 {
-	if ()
+	
+	AEVec2 normalize_Normal = lineSeg.m_normal;
 
+	if ()
 	// your code goes here
 	UNREFERENCED_PARAMETER(circle);
 	UNREFERENCED_PARAMETER(ptEnd);
