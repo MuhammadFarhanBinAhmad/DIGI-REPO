@@ -41,7 +41,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
  /******************************************************************************/
 
 #include "Vector2D.h"
-#include "AEVec2.h"
 #include <math.h>
 namespace CSD1130
 {
@@ -50,6 +49,12 @@ namespace CSD1130
 	{
 		this->x = _x;
 		this->y = _y;
+	}
+
+	Vector2D::Vector2D(const AEVec2& pos)
+	{
+		this->x = pos.x;
+		this->y = pos.y;
 	}
 
 	// Assignment operators
@@ -78,13 +83,6 @@ namespace CSD1130
 	{
 		this->x /= rhs;
 		this->y /= rhs;
-
-		return *this;
-	}
-	Vector2D& Vector2D::operator=(const AEVec2& vec)
-	{
-		this->x = vec.x;
-		this->y = vec.y;
 
 		return *this;
 	}

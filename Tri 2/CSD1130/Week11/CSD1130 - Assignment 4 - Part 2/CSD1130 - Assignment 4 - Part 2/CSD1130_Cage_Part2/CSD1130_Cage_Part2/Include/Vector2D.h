@@ -12,6 +12,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
  */
 /******************************************************************************/
 
+#include "AEVec2.h"
+
 #pragma once
 
 namespace CSD1130
@@ -38,6 +40,7 @@ namespace CSD1130
 		// Constructors
 		Vector2D() : x(0.0f), y(0.0f) {}
 		Vector2D(float _x, float _y);
+		Vector2D(const AEVec2& pos);
 
 		//Do not change the following
 		Vector2D& operator=(const Vector2D& rhs) = default;
@@ -48,7 +51,6 @@ namespace CSD1130
 		Vector2D& operator -= (const Vector2D &rhs);
 		Vector2D& operator *= (float rhs);
 		Vector2D& operator /= (float rhs);
-		Vector2D& operator = (const AEVec2& vec);
 
 		// Unary operators
 		Vector2D operator -() const;

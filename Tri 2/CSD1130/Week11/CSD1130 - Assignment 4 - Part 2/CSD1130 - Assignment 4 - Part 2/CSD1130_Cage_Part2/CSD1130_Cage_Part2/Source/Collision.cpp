@@ -1,4 +1,4 @@
-/******************************************************************************/
+﻿/******************************************************************************/
 /*!
 \file		Collision.cpp
 \author 	DigiPen
@@ -25,23 +25,21 @@ void BuildLineSegment(LineSegment &lineSegment,
 	const AEVec2& p1)
 {
 
+	//set start and end point
 	lineSegment.m_pt0 = p0;
 	lineSegment.m_pt1 = p1;
 
-	CSD1130::Vector2D length = lineSegment.m_pt1 - lineSegment.m_pt0;
+	CSD1130::Vector2D pos_Start(p0);
+	CSD1130::Vector2D pos_End(p1);
 
-	CSD1130::Vector2DNormalize
+	//get distance and generate normalise normal
+	CSD1130::Vector2D distance = pos_End - pos_Start;
+	CSD1130::Vector2D normal_Normalize{};
 
-	float length_x = lineSegment.m_pt1.x - lineSegment.m_pt0.x;
-	float length_y = lineSegment.m_pt1.y - lineSegment.m_pt0.y;
+	CSD1130::Vector2DNormalize(normal_Normalize, distance);
 
-	float normal_x = length_y;
-	float normal_y = -length_x;
-
-	float distance = sqrt((normal_x * normal_x) + (normal_y * normal_y));
-
-	lineSegment.m_normal.x = normal_x / distance;
-	lineSegment.m_normal.y = normal_y / distance;
+	lineSegment.m_normal.x = normal_Normalize.x;
+	lineSegment.m_normal.y = normal_Normalize.y;
 
 }
 
@@ -57,10 +55,31 @@ int CollisionIntersection_CircleLineSegment(const Circle &circle,
 	float &interTime,
 	bool & checkLineEdges)
 {
-	
-	AEVec2 normalize_Normal = lineSeg.m_normal;
+	//CIRCLE STATS
+	CSD1130::Vector2D Bs = circle.m_center;
+	CSD1130::Vector2D normalize_Bs;
+	CSD1130::Vector2DNormalize(normalize_Bs, Bs);
 
-	if ()
+	CSD1130::Vector2D p0 = lineSeg.m_pt0;
+	CSD1130::Vector2D p1 = lineSeg.m_pt1;
+	CSD1130::Vector2D normalize_Vector = lineSeg.m_normal;
+
+	//(^𝑵.Bs - ^𝑵.P0 <= -R)
+	if ((CSD1130::Vector2DDotProduct(normalize_Vector, Bs) - CSD1130::Vector2DDotProduct(normalize_Vector, p0)) <= -circle.m_radius)
+	{
+		//(𝑀⃗ .BsP0' * 𝑀⃗ .BsP1' < 0)
+		//How to get V
+	}
+	//(^𝑵.Bs - ^𝑵.P0 >= R)
+	else if ((CSD1130::Vector2DDotProduct(normalize_Vector, Bs) - CSD1130::Vector2DDotProduct(normalize_Vector, p0)) >= circle.m_radius)
+	{
+
+	}
+	else
+	{
+		CheckMovingCircleToLineEdge(true, circle, ptEnd, lineSeg, interPt, normalAtCollision, interTime);
+	}
+
 	// your code goes here
 	UNREFERENCED_PARAMETER(circle);
 	UNREFERENCED_PARAMETER(ptEnd);
@@ -110,11 +129,19 @@ void CollisionResponse_CircleLineSegment(const AEVec2 &ptInter,
 	AEVec2 &ptEnd,
 	AEVec2 &reflected)
 {
-	// your code goes here
-	UNREFERENCED_PARAMETER(ptInter);
-	UNREFERENCED_PARAMETER(normal);
-	UNREFERENCED_PARAMETER(ptEnd);
-	UNREFERENCED_PARAMETER(reflected);
+	
+	CSD1130::Vector2D intersection = ptInter;
+	CSD1130::Vector2D Normal = normal;
+	CSD1130::Vector2D point_End = ptEnd;
+	CSD1130::Vector2D reflec = reflected;
+
+	CSD1130::Vector2D temp;
+	//return Bi + penetration - 2(penetration . normal) * normal;
+	temp = point_End + ptInter - (2 * (CSD1130::Vector2DDotProduct(ptInter, normal))) * reflec;
+	ptEnd.x = temp.x;
+	ptEnd.y = temp.y;
+
+
 }
 
 
