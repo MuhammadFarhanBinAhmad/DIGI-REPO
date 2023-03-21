@@ -13,7 +13,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /******************************************************************************/
 
 #include "main.h"
-
+#include "Matrix3x3.h"
 /******************************************************************************/
 /*!
 	Defines
@@ -64,12 +64,12 @@ struct GameObjInst
 	GameObj*		pObject;	// pointer to the 'original'
 	unsigned int	flag;		// bit flag or-ed together
 	float			scale;
-	AEVec2			posCurr;	// object current position
-	AEVec2			velCurr;	// object current velocity
+	CSD1130::Vector2D			posCurr;	// object current position
+	CSD1130::Vector2D			velCurr;	// object current velocity
 	float			dirCurr;	// object current direction
 	float			speed;
 
-	AEMtx33			transform;	// object drawing matrix
+	CSD1130::Mtx33			transform;	// object drawing matrix
 
 	// pointer to custom data specific for each object type
 	void*			pUserData;
@@ -92,13 +92,13 @@ static unsigned int		sGameObjInstNum;
 // function to create/destroy a game object instance
 GameObjInst*		gameObjInstCreate (TYPE_OBJECT type,
 										   float scale, 
-										   AEVec2* pPos, 
-										   AEVec2* pVel, 
+										   CSD1130::Vector2D* pPos, 
+										   CSD1130::Vector2D* pVel, 
 										   float dir);
 void				gameObjInstDestroy(GameObjInst* pInst);
 
-static AECircle			*sBallData = 0;
-static AELineSegment	*sWallData = 0;
+static Circle			*sBallData = 0;
+static LineSegment	*sWallData = 0;
 
 
 
@@ -193,7 +193,7 @@ void GameStateCageInit(void)
 		float dir, speed, scale;
 		unsigned int ballNum = 0;
 		inFile>>ballNum;
-		sBallData = new AECircle[ballNum];
+		sBallData = new Circle[ballNum];
 
 		for(unsigned int i = 0; i < ballNum; ++i)
 		{
@@ -208,9 +208,9 @@ void GameStateCageInit(void)
 			inFile>>str>>sBallData[i].m_radius;
 			
 			// create ball instance
-			AEVec2 vel;
-			AEVec2Set(&vel, cos(dir*PI_OVER_180)*speed, 
-							sin(dir*PI_OVER_180)*speed);
+			CSD1130::Vector2D vel;
+			vel.x = cos(dir * PI_OVER_180) * speed;
+			vel.y = sin(dir * PI_OVER_180) * speed;
 			pInst = gameObjInstCreate(TYPE_OBJECT::TYPE_OBJECT_BALL, sBallData[i].m_radius,
 										&sBallData[i].m_center, &vel, 0.0f);
 			AE_ASSERT(pInst);
@@ -220,11 +220,11 @@ void GameStateCageInit(void)
 
 		// read wall data
 		unsigned int wallNum = 0;
-		AEVec2 P0 = AEVec2(), P1 = AEVec2();
-		AEVec2 pos = AEVec2(), e = AEVec2();
+		CSD1130::Vector2D P0 = CSD1130::Vector2D(), P1 = CSD1130::Vector2D();
+		CSD1130::Vector2D pos = CSD1130::Vector2D(), e = CSD1130::Vector2D();
 
 		inFile>>wallNum;
-		sWallData = new AELineSegment[wallNum];
+		sWallData = new LineSegment[wallNum];
 
 		for(unsigned int i = 0; i < wallNum; ++i)
 		{
@@ -248,8 +248,12 @@ void GameStateCageInit(void)
 
 
 			//NOTE to student: When using your own build line segment function, comment out this next line, and uncomment the line after
-			AEBuildLineSegment(sWallData[i], pos, scale, acosine);
-			//BuildLineSegment(sWallData[i], P0, P1);
+			//AEBuildLineSegment(sWallData[i], pos, scale, acosine);
+			LineSegment m_LineSegment{};
+			m_LineSegment.m_normal = sWallData[i].m_normal;
+			m_LineSegment.m_pt0 = sWallData[i].m_pt0;
+			m_LineSegment.m_pt1 = sWallData[i].m_pt1;
+			BuildLineSegment(m_LineSegment, P0, P1);
 
 
 
@@ -287,8 +291,8 @@ void GameStateCageUpdate(void)
 	}
 
 	
-	AEVec2		interPtA;
-	AEVec2      normalAtCollision;
+	CSD1130::Vector2D		interPtA;
+	CSD1130::Vector2D      normalAtCollision;
 	float		interTime = 0.0f;
 
 	//f32 fpsT = (f32)AEFrameRateControllerGetFrameTime();
@@ -303,12 +307,12 @@ void GameStateCageUpdate(void)
 			pBallInst->pObject->type != TYPE_OBJECT::TYPE_OBJECT_BALL)
 			continue;
 
-		AEVec2 posNext;
+		CSD1130::Vector2D posNext;
 		posNext.x = pBallInst->posCurr.x + pBallInst->velCurr.x * g_dt;
 		posNext.y = pBallInst->posCurr.y + pBallInst->velCurr.y * g_dt;
 
 		// Update the latest ball data with the lastest ball's position
-		AECircle &ballData = *((AECircle*)pBallInst->pUserData);
+		Circle &ballData = *((Circle*)pBallInst->pUserData);
 		ballData.m_center.x = pBallInst->posCurr.x;
 		ballData.m_center.y = pBallInst->posCurr.y;
 
@@ -324,15 +328,14 @@ void GameStateCageUpdate(void)
 			{
 				case TYPE_OBJECT::TYPE_OBJECT_WALL:
 				{
-					AELineSegment &lineSegData = *((AELineSegment*)pInst->pUserData);
+					LineSegment &lineSegData = *((LineSegment*)pInst->pUserData);
 
 					bool checkLineEdges = false;
 					if (EXTRA_CREDITS == 1)
 						checkLineEdges = true;
-					
 					if ((pBallInst->velCurr.x * lineSegData.m_normal.x + pBallInst->velCurr.y * lineSegData.m_normal.y) < 0.0f)
 					{
-						if (AECollisionIntersection_CircleLineSegment(ballData,
+						if (CollisionIntersection_CircleLineSegment(ballData,
 							posNext,
 							lineSegData,
 							interPtA,
@@ -340,9 +343,9 @@ void GameStateCageUpdate(void)
 							interTime,
 							checkLineEdges))
 						{
-							AEVec2 reflectedVec;
+							CSD1130::Vector2D reflectedVec;
 
-							AECollisionResponse_CircleLineSegment(interPtA,
+							CollisionResponse_CircleLineSegment(interPtA,
 								normalAtCollision,
 								posNext,
 								reflectedVec);
@@ -367,19 +370,27 @@ void GameStateCageUpdate(void)
 	//Computing the transformation matrices of the game object instances
 	for(unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
 	{
-		AEMtx33 scale, rot, trans;
+		CSD1130::Mtx33 scale, rot, trans;
 		GameObjInst *pInst = sGameObjInstList + i;
 
 		// skip non-active object
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
 
-		AEMtx33Scale(&scale, pInst->scale, pInst->scale);
+
+		CSD1130::Mtx33Scale(scale, pInst->scale, pInst->scale);
+		CSD1130::Mtx33RotRad(rot, pInst->dirCurr);
+		CSD1130::Mtx33Translate(trans, pInst->posCurr.x, pInst->posCurr.y);
+
+		pInst->transform = scale * rot;
+		pInst->transform = trans * pInst->transform;
+
+		/*AEMtx33Scale(&scale, pInst->scale, pInst->scale);
 		AEMtx33Rot(&rot, pInst->dirCurr);
 		AEMtx33Trans(&trans, pInst->posCurr.x, pInst->posCurr.y);
 
 		AEMtx33Concat(&pInst->transform, &scale, &rot);
-		AEMtx33Concat(&pInst->transform, &trans, &pInst->transform);
+		AEMtx33Concat(&pInst->transform, &trans, &pInst->transform);*/
 	}
 
 	if(AEInputCheckTriggered(AEVK_R))
@@ -410,7 +421,7 @@ void GameStateCageDraw(void)
 		if (0 == (pInst->flag & FLAG_ACTIVE) || 0 == (pInst->flag & FLAG_VISIBLE))
 			continue;
 		
-		AEGfxSetTransform(pInst->transform.m);
+		AEGfxSetTransform(pInst->transform.m2);
 
 		if (pInst->pObject->type == TYPE_OBJECT::TYPE_OBJECT_BALL)
 		{
@@ -490,12 +501,12 @@ void GameStateCageUnload(void)
 /******************************************************************************/
 GameObjInst* gameObjInstCreate(TYPE_OBJECT type,
 							   float scale, 
-							   AEVec2* pPos, 
-							   AEVec2* pVel, 
+							   CSD1130::Vector2D* pPos, 
+							   CSD1130::Vector2D* pVel, 
 							   float dir)
 {
-	AEVec2 zero;
-	AEVec2Zero(&zero);
+	CSD1130::Vector2D zero;
+	//CSD1130::Vector2D Zero(&zero);
 
 	AE_ASSERT_PARM(type < TYPE_OBJECT(sGameObjNum));
 	

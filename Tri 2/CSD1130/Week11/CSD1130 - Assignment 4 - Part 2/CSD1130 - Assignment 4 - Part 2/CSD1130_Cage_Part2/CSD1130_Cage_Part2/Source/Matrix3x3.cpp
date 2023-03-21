@@ -198,14 +198,11 @@ namespace CSD1130
 	void Mtx33RotRad(Matrix3x3& pResult, float angle)
 	{
 		Mtx33Identity(pResult);
-		float cosTheta = cos(angle);
-		float sinTheta = sin(angle);
-
-		pResult.m00 = cosTheta;
-		pResult.m01 = -sinTheta;
-
-		pResult.m10 = sinTheta;
-		pResult.m11 = cosTheta;
+		float cosVal = cos(angle);
+        float sinVal = sin(angle);
+		pResult = Matrix3x3(cosVal, -sinVal, 0.0f,
+                            sinVal, cosVal, 0.0f,
+                            0.0f, 0.0f, 1.0f);
 	}
 
 	/**************************************************************************/

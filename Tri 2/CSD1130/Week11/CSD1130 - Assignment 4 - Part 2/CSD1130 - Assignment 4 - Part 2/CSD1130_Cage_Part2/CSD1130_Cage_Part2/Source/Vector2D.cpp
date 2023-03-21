@@ -10,9 +10,9 @@
 			//Non default assignment constructor
 
 			4 Assigment operator:
-			Vector2D& operator += 
-			Vector2D& operator -= 
-			Vector2D& operator *= 
+			Vector2D& operator +=
+			Vector2D& operator -=
+			Vector2D& operator *=
 			Vector2D& operator /=
 
 			1 Unary operators:
@@ -51,12 +51,6 @@ namespace CSD1130
 		this->y = _y;
 	}
 
-	Vector2D::Vector2D(const AEVec2& pos)
-	{
-		this->x = pos.x;
-		this->y = pos.y;
-	}
-
 	// Assignment operators
 	Vector2D& Vector2D::operator+=(const Vector2D& rhs)
 	{
@@ -86,6 +80,7 @@ namespace CSD1130
 
 		return *this;
 	}
+
 	// Unary operators
 	Vector2D Vector2D::operator-() const
 	{
@@ -166,7 +161,7 @@ namespace CSD1130
 	 /**************************************************************************/
 	float	Vector2DSquareLength(const Vector2D& pVec0)
 	{
-		return pVec0.x* pVec0.x + pVec0.y * pVec0.y;
+		return pVec0.x * pVec0.x + pVec0.y * pVec0.y;
 	}
 
 	/**************************************************************************/

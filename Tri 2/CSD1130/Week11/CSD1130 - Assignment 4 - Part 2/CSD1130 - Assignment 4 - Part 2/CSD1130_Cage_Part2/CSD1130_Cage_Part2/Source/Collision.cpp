@@ -21,25 +21,19 @@ prior written consent of DigiPen Institute of Technology is prohibited.
  */
 /******************************************************************************/
 void BuildLineSegment(LineSegment &lineSegment,
-	const AEVec2& p0,
-	const AEVec2& p1)
+	const CSD1130::Vector2D& p0,
+	const CSD1130::Vector2D& p1)
 {
 
 	//set start and end point
 	lineSegment.m_pt0 = p0;
 	lineSegment.m_pt1 = p1;
 
-	CSD1130::Vector2D pos_Start(p0);
-	CSD1130::Vector2D pos_End(p1);
+	CSD1130::Matrix3x3 rotMatrix{};
+	CSD1130::Mtx33RotRad(rotMatrix, -PI / 2);
 
-	//get distance and generate normalise normal
-	CSD1130::Vector2D distance = pos_End - pos_Start;
-	CSD1130::Vector2D normal_Normalize{};
-
-	CSD1130::Vector2DNormalize(normal_Normalize, distance);
-
-	lineSegment.m_normal.x = normal_Normalize.x;
-	lineSegment.m_normal.y = normal_Normalize.y;
+	CSD1130::Vector2DNormalize(lineSegment.m_normal, rotMatrix * (p1 - p0));
+	std::cout << lineSegment.m_normal.x << std::endl;
 
 }
 
@@ -48,48 +42,108 @@ void BuildLineSegment(LineSegment &lineSegment,
  */
 /******************************************************************************/
 int CollisionIntersection_CircleLineSegment(const Circle &circle,
-	const AEVec2 &ptEnd,
+	const CSD1130::Vector2D&ptEnd,
 	const LineSegment &lineSeg,
-	AEVec2 &interPt,
-	AEVec2 &normalAtCollision,
+	CSD1130::Vector2D&interPt,
+	CSD1130::Vector2D&normalAtCollision,
 	float &interTime,
 	bool & checkLineEdges)
 {
-	//CIRCLE STATS
-	CSD1130::Vector2D Bs = circle.m_center;
-	CSD1130::Vector2D normalize_Bs;
-	CSD1130::Vector2DNormalize(normalize_Bs, Bs);
 
-	CSD1130::Vector2D p0 = lineSeg.m_pt0;
-	CSD1130::Vector2D p1 = lineSeg.m_pt1;
-	CSD1130::Vector2D normalize_Vector = lineSeg.m_normal;
+	//NORMAL VECTOR ALREADY NORMALIZE SO DONT NEED TO NORMALIZE
+
+	//LINE SEGMENT
+	CSD1130::Vector2D Velocity = ptEnd - circle.m_center;
+	CSD1130::Vector2D distance_Vector = lineSeg.m_pt1 - circle.m_center;
 
 	//(^𝑵.Bs - ^𝑵.P0 <= -R)
-	if ((CSD1130::Vector2DDotProduct(normalize_Vector, Bs) - CSD1130::Vector2DDotProduct(normalize_Vector, p0)) <= -circle.m_radius)
+	//Check you are within range
+	//if ( CSD1130::Vector2DDotProduct(distance_Vector,lineSeg.m_normal) <= -circle.m_radius)
+	if ((CSD1130::Vector2DDotProduct(lineSeg.m_normal,circle.m_center) 
+		- 
+		CSD1130::Vector2DDotProduct(lineSeg.m_normal, lineSeg.m_pt0)) 
+		<= circle.m_radius)
 	{
-		//(𝑀⃗ .BsP0' * 𝑀⃗ .BsP1' < 0)
-		//How to get V
-	}
-	//(^𝑵.Bs - ^𝑵.P0 >= R)
-	else if ((CSD1130::Vector2DDotProduct(normalize_Vector, Bs) - CSD1130::Vector2DDotProduct(normalize_Vector, p0)) >= circle.m_radius)
-	{
+		//P0' = P0 – R*𝑵
+		CSD1130::Vector2D p0_prime = lineSeg.m_pt0 - (circle.m_radius * lineSeg.m_normal);
+		//P1' = P1 – R*𝑵
+		CSD1130::Vector2D p1_prime = lineSeg.m_pt1 - (circle.m_radius * lineSeg.m_normal);
 
+		//𝑀⃗⃗ is the outward normal to Velocity 𝑉⃗ 
+		CSD1130::Vector2D M;
+
+		CSD1130::Matrix3x3 rotMatx{};
+		CSD1130::Mtx33RotRad(rotMatx, -PI / 2);
+
+		CSD1130::Vector2DNormalize(M, rotMatx * Velocity);
+		
+		//(𝑀⃗ .BsP0' * 𝑀⃗ .BsP1' < 0)
+		//Check actual line
+		if ((CSD1130::Vector2DDotProduct(M, (p0_prime-circle.m_center)) 
+			* 
+			CSD1130::Vector2DDotProduct(M, (p1_prime-circle.m_center))) 
+			< 0)
+		{
+			interTime = (CSD1130::Vector2DDotProduct(lineSeg.m_normal, lineSeg.m_pt0) - (CSD1130::Vector2DDotProduct(lineSeg.m_normal, circle.m_center) - circle.m_radius)
+				/ (CSD1130::Vector2DDotProduct(lineSeg.m_normal, Velocity)));
+
+			if (interTime >= 0 && interTime <= 1)
+			{
+				CSD1130::Vector2D Bi = circle.m_center + Velocity * (interTime);
+				interPt.x = Bi.x;
+				interPt.y = Bi.y;
+
+				normalAtCollision = lineSeg.m_normal;
+				return 1;
+			}
+			else
+			{
+				CheckMovingCircleToLineEdge(false, circle, ptEnd, lineSeg, interPt, normalAtCollision, interTime);
+				return 0;
+			}
+		}
+	}
+	else if (CSD1130::Vector2DDotProduct(distance_Vector, lineSeg.m_normal) >= circle.m_radius)
+	{
+		//P0' = P0 – R*𝑵
+		CSD1130::Vector2D p0_prime = lineSeg.m_pt0 + (circle.m_radius * lineSeg.m_normal);
+		//P1' = P1 – R*𝑵
+		CSD1130::Vector2D p1_prime = lineSeg.m_pt1 + (circle.m_radius * lineSeg.m_normal);
+
+		//𝑀⃗⃗ is the outward normal to Velocity 𝑉⃗ 
+		CSD1130::Vector2D M;
+
+		M.x = Velocity.y;
+		M.y = -Velocity.x;
+
+		//(𝑀⃗ .BsP0' * 𝑀⃗ .BsP1' < 0)
+		//Check actual line
+		if ((CSD1130::Vector2DDotProduct(M, (circle.m_center - p0_prime)) * CSD1130::Vector2DDotProduct(M, (circle.m_center - p1_prime))) < 0)
+		{
+			interTime = (CSD1130::Vector2DDotProduct(lineSeg.m_normal, lineSeg.m_pt0) - (CSD1130::Vector2DDotProduct(lineSeg.m_normal, circle.m_center) + circle.m_radius)
+				/ (CSD1130::Vector2DDotProduct(lineSeg.m_normal, Velocity)));
+
+			if (interTime >= 0 && interTime <= 1)
+			{
+				CSD1130::Vector2D Bi = circle.m_center + Velocity * (interTime);
+				interPt.x = Bi.x;
+				interPt.y = Bi.y;
+
+				normalAtCollision = lineSeg.m_normal;
+				return 1;
+			}
+			else
+			{
+				CheckMovingCircleToLineEdge(false, circle, ptEnd, lineSeg, interPt, normalAtCollision, interTime);
+				return 0;
+			}
+		}
 	}
 	else
 	{
 		CheckMovingCircleToLineEdge(true, circle, ptEnd, lineSeg, interPt, normalAtCollision, interTime);
+		return 1;
 	}
-
-	// your code goes here
-	UNREFERENCED_PARAMETER(circle);
-	UNREFERENCED_PARAMETER(ptEnd);
-	UNREFERENCED_PARAMETER(lineSeg);
-	UNREFERENCED_PARAMETER(normalAtCollision);
-	UNREFERENCED_PARAMETER(interPt);
-	UNREFERENCED_PARAMETER(interTime);
-	UNREFERENCED_PARAMETER(checkLineEdges);
-
-	return 0; // no intersection
 }
 
 /******************************************************************************/
@@ -98,12 +152,34 @@ int CollisionIntersection_CircleLineSegment(const Circle &circle,
 /******************************************************************************/
 int CheckMovingCircleToLineEdge(bool withinBothLines,
 	const Circle &circle,
-	const AEVec2 &ptEnd,
+	const CSD1130::Vector2D& ptEnd,
 	const LineSegment &lineSeg,
-	AEVec2 &interPt,
-	AEVec2 &normalAtCollision,
+	CSD1130::Vector2D& interPt,
+	CSD1130::Vector2D& normalAtCollision,
 	float &interTime)
 {
+	//CIRCLE
+	CSD1130::Vector2D Bs = circle.m_center;
+
+	//LINESEGMENT
+	CSD1130::Vector2D p0 = lineSeg.m_pt0;
+	CSD1130::Vector2D p1 = lineSeg.m_pt1;
+
+	if (withinBothLines)
+	{
+		CSD1130::Vector2D BsP0 = p0 - Bs;
+		CSD1130::Vector2D BsP1 = p1 - Bs;
+
+		//Check which edge may collide first?
+		if (CSD1130::Vector2DDotProduct(BsP0, BsP1) > 0)//P0 side
+		{
+			//if ()
+		}
+		else
+		{
+
+		}
+	}
 	// your code goes here
 	UNREFERENCED_PARAMETER(withinBothLines);
 	UNREFERENCED_PARAMETER(circle);
@@ -124,24 +200,19 @@ int CheckMovingCircleToLineEdge(bool withinBothLines,
 /*!
  */
 /******************************************************************************/
-void CollisionResponse_CircleLineSegment(const AEVec2 &ptInter,
-	const AEVec2 &normal,
-	AEVec2 &ptEnd,
-	AEVec2 &reflected)
+void CollisionResponse_CircleLineSegment(const CSD1130::Vector2D &ptInter,
+	const CSD1130::Vector2D &normal,
+	CSD1130::Vector2D &ptEnd,
+	CSD1130::Vector2D &reflected)
 {
 	
-	CSD1130::Vector2D intersection = ptInter;
-	CSD1130::Vector2D Normal = normal;
-	CSD1130::Vector2D point_End = ptEnd;
-	CSD1130::Vector2D reflec = reflected;
 
-	CSD1130::Vector2D temp;
+	CSD1130::Vector2D pt_Penet = ptEnd - ptInter;
 	//return Bi + penetration - 2(penetration . normal) * normal;
-	temp = point_End + ptInter - (2 * (CSD1130::Vector2DDotProduct(ptInter, normal))) * reflec;
-	ptEnd.x = temp.x;
-	ptEnd.y = temp.y;
 
-
+	ptEnd = ptInter + pt_Penet - (2 * (CSD1130::Vector2DDotProduct(pt_Penet, normal))) * normal;
+	CSD1130::Vector2D temp = ptEnd - ptInter;
+	CSD1130::Vector2DNormalize(reflected, temp);
 }
 
 

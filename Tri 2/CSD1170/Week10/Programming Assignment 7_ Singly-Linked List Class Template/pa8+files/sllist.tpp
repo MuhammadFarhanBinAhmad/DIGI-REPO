@@ -125,7 +125,7 @@ namespace hlp2
 
   //Node constructor
   template <typename T>
-  sllist<T>::sllist::Node::Node(T const &val) : data{val}
+  sllist<T>::sllist::Node::Node(T const &val) : data{val}, next
   {
     node_counter++;
   }
