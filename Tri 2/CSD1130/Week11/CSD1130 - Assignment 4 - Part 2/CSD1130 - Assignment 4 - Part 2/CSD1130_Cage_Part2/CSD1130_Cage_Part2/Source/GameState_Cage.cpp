@@ -250,10 +250,10 @@ void GameStateCageInit(void)
 			//NOTE to student: When using your own build line segment function, comment out this next line, and uncomment the line after
 			//AEBuildLineSegment(sWallData[i], pos, scale, acosine);
 			LineSegment m_LineSegment{};
-			m_LineSegment.m_normal = sWallData[i].m_normal;
+			/*m_LineSegment.m_normal = sWallData[i].m_normal;
 			m_LineSegment.m_pt0 = sWallData[i].m_pt0;
-			m_LineSegment.m_pt1 = sWallData[i].m_pt1;
-			BuildLineSegment(m_LineSegment, P0, P1);
+			m_LineSegment.m_pt1 = sWallData[i].m_pt1;*/
+			BuildLineSegment(sWallData[i], P0, P1);
 
 
 

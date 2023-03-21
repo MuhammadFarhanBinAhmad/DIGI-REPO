@@ -1,4 +1,4 @@
 ﻿  Collision.cpp
-C:\Others\DIGI-REPO\Tri 2\CSD1130\Week11\CSD1130 - Assignment 4 - Part 2\CSD1130 - Assignment 4 - Part 2\CSD1130_Cage_Part2\CSD1130_Cage_Part2\Source\Collision.cpp(50,9): warning C4100: 'checkLineEdges': unreferenced formal parameter
-C:\Others\DIGI-REPO\Tri 2\CSD1130\Week11\CSD1130 - Assignment 4 - Part 2\CSD1130 - Assignment 4 - Part 2\CSD1130_Cage_Part2\CSD1130_Cage_Part2\Source\Collision.cpp(147): warning C4715: 'CollisionIntersection_CircleLineSegment': not all control paths return a value
-  CSD1130_Cage_Part2.vcxproj -> C:\Others\DIGI-REPO\Tri 2\CSD1130\Week11\CSD1130 - Assignment 4 - Part 2\CSD1130 - Assignment 4 - Part 2\CSD1130_Cage_Part2\bin\CSD1130_Cage_Part2D.exe
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week11\CSD1130 - Assignment 4 - Part 2\CSD1130 - Assignment 4 - Part 2\CSD1130_Cage_Part2\CSD1130_Cage_Part2\Source\Collision.cpp(61,9): warning C4100: 'checkLineEdges': unreferenced formal parameter
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week11\CSD1130 - Assignment 4 - Part 2\CSD1130 - Assignment 4 - Part 2\CSD1130_Cage_Part2\CSD1130_Cage_Part2\Source\Collision.cpp(167): warning C4715: 'CollisionIntersection_CircleLineSegment': not all control paths return a value
+  CSD1130_Cage_Part2.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1130\Week11\CSD1130 - Assignment 4 - Part 2\CSD1130 - Assignment 4 - Part 2\CSD1130_Cage_Part2\bin\CSD1130_Cage_Part2D.exe

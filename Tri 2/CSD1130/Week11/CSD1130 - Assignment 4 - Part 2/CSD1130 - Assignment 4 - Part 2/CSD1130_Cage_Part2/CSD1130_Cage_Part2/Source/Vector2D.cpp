@@ -131,7 +131,7 @@ namespace CSD1130
 	 /**************************************************************************/
 	void Vector2DNormalize(Vector2D& pResult, const Vector2D& pVec0)
 	{
-		float magnitude = sqrt(pVec0.x * pVec0.x + pVec0.y * pVec0.y);
+		float magnitude = sqrtf(pVec0.x * pVec0.x + pVec0.y * pVec0.y);
 		if (magnitude > 0.0f)
 		{
 			pResult.x = pVec0.x / magnitude;

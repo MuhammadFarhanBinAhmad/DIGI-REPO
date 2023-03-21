@@ -29,12 +29,23 @@ void BuildLineSegment(LineSegment &lineSegment,
 	lineSegment.m_pt0 = p0;
 	lineSegment.m_pt1 = p1;
 
-	CSD1130::Matrix3x3 rotMatrix{};
-	CSD1130::Mtx33RotRad(rotMatrix, -PI / 2);
+	CSD1130::Vector2D temp = p1 - p0;
+	CSD1130::Vector2D normal{};
 
-	CSD1130::Vector2DNormalize(lineSegment.m_normal, rotMatrix * (p1 - p0));
-	std::cout << lineSegment.m_normal.x << std::endl;
+	normal.x = temp.y;
+	normal.y = -temp.x;
 
+	CSD1130::Vector2D N_normal{};
+
+	CSD1130::Vector2DNormalize(N_normal, normal);
+	lineSegment.m_normal = N_normal;
+
+	//CSD1130::Vector2DNormalize(lineSegment.m_normal, rotMatrix * (p1 - p0));
+
+	//CSD1130::Matrix3x3 rotmatrix{};
+	//CSD1130::Mtx33RotRad(rotmatrix, -PI / 2);
+
+	//CSD1130::Vector2DNormalize(lineSegment.m_normal, rotmatrix * (p1 - p0));
 }
 
 /******************************************************************************/
@@ -103,7 +114,11 @@ int CollisionIntersection_CircleLineSegment(const Circle &circle,
 			}
 		}
 	}
-	else if (CSD1130::Vector2DDotProduct(distance_Vector, lineSeg.m_normal) >= circle.m_radius)
+	//else if (CSD1130::Vector2DDotProduct(distance_Vector, lineSeg.m_normal) >= circle.m_radius)
+	else if ((CSD1130::Vector2DDotProduct(lineSeg.m_normal, circle.m_center)
+		-
+		CSD1130::Vector2DDotProduct(lineSeg.m_normal, lineSeg.m_pt0))
+		>= circle.m_radius)
 	{
 		//P0' = P0 – R*𝑵
 		CSD1130::Vector2D p0_prime = lineSeg.m_pt0 + (circle.m_radius * lineSeg.m_normal);
@@ -113,14 +128,19 @@ int CollisionIntersection_CircleLineSegment(const Circle &circle,
 		//𝑀⃗⃗ is the outward normal to Velocity 𝑉⃗ 
 		CSD1130::Vector2D M;
 
-		M.x = Velocity.y;
-		M.y = -Velocity.x;
+		CSD1130::Matrix3x3 rotMatx{};
+		CSD1130::Mtx33RotRad(rotMatx, -PI / 2);
+
+		CSD1130::Vector2DNormalize(M, rotMatx * Velocity);
 
 		//(𝑀⃗ .BsP0' * 𝑀⃗ .BsP1' < 0)
 		//Check actual line
-		if ((CSD1130::Vector2DDotProduct(M, (circle.m_center - p0_prime)) * CSD1130::Vector2DDotProduct(M, (circle.m_center - p1_prime))) < 0)
+		if ((CSD1130::Vector2DDotProduct(M, (p0_prime - circle.m_center))
+			*
+			CSD1130::Vector2DDotProduct(M, (p1_prime - circle.m_center)))
+			< 0)
 		{
-			interTime = (CSD1130::Vector2DDotProduct(lineSeg.m_normal, lineSeg.m_pt0) - (CSD1130::Vector2DDotProduct(lineSeg.m_normal, circle.m_center) + circle.m_radius)
+			interTime = (CSD1130::Vector2DDotProduct(lineSeg.m_normal, lineSeg.m_pt0) - (CSD1130::Vector2DDotProduct(lineSeg.m_normal, circle.m_center) - circle.m_radius)
 				/ (CSD1130::Vector2DDotProduct(lineSeg.m_normal, Velocity)));
 
 			if (interTime >= 0 && interTime <= 1)
