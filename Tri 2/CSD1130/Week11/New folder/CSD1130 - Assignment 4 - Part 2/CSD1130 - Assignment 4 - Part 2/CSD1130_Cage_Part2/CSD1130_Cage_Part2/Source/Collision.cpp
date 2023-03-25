@@ -89,11 +89,13 @@ void CollisionResponse_CircleLineSegment(const AEVec2 &ptInter,
 	AEVec2 &ptEnd,
 	AEVec2 &reflected)
 {
-	// your code goes here
-	UNREFERENCED_PARAMETER(ptInter);
-	UNREFERENCED_PARAMETER(normal);
-	UNREFERENCED_PARAMETER(ptEnd);
-	UNREFERENCED_PARAMETER(reflected);
+
+	CSD1130::Vector2D pt_Penet = ptEnd - ptInter;
+	//return Bi + penetration - 2(penetration . normal) * normal;
+
+	ptEnd = ptInter + pt_Penet - (2 * (CSD1130::Vector2DDotProduct(pt_Penet, normal))) * normal;
+	CSD1130::Vector2D temp = ptEnd - ptInter;
+	CSD1130::Vector2DNormalize(reflected, temp);
 }
 
 

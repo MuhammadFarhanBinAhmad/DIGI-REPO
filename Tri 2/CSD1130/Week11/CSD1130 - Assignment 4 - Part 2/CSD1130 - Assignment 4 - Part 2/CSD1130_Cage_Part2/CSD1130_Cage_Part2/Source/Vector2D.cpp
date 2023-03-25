@@ -1,9 +1,10 @@
 /******************************************************************************/
 /*!
 \file		Vector2d.cpp
-\author 	muhammad farhan bin ahmad(2200544)
-\par    	email : b.muhammadfarhan@digipen.edu
-\date   	March 11, 2023
+\author 	Muhammad Farhan Bin Ahmad (2200544)
+\id			b.muhammadfarhan
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	March 22, 2023
 \brief
 			2 Constructor:
 			Default constructor
@@ -151,7 +152,7 @@ namespace CSD1130
 	 /**************************************************************************/
 	float	Vector2DLength(const Vector2D& pVec0)
 	{
-		return sqrt((pVec0.x * pVec0.x) + (pVec0.y * pVec0.y));
+		return sqrtf((pVec0.x * pVec0.x) + (pVec0.y * pVec0.y));
 	}
 
 	/**************************************************************************/
@@ -175,7 +176,7 @@ namespace CSD1130
 		float x_vector = (pVec1.x - pVec0.x);
 		float y_vector = (pVec1.y - pVec0.y);
 
-		return sqrt((x_vector * x_vector) + (y_vector * y_vector));
+		return sqrtf((x_vector * x_vector) + (y_vector * y_vector));
 	}
 
 	/**************************************************************************/

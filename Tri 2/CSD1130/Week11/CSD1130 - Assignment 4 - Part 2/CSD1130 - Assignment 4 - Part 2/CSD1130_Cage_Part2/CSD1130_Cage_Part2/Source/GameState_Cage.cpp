@@ -1,40 +1,41 @@
 /******************************************************************************/
 /*!
-\file		GameState_Cage.cpp
-\author 	DigiPen
-\par    	email: digipen\@digipen.edu
-\date   	January 01, 20xx
+\file		Gamestate_Cage.cpp
+\author 	Muhammad Farhan Bin Ahmad (2200544)
+\id			b.muhammadfarhan
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	March 22, 2023
 \brief
 
-Copyright (C) 20xx DigiPen Institute of Technology.
+Copyright (C) 2023 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
  */
-/******************************************************************************/
+ /******************************************************************************/
 
 #include "main.h"
-#include "Matrix3x3.h"
+
 /******************************************************************************/
 /*!
 	Defines
 */
 /******************************************************************************/
-const unsigned int	GAME_OBJ_NUM_MAX		= 32;	//The total number of different objects (Shapes)
-const unsigned int	GAME_OBJ_INST_NUM_MAX	= 2048;	//The total number of different game object instances
+const unsigned int	GAME_OBJ_NUM_MAX = 32;	//The total number of different objects (Shapes)
+const unsigned int	GAME_OBJ_INST_NUM_MAX = 2048;	//The total number of different game object instances
 
 //Flags
-const unsigned int	FLAG_ACTIVE				= 0x00000001;
-const unsigned int	FLAG_VISIBLE			= 0x00000002;
-const unsigned int	FLAG_NON_COLLIDABLE		= 0x00000004;
+const unsigned int	FLAG_ACTIVE = 0x00000001;
+const unsigned int	FLAG_VISIBLE = 0x00000002;
+const unsigned int	FLAG_NON_COLLIDABLE = 0x00000004;
 
-const float			PI_OVER_180				= PI/180.0f;
+const float			PI_OVER_180 = PI / 180.0f;
 
 
 //values: 0,1,2,3
 //0: original: no extra credits
 //1: Extra Credits: with line edges collision
 
-int EXTRA_CREDITS = 0;
+int EXTRA_CREDITS = 1;
 
 
 
@@ -55,24 +56,24 @@ enum class TYPE_OBJECT
 struct GameObj
 {
 	TYPE_OBJECT	type;		// object type
-	AEGfxVertexList *	pMesh;		// pbject
+	AEGfxVertexList* pMesh;		// pbject
 };
 
 
 struct GameObjInst
 {
-	GameObj*		pObject;	// pointer to the 'original'
+	GameObj* pObject;	// pointer to the 'original'
 	unsigned int	flag;		// bit flag or-ed together
 	float			scale;
-	CSD1130::Vector2D			posCurr;	// object current position
-	CSD1130::Vector2D			velCurr;	// object current velocity
+	CSD1130::Vec2			posCurr;	// object current position
+	CSD1130::Vec2			velCurr;	// object current velocity
 	float			dirCurr;	// object current direction
 	float			speed;
 
 	CSD1130::Mtx33			transform;	// object drawing matrix
 
 	// pointer to custom data specific for each object type
-	void*			pUserData;
+	void* pUserData;
 };
 
 
@@ -82,23 +83,23 @@ struct GameObjInst
 */
 /******************************************************************************/
 // list of original objects
-static GameObj			*sGameObjList;
+static GameObj* sGameObjList;
 static unsigned int		sGameObjNum;
 
 // list of object instances
-static GameObjInst		*sGameObjInstList;
+static GameObjInst* sGameObjInstList;
 static unsigned int		sGameObjInstNum;
 
 // function to create/destroy a game object instance
-GameObjInst*		gameObjInstCreate (TYPE_OBJECT type,
-										   float scale, 
-										   CSD1130::Vector2D* pPos, 
-										   CSD1130::Vector2D* pVel, 
-										   float dir);
+GameObjInst* gameObjInstCreate(TYPE_OBJECT type,
+	float scale,
+	CSD1130::Vec2* pPos,
+	CSD1130::Vec2* pVel,
+	float dir);
 void				gameObjInstDestroy(GameObjInst* pInst);
 
-static Circle			*sBallData = 0;
-static LineSegment	*sWallData = 0;
+static Circle* sBallData = 0;
+static LineSegment* sWallData = 0;
 
 
 
@@ -113,8 +114,8 @@ void GameStateCageLoad(void)
 	if (EXTRA_CREDITS > 1 || EXTRA_CREDITS < 0)
 		EXTRA_CREDITS = 0;
 
-	sGameObjList = (GameObj *)calloc(GAME_OBJ_NUM_MAX, sizeof(GameObj));
-	sGameObjInstList = (GameObjInst *)calloc(GAME_OBJ_INST_NUM_MAX, sizeof(GameObjInst));
+	sGameObjList = (GameObj*)calloc(GAME_OBJ_NUM_MAX, sizeof(GameObj));
+	sGameObjInstList = (GameObjInst*)calloc(GAME_OBJ_INST_NUM_MAX, sizeof(GameObjInst));
 	sGameObjNum = 0;
 
 	GameObj* pObj;
@@ -122,8 +123,8 @@ void GameStateCageLoad(void)
 	//------------------------------------------
 
 	//Creating the ball object
-	pObj		= sGameObjList + sGameObjNum++;
-	pObj->type	= TYPE_OBJECT::TYPE_OBJECT_BALL;
+	pObj = sGameObjList + sGameObjNum++;
+	pObj->type = TYPE_OBJECT::TYPE_OBJECT_BALL;
 
 	AEGfxMeshStart();
 
@@ -133,12 +134,12 @@ void GameStateCageLoad(void)
 
 	//Creating the ball shape
 	int Parts = 36;
-	for(float i = 0; i < Parts; ++i)
+	for (float i = 0; i < Parts; ++i)
 	{
 		AEGfxTriAdd(
-		0.0f, 0.0f, 0xFFFFFF00, 0.0f, 0.0f,
-		cosf(i*2*PI/Parts)*1.0f,  sinf(i*2*PI/Parts)*1.0f, 0xFFFFFF00, 0.0f, 0.0f,
-		cosf((i+1)*2*PI/Parts)*1.0f,  sinf((i+1)*2*PI/Parts)*1.0f, 0xFFFFFF00, 0.0f, 0.0f);
+			0.0f, 0.0f, 0xFFFFFF00, 0.0f, 0.0f,
+			cosf(i * 2 * PI / Parts) * 1.0f, sinf(i * 2 * PI / Parts) * 1.0f, 0xFFFFFF00, 0.0f, 0.0f,
+			cosf((i + 1) * 2 * PI / Parts) * 1.0f, sinf((i + 1) * 2 * PI / Parts) * 1.0f, 0xFFFFFF00, 0.0f, 0.0f);
 	}
 
 	pObj->pMesh = AEGfxMeshEnd();
@@ -146,8 +147,8 @@ void GameStateCageLoad(void)
 	//------------------------------------------
 
 	// Creating the wall object
-	pObj		= sGameObjList + sGameObjNum++;
-	pObj->type	= TYPE_OBJECT::TYPE_OBJECT_WALL;
+	pObj = sGameObjList + sGameObjNum++;
+	pObj->type = TYPE_OBJECT::TYPE_OBJECT_WALL;
 
 	AEGfxMeshStart();
 
@@ -163,11 +164,11 @@ void GameStateCageLoad(void)
 
 	//------------------------------------------
 
-	
+
 
 	AEGfxSetBackgroundColor(0.2f, 0.2f, 0.2f);
 
-	
+
 }
 
 /******************************************************************************/
@@ -177,42 +178,42 @@ void GameStateCageLoad(void)
 /******************************************************************************/
 void GameStateCageInit(void)
 {
-	GameObjInst *pInst;
+	GameObjInst* pInst;
 	std::string str;
 	std::ifstream inFile;
 
-	if(EXTRA_CREDITS == 0)
+	if (EXTRA_CREDITS == 0)
 		inFile.open("..\\Bin\\Resources\\LevelData - Original.txt");
 	else if (EXTRA_CREDITS == 1)
 		inFile.open("..\\Bin\\Resources\\LevelData - Extra Credits.txt");
-	
-	
-	if(inFile.is_open())
+
+
+	if (inFile.is_open())
 	{
 		// read ball data
 		float dir, speed, scale;
 		unsigned int ballNum = 0;
-		inFile>>ballNum;
+		inFile >> ballNum;
 		sBallData = new Circle[ballNum];
 
-		for(unsigned int i = 0; i < ballNum; ++i)
+		for (unsigned int i = 0; i < ballNum; ++i)
 		{
 			// read pos
-			inFile>>str>>sBallData[i].m_center.x;
-			inFile>>str>>sBallData[i].m_center.y;
+			inFile >> str >> sBallData[i].m_center.x;
+			inFile >> str >> sBallData[i].m_center.y;
 			// read direction
-			inFile>>str>>dir;
+			inFile >> str >> dir;
 			// read speed
-			inFile>>str>>speed;
+			inFile >> str >> speed;
 			// read radius
-			inFile>>str>>sBallData[i].m_radius;
-			
+			inFile >> str >> sBallData[i].m_radius;
+
 			// create ball instance
-			CSD1130::Vector2D vel;
-			vel.x = cos(dir * PI_OVER_180) * speed;
-			vel.y = sin(dir * PI_OVER_180) * speed;
+			CSD1130::Vec2 vel(cos(dir * PI_OVER_180) * speed,
+				sin(dir * PI_OVER_180) * speed);
+
 			pInst = gameObjInstCreate(TYPE_OBJECT::TYPE_OBJECT_BALL, sBallData[i].m_radius,
-										&sBallData[i].m_center, &vel, 0.0f);
+				&sBallData[i].m_center, &vel, 0.0f);
 			AE_ASSERT(pInst);
 			pInst->speed = speed;
 			pInst->pUserData = &sBallData[i];
@@ -220,18 +221,18 @@ void GameStateCageInit(void)
 
 		// read wall data
 		unsigned int wallNum = 0;
-		CSD1130::Vector2D P0 = CSD1130::Vector2D(), P1 = CSD1130::Vector2D();
-		CSD1130::Vector2D pos = CSD1130::Vector2D(), e = CSD1130::Vector2D();
+		CSD1130::Vec2 P0 = CSD1130::Vec2(), P1 = CSD1130::Vec2();
+		CSD1130::Vec2 pos = CSD1130::Vec2(), e = CSD1130::Vec2();
 
-		inFile>>wallNum;
+		inFile >> wallNum;
 		sWallData = new LineSegment[wallNum];
 
-		for(unsigned int i = 0; i < wallNum; ++i)
+		for (unsigned int i = 0; i < wallNum; ++i)
 		{
-			inFile>>str>> P0.x;
-			inFile>>str>> P0.y;
-			inFile>>str>> P1.x;
-			inFile>>str>> P1.y;
+			inFile >> str >> P0.x;
+			inFile >> str >> P0.y;
+			inFile >> str >> P1.x;
+			inFile >> str >> P1.y;
 
 			//stupid work
 			pos.x = (P0.x + P1.x) * 0.5f;
@@ -243,16 +244,12 @@ void GameStateCageInit(void)
 			float cosine = (e.x/* * 1.0f + e.y * 0.0f*/) / (scale);//assuming scale is non-zero (controlling our data input!)
 			float acosine = acos(cosine);
 			if (e.y < 0.0f)
-				acosine = 2*PI - acosine;
+				acosine = 2 * PI - acosine;
 
 
 
 			//NOTE to student: When using your own build line segment function, comment out this next line, and uncomment the line after
 			//AEBuildLineSegment(sWallData[i], pos, scale, acosine);
-			LineSegment m_LineSegment{};
-			/*m_LineSegment.m_normal = sWallData[i].m_normal;
-			m_LineSegment.m_pt0 = sWallData[i].m_pt0;
-			m_LineSegment.m_pt1 = sWallData[i].m_pt1;*/
 			BuildLineSegment(sWallData[i], P0, P1);
 
 
@@ -262,7 +259,7 @@ void GameStateCageInit(void)
 			pInst->pUserData = &sWallData[i];
 		}
 
-		
+
 
 		inFile.clear();
 		inFile.close();
@@ -290,74 +287,75 @@ void GameStateCageUpdate(void)
 		AEToogleFullScreen(full_screen_me);
 	}
 
-	
-	CSD1130::Vector2D		interPtA;
-	CSD1130::Vector2D      normalAtCollision;
+
+	CSD1130::Vec2		interPtA;
+	CSD1130::Vec2      normalAtCollision;
 	float		interTime = 0.0f;
 
 	//f32 fpsT = (f32)AEFrameRateControllerGetFrameTime();
 
 	//Update object instances positions
-	for(unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
+	for (unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
 	{
-		GameObjInst *pBallInst = sGameObjInstList + i;
+		GameObjInst* pBallInst = sGameObjInstList + i;
 
 		// skip non-active object
 		if (0 == (pBallInst->flag & FLAG_ACTIVE) ||
 			pBallInst->pObject->type != TYPE_OBJECT::TYPE_OBJECT_BALL)
 			continue;
 
-		CSD1130::Vector2D posNext;
+		CSD1130::Vec2 posNext;
 		posNext.x = pBallInst->posCurr.x + pBallInst->velCurr.x * g_dt;
 		posNext.y = pBallInst->posCurr.y + pBallInst->velCurr.y * g_dt;
 
 		// Update the latest ball data with the lastest ball's position
-		Circle &ballData = *((Circle*)pBallInst->pUserData);
+		Circle& ballData = *((Circle*)pBallInst->pUserData);
 		ballData.m_center.x = pBallInst->posCurr.x;
 		ballData.m_center.y = pBallInst->posCurr.y;
 
 		// Check collision with walls
-		for(unsigned int j = 0; j < GAME_OBJ_INST_NUM_MAX; ++j)
+		for (unsigned int j = 0; j < GAME_OBJ_INST_NUM_MAX; ++j)
 		{
-			GameObjInst *pInst = sGameObjInstList + j;
+			GameObjInst* pInst = sGameObjInstList + j;
 
 			if (0 == (pInst->flag & FLAG_ACTIVE))
 				continue;
 
-			switch(pInst->pObject->type)
+			switch (pInst->pObject->type)
 			{
-				case TYPE_OBJECT::TYPE_OBJECT_WALL:
+			case TYPE_OBJECT::TYPE_OBJECT_WALL:
+			{
+				LineSegment& lineSegData = *((LineSegment*)pInst->pUserData);
+
+				bool checkLineEdges = false;
+				if (EXTRA_CREDITS == 1)
+					checkLineEdges = true;
+
+				if ((pBallInst->velCurr.x * lineSegData.m_normal.x + pBallInst->velCurr.y * lineSegData.m_normal.y) < 0.0f)
 				{
-					LineSegment &lineSegData = *((LineSegment*)pInst->pUserData);
-
-					bool checkLineEdges = false;
-					if (EXTRA_CREDITS == 1)
-						checkLineEdges = true;
-					if ((pBallInst->velCurr.x * lineSegData.m_normal.x + pBallInst->velCurr.y * lineSegData.m_normal.y) < 0.0f)
+					if (CollisionIntersection_CircleLineSegment(ballData,
+						posNext,
+						lineSegData,
+						interPtA,
+						normalAtCollision,
+						interTime,
+						checkLineEdges))
 					{
-						if (CollisionIntersection_CircleLineSegment(ballData,
-							posNext,
-							lineSegData,
-							interPtA,
+						CSD1130::Vec2 reflectedVec;
+
+						CollisionResponse_CircleLineSegment(interPtA,
 							normalAtCollision,
-							interTime,
-							checkLineEdges))
-						{
-							CSD1130::Vector2D reflectedVec;
+							posNext,
+							reflectedVec);
 
-							CollisionResponse_CircleLineSegment(interPtA,
-								normalAtCollision,
-								posNext,
-								reflectedVec);
-
-							pBallInst->velCurr.x = reflectedVec.x * pBallInst->speed;
-							pBallInst->velCurr.y = reflectedVec.y * pBallInst->speed;
-						}
+						pBallInst->velCurr.x = reflectedVec.x * pBallInst->speed;
+						pBallInst->velCurr.y = reflectedVec.y * pBallInst->speed;
 					}
 				}
-				break;
-				
-				
+			}
+			break;
+
+
 
 			}
 		}
@@ -366,34 +364,26 @@ void GameStateCageUpdate(void)
 		pBallInst->posCurr.y = posNext.y;
 	}
 
-	
+
 	//Computing the transformation matrices of the game object instances
-	for(unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
+	for (unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; ++i)
 	{
 		CSD1130::Mtx33 scale, rot, trans;
-		GameObjInst *pInst = sGameObjInstList + i;
+		GameObjInst* pInst = sGameObjInstList + i;
 
 		// skip non-active object
 		if (0 == (pInst->flag & FLAG_ACTIVE))
 			continue;
 
+		Mtx33Scale(scale, pInst->scale, pInst->scale);
+		Mtx33RotRad(rot, pInst->dirCurr);
+		Mtx33Translate(trans, pInst->posCurr.x, pInst->posCurr.y);
 
-		CSD1130::Mtx33Scale(scale, pInst->scale, pInst->scale);
-		CSD1130::Mtx33RotRad(rot, pInst->dirCurr);
-		CSD1130::Mtx33Translate(trans, pInst->posCurr.x, pInst->posCurr.y);
-
-		pInst->transform = scale * rot;
+		pInst->transform = rot * scale;
 		pInst->transform = trans * pInst->transform;
-
-		/*AEMtx33Scale(&scale, pInst->scale, pInst->scale);
-		AEMtx33Rot(&rot, pInst->dirCurr);
-		AEMtx33Trans(&trans, pInst->posCurr.x, pInst->posCurr.y);
-
-		AEMtx33Concat(&pInst->transform, &scale, &rot);
-		AEMtx33Concat(&pInst->transform, &trans, &pInst->transform);*/
 	}
 
-	if(AEInputCheckTriggered(AEVK_R))
+	if (AEInputCheckTriggered(AEVK_R))
 		gGameStateNext = GS_STATE::GS_RESTART;
 }
 
@@ -405,12 +395,12 @@ void GameStateCageUpdate(void)
 void GameStateCageDraw(void)
 {
 	AEGfxSetBlendMode(AE_GFX_BM_BLEND);
-	
+
 	AEGfxSetRenderMode(AE_GFX_RM_COLOR);
 	AEGfxTextureSet(NULL, 0, 0);
 	AEGfxSetTransparency(1.0f);
 
-	
+
 	//Drawing the object instances
 	int only4 = 0;
 	for (unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; i++)
@@ -420,7 +410,7 @@ void GameStateCageDraw(void)
 		// skip non-active object
 		if (0 == (pInst->flag & FLAG_ACTIVE) || 0 == (pInst->flag & FLAG_VISIBLE))
 			continue;
-		
+
 		AEGfxSetTransform(pInst->transform.m2);
 
 		if (pInst->pObject->type == TYPE_OBJECT::TYPE_OBJECT_BALL)
@@ -445,17 +435,17 @@ void GameStateCageDraw(void)
 			AEGfxMeshDraw(pInst->pObject->pMesh, AE_GFX_MDM_LINES_STRIP);
 		}
 	}
-	
+
 	char strBuffer[100];
-	memset(strBuffer, 0, 100*sizeof(char));
+	memset(strBuffer, 0, 100 * sizeof(char));
 	sprintf_s(strBuffer, "FPS:  %.6f", 1.0f / AEFrameRateControllerGetFrameTime());
-	
-	
+
+
 	AEGfxSetRenderMode(AE_GFX_RM_COLOR);
 	AEGfxSetBlendMode(AE_GFX_BM_BLEND);
-	AEGfxTextureSet(NULL, 0, 0);	
+	AEGfxTextureSet(NULL, 0, 0);
 	AEGfxSetTransparency(1.0f);
-	
+
 	//AEGfxPrint(fontId, strBuffer, -0.95f, -0.95f, 2.0f, 1.f, 0.f, 1.f);
 	AEGfxPrint(fontId, strBuffer, (270.0f) / (float)(AEGetWindowWidth() / 2), (350.0f) / (float)(AEGetWindowHeight() / 2), 1.0f, 1.f, 0.f, 0.f);
 }
@@ -471,10 +461,10 @@ void GameStateCageFree(void)
 	for (unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; i++)
 		gameObjInstDestroy(sGameObjInstList + i);
 
-	delete []sBallData;
+	delete[]sBallData;
 	sBallData = NULL;
-	
-	delete []sWallData;
+
+	delete[]sWallData;
 	sWallData = NULL;
 
 }
@@ -500,16 +490,16 @@ void GameStateCageUnload(void)
 */
 /******************************************************************************/
 GameObjInst* gameObjInstCreate(TYPE_OBJECT type,
-							   float scale, 
-							   CSD1130::Vector2D* pPos, 
-							   CSD1130::Vector2D* pVel, 
-							   float dir)
+	float scale,
+	CSD1130::Vec2* pPos,
+	CSD1130::Vec2* pVel,
+	float dir)
 {
-	CSD1130::Vector2D zero;
-	//CSD1130::Vector2D Zero(&zero);
+	CSD1130::Vec2 zero(0, 0);
+
 
 	AE_ASSERT_PARM(type < TYPE_OBJECT(sGameObjNum));
-	
+
 	// loop through the object instance list to find a non-used object instance
 	for (unsigned int i = 0; i < GAME_OBJ_INST_NUM_MAX; i++)
 	{
@@ -519,14 +509,14 @@ GameObjInst* gameObjInstCreate(TYPE_OBJECT type,
 		if ((pInst->flag & FLAG_ACTIVE) == 0)
 		{
 			// it is not used => use it to create the new instance
-			pInst->pObject			 = sGameObjList + (int)type;
-			pInst->flag				 = FLAG_ACTIVE | FLAG_VISIBLE;
-			pInst->scale			 = scale;
-			pInst->posCurr			 = pPos ? *pPos : zero;
-			pInst->velCurr			 = pVel ? *pVel : zero;
-			pInst->dirCurr			 = dir;
-			pInst->pUserData		 = 0;
-			
+			pInst->pObject = sGameObjList + (int)type;
+			pInst->flag = FLAG_ACTIVE | FLAG_VISIBLE;
+			pInst->scale = scale;
+			pInst->posCurr = pPos ? *pPos : zero;
+			pInst->velCurr = pVel ? *pVel : zero;
+			pInst->dirCurr = dir;
+			pInst->pUserData = 0;
+
 			// return the newly created instance
 			return pInst;
 		}

@@ -1,9 +1,10 @@
 /******************************************************************************/
 /*!
 \file		main.cpp
-\author 	DigiPen
-\par    	email: digipen\@digipen.edu
-\date   	January 01, 20xx
+\author 	Muhammad Farhan Bin Ahmad (2200544)
+\id			b.muhammadfarhan
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	March 22, 2023
 \brief
 
 Copyright (C) 20xx DigiPen Institute of Technology.

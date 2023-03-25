@@ -35,7 +35,8 @@ extern double	g_appTime;
 #include "GameStateMgr.h"
 #include "GameState_Cage.h"
 #include "Collision.h"
-
+#include "Vector2D.h"
+#include "Matrix3x3.h"
 
 extern s8	fontId;
 

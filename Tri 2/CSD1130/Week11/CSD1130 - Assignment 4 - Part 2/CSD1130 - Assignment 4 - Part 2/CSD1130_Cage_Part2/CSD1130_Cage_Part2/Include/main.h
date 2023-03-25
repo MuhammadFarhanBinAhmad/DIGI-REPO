@@ -1,16 +1,17 @@
 /******************************************************************************/
 /*!
 \file		main.h
-\author 	DigiPen
-\par    	email: digipen\@digipen.edu
-\date   	January 01, 20xx
+\author 	Muhammad Farhan Bin Ahmad (2200544)
+\id			b.muhammadfarhan
+\par    	email: b.muhammadfarhan@digipen.edu
+\date   	March 22, 2023
 \brief
 
-Copyright (C) 20xx DigiPen Institute of Technology.
+Copyright (C) 2023 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
  */
-/******************************************************************************/
+ /******************************************************************************/
 
 
 #ifndef CSD1130_MAIN_H_
@@ -35,7 +36,8 @@ extern double	g_appTime;
 #include "GameStateMgr.h"
 #include "GameState_Cage.h"
 #include "Collision.h"
-
+#include "Vector2D.h"
+#include "Matrix3x3.h"
 
 extern s8	fontId;
 

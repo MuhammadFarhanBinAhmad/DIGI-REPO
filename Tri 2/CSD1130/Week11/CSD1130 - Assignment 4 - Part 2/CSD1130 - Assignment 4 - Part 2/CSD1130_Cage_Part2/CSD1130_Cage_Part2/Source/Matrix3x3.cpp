@@ -1,10 +1,11 @@
 /******************************************************************************/
 /*!
 \file		Matrix3x3.cpp
-\author 	muhammad farhan bin ahmad(2200544)
+\author 	Muhammad Farhan Bin Ahmad (2200544)
+\id			b.muhammadfarhan
 \par    	email: b.muhammadfarhan@digipen.edu
-\date   	March 11, 2023
-\brief		
+\date   	March 22, 2023
+\brief
 			3 Constructor:
 			Default constructor
 			Copy assignment
@@ -198,8 +199,8 @@ namespace CSD1130
 	void Mtx33RotRad(Matrix3x3& pResult, float angle)
 	{
 		Mtx33Identity(pResult);
-		float cosVal = cos(angle);
-        float sinVal = sin(angle);
+		float cosVal = cosf(angle);
+		float sinVal = sinf(angle);
 		pResult = Matrix3x3(cosVal, -sinVal, 0.0f,
                             sinVal, cosVal, 0.0f,
                             0.0f, 0.0f, 1.0f);

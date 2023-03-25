@@ -1,9 +1,10 @@
 /******************************************************************************/
 /*!
 \file		Vector2D.h
-\author 	muhammad farhan bin ahmad(2200544)
+\author 	Muhammad Farhan Bin Ahmad (2200544)
+\id			b.muhammadfarhan
 \par    	email: b.muhammadfarhan@digipen.edu
-\date   	March 11, 2023
+\date   	March 22, 2023
 \brief
 
 Copyright (C) 2023 DigiPen Institute of Technology.
