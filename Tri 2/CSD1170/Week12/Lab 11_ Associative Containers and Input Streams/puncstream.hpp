@@ -1,13 +1,29 @@
-// See specs for complete description of what you need to implement in this file.
-
-// Don't forget documentation: a file header is required; every function and type that you
-// define must have appropriate documentation
-
+/******************************************************************************/
+/*!
+\file   puncstream.hpp
+\author Muhammad Farhan Bin Ahmad
+\par    email: b.muhammadfarhan@digipen.edu
+\par    DigiPen login: b.muhammadfarhan
+\par    Course: CS1170
+\par    Section A
+\par    Lab 10: Defining Semi-Realistic Input Stream
+\date   25/03/2022
+\brief
+    whitespace - Set what is white space
+    add_whitespace - add char that is define is a whitespace
+    is_whitespace - check if the char is a whitespace
+    case_sensitive - set stream's case-sensitivity
+    is_case_sensitive - return case sensitivity
+    operator>> - process word from text file and place it in string
+    operator bool() - ???
+    print - print out the text
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
 #include <vector>
+#include <sstream>
 
 namespace hlp2
 {
@@ -28,6 +44,6 @@ namespace hlp2
         bool sensitive;
         bool complete;
     };
-    void print(std::vector<std::string> str, std::string const& pre="", std::string const& post="\n");
+    void print(std::map<std::string, size_t> histogram, std::string const& pre = "", std::string const& post = "\n");
 
 }
