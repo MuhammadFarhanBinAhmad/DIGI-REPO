@@ -1,0 +1,42 @@
+File test1-in.txt has 4 lines of text.
+
+"Today" occurs 1 time and is located at: 
+	line: 1, position: 1
+"Tomorrow" occurs 1 time and is located at: 
+	line: 2, position: 1
+"about" occurs 1 time and is located at: 
+	line: 3, position: 4
+"after" occurs 1 time and is located at: 
+	line: 3, position: 6
+"better" occurs 1 time and is located at: 
+	line: 2, position: 3
+"can't" occurs 1 time and is located at: 
+	line: 3, position: 1
+"day" occurs 3 times and is located at: 
+	line: 1, position: 3
+	line: 2, position: 4
+	line: 3, position: 5
+"fine" occurs 1 time and is located at: 
+	line: 4, position: 5
+"good" occurs 1 time and is located at: 
+	line: 1, position: 2
+"hope" occurs 1 time and is located at: 
+	line: 4, position: 2
+"lets" occurs 1 time and is located at: 
+	line: 4, position: 1
+"like" occurs 1 time and is located at: 
+	line: 4, position: 6
+"much" occurs 1 time and is located at: 
+	line: 3, position: 3
+"out" occurs 1 time and is located at: 
+	line: 4, position: 4
+"say" occurs 1 time and is located at: 
+	line: 3, position: 2
+"today" occurs 1 time and is located at: 
+	line: 4, position: 7
+"tomorrow" occurs 1 time and is located at: 
+	line: 3, position: 7
+"will" occurs 1 time and is located at: 
+	line: 2, position: 2
+"works" occurs 1 time and is located at: 
+	line: 4, position: 3

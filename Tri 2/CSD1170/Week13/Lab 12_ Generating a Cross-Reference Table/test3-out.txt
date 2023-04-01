@@ -1,0 +1,121 @@
+File test3-in.txt has 7 lines of text.
+
+"Antichrist—I" occurs 2 times and is located at: 
+	line: 4, position: 1
+	line: 4, position: 5
+"Buonapartes" occurs 1 time and is located at: 
+	line: 2, position: 1
+"Genoa" occurs 1 time and is located at: 
+	line: 1, position: 4
+"Lucca" occurs 1 time and is located at: 
+	line: 1, position: 5
+"Prince" occurs 1 time and is located at: 
+	line: 1, position: 2
+"as" occurs 1 time and is located at: 
+	line: 6, position: 4
+"believe" occurs 1 time and is located at: 
+	line: 4, position: 3
+"by" occurs 1 time and is located at: 
+	line: 3, position: 9
+"call" occurs 1 time and is located at: 
+	line: 6, position: 6
+"defend" occurs 1 time and is located at: 
+	line: 3, position: 5
+"don’t" occurs 1 time and is located at: 
+	line: 2, position: 5
+"down" occurs 1 time and is located at: 
+	line: 7, position: 4
+"estates" occurs 1 time and is located at: 
+	line: 1, position: 9
+"family" occurs 1 time and is located at: 
+	line: 1, position: 8
+"friend" occurs 1 time and is located at: 
+	line: 5, position: 9
+"frightened" occurs 1 time and is located at: 
+	line: 7, position: 2
+"have" occurs 2 times and is located at: 
+	line: 4, position: 7
+	line: 7, position: 1
+"he" occurs 1 time and is located at: 
+	line: 4, position: 4
+"horrors" occurs 1 time and is located at: 
+	line: 3, position: 7
+"how" occurs 1 time and is located at: 
+	line: 6, position: 8
+"infamies" occurs 1 time and is located at: 
+	line: 3, position: 6
+"just" occurs 1 time and is located at: 
+	line: 1, position: 7
+"longer" occurs 2 times and is located at: 
+	line: 5, position: 7
+	line: 5, position: 11
+"me" occurs 2 times and is located at: 
+	line: 2, position: 7
+	line: 7, position: 6
+"means" occurs 1 time and is located at: 
+	line: 2, position: 9
+"more" occurs 1 time and is located at: 
+	line: 5, position: 1
+"my" occurs 2 times and is located at: 
+	line: 5, position: 8
+	line: 5, position: 12
+"news" occurs 1 time and is located at: 
+	line: 7, position: 7
+"no" occurs 2 times and is located at: 
+	line: 5, position: 6
+	line: 5, position: 10
+"nothing" occurs 1 time and is located at: 
+	line: 4, position: 8
+"now" occurs 1 time and is located at: 
+	line: 1, position: 6
+"perpetrated" occurs 1 time and is located at: 
+	line: 3, position: 8
+"really" occurs 1 time and is located at: 
+	line: 4, position: 2
+"see" occurs 1 time and is located at: 
+	line: 6, position: 10
+"slave" occurs 1 time and is located at: 
+	line: 6, position: 2
+"so" occurs 1 time and is located at: 
+	line: 1, position: 3
+"still" occurs 1 time and is located at: 
+	line: 3, position: 2
+"tell" occurs 2 times and is located at: 
+	line: 2, position: 6
+	line: 7, position: 5
+"that" occurs 2 times and is located at: 
+	line: 2, position: 8
+	line: 3, position: 10
+"to" occurs 2 times and is located at: 
+	line: 3, position: 4
+	line: 5, position: 2
+"try" occurs 1 time and is located at: 
+	line: 3, position: 3
+"war" occurs 1 time and is located at: 
+	line: 2, position: 10
+"warn" occurs 1 time and is located at: 
+	line: 2, position: 2
+"will" occurs 1 time and is located at: 
+	line: 4, position: 6
+"with" occurs 1 time and is located at: 
+	line: 5, position: 3
+"you" occurs 7 times and is located at: 
+	line: 2, position: 3
+	line: 2, position: 4
+	line: 3, position: 1
+	line: 5, position: 4
+	line: 5, position: 5
+	line: 6, position: 5
+	line: 6, position: 9
+"yourself" occurs 1 time and is located at: 
+	line: 6, position: 7
+"you—sit" occurs 1 time and is located at: 
+	line: 7, position: 3
+"‘faithful" occurs 1 time and is located at: 
+	line: 6, position: 1
+"’" occurs 1 time and is located at: 
+	line: 6, position: 3
+"“Well" occurs 1 time and is located at: 
+	line: 1, position: 1
+"”" occurs 1 time and is located at: 
+	line: 7, position: 8

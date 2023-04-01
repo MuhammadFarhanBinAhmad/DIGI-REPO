@@ -1,0 +1,2479 @@
+File test5-in.txt has 256 lines of text.
+
+"Anatole" occurs 21 times and is located at: 
+	line: 6, position: 11
+	line: 18, position: 6
+	line: 27, position: 1
+	line: 61, position: 6
+	line: 66, position: 11
+	line: 73, position: 4
+	line: 78, position: 8
+	line: 81, position: 7
+	line: 86, position: 1
+	line: 97, position: 5
+	line: 99, position: 7
+	line: 100, position: 5
+	line: 110, position: 1
+	line: 122, position: 8
+	line: 146, position: 1
+	line: 156, position: 5
+	line: 157, position: 9
+	line: 172, position: 5
+	line: 183, position: 1
+	line: 199, position: 5
+	line: 248, position: 10
+"Andrew" occurs 2 times and is located at: 
+	line: 13, position: 8
+	line: 17, position: 4
+"Another" occurs 1 time and is located at: 
+	line: 57, position: 1
+"As" occurs 1 time and is located at: 
+	line: 213, position: 7
+"Both" occurs 1 time and is located at: 
+	line: 102, position: 1
+"Bring" occurs 1 time and is located at: 
+	line: 234, position: 3
+"Bruin" occurs 2 times and is located at: 
+	line: 48, position: 3
+	line: 252, position: 11
+"Cards" occurs 1 time and is located at: 
+	line: 32, position: 1
+"Devil" occurs 1 time and is located at: 
+	line: 225, position: 8
+"Dólokhov" occurs 22 times and is located at: 
+	line: 45, position: 4
+	line: 60, position: 1
+	line: 74, position: 3
+	line: 84, position: 1
+	line: 88, position: 1
+	line: 96, position: 7
+	line: 98, position: 2
+	line: 100, position: 6
+	line: 102, position: 3
+	line: 120, position: 1
+	line: 124, position: 8
+	line: 128, position: 1
+	line: 150, position: 4
+	line: 165, position: 5
+	line: 169, position: 1
+	line: 188, position: 1
+	line: 205, position: 1
+	line: 211, position: 2
+	line: 217, position: 7
+	line: 222, position: 9
+	line: 229, position: 1
+	line: 236, position: 7
+"Dólokhov’s" occurs 4 times and is located at: 
+	line: 158, position: 1
+	line: 174, position: 1
+	line: 178, position: 4
+	line: 199, position: 3
+"Eh" occurs 3 times and is located at: 
+	line: 122, position: 4
+	line: 186, position: 1
+	line: 186, position: 4
+"English" occurs 3 times and is located at: 
+	line: 74, position: 8
+	line: 148, position: 7
+	line: 158, position: 4
+"Englishman" occurs 11 times and is located at: 
+	line: 122, position: 2
+	line: 132, position: 8
+	line: 135, position: 2
+	line: 144, position: 5
+	line: 146, position: 4
+	line: 147, position: 7
+	line: 155, position: 1
+	line: 175, position: 9
+	line: 200, position: 2
+	line: 222, position: 5
+	line: 228, position: 1
+"Englishman’s" occurs 1 time and is located at: 
+	line: 84, position: 4
+"Everyone" occurs 1 time and is located at: 
+	line: 175, position: 5
+"Fifty" occurs 1 time and is located at: 
+	line: 139, position: 3
+"Fine" occurs 1 time and is located at: 
+	line: 225, position: 3
+"French" occurs 1 time and is located at: 
+	line: 132, position: 6
+"From" occurs 1 time and is located at: 
+	line: 35, position: 7
+"Good" occurs 1 time and is located at: 
+	line: 55, position: 2
+"Guards" occurs 1 time and is located at: 
+	line: 159, position: 2
+"Guards’" occurs 1 time and is located at: 
+	line: 26, position: 6
+"Have" occurs 1 time and is located at: 
+	line: 238, position: 3
+"He" occurs 7 times and is located at: 
+	line: 24, position: 4
+	line: 88, position: 11
+	line: 110, position: 10
+	line: 112, position: 4
+	line: 217, position: 4
+	line: 222, position: 1
+	line: 223, position: 3
+"Hercules" occurs 1 time and is located at: 
+	line: 114, position: 4
+"Here" occurs 1 time and is located at: 
+	line: 54, position: 10
+"He’ll" occurs 1 time and is located at: 
+	line: 180, position: 4
+"Horse" occurs 1 time and is located at: 
+	line: 26, position: 5
+"However" occurs 1 time and is located at: 
+	line: 101, position: 3
+"I’ll" occurs 4 times and is located at: 
+	line: 232, position: 8
+	line: 234, position: 2
+	line: 249, position: 2
+	line: 249, position: 7
+"I’m" occurs 1 time and is located at: 
+	line: 119, position: 7
+"Kurágin" occurs 3 times and is located at: 
+	line: 7, position: 1
+	line: 102, position: 2
+	line: 151, position: 7
+"Kurágin’s" occurs 2 times and is located at: 
+	line: 11, position: 6
+	line: 24, position: 7
+"Let’s" occurs 1 time and is located at: 
+	line: 241, position: 3
+"Life" occurs 1 time and is located at: 
+	line: 159, position: 1
+"Like" occurs 1 time and is located at: 
+	line: 89, position: 5
+"Listen" occurs 2 times and is located at: 
+	line: 151, position: 8
+	line: 249, position: 6
+"No" occurs 1 time and is located at: 
+	line: 238, position: 7
+"Now" occurs 1 time and is located at: 
+	line: 193, position: 2
+"Oh" occurs 2 times and is located at: 
+	line: 162, position: 2
+	line: 162, position: 3
+"On" occurs 1 time and is located at: 
+	line: 6, position: 6
+"One" occurs 3 times and is located at: 
+	line: 176, position: 6
+	line: 197, position: 4
+	line: 214, position: 7
+"Petersburg" occurs 1 time and is located at: 
+	line: 103, position: 2
+"Pierre" occurs 25 times and is located at: 
+	line: 1, position: 6
+	line: 2, position: 5
+	line: 6, position: 8
+	line: 9, position: 1
+	line: 23, position: 3
+	line: 27, position: 3
+	line: 33, position: 1
+	line: 55, position: 8
+	line: 61, position: 7
+	line: 67, position: 9
+	line: 71, position: 1
+	line: 78, position: 10
+	line: 81, position: 5
+	line: 86, position: 2
+	line: 114, position: 10
+	line: 116, position: 1
+	line: 124, position: 5
+	line: 176, position: 2
+	line: 202, position: 9
+	line: 204, position: 5
+	line: 210, position: 1
+	line: 215, position: 6
+	line: 229, position: 7
+	line: 241, position: 9
+	line: 252, position: 6
+"Pierre’s" occurs 1 time and is located at: 
+	line: 73, position: 8
+"Placing" occurs 1 time and is located at: 
+	line: 168, position: 1
+"Pressing" occurs 1 time and is located at: 
+	line: 170, position: 3
+"Prince" occurs 3 times and is located at: 
+	line: 13, position: 7
+	line: 17, position: 3
+	line: 18, position: 5
+"Pushing" occurs 1 time and is located at: 
+	line: 111, position: 3
+"Pétya" occurs 1 time and is located at: 
+	line: 55, position: 1
+"Reaching" occurs 1 time and is located at: 
+	line: 26, position: 1
+"Saying" occurs 1 time and is located at: 
+	line: 195, position: 1
+"Semënov" occurs 1 time and is located at: 
+	line: 60, position: 3
+"Some" occurs 1 time and is located at: 
+	line: 37, position: 3
+"Stevens" occurs 2 times and is located at: 
+	line: 41, position: 5
+	line: 74, position: 7
+"Suddenly" occurs 2 times and is located at: 
+	line: 211, position: 1
+	line: 216, position: 10
+"Tell" occurs 1 time and is located at: 
+	line: 233, position: 8
+"Then" occurs 1 time and is located at: 
+	line: 14, position: 2
+"There" occurs 1 time and is located at: 
+	line: 28, position: 6
+"There’s" occurs 1 time and is located at: 
+	line: 225, position: 5
+"They" occurs 1 time and is located at: 
+	line: 245, position: 1
+"Three" occurs 1 time and is located at: 
+	line: 38, position: 4
+"What" occurs 1 time and is located at: 
+	line: 186, position: 2
+"What’s" occurs 1 time and is located at: 
+	line: 64, position: 4
+"Why" occurs 1 time and is located at: 
+	line: 238, position: 12
+"Yet" occurs 1 time and is located at: 
+	line: 97, position: 3
+"You’ll" occurs 1 time and is located at: 
+	line: 185, position: 4
+"about" occurs 4 times and is located at: 
+	line: 29, position: 6
+	line: 61, position: 10
+	line: 64, position: 5
+	line: 89, position: 2
+"accept" occurs 1 time and is located at: 
+	line: 156, position: 1
+"account" occurs 1 time and is located at: 
+	line: 17, position: 7
+"accustomed" occurs 1 time and is located at: 
+	line: 15, position: 11
+"added" occurs 1 time and is located at: 
+	line: 134, position: 9
+"addressing" occurs 4 times and is located at: 
+	line: 55, position: 7
+	line: 85, position: 4
+	line: 129, position: 8
+	line: 135, position: 1
+"adjusted" occurs 1 time and is located at: 
+	line: 170, position: 9
+"affair" occurs 1 time and is located at: 
+	line: 201, position: 6
+"after" occurs 2 times and is located at: 
+	line: 7, position: 9
+	line: 71, position: 5
+"afterglow" occurs 1 time and is located at: 
+	line: 126, position: 5
+"again" occurs 6 times and is located at: 
+	line: 72, position: 5
+	line: 188, position: 4
+	line: 191, position: 5
+	line: 195, position: 3
+	line: 215, position: 7
+	line: 216, position: 9
+"against" occurs 1 time and is located at: 
+	line: 170, position: 4
+"air" occurs 1 time and is located at: 
+	line: 110, position: 5
+"alcohol" occurs 1 time and is located at: 
+	line: 30, position: 1
+"alone" occurs 1 time and is located at: 
+	line: 48, position: 4
+"already" occurs 2 times and is located at: 
+	line: 18, position: 3
+	line: 173, position: 8
+"always" occurs 1 time and is located at: 
+	line: 101, position: 1
+"among" occurs 2 times and is located at: 
+	line: 58, position: 3
+	line: 102, position: 9
+"angry" occurs 1 time and is located at: 
+	line: 177, position: 7
+"another" occurs 2 times and is located at: 
+	line: 43, position: 7
+	line: 71, position: 6
+"anteroom" occurs 1 time and is located at: 
+	line: 28, position: 11
+"anxiously" occurs 1 time and is located at: 
+	line: 37, position: 11
+"anyone" occurs 3 times and is located at: 
+	line: 105, position: 9
+	line: 152, position: 1
+	line: 191, position: 2
+"anything" occurs 1 time and is located at: 
+	line: 142, position: 6
+"approaching" occurs 1 time and is located at: 
+	line: 125, position: 6
+"arm" occurs 2 times and is located at: 
+	line: 211, position: 10
+	line: 214, position: 1
+"arms" occurs 2 times and is located at: 
+	line: 245, position: 6
+	line: 255, position: 7
+"around" occurs 2 times and is located at: 
+	line: 108, position: 2
+	line: 217, position: 3
+"arranged" occurs 1 time and is located at: 
+	line: 188, position: 10
+"as" occurs 3 times and is located at: 
+	line: 14, position: 3
+	line: 213, position: 1
+	line: 214, position: 10
+"ascended" occurs 1 time and is located at: 
+	line: 27, position: 7
+"aside" occurs 1 time and is located at: 
+	line: 81, position: 8
+"at" occurs 8 times and is located at: 
+	line: 28, position: 3
+	line: 39, position: 9
+	line: 71, position: 12
+	line: 102, position: 5
+	line: 111, position: 8
+	line: 124, position: 7
+	line: 147, position: 5
+	line: 162, position: 11
+"attention" occurs 1 time and is located at: 
+	line: 151, position: 4
+"attract" occurs 1 time and is located at: 
+	line: 151, position: 3
+"aware" occurs 1 time and is located at: 
+	line: 217, position: 1
+"away" occurs 2 times and is located at: 
+	line: 111, position: 4
+	line: 165, position: 8
+"awkwardly" occurs 1 time and is located at: 
+	line: 166, position: 3
+"back" occurs 6 times and is located at: 
+	line: 166, position: 4
+	line: 174, position: 2
+	line: 196, position: 6
+	line: 199, position: 4
+	line: 206, position: 2
+	line: 209, position: 6
+"backward" occurs 1 time and is located at: 
+	line: 211, position: 4
+"balance" occurs 1 time and is located at: 
+	line: 197, position: 2
+"banging" occurs 1 time and is located at: 
+	line: 242, position: 1
+"barracks" occurs 1 time and is located at: 
+	line: 26, position: 7
+"bear" occurs 3 times and is located at: 
+	line: 36, position: 6
+	line: 38, position: 10
+	line: 255, position: 3
+"because" occurs 1 time and is located at: 
+	line: 17, position: 8
+"been" occurs 1 time and is located at: 
+	line: 159, position: 5
+"before" occurs 1 time and is located at: 
+	line: 17, position: 9
+"began" occurs 3 times and is located at: 
+	line: 213, position: 9
+	line: 228, position: 6
+	line: 256, position: 1
+"being" occurs 1 time and is located at: 
+	line: 106, position: 7
+"bet" occurs 10 times and is located at: 
+	line: 41, position: 2
+	line: 45, position: 2
+	line: 48, position: 6
+	line: 85, position: 3
+	line: 132, position: 2
+	line: 133, position: 9
+	line: 225, position: 6
+	line: 232, position: 5
+	line: 233, position: 6
+	line: 249, position: 10
+"bets" occurs 1 time and is located at: 
+	line: 59, position: 8
+"betting" occurs 1 time and is located at: 
+	line: 74, position: 5
+"bit" occurs 4 times and is located at: 
+	line: 54, position: 7
+	line: 66, position: 2
+	line: 151, position: 6
+	line: 249, position: 1
+"blue" occurs 2 times and is located at: 
+	line: 57, position: 9
+	line: 88, position: 9
+"body" occurs 1 time and is located at: 
+	line: 212, position: 9
+"both" occurs 3 times and is located at: 
+	line: 170, position: 5
+	line: 175, position: 3
+	line: 188, position: 8
+"bottle" occurs 17 times and is located at: 
+	line: 52, position: 3
+	line: 66, position: 7
+	line: 75, position: 6
+	line: 105, position: 1
+	line: 124, position: 11
+	line: 128, position: 2
+	line: 139, position: 9
+	line: 150, position: 7
+	line: 168, position: 2
+	line: 172, position: 4
+	line: 195, position: 10
+	line: 207, position: 2
+	line: 208, position: 2
+	line: 222, position: 3
+	line: 234, position: 1
+	line: 234, position: 4
+	line: 241, position: 5
+"bottles" occurs 1 time and is located at: 
+	line: 29, position: 1
+"bout" occurs 1 time and is located at: 
+	line: 8, position: 5
+"bragging" occurs 1 time and is located at: 
+	line: 122, position: 3
+"bring" occurs 2 times and is located at: 
+	line: 52, position: 2
+	line: 233, position: 11
+"broken" occurs 1 time and is located at: 
+	line: 198, position: 1
+"brought" occurs 2 times and is located at: 
+	line: 105, position: 4
+	line: 172, position: 6
+"brows" occurs 1 time and is located at: 
+	line: 71, position: 11
+"buttons" occurs 1 time and is located at: 
+	line: 146, position: 9
+"by" occurs 7 times and is located at: 
+	line: 21, position: 4
+	line: 39, position: 3
+	line: 58, position: 7
+	line: 106, position: 10
+	line: 107, position: 5
+	line: 146, position: 7
+	line: 245, position: 4
+"cab" occurs 1 time and is located at: 
+	line: 2, position: 8
+"came" occurs 2 times and is located at: 
+	line: 35, position: 10
+	line: 226, position: 3
+"candles" occurs 1 time and is located at: 
+	line: 172, position: 8
+"cards" occurs 1 time and is located at: 
+	line: 7, position: 6
+"carefully" occurs 1 time and is located at: 
+	line: 169, position: 3
+"caught" occurs 2 times and is located at: 
+	line: 222, position: 7
+	line: 255, position: 2
+"cause" occurs 1 time and is located at: 
+	line: 212, position: 6
+"chain" occurs 1 time and is located at: 
+	line: 39, position: 4
+"challenge" occurs 1 time and is located at: 
+	line: 156, position: 2
+"character" occurs 1 time and is located at: 
+	line: 14, position: 8
+"chatter" occurs 1 time and is located at: 
+	line: 73, position: 3
+"clear" occurs 1 time and is located at: 
+	line: 57, position: 8
+"clearheadedness" occurs 1 time and is located at: 
+	line: 101, position: 11
+"clearly" occurs 2 times and is located at: 
+	line: 84, position: 6
+	line: 90, position: 11
+"climb" occurs 1 time and is located at: 
+	line: 243, position: 1
+"climbed" occurs 2 times and is located at: 
+	line: 159, position: 9
+	line: 169, position: 2
+"cloak" occurs 1 time and is located at: 
+	line: 33, position: 5
+"cloaks" occurs 1 time and is located at: 
+	line: 29, position: 2
+"closed" occurs 1 time and is located at: 
+	line: 92, position: 6
+"cloudless" occurs 1 time and is located at: 
+	line: 2, position: 1
+"clutch" occurs 1 time and is located at: 
+	line: 214, position: 12
+"coat" occurs 2 times and is located at: 
+	line: 53, position: 7
+	line: 147, position: 2
+"collar" occurs 1 time and is located at: 
+	line: 206, position: 10
+"come" occurs 1 time and is located at: 
+	line: 18, position: 8
+"comes" occurs 1 time and is located at: 
+	line: 191, position: 3
+"commotion" occurs 1 time and is located at: 
+	line: 37, position: 2
+"compressed" occurs 1 time and is located at: 
+	line: 192, position: 5
+"connections" occurs 1 time and is located at: 
+	line: 97, position: 2
+"considers" occurs 1 time and is located at: 
+	line: 21, position: 2
+"continually" occurs 1 time and is located at: 
+	line: 93, position: 9
+"conventional" occurs 1 time and is located at: 
+	line: 20, position: 1
+"corner" occurs 1 time and is located at: 
+	line: 201, position: 9
+"corners" occurs 1 time and is located at: 
+	line: 94, position: 3
+"could" occurs 3 times and is located at: 
+	line: 100, position: 7
+	line: 112, position: 1
+	line: 168, position: 8
+"counting" occurs 1 time and is located at: 
+	line: 228, position: 7
+"covered" occurs 1 time and is located at: 
+	line: 215, position: 8
+"crash" occurs 1 time and is located at: 
+	line: 117, position: 1
+"cried" occurs 9 times and is located at: 
+	line: 43, position: 6
+	line: 45, position: 6
+	line: 55, position: 5
+	line: 59, position: 2
+	line: 129, position: 4
+	line: 150, position: 3
+	line: 165, position: 4
+	line: 233, position: 3
+	line: 252, position: 5
+"crossbeam" occurs 1 time and is located at: 
+	line: 116, position: 3
+"crowded" occurs 1 time and is located at: 
+	line: 175, position: 6
+"crowding" occurs 2 times and is located at: 
+	line: 37, position: 10
+	line: 72, position: 6
+"curly" occurs 3 times and is located at: 
+	line: 88, position: 6
+	line: 174, position: 8
+	line: 206, position: 5
+"curved" occurs 1 time and is located at: 
+	line: 91, position: 8
+"dancing" occurs 1 time and is located at: 
+	line: 256, position: 2
+"dawn" occurs 1 time and is located at: 
+	line: 126, position: 2
+"dead" occurs 1 time and is located at: 
+	line: 21, position: 8
+"decided" occurs 1 time and is located at: 
+	line: 16, position: 3
+"decisions" occurs 1 time and is located at: 
+	line: 24, position: 2
+"definite" occurs 1 time and is located at: 
+	line: 20, position: 5
+"deserted" occurs 1 time and is located at: 
+	line: 5, position: 7
+"desired" occurs 1 time and is located at: 
+	line: 14, position: 10
+"determined" occurs 1 time and is located at: 
+	line: 242, position: 4
+"did" occurs 4 times and is located at: 
+	line: 100, position: 4
+	line: 133, position: 4
+	line: 156, position: 6
+	line: 229, position: 4
+"different" occurs 1 time and is located at: 
+	line: 226, position: 5
+"directions" occurs 1 time and is located at: 
+	line: 107, position: 6
+"dishonor" occurs 1 time and is located at: 
+	line: 22, position: 8
+"dispersed" occurs 1 time and is located at: 
+	line: 32, position: 9
+"dissipation" occurs 1 time and is located at: 
+	line: 15, position: 7
+"distance" occurs 1 time and is located at: 
+	line: 30, position: 6
+"distinct" occurs 1 time and is located at: 
+	line: 93, position: 6
+"distinctly" occurs 1 time and is located at: 
+	line: 84, position: 7
+"does" occurs 1 time and is located at: 
+	line: 152, position: 3
+"done" occurs 1 time and is located at: 
+	line: 225, position: 2
+"don’t" occurs 1 time and is located at: 
+	line: 64, position: 2
+"door" occurs 1 time and is located at: 
+	line: 28, position: 5
+"down" occurs 6 times and is located at: 
+	line: 147, position: 4
+	line: 160, position: 5
+	line: 162, position: 8
+	line: 192, position: 11
+	line: 213, position: 11
+	line: 223, position: 2
+"drank" occurs 2 times and is located at: 
+	line: 71, position: 2
+	line: 101, position: 6
+"draught" occurs 1 time and is located at: 
+	line: 50, position: 3
+"drew" occurs 1 time and is located at: 
+	line: 3, position: 7
+"drink" occurs 5 times and is located at: 
+	line: 69, position: 4
+	line: 75, position: 5
+	line: 78, position: 5
+	line: 139, position: 7
+	line: 241, position: 2
+"drinking" occurs 2 times and is located at: 
+	line: 8, position: 4
+	line: 34, position: 10
+"drive" occurs 1 time and is located at: 
+	line: 3, position: 2
+"dropped" occurs 1 time and is located at: 
+	line: 195, position: 6
+"drunk" occurs 1 time and is located at: 
+	line: 66, position: 5
+"drunken" occurs 2 times and is located at: 
+	line: 58, position: 5
+	line: 242, position: 5
+"duelist" occurs 1 time and is located at: 
+	line: 61, position: 1
+"easily" occurs 1 time and is located at: 
+	line: 168, position: 10
+"effect" occurs 1 time and is located at: 
+	line: 95, position: 6
+"effort" occurs 1 time and is located at: 
+	line: 208, position: 1
+"eight" occurs 1 time and is located at: 
+	line: 37, position: 4
+"elapsed" occurs 1 time and is located at: 
+	line: 210, position: 11
+"else" occurs 1 time and is located at: 
+	line: 152, position: 2
+"emitting" occurs 1 time and is located at: 
+	line: 191, position: 9
+"empty" occurs 2 times and is located at: 
+	line: 28, position: 12
+	line: 220, position: 2
+"emptying" occurs 1 time and is located at: 
+	line: 208, position: 4
+"enjoy" occurs 1 time and is located at: 
+	line: 15, position: 5
+"enough" occurs 1 time and is located at: 
+	line: 5, position: 1
+"entered" occurs 2 times and is located at: 
+	line: 27, position: 4
+	line: 33, position: 6
+"erect" occurs 1 time and is located at: 
+	line: 199, position: 7
+"especially" occurs 1 time and is located at: 
+	line: 20, position: 7
+"even" occurs 1 time and is located at: 
+	line: 239, position: 2
+"evening" occurs 3 times and is located at: 
+	line: 6, position: 3
+	line: 7, position: 8
+	line: 159, position: 8
+"everyone" occurs 1 time and is located at: 
+	line: 245, position: 12
+"evidently" occurs 1 time and is located at: 
+	line: 107, position: 2
+"exclaimed" occurs 1 time and is located at: 
+	line: 239, position: 6
+"expecting" occurs 1 time and is located at: 
+	line: 7, position: 3
+"explaining" occurs 1 time and is located at: 
+	line: 74, position: 1
+"expressed" occurs 1 time and is located at: 
+	line: 203, position: 11
+"extraordinary" occurs 1 time and is located at: 
+	line: 22, position: 1
+"eyes" occurs 7 times and is located at: 
+	line: 57, position: 10
+	line: 88, position: 10
+	line: 95, position: 4
+	line: 198, position: 10
+	line: 200, position: 1
+	line: 204, position: 11
+	line: 216, position: 2
+"face" occurs 5 times and is located at: 
+	line: 90, position: 9
+	line: 96, position: 6
+	line: 202, position: 6
+	line: 202, position: 12
+	line: 218, position: 6
+"fade" occurs 1 time and is located at: 
+	line: 203, position: 6
+"faint" occurs 1 time and is located at: 
+	line: 203, position: 2
+"familiar" occurs 1 time and is located at: 
+	line: 36, position: 3
+"fear" occurs 1 time and is located at: 
+	line: 204, position: 2
+"feature" occurs 1 time and is located at: 
+	line: 90, position: 7
+"features" occurs 1 time and is located at: 
+	line: 203, position: 9
+"fellow" occurs 2 times and is located at: 
+	line: 52, position: 9
+	line: 225, position: 4
+"fellows" occurs 1 time and is located at: 
+	line: 54, position: 9
+"felt" occurs 1 time and is located at: 
+	line: 4, position: 1
+"fifty" occurs 3 times and is located at: 
+	line: 132, position: 3
+	line: 133, position: 10
+	line: 137, position: 2
+"fine" occurs 1 time and is located at: 
+	line: 53, position: 10
+"finely" occurs 1 time and is located at: 
+	line: 91, position: 7
+"finishing" occurs 1 time and is located at: 
+	line: 8, position: 6
+"firm" occurs 1 time and is located at: 
+	line: 92, position: 9
+"firmly" occurs 1 time and is located at: 
+	line: 92, position: 7
+"first" occurs 1 time and is located at: 
+	line: 33, position: 7
+"five" occurs 1 time and is located at: 
+	line: 89, position: 4
+"floor" occurs 1 time and is located at: 
+	line: 76, position: 2
+"flurried" occurs 1 time and is located at: 
+	line: 107, position: 3
+"flying" occurs 1 time and is located at: 
+	line: 246, position: 5
+"folly" occurs 1 time and is located at: 
+	line: 180, position: 3
+"fond" occurs 1 time and is located at: 
+	line: 9, position: 4
+"footing" occurs 1 time and is located at: 
+	line: 99, position: 1
+"footman" occurs 1 time and is located at: 
+	line: 34, position: 3
+"footmen" occurs 3 times and is located at: 
+	line: 106, position: 12
+	line: 111, position: 5
+	line: 197, position: 5
+"forced" occurs 1 time and is located at: 
+	line: 106, position: 8
+"forgot" occurs 1 time and is located at: 
+	line: 203, position: 4
+"formed" occurs 1 time and is located at: 
+	line: 92, position: 3
+"forward" occurs 1 time and is located at: 
+	line: 177, position: 4
+"fourth" occurs 1 time and is located at: 
+	line: 50, position: 9
+"frame" occurs 3 times and is located at: 
+	line: 105, position: 6
+	line: 111, position: 9
+	line: 116, position: 7
+"free" occurs 1 time and is located at: 
+	line: 196, position: 11
+"friend" occurs 1 time and is located at: 
+	line: 1, position: 9
+"from" occurs 17 times and is located at: 
+	line: 57, position: 3
+	line: 59, position: 3
+	line: 67, position: 3
+	line: 71, position: 8
+	line: 106, position: 1
+	line: 125, position: 8
+	line: 140, position: 4
+	line: 162, position: 9
+	line: 165, position: 9
+	line: 175, position: 2
+	line: 198, position: 11
+	line: 199, position: 2
+	line: 202, position: 13
+	line: 204, position: 9
+	line: 215, position: 4
+	line: 226, position: 4
+	line: 255, position: 9
+"front" occurs 2 times and is located at: 
+	line: 54, position: 5
+	line: 176, position: 1
+"frowning" occurs 1 time and is located at: 
+	line: 229, position: 3
+"further" occurs 2 times and is located at: 
+	line: 206, position: 1
+	line: 209, position: 5
+"gambler" occurs 1 time and is located at: 
+	line: 60, position: 6
+"games" occurs 1 time and is located at: 
+	line: 100, position: 9
+"gathering" occurs 1 time and is located at: 
+	line: 18, position: 11
+"gave" occurs 2 times and is located at: 
+	line: 17, position: 11
+	line: 155, position: 3
+"general" occurs 1 time and is located at: 
+	line: 37, position: 1
+"generally" occurs 1 time and is located at: 
+	line: 8, position: 3
+"gentlemen" occurs 1 time and is located at: 
+	line: 108, position: 1
+"gesture" occurs 1 time and is located at: 
+	line: 242, position: 6
+"get" occurs 1 time and is located at: 
+	line: 249, position: 3
+"giddy" occurs 1 time and is located at: 
+	line: 239, position: 1
+"giving" occurs 1 time and is located at: 
+	line: 78, position: 9
+"glass" occurs 5 times and is located at: 
+	line: 67, position: 2
+	line: 71, position: 4
+	line: 73, position: 9
+	line: 79, position: 1
+	line: 198, position: 2
+"glasses" occurs 1 time and is located at: 
+	line: 35, position: 6
+"going" occurs 2 times and is located at: 
+	line: 4, position: 3
+	line: 250, position: 2
+"gone" occurs 1 time and is located at: 
+	line: 238, position: 5
+"ground" occurs 1 time and is located at: 
+	line: 255, position: 10
+"group" occurs 1 time and is located at: 
+	line: 53, position: 5
+"growling" occurs 1 time and is located at: 
+	line: 36, position: 5
+"guests" occurs 1 time and is located at: 
+	line: 72, position: 2
+"had" occurs 7 times and is located at: 
+	line: 18, position: 2
+	line: 32, position: 6
+	line: 98, position: 6
+	line: 159, position: 4
+	line: 197, position: 7
+	line: 201, position: 2
+	line: 210, position: 10
+"hair" occurs 2 times and is located at: 
+	line: 88, position: 7
+	line: 206, position: 6
+"half" occurs 1 time and is located at: 
+	line: 210, position: 8
+"hammering" occurs 1 time and is located at: 
+	line: 150, position: 5
+"hand" occurs 6 times and is located at: 
+	line: 84, position: 5
+	line: 125, position: 4
+	line: 128, position: 7
+	line: 196, position: 12
+	line: 206, position: 11
+	line: 214, position: 8
+"hands" occurs 5 times and is located at: 
+	line: 46, position: 1
+	line: 171, position: 6
+	line: 188, position: 9
+	line: 195, position: 8
+	line: 204, position: 8
+"handsome" occurs 1 time and is located at: 
+	line: 52, position: 8
+"hanging" occurs 1 time and is located at: 
+	line: 76, position: 7
+"happen" occurs 1 time and is located at: 
+	line: 22, position: 3
+"happens" occurs 1 time and is located at: 
+	line: 14, position: 4
+"have" occurs 2 times and is located at: 
+	line: 114, position: 2
+	line: 241, position: 4
+"he" occurs 40 times and is located at: 
+	line: 3, position: 6
+	line: 3, position: 11
+	line: 11, position: 9
+	line: 13, position: 1
+	line: 14, position: 9
+	line: 15, position: 8
+	line: 16, position: 2
+	line: 17, position: 10
+	line: 18, position: 1
+	line: 19, position: 4
+	line: 50, position: 5
+	line: 55, position: 6
+	line: 66, position: 3
+	line: 67, position: 5
+	line: 75, position: 3
+	line: 81, position: 9
+	line: 89, position: 8
+	line: 101, position: 5
+	line: 101, position: 7
+	line: 111, position: 6
+	line: 114, position: 7
+	line: 129, position: 5
+	line: 133, position: 3
+	line: 134, position: 10
+	line: 141, position: 2
+	line: 155, position: 7
+	line: 157, position: 1
+	line: 157, position: 7
+	line: 162, position: 5
+	line: 168, position: 7
+	line: 170, position: 8
+	line: 191, position: 8
+	line: 195, position: 2
+	line: 213, position: 2
+	line: 213, position: 8
+	line: 216, position: 4
+	line: 216, position: 11
+	line: 233, position: 1
+	line: 245, position: 7
+	line: 255, position: 1
+"head" occurs 5 times and is located at: 
+	line: 174, position: 9
+	line: 196, position: 8
+	line: 205, position: 9
+	line: 209, position: 2
+	line: 213, position: 13
+"height" occurs 2 times and is located at: 
+	line: 57, position: 6
+	line: 88, position: 4
+"here" occurs 2 times and is located at: 
+	line: 59, position: 6
+	line: 66, position: 8
+"here’s" occurs 1 time and is located at: 
+	line: 48, position: 5
+"he’ll" occurs 1 time and is located at: 
+	line: 185, position: 8
+"hid" occurs 1 time and is located at: 
+	line: 202, position: 10
+"higher" occurs 3 times and is located at: 
+	line: 207, position: 5
+	line: 207, position: 6
+	line: 208, position: 8
+"him" occurs 24 times and is located at: 
+	line: 16, position: 9
+	line: 34, position: 8
+	line: 39, position: 2
+	line: 39, position: 8
+	line: 61, position: 11
+	line: 98, position: 5
+	line: 99, position: 10
+	line: 133, position: 2
+	line: 146, position: 6
+	line: 148, position: 5
+	line: 152, position: 7
+	line: 156, position: 9
+	line: 165, position: 7
+	line: 183, position: 3
+	line: 185, position: 3
+	line: 185, position: 6
+	line: 192, position: 10
+	line: 210, position: 4
+	line: 236, position: 2
+	line: 236, position: 4
+	line: 245, position: 3
+	line: 246, position: 2
+	line: 248, position: 5
+	line: 249, position: 5
+"himself" occurs 7 times and is located at: 
+	line: 85, position: 5
+	line: 98, position: 8
+	line: 99, position: 8
+	line: 170, position: 10
+	line: 189, position: 1
+	line: 197, position: 3
+	line: 202, position: 1
+"him—the" occurs 1 time and is located at: 
+	line: 147, position: 6
+"his" occurs 49 times and is located at: 
+	line: 1, position: 8
+	line: 13, position: 4
+	line: 16, position: 11
+	line: 18, position: 10
+	line: 24, position: 1
+	line: 33, position: 4
+	line: 53, position: 9
+	line: 71, position: 10
+	line: 76, position: 5
+	line: 90, position: 3
+	line: 90, position: 8
+	line: 95, position: 3
+	line: 96, position: 5
+	line: 101, position: 10
+	line: 110, position: 3
+	line: 125, position: 3
+	line: 128, position: 6
+	line: 147, position: 1
+	line: 166, position: 9
+	line: 170, position: 1
+	line: 171, position: 2
+	line: 171, position: 5
+	line: 174, position: 4
+	line: 174, position: 7
+	line: 189, position: 3
+	line: 192, position: 3
+	line: 195, position: 7
+	line: 196, position: 3
+	line: 196, position: 7
+	line: 196, position: 10
+	line: 198, position: 9
+	line: 200, position: 8
+	line: 202, position: 5
+	line: 202, position: 11
+	line: 203, position: 8
+	line: 204, position: 7
+	line: 204, position: 10
+	line: 205, position: 8
+	line: 206, position: 4
+	line: 206, position: 8
+	line: 209, position: 1
+	line: 211, position: 7
+	line: 211, position: 9
+	line: 212, position: 7
+	line: 213, position: 12
+	line: 216, position: 1
+	line: 228, position: 4
+	line: 245, position: 5
+	line: 255, position: 6
+"hold" occurs 1 time and is located at: 
+	line: 178, position: 3
+"holding" occurs 6 times and is located at: 
+	line: 43, position: 3
+	line: 84, position: 3
+	line: 119, position: 8
+	line: 142, position: 3
+	line: 188, position: 5
+	line: 207, position: 1
+"home" occurs 1 time and is located at: 
+	line: 3, position: 4
+"honor" occurs 1 time and is located at: 
+	line: 22, position: 7
+"honor’" occurs 1 time and is located at: 
+	line: 19, position: 8
+"horror" occurs 1 time and is located at: 
+	line: 204, position: 1
+"host" occurs 1 time and is located at: 
+	line: 52, position: 6
+"hour" occurs 1 time and is located at: 
+	line: 210, position: 9
+"house" occurs 2 times and is located at: 
+	line: 3, position: 9
+	line: 26, position: 3
+"hundred" occurs 3 times and is located at: 
+	line: 41, position: 3
+	line: 134, position: 7
+	line: 152, position: 8
+"hussar" occurs 1 time and is located at: 
+	line: 158, position: 8
+"immediately" occurs 2 times and is located at: 
+	line: 13, position: 2
+	line: 16, position: 6
+"imperials" occurs 3 times and is located at: 
+	line: 134, position: 1
+	line: 139, position: 4
+	line: 152, position: 9
+"imperials”—he" occurs 1 time and is located at: 
+	line: 132, position: 4
+"impossibility" occurs 1 time and is located at: 
+	line: 4, position: 2
+"impossible" occurs 1 time and is located at: 
+	line: 96, position: 1
+"in" occurs 19 times and is located at: 
+	line: 5, position: 6
+	line: 23, position: 6
+	line: 26, position: 8
+	line: 28, position: 2
+	line: 28, position: 10
+	line: 30, position: 5
+	line: 33, position: 9
+	line: 35, position: 5
+	line: 53, position: 3
+	line: 54, position: 4
+	line: 125, position: 2
+	line: 128, position: 5
+	line: 129, position: 10
+	line: 148, position: 6
+	line: 174, position: 3
+	line: 175, position: 10
+	line: 198, position: 4
+	line: 205, position: 4
+	line: 255, position: 5
+"including" occurs 1 time and is located at: 
+	line: 99, position: 6
+"indication" occurs 1 time and is located at: 
+	line: 155, position: 5
+"indulged" occurs 1 time and is located at: 
+	line: 23, position: 5
+"infantry" occurs 1 time and is located at: 
+	line: 89, position: 6
+"insolent" occurs 1 time and is located at: 
+	line: 95, position: 1
+"intelligence" occurs 1 time and is located at: 
+	line: 95, position: 2
+"intended" occurs 1 time and is located at: 
+	line: 155, position: 8
+"intending" occurs 1 time and is located at: 
+	line: 2, position: 9
+"intentions" occurs 1 time and is located at: 
+	line: 24, position: 3
+"intimidated" occurs 1 time and is located at: 
+	line: 107, position: 4
+"into" occurs 2 times and is located at: 
+	line: 158, position: 3
+	line: 166, position: 5
+"its" occurs 1 time and is located at: 
+	line: 58, position: 8
+"jumped" occurs 4 times and is located at: 
+	line: 128, position: 8
+	line: 166, position: 2
+	line: 223, position: 1
+	line: 229, position: 8
+"kept" occurs 2 times and is located at: 
+	line: 73, position: 5
+	line: 157, position: 2
+"killed" occurs 2 times and is located at: 
+	line: 180, position: 5
+	line: 185, position: 9
+"kind" occurs 1 time and is located at: 
+	line: 8, position: 9
+"knew" occurs 1 time and is located at: 
+	line: 99, position: 4
+"lad" occurs 2 times and is located at: 
+	line: 158, position: 7
+	line: 166, position: 1
+"large" occurs 1 time and is located at: 
+	line: 26, position: 2
+"last" occurs 1 time and is located at: 
+	line: 78, position: 11
+"latter" occurs 1 time and is located at: 
+	line: 137, position: 5
+"laughter" occurs 1 time and is located at: 
+	line: 36, position: 1
+"leaned" occurs 1 time and is located at: 
+	line: 160, position: 2
+"leave" occurs 1 time and is located at: 
+	line: 48, position: 2
+"ledge" occurs 3 times and is located at: 
+	line: 75, position: 11
+	line: 141, position: 7
+	line: 213, position: 6
+"left" occurs 3 times and is located at: 
+	line: 1, position: 7
+	line: 35, position: 4
+	line: 172, position: 1
+"legs" occurs 2 times and is located at: 
+	line: 76, position: 6
+	line: 170, position: 2
+"let" occurs 3 times and is located at: 
+	line: 79, position: 4
+	line: 236, position: 3
+	line: 238, position: 10
+"lifted" occurs 3 times and is located at: 
+	line: 196, position: 1
+	line: 207, position: 4
+	line: 255, position: 8
+"light" occurs 4 times and is located at: 
+	line: 4, position: 10
+	line: 88, position: 8
+	line: 125, position: 10
+	line: 173, position: 10
+"lighted" occurs 1 time and is located at: 
+	line: 27, position: 5
+"like" occurs 3 times and is located at: 
+	line: 5, position: 11
+	line: 11, position: 3
+	line: 93, position: 4
+"linen" occurs 1 time and is located at: 
+	line: 54, position: 1
+"lines" occurs 1 time and is located at: 
+	line: 91, position: 2
+"lip" occurs 1 time and is located at: 
+	line: 92, position: 2
+"lips" occurs 3 times and is located at: 
+	line: 192, position: 6
+	line: 196, position: 4
+	line: 200, position: 9
+"listening" occurs 1 time and is located at: 
+	line: 72, position: 9
+"lit" occurs 1 time and is located at: 
+	line: 174, position: 11
+"little" occurs 1 time and is located at: 
+	line: 171, position: 8
+"lived" occurs 2 times and is located at: 
+	line: 27, position: 2
+	line: 98, position: 3
+"living" occurs 1 time and is located at: 
+	line: 61, position: 4
+"long" occurs 2 times and is located at: 
+	line: 5, position: 4
+	line: 209, position: 9
+"look" occurs 1 time and is located at: 
+	line: 177, position: 8
+"looked" occurs 3 times and is located at: 
+	line: 160, position: 4
+	line: 200, position: 3
+	line: 217, position: 5
+"looking" occurs 5 times and is located at: 
+	line: 61, position: 9
+	line: 71, position: 7
+	line: 124, position: 6
+	line: 147, position: 3
+	line: 162, position: 7
+"loses" occurs 1 time and is located at: 
+	line: 50, position: 6
+"losing" occurs 1 time and is located at: 
+	line: 159, position: 6
+"lost" occurs 1 time and is located at: 
+	line: 101, position: 9
+"lower" occurs 1 time and is located at: 
+	line: 93, position: 1
+"lowered" occurs 2 times and is located at: 
+	line: 169, position: 7
+	line: 171, position: 4
+"lying" occurs 1 time and is located at: 
+	line: 29, position: 5
+"mad" occurs 1 time and is located at: 
+	line: 238, position: 6
+"made" occurs 2 times and is located at: 
+	line: 95, position: 8
+	line: 211, position: 3
+"make" occurs 1 time and is located at: 
+	line: 134, position: 6
+"man" occurs 6 times and is located at: 
+	line: 55, position: 3
+	line: 57, position: 4
+	line: 96, position: 9
+	line: 176, position: 7
+	line: 181, position: 1
+	line: 200, position: 10
+"manage" occurs 1 time and is located at: 
+	line: 248, position: 4
+"may" occurs 2 times and is located at: 
+	line: 21, position: 7
+	line: 22, position: 2
+"me" occurs 2 times and is located at: 
+	line: 232, position: 7
+	line: 233, position: 12
+"meaning" occurs 1 time and is located at: 
+	line: 20, position: 6
+"means" occurs 1 time and is located at: 
+	line: 96, position: 11
+"meddling" occurs 1 time and is located at: 
+	line: 191, position: 4
+"medium" occurs 2 times and is located at: 
+	line: 57, position: 5
+	line: 88, position: 3
+"men" occurs 1 time and is located at: 
+	line: 37, position: 8
+"merging" occurs 1 time and is located at: 
+	line: 126, position: 3
+"merrily" occurs 1 time and is located at: 
+	line: 62, position: 1
+"middle" occurs 1 time and is located at: 
+	line: 91, position: 9
+"midst" occurs 1 time and is located at: 
+	line: 53, position: 4
+"might" occurs 1 time and is located at: 
+	line: 132, position: 9
+"money" occurs 1 time and is located at: 
+	line: 228, position: 9
+"more" occurs 7 times and is located at: 
+	line: 3, position: 10
+	line: 5, position: 10
+	line: 15, position: 3
+	line: 100, position: 1
+	line: 180, position: 8
+	line: 210, position: 6
+	line: 214, position: 4
+"morning" occurs 1 time and is located at: 
+	line: 6, position: 1
+"most" occurs 1 time and is located at: 
+	line: 90, position: 5
+"mouth" occurs 4 times and is located at: 
+	line: 90, position: 4
+	line: 91, position: 4
+	line: 94, position: 4
+	line: 140, position: 6
+"move" occurs 1 time and is located at: 
+	line: 112, position: 3
+"moved" occurs 2 times and is located at: 
+	line: 171, position: 7
+	line: 214, position: 9
+"movement" occurs 1 time and is located at: 
+	line: 211, position: 5
+"much" occurs 1 time and is located at: 
+	line: 101, position: 4
+"must" occurs 2 times and is located at: 
+	line: 69, position: 3
+	line: 78, position: 4
+"mustache" occurs 1 time and is located at: 
+	line: 89, position: 11
+"muttered" occurs 1 time and is located at: 
+	line: 162, position: 6
+"my" occurs 1 time and is located at: 
+	line: 140, position: 5
+"naval" occurs 1 time and is located at: 
+	line: 74, position: 9
+"near" occurs 1 time and is located at: 
+	line: 26, position: 4
+"nearer" occurs 1 time and is located at: 
+	line: 3, position: 5
+"nearly" occurs 1 time and is located at: 
+	line: 100, position: 10
+"neatly" occurs 1 time and is located at: 
+	line: 222, position: 8
+"nervously" occurs 1 time and is located at: 
+	line: 212, position: 2
+"never" occurs 3 times and is located at: 
+	line: 101, position: 8
+	line: 216, position: 6
+	line: 248, position: 3
+"next" occurs 1 time and is located at: 
+	line: 238, position: 2
+"night" occurs 3 times and is located at: 
+	line: 2, position: 4
+	line: 4, position: 8
+	line: 6, position: 5
+"nine" occurs 1 time and is located at: 
+	line: 37, position: 6
+"no" occurs 8 times and is located at: 
+	line: 17, position: 6
+	line: 20, position: 4
+	line: 28, position: 8
+	line: 34, position: 5
+	line: 43, position: 2
+	line: 89, position: 10
+	line: 97, position: 1
+	line: 155, position: 4
+"nodded" occurs 1 time and is located at: 
+	line: 155, position: 2
+"nodding" occurs 1 time and is located at: 
+	line: 157, position: 3
+"northern" occurs 1 time and is located at: 
+	line: 2, position: 2
+"not" occurs 9 times and is located at: 
+	line: 13, position: 9
+	line: 32, position: 7
+	line: 66, position: 4
+	line: 96, position: 2
+	line: 112, position: 2
+	line: 133, position: 5
+	line: 156, position: 4
+	line: 156, position: 7
+	line: 229, position: 5
+"notice" occurs 1 time and is located at: 
+	line: 96, position: 4
+"notorious" occurs 2 times and is located at: 
+	line: 60, position: 5
+	line: 102, position: 8
+"now" occurs 2 times and is located at: 
+	line: 203, position: 10
+	line: 250, position: 1
+"nullifying" occurs 1 time and is located at: 
+	line: 23, position: 9
+"oak" occurs 1 time and is located at: 
+	line: 116, position: 6
+"occurred" occurs 1 time and is located at: 
+	line: 16, position: 7
+"off" occurs 1 time and is located at: 
+	line: 33, position: 3
+"officer" occurs 2 times and is located at: 
+	line: 60, position: 2
+	line: 75, position: 1
+"officers" occurs 1 time and is located at: 
+	line: 89, position: 7
+"often" occurs 1 time and is located at: 
+	line: 23, position: 4
+"older" occurs 1 time and is located at: 
+	line: 176, position: 8
+"on" occurs 30 times and is located at: 
+	line: 4, position: 6
+	line: 34, position: 11
+	line: 41, position: 4
+	line: 43, position: 4
+	line: 45, position: 3
+	line: 48, position: 7
+	line: 73, position: 6
+	line: 75, position: 9
+	line: 78, position: 2
+	line: 92, position: 8
+	line: 98, position: 9
+	line: 106, position: 3
+	line: 119, position: 9
+	line: 140, position: 10
+	line: 142, position: 4
+	line: 150, position: 8
+	line: 157, position: 11
+	line: 159, position: 10
+	line: 168, position: 3
+	line: 171, position: 1
+	line: 173, position: 3
+	line: 188, position: 6
+	line: 189, position: 2
+	line: 200, position: 4
+	line: 202, position: 2
+	line: 213, position: 4
+	line: 217, position: 10
+	line: 239, position: 3
+	line: 252, position: 2
+	line: 252, position: 8
+"once" occurs 1 time and is located at: 
+	line: 15, position: 2
+"one" occurs 13 times and is located at: 
+	line: 1, position: 3
+	line: 21, position: 1
+	line: 21, position: 6
+	line: 22, position: 5
+	line: 28, position: 9
+	line: 34, position: 6
+	line: 38, position: 11
+	line: 41, position: 8
+	line: 50, position: 2
+	line: 71, position: 3
+	line: 93, position: 2
+	line: 146, position: 8
+	line: 238, position: 8
+"only" occurs 1 time and is located at: 
+	line: 205, position: 7
+"onto" occurs 1 time and is located at: 
+	line: 128, position: 9
+"open" occurs 4 times and is located at: 
+	line: 2, position: 7
+	line: 28, position: 4
+	line: 38, position: 2
+	line: 216, position: 7
+"or" occurs 7 times and is located at: 
+	line: 6, position: 2
+	line: 21, position: 9
+	line: 37, position: 5
+	line: 50, position: 4
+	line: 119, position: 4
+	line: 134, position: 2
+	line: 156, position: 3
+"others" occurs 3 times and is located at: 
+	line: 38, position: 5
+	line: 39, position: 10
+	line: 176, position: 10
+"our" occurs 1 time and is located at: 
+	line: 45, position: 11
+"out" occurs 7 times and is located at: 
+	line: 76, position: 8
+	line: 106, position: 9
+	line: 116, position: 8
+	line: 119, position: 3
+	line: 228, position: 3
+	line: 228, position: 8
+	line: 243, position: 2
+"outer" occurs 2 times and is located at: 
+	line: 75, position: 10
+	line: 106, position: 4
+"outside" occurs 2 times and is located at: 
+	line: 140, position: 8
+	line: 141, position: 8
+"over" occurs 3 times and is located at: 
+	line: 32, position: 4
+	line: 160, position: 3
+	line: 166, position: 8
+"overshoes" occurs 1 time and is located at: 
+	line: 29, position: 3
+"o’clock" occurs 1 time and is located at: 
+	line: 1, position: 4
+"pale" occurs 1 time and is located at: 
+	line: 218, position: 4
+"pane" occurs 1 time and is located at: 
+	line: 112, position: 6
+"part" occurs 2 times and is located at: 
+	line: 45, position: 10
+	line: 59, position: 7
+"particularly" occurs 2 times and is located at: 
+	line: 58, position: 1
+	line: 85, position: 6
+"passionately" occurs 1 time and is located at: 
+	line: 15, position: 1
+"past" occurs 1 time and is located at: 
+	line: 1, position: 2
+"pavement" occurs 1 time and is located at: 
+	line: 163, position: 2
+"pay" occurs 1 time and is located at: 
+	line: 152, position: 6
+"people" occurs 1 time and is located at: 
+	line: 14, position: 6
+"perceptibly" occurs 1 time and is located at: 
+	line: 208, position: 5
+"pick" occurs 1 time and is located at: 
+	line: 197, position: 10
+"placed" occurs 2 times and is located at: 
+	line: 98, position: 7
+	line: 173, position: 1
+"play" occurs 1 time and is located at: 
+	line: 100, position: 8
+"played" occurs 1 time and is located at: 
+	line: 93, position: 8
+"pointed" occurs 1 time and is located at: 
+	line: 141, position: 4
+"porch" occurs 1 time and is located at: 
+	line: 27, position: 6
+"position" occurs 2 times and is located at: 
+	line: 198, position: 6
+	line: 205, position: 6
+"preparing" occurs 1 time and is located at: 
+	line: 242, position: 7
+"present" occurs 1 time and is located at: 
+	line: 177, position: 1
+"prevented" occurs 1 time and is located at: 
+	line: 105, position: 8
+"produced" occurs 1 time and is located at: 
+	line: 95, position: 5
+"promise" occurs 2 times and is located at: 
+	line: 13, position: 5
+	line: 17, position: 1
+"promised" occurs 1 time and is located at: 
+	line: 18, position: 4
+"pulling" occurs 1 time and is located at: 
+	line: 39, position: 1
+"purse" occurs 1 time and is located at: 
+	line: 228, position: 5
+"pursing" occurs 1 time and is located at: 
+	line: 200, position: 6
+"pushed" occurs 1 time and is located at: 
+	line: 177, position: 3
+"pushing" occurs 2 times and is located at: 
+	line: 81, position: 6
+	line: 165, position: 6
+"quite" occurs 1 time and is located at: 
+	line: 173, position: 9
+"radiant" occurs 1 time and is located at: 
+	line: 218, position: 5
+"raised" occurs 1 time and is located at: 
+	line: 196, position: 9
+"rakes" occurs 1 time and is located at: 
+	line: 102, position: 10
+"ran" occurs 1 time and is located at: 
+	line: 201, position: 7
+"rate" occurs 1 time and is located at: 
+	line: 124, position: 2
+"reach" occurs 1 time and is located at: 
+	line: 168, position: 9
+"recalled" occurs 1 time and is located at: 
+	line: 13, position: 3
+"refilling" occurs 1 time and is located at: 
+	line: 73, position: 7
+"reflections" occurs 1 time and is located at: 
+	line: 23, position: 7
+"refrained" occurs 1 time and is located at: 
+	line: 215, position: 3
+"regiment" occurs 1 time and is located at: 
+	line: 60, position: 4
+"release" occurs 1 time and is located at: 
+	line: 156, position: 8
+"remained" occurs 1 time and is located at: 
+	line: 198, position: 3
+"remains" occurs 1 time and is located at: 
+	line: 34, position: 1
+"remarkably" occurs 1 time and is located at: 
+	line: 91, position: 6
+"remembered" occurs 1 time and is located at: 
+	line: 6, position: 9
+"repeating" occurs 2 times and is located at: 
+	line: 85, position: 1
+	line: 148, position: 1
+"replied" occurs 1 time and is located at: 
+	line: 137, position: 4
+"resolute" occurs 1 time and is located at: 
+	line: 94, position: 7
+"respected" occurs 1 time and is located at: 
+	line: 99, position: 9
+"right" occurs 6 times and is located at: 
+	line: 119, position: 2
+	line: 122, position: 5
+	line: 139, position: 2
+	line: 142, position: 8
+	line: 144, position: 2
+	line: 171, position: 10
+"ring" occurs 1 time and is located at: 
+	line: 59, position: 1
+"rising" occurs 1 time and is located at: 
+	line: 208, position: 6
+"romping" occurs 1 time and is located at: 
+	line: 38, position: 7
+"room" occurs 6 times and is located at: 
+	line: 33, position: 8
+	line: 35, position: 9
+	line: 130, position: 1
+	line: 166, position: 6
+	line: 201, position: 10
+	line: 256, position: 4
+"round" occurs 7 times and is located at: 
+	line: 38, position: 1
+	line: 72, position: 7
+	line: 94, position: 1
+	line: 188, position: 3
+	line: 195, position: 5
+	line: 249, position: 4
+	line: 256, position: 3
+"rubles" occurs 1 time and is located at: 
+	line: 98, position: 1
+"rum" occurs 7 times and is located at: 
+	line: 75, position: 7
+	line: 105, position: 2
+	line: 125, position: 1
+	line: 128, position: 3
+	line: 140, position: 1
+	line: 223, position: 6
+	line: 241, position: 6
+"said" occurs 12 times and is located at: 
+	line: 66, position: 10
+	line: 78, position: 7
+	line: 81, position: 4
+	line: 114, position: 6
+	line: 119, position: 11
+	line: 122, position: 7
+	line: 124, position: 4
+	line: 144, position: 4
+	line: 180, position: 7
+	line: 191, position: 7
+	line: 236, position: 6
+	line: 248, position: 9
+"same" occurs 4 times and is located at: 
+	line: 23, position: 1
+	line: 152, position: 4
+	line: 205, position: 5
+	line: 232, position: 9
+"sat" occurs 2 times and is located at: 
+	line: 205, position: 3
+	line: 213, position: 3
+"saw" occurs 1 time and is located at: 
+	line: 34, position: 7
+"say" occurs 1 time and is located at: 
+	line: 180, position: 2
+"scapegraces" occurs 1 time and is located at: 
+	line: 103, position: 1
+"scared" occurs 1 time and is located at: 
+	line: 177, position: 6
+"seat" occurs 2 times and is located at: 
+	line: 171, position: 3
+	line: 189, position: 4
+"see" occurs 1 time and is located at: 
+	line: 5, position: 3
+"seemed" occurs 2 times and is located at: 
+	line: 5, position: 9
+	line: 210, position: 2
+"seen" occurs 1 time and is located at: 
+	line: 91, position: 1
+"seize" occurs 1 time and is located at: 
+	line: 178, position: 2
+"seized" occurs 2 times and is located at: 
+	line: 116, position: 2
+	line: 245, position: 2
+"sensible" occurs 1 time and is located at: 
+	line: 180, position: 9
+"sent" occurs 1 time and is located at: 
+	line: 246, position: 4
+"separately" occurs 1 time and is located at: 
+	line: 192, position: 1
+"set" occurs 2 times and is located at: 
+	line: 7, position: 5
+	line: 39, position: 7
+"several" occurs 1 time and is located at: 
+	line: 239, position: 7
+"sharp" occurs 1 time and is located at: 
+	line: 92, position: 4
+"shirt" occurs 4 times and is located at: 
+	line: 54, position: 2
+	line: 174, position: 6
+	line: 178, position: 5
+	line: 206, position: 9
+"short—began" occurs 1 time and is located at: 
+	line: 147, position: 9
+"should" occurs 1 time and is located at: 
+	line: 11, position: 2
+"shouted" occurs 4 times and is located at: 
+	line: 41, position: 7
+	line: 50, position: 8
+	line: 52, position: 5
+	line: 241, position: 8
+"shouting" occurs 2 times and is located at: 
+	line: 30, position: 4
+	line: 36, position: 2
+"shouts" occurs 1 time and is located at: 
+	line: 107, position: 7
+"show" occurs 1 time and is located at: 
+	line: 157, position: 5
+"sides" occurs 3 times and is located at: 
+	line: 170, position: 6
+	line: 175, position: 4
+	line: 226, position: 6
+"sideways" occurs 1 time and is located at: 
+	line: 200, position: 5
+"silent" occurs 2 times and is located at: 
+	line: 130, position: 3
+	line: 176, position: 5
+"sill" occurs 9 times and is located at: 
+	line: 106, position: 5
+	line: 129, position: 1
+	line: 151, position: 1
+	line: 160, position: 1
+	line: 168, position: 5
+	line: 173, position: 5
+	line: 215, position: 2
+	line: 218, position: 2
+	line: 230, position: 2
+"sitting" occurs 3 times and is located at: 
+	line: 75, position: 8
+	line: 106, position: 2
+	line: 140, position: 7
+"sky" occurs 1 time and is located at: 
+	line: 126, position: 1
+"sleep" occurs 1 time and is located at: 
+	line: 4, position: 5
+"slip" occurs 1 time and is located at: 
+	line: 212, position: 11
+"slipping" occurs 1 time and is located at: 
+	line: 213, position: 10
+"sloping" occurs 2 times and is located at: 
+	line: 141, position: 6
+	line: 213, position: 5
+"slowly" occurs 1 time and is located at: 
+	line: 169, position: 4
+"sly" occurs 1 time and is located at: 
+	line: 35, position: 1
+"small" occurs 1 time and is located at: 
+	line: 96, position: 10
+"smash" occurs 1 time and is located at: 
+	line: 111, position: 1
+"smashed" occurs 1 time and is located at: 
+	line: 112, position: 5
+"smell" occurs 1 time and is located at: 
+	line: 29, position: 9
+"smelt" occurs 1 time and is located at: 
+	line: 223, position: 4
+"smile" occurs 1 time and is located at: 
+	line: 203, position: 3
+"smiled" occurs 1 time and is located at: 
+	line: 61, position: 8
+"smiles" occurs 1 time and is located at: 
+	line: 93, position: 7
+"smiling" occurs 2 times and is located at: 
+	line: 176, position: 4
+	line: 236, position: 8
+"so" occurs 6 times and is located at: 
+	line: 14, position: 11
+	line: 15, position: 10
+	line: 21, position: 11
+	line: 90, position: 1
+	line: 209, position: 8
+	line: 245, position: 9
+"sober" occurs 1 time and is located at: 
+	line: 58, position: 9
+"sofa" occurs 1 time and is located at: 
+	line: 202, position: 3
+"some" occurs 1 time and is located at: 
+	line: 197, position: 12
+"something" occurs 3 times and is located at: 
+	line: 21, position: 10
+	line: 93, position: 3
+	line: 111, position: 2
+"sort" occurs 1 time and is located at: 
+	line: 23, position: 8
+"sounds" occurs 2 times and is located at: 
+	line: 30, position: 2
+	line: 35, position: 11
+"speak" occurs 2 times and is located at: 
+	line: 133, position: 6
+	line: 229, position: 6
+"spent" occurs 1 time and is located at: 
+	line: 97, position: 6
+"spine" occurs 1 time and is located at: 
+	line: 211, position: 8
+"spoke" occurs 1 time and is located at: 
+	line: 132, position: 5
+"spot”" occurs 1 time and is located at: 
+	line: 141, position: 1
+"spurs" occurs 1 time and is located at: 
+	line: 166, position: 10
+"staircase" occurs 1 time and is located at: 
+	line: 239, position: 4
+"stairs" occurs 1 time and is located at: 
+	line: 27, position: 8
+"standing" occurs 2 times and is located at: 
+	line: 129, position: 6
+	line: 217, position: 9
+"staring" occurs 1 time and is located at: 
+	line: 199, position: 9
+"startle" occurs 1 time and is located at: 
+	line: 185, position: 5
+"still" occurs 5 times and is located at: 
+	line: 128, position: 4
+	line: 204, position: 4
+	line: 205, position: 2
+	line: 208, position: 7
+	line: 214, position: 3
+"stir" occurs 1 time and is located at: 
+	line: 217, position: 2
+"stones" occurs 1 time and is located at: 
+	line: 163, position: 1
+"stood" occurs 4 times and is located at: 
+	line: 53, position: 2
+	line: 176, position: 3
+	line: 199, position: 6
+	line: 229, position: 2
+"stooped" occurs 2 times and is located at: 
+	line: 141, position: 3
+	line: 197, position: 8
+"stop" occurs 1 time and is located at: 
+	line: 201, position: 5
+"stopped" occurs 1 time and is located at: 
+	line: 183, position: 2
+"straight" occurs 1 time and is located at: 
+	line: 3, position: 3
+"strain" occurs 1 time and is located at: 
+	line: 214, position: 6
+"street" occurs 1 time and is located at: 
+	line: 5, position: 8
+"striking" occurs 2 times and is located at: 
+	line: 58, position: 2
+	line: 90, position: 6
+"strode" occurs 1 time and is located at: 
+	line: 110, position: 6
+"strong" occurs 1 time and is located at: 
+	line: 245, position: 10
+"strongly" occurs 1 time and is located at: 
+	line: 223, position: 5
+"such" occurs 3 times and is located at: 
+	line: 4, position: 7
+	line: 19, position: 6
+	line: 98, position: 10
+"suddenly" occurs 2 times and is located at: 
+	line: 177, position: 2
+	line: 233, position: 2
+"sufficient" occurs 1 time and is located at: 
+	line: 212, position: 4
+"summer" occurs 1 time and is located at: 
+	line: 2, position: 3
+"sunset" occurs 1 time and is located at: 
+	line: 126, position: 6
+"supper" occurs 2 times and is located at: 
+	line: 32, position: 2
+	line: 34, position: 2
+"swaggering" occurs 1 time and is located at: 
+	line: 110, position: 4
+"table" occurs 2 times and is located at: 
+	line: 67, position: 4
+	line: 242, position: 2
+"take" occurs 3 times and is located at: 
+	line: 225, position: 9
+	line: 249, position: 8
+	line: 252, position: 10
+"taking" occurs 4 times and is located at: 
+	line: 67, position: 1
+	line: 140, position: 3
+	line: 146, position: 5
+	line: 198, position: 8
+"tall" occurs 1 time and is located at: 
+	line: 52, position: 7
+"tens" occurs 1 time and is located at: 
+	line: 97, position: 7
+"terms" occurs 2 times and is located at: 
+	line: 85, position: 2
+	line: 148, position: 2
+"than" occurs 4 times and is located at: 
+	line: 6, position: 4
+	line: 100, position: 2
+	line: 176, position: 9
+	line: 210, position: 7
+"that" occurs 22 times and is located at: 
+	line: 6, position: 10
+	line: 7, position: 7
+	line: 15, position: 6
+	line: 16, position: 1
+	line: 16, position: 10
+	line: 21, position: 3
+	line: 22, position: 6
+	line: 74, position: 2
+	line: 75, position: 2
+	line: 90, position: 2
+	line: 91, position: 3
+	line: 99, position: 2
+	line: 102, position: 6
+	line: 132, position: 7
+	line: 139, position: 5
+	line: 142, position: 7
+	line: 157, position: 6
+	line: 159, position: 7
+	line: 198, position: 5
+	line: 210, position: 5
+	line: 245, position: 11
+	line: 248, position: 6
+"their" occurs 1 time and is located at: 
+	line: 73, position: 2
+"them" occurs 4 times and is located at: 
+	line: 99, position: 5
+	line: 173, position: 2
+	line: 216, position: 8
+	line: 233, position: 9
+"then" occurs 5 times and is located at: 
+	line: 171, position: 11
+	line: 185, position: 7
+	line: 186, position: 3
+	line: 193, position: 3
+	line: 252, position: 3
+"there" occurs 6 times and is located at: 
+	line: 8, position: 1
+	line: 14, position: 1
+	line: 29, position: 7
+	line: 129, position: 7
+	line: 193, position: 1
+	line: 233, position: 7
+"these" occurs 1 time and is located at: 
+	line: 58, position: 4
+"they" occurs 1 time and is located at: 
+	line: 100, position: 3
+"they’ll" occurs 1 time and is located at: 
+	line: 119, position: 5
+"thin" occurs 2 times and is located at: 
+	line: 158, position: 5
+	line: 192, position: 4
+"thing" occurs 1 time and is located at: 
+	line: 232, position: 10
+"things" occurs 1 time and is located at: 
+	line: 20, position: 2
+"think" occurs 1 time and is located at: 
+	line: 119, position: 6
+"thinking" occurs 1 time and is located at: 
+	line: 34, position: 4
+"third" occurs 3 times and is located at: 
+	line: 35, position: 8
+	line: 45, position: 7
+	line: 76, position: 1
+"those" occurs 1 time and is located at: 
+	line: 129, position: 9
+"though" occurs 4 times and is located at: 
+	line: 97, position: 4
+	line: 156, position: 10
+	line: 173, position: 6
+	line: 203, position: 7
+"thought" occurs 5 times and is located at: 
+	line: 11, position: 8
+	line: 16, position: 5
+	line: 19, position: 3
+	line: 209, position: 11
+	line: 216, position: 3
+"thousands" occurs 1 time and is located at: 
+	line: 97, position: 8
+"threw" occurs 4 times and is located at: 
+	line: 33, position: 2
+	line: 196, position: 5
+	line: 201, position: 11
+	line: 222, position: 2
+"through" occurs 2 times and is located at: 
+	line: 169, position: 5
+	line: 192, position: 2
+"throw" occurs 1 time and is located at: 
+	line: 192, position: 9
+"thrown" occurs 1 time and is located at: 
+	line: 205, position: 11
+"till" occurs 1 time and is located at: 
+	line: 206, position: 3
+"tilting" occurs 1 time and is located at: 
+	line: 209, position: 3
+"time" occurs 1 time and is located at: 
+	line: 102, position: 7
+"tipsy" occurs 1 time and is located at: 
+	line: 72, position: 1
+"to" occurs 55 times and is located at: 
+	line: 3, position: 1
+	line: 3, position: 8
+	line: 4, position: 4
+	line: 5, position: 2
+	line: 11, position: 4
+	line: 11, position: 5
+	line: 13, position: 6
+	line: 13, position: 10
+	line: 14, position: 5
+	line: 15, position: 4
+	line: 15, position: 12
+	line: 16, position: 4
+	line: 16, position: 8
+	line: 17, position: 2
+	line: 18, position: 7
+	line: 18, position: 9
+	line: 22, position: 4
+	line: 24, position: 6
+	line: 39, position: 6
+	line: 67, position: 8
+	line: 73, position: 1
+	line: 82, position: 1
+	line: 85, position: 7
+	line: 96, position: 3
+	line: 110, position: 8
+	line: 110, position: 12
+	line: 114, position: 9
+	line: 134, position: 5
+	line: 141, position: 5
+	line: 142, position: 5
+	line: 146, position: 3
+	line: 148, position: 4
+	line: 151, position: 2
+	line: 155, position: 9
+	line: 157, position: 4
+	line: 171, position: 9
+	line: 171, position: 12
+	line: 175, position: 7
+	line: 178, position: 1
+	line: 196, position: 2
+	line: 197, position: 1
+	line: 197, position: 9
+	line: 201, position: 4
+	line: 201, position: 8
+	line: 202, position: 7
+	line: 203, position: 5
+	line: 210, position: 3
+	line: 212, position: 5
+	line: 212, position: 10
+	line: 214, position: 11
+	line: 222, position: 4
+	line: 232, position: 4
+	line: 233, position: 10
+	line: 242, position: 8
+	line: 250, position: 3
+"together" occurs 1 time and is located at: 
+	line: 94, position: 5
+"tomorrow" occurs 2 times and is located at: 
+	line: 21, position: 5
+	line: 249, position: 11
+"took" occurs 6 times and is located at: 
+	line: 2, position: 6
+	line: 172, position: 2
+	line: 195, position: 9
+	line: 204, position: 6
+	line: 228, position: 2
+	line: 255, position: 4
+"touch" occurs 1 time and is located at: 
+	line: 185, position: 2
+"touched" occurs 2 times and is located at: 
+	line: 206, position: 7
+	line: 246, position: 1
+"touching" occurs 1 time and is located at: 
+	line: 215, position: 5
+"translating" occurs 1 time and is located at: 
+	line: 157, position: 12
+"trembled" occurs 2 times and is located at: 
+	line: 207, position: 7
+	line: 212, position: 1
+"tripping" occurs 1 time and is located at: 
+	line: 166, position: 7
+"try" occurs 1 time and is located at: 
+	line: 114, position: 3
+"trying" occurs 1 time and is located at: 
+	line: 39, position: 5
+"tugged" occurs 2 times and is located at: 
+	line: 111, position: 7
+	line: 116, position: 4
+"turned" occurs 3 times and is located at: 
+	line: 146, position: 2
+	line: 188, position: 2
+	line: 195, position: 4
+"turning" occurs 1 time and is located at: 
+	line: 114, position: 8
+"twenty" occurs 1 time and is located at: 
+	line: 89, position: 3
+"two" occurs 4 times and is located at: 
+	line: 93, position: 5
+	line: 94, position: 2
+	line: 106, position: 11
+	line: 172, position: 7
+"under" occurs 1 time and is located at: 
+	line: 71, position: 9
+"understand" occurs 3 times and is located at: 
+	line: 64, position: 3
+	line: 133, position: 1
+	line: 153, position: 1
+"understood" occurs 1 time and is located at: 
+	line: 157, position: 8
+"unfastened" occurs 1 time and is located at: 
+	line: 54, position: 3
+"up" occurs 9 times and is located at: 
+	line: 67, position: 7
+	line: 81, position: 11
+	line: 110, position: 7
+	line: 165, position: 2
+	line: 172, position: 3
+	line: 175, position: 1
+	line: 197, position: 11
+	line: 200, position: 7
+	line: 217, position: 6
+"upon" occurs 1 time and is located at: 
+	line: 229, position: 9
+"upper" occurs 1 time and is located at: 
+	line: 92, position: 1
+"us" occurs 1 time and is located at: 
+	line: 253, position: 2
+"usual" occurs 1 time and is located at: 
+	line: 7, position: 4
+"very" occurs 2 times and is located at: 
+	line: 9, position: 3
+	line: 133, position: 7
+"visible" occurs 1 time and is located at: 
+	line: 126, position: 8
+"visitors" occurs 1 time and is located at: 
+	line: 32, position: 5
+"visits" occurs 1 time and is located at: 
+	line: 8, position: 8
+"voice" occurs 1 time and is located at: 
+	line: 57, position: 2
+"voices" occurs 4 times and is located at: 
+	line: 30, position: 3
+	line: 36, position: 4
+	line: 58, position: 6
+	line: 239, position: 8
+"wager" occurs 1 time and is located at: 
+	line: 148, position: 3
+"wall" occurs 1 time and is located at: 
+	line: 202, position: 8
+"wanted" occurs 2 times and is located at: 
+	line: 110, position: 11
+	line: 177, position: 9
+"was" occurs 34 times and is located at: 
+	line: 1, position: 1
+	line: 1, position: 10
+	line: 4, position: 9
+	line: 7, position: 2
+	line: 8, position: 2
+	line: 9, position: 2
+	line: 15, position: 9
+	line: 17, position: 5
+	line: 28, position: 7
+	line: 29, position: 8
+	line: 34, position: 9
+	line: 35, position: 3
+	line: 59, position: 10
+	line: 61, position: 3
+	line: 74, position: 4
+	line: 84, position: 2
+	line: 88, position: 2
+	line: 89, position: 1
+	line: 90, position: 10
+	line: 96, position: 8
+	line: 105, position: 3
+	line: 106, position: 6
+	line: 125, position: 5
+	line: 126, position: 7
+	line: 147, position: 8
+	line: 173, position: 7
+	line: 205, position: 10
+	line: 207, position: 3
+	line: 208, position: 3
+	line: 212, position: 3
+	line: 216, position: 12
+	line: 217, position: 8
+	line: 245, position: 8
+	line: 246, position: 3
+"wavered" occurs 1 time and is located at: 
+	line: 214, position: 2
+"way" occurs 3 times and is located at: 
+	line: 5, position: 5
+	line: 6, position: 7
+	line: 248, position: 7
+"weak" occurs 1 time and is located at: 
+	line: 14, position: 7
+"wedge" occurs 1 time and is located at: 
+	line: 92, position: 5
+"well—“I" occurs 1 time and is located at: 
+	line: 133, position: 8
+"went" occurs 5 times and is located at: 
+	line: 24, position: 5
+	line: 28, position: 1
+	line: 67, position: 6
+	line: 81, position: 10
+	line: 157, position: 10
+"were" occurs 12 times and is located at: 
+	line: 29, position: 4
+	line: 32, position: 3
+	line: 33, position: 11
+	line: 37, position: 9
+	line: 38, position: 6
+	line: 72, position: 4
+	line: 91, position: 5
+	line: 102, position: 4
+	line: 107, position: 1
+	line: 130, position: 2
+	line: 174, position: 10
+	line: 204, position: 3
+"we’ll" occurs 1 time and is located at: 
+	line: 252, position: 9
+"what" occurs 1 time and is located at: 
+	line: 35, position: 2
+"when" occurs 1 time and is located at: 
+	line: 1, position: 5
+"where" occurs 1 time and is located at: 
+	line: 168, position: 6
+"whether" occurs 1 time and is located at: 
+	line: 155, position: 6
+"which" occurs 7 times and is located at: 
+	line: 7, position: 10
+	line: 26, position: 9
+	line: 33, position: 10
+	line: 95, position: 7
+	line: 105, position: 7
+	line: 125, position: 9
+	line: 203, position: 1
+"while" occurs 1 time and is located at: 
+	line: 73, position: 10
+"white" occurs 1 time and is located at: 
+	line: 174, position: 5
+"who" occurs 12 times and is located at: 
+	line: 53, position: 1
+	line: 61, position: 2
+	line: 72, position: 3
+	line: 99, position: 3
+	line: 106, position: 13
+	line: 124, position: 9
+	line: 159, position: 3
+	line: 197, position: 6
+	line: 201, position: 1
+	line: 222, position: 6
+	line: 232, position: 2
+	line: 245, position: 13
+"whole" occurs 2 times and is located at: 
+	line: 139, position: 8
+	line: 212, position: 8
+"will" occurs 4 times and is located at: 
+	line: 22, position: 9
+	line: 139, position: 6
+	line: 152, position: 5
+	line: 192, position: 8
+"window" occurs 25 times and is located at: 
+	line: 38, position: 3
+	line: 59, position: 4
+	line: 72, position: 8
+	line: 76, position: 3
+	line: 82, position: 2
+	line: 105, position: 5
+	line: 110, position: 9
+	line: 125, position: 7
+	line: 128, position: 10
+	line: 140, position: 9
+	line: 141, position: 9
+	line: 150, position: 9
+	line: 159, position: 11
+	line: 162, position: 10
+	line: 165, position: 10
+	line: 168, position: 4
+	line: 169, position: 6
+	line: 170, position: 7
+	line: 173, position: 4
+	line: 175, position: 8
+	line: 199, position: 1
+	line: 215, position: 1
+	line: 218, position: 1
+	line: 230, position: 1
+	line: 243, position: 3
+"wish" occurs 1 time and is located at: 
+	line: 134, position: 4
+"wished" occurs 1 time and is located at: 
+	line: 201, position: 3
+"wishes" occurs 1 time and is located at: 
+	line: 232, position: 3
+"with" occurs 28 times and is located at: 
+	line: 8, position: 7
+	line: 20, position: 3
+	line: 38, position: 8
+	line: 53, position: 8
+	line: 57, position: 7
+	line: 61, position: 5
+	line: 74, position: 6
+	line: 76, position: 4
+	line: 88, position: 5
+	line: 94, position: 6
+	line: 98, position: 4
+	line: 110, position: 2
+	line: 116, position: 9
+	line: 124, position: 10
+	line: 126, position: 4
+	line: 150, position: 6
+	line: 177, position: 5
+	line: 188, position: 7
+	line: 199, position: 8
+	line: 202, position: 4
+	line: 207, position: 8
+	line: 211, position: 6
+	line: 214, position: 5
+	line: 218, position: 3
+	line: 232, position: 6
+	line: 242, position: 3
+	line: 253, position: 1
+	line: 256, position: 5
+"without" occurs 5 times and is located at: 
+	line: 53, position: 6
+	line: 140, position: 2
+	line: 142, position: 2
+	line: 198, position: 7
+	line: 233, position: 5
+"won" occurs 1 time and is located at: 
+	line: 101, position: 2
+"won’t" occurs 2 times and is located at: 
+	line: 79, position: 3
+	line: 81, position: 2
+"words" occurs 2 times and is located at: 
+	line: 158, position: 2
+	line: 191, position: 10
+"wore" occurs 1 time and is located at: 
+	line: 89, position: 9
+"would" occurs 3 times and is located at: 
+	line: 75, position: 4
+	line: 216, position: 5
+	line: 238, position: 9
+"wrenched" occurs 1 time and is located at: 
+	line: 116, position: 5
+"yet" occurs 3 times and is located at: 
+	line: 32, position: 8
+	line: 66, position: 6
+	line: 209, position: 4
+"you" occurs 12 times and is located at: 
+	line: 45, position: 9
+	line: 54, position: 8
+	line: 69, position: 2
+	line: 78, position: 3
+	line: 79, position: 5
+	line: 134, position: 3
+	line: 152, position: 10
+	line: 225, position: 7
+	line: 226, position: 1
+	line: 238, position: 4
+	line: 238, position: 11
+	line: 238, position: 13
+"young" occurs 3 times and is located at: 
+	line: 37, position: 7
+	line: 38, position: 9
+	line: 158, position: 6
+"your" occurs 1 time and is located at: 
+	line: 249, position: 9
+"you’ll" occurs 1 time and is located at: 
+	line: 248, position: 2
+"——’s" occurs 1 time and is located at: 
+	line: 250, position: 4
+"‘words" occurs 1 time and is located at: 
+	line: 19, position: 7
+"“All" occurs 1 time and is located at: 
+	line: 139, position: 1
+"“At" occurs 1 time and is located at: 
+	line: 50, position: 1
+"“Come" occurs 3 times and is located at: 
+	line: 59, position: 5
+	line: 252, position: 1
+	line: 252, position: 7
+"“Don’t" occurs 1 time and is located at: 
+	line: 185, position: 1
+"“Even" occurs 1 time and is located at: 
+	line: 233, position: 4
+"“First" occurs 2 times and is located at: 
+	line: 69, position: 1
+	line: 124, position: 1
+"“Gentlemen" occurs 1 time and is located at: 
+	line: 232, position: 1
+"“Go" occurs 1 time and is located at: 
+	line: 78, position: 1
+"“I" occurs 7 times and is located at: 
+	line: 11, position: 1
+	line: 41, position: 1
+	line: 45, position: 1
+	line: 64, position: 1
+	line: 132, position: 1
+	line: 180, position: 1
+	line: 192, position: 7
+"“If" occurs 1 time and is located at: 
+	line: 191, position: 1
+"“Is" occurs 1 time and is located at: 
+	line: 122, position: 1
+"“It’s" occurs 1 time and is located at: 
+	line: 220, position: 1
+"“I’ll" occurs 1 time and is located at: 
+	line: 241, position: 1
+"“Jacob" occurs 1 time and is located at: 
+	line: 52, position: 1
+"“Kurágin" occurs 1 time and is located at: 
+	line: 45, position: 8
+"“Let" occurs 1 time and is located at: 
+	line: 236, position: 1
+"“Listen" occurs 1 time and is located at: 
+	line: 129, position: 2
+"“Mind" occurs 1 time and is located at: 
+	line: 43, position: 1
+"“No" occurs 3 times and is located at: 
+	line: 81, position: 1
+	line: 137, position: 1
+	line: 248, position: 1
+"“Oh" occurs 1 time and is located at: 
+	line: 162, position: 1
+"“Quite" occurs 1 time and is located at: 
+	line: 144, position: 1
+"“Shut" occurs 1 time and is located at: 
+	line: 165, position: 1
+"“Take" occurs 1 time and is located at: 
+	line: 119, position: 1
+"“There" occurs 1 time and is located at: 
+	line: 48, position: 1
+"“Wait" occurs 5 times and is located at: 
+	line: 54, position: 6
+	line: 66, position: 1
+	line: 150, position: 1
+	line: 151, position: 5
+	line: 248, position: 11
+"“Well" occurs 1 time and is located at: 
+	line: 225, position: 1
+"“What" occurs 1 time and is located at: 
+	line: 238, position: 1
+"“Why" occurs 1 time and is located at: 
+	line: 209, position: 7
+"“You" occurs 1 time and is located at: 
+	line: 114, position: 1
+"“all" occurs 1 time and is located at: 
+	line: 19, position: 5
+"“and" occurs 1 time and is located at: 
+	line: 142, position: 1
+"“besides" occurs 1 time and is located at: 
+	line: 19, position: 1
+"“or" occurs 1 time and is located at: 
+	line: 79, position: 2
+"”" occurs 47 times and is located at: 
+	line: 11, position: 7
+	line: 19, position: 2
+	line: 23, position: 2
+	line: 41, position: 6
+	line: 43, position: 5
+	line: 45, position: 5
+	line: 46, position: 2
+	line: 48, position: 8
+	line: 50, position: 7
+	line: 52, position: 4
+	line: 55, position: 4
+	line: 59, position: 9
+	line: 64, position: 6
+	line: 66, position: 9
+	line: 69, position: 5
+	line: 78, position: 6
+	line: 79, position: 6
+	line: 81, position: 3
+	line: 114, position: 5
+	line: 119, position: 10
+	line: 122, position: 6
+	line: 124, position: 3
+	line: 129, position: 3
+	line: 134, position: 8
+	line: 137, position: 3
+	line: 142, position: 9
+	line: 144, position: 3
+	line: 150, position: 2
+	line: 153, position: 2
+	line: 162, position: 4
+	line: 165, position: 3
+	line: 180, position: 6
+	line: 186, position: 5
+	line: 191, position: 6
+	line: 193, position: 4
+	line: 209, position: 10
+	line: 220, position: 3
+	line: 226, position: 2
+	line: 232, position: 11
+	line: 234, position: 5
+	line: 236, position: 5
+	line: 239, position: 5
+	line: 241, position: 7
+	line: 248, position: 8
+	line: 250, position: 5
+	line: 252, position: 4
+	line: 253, position: 3

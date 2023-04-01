@@ -70,7 +70,6 @@ namespace hlp2
                 line[i] = ' ';
             }
         }
-        std::cout << "hit\n";
         std::istringstream iss{line};
         std::string word;
 
