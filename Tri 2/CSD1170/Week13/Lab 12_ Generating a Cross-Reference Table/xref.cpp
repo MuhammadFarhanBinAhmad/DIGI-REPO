@@ -41,12 +41,13 @@ namespace hlp2
 
         using VPII = std::vector<std::pair<int,int>>;
         std::map<std::string,VPII> sm{}; // xref table
-        int line_num{1}, word_pos{1}; // word occurs at line 1 and at position 1
+        int line_num{0}, word_pos{1}; // word occurs at line 1 and at position 1
         bool excluded = false;
         
         //Grab line
         for (std::vector<std::string> words; ps >> words;)
         {
+            ++line_num;
             //Check word.If word is part of excluded, break loop
             for (std::string const &word : words)
             {
@@ -67,13 +68,14 @@ namespace hlp2
                 sm[word].push_back(std::make_pair(line_num, word_pos));
                 word_pos++;
             }
-            line_num++;
             word_pos= 1;
         }
         //place all collected data into new pair ro return
-        std::pair<std::map<std::string, std::vector<std::pair<int, int>>>, int> result;
+        std::pair<std::map<std::string, std::vector<std::pair<int, int>>>, int> result{};
         result.first = sm;
         result.second = line_num;
+
+        myfile.close();
         // if word is not in exclude
         // use word to index map and use vector's push_back member
         // to append pair representing current line number and
@@ -84,12 +86,21 @@ namespace hlp2
     void print_wordmap(std::map<std::string, std::vector<std::pair<int, int>>> const &words)
     {
     //Note to self. Dont use auto next time. I allow it once cause last lab
-    for (auto const& [word, line_word_pairs] : words) {
-        std::cout << "\"" << word << "\" occurs " << line_word_pairs.size() << " times and is located at:\n";
-        for (auto const& [line, word_pos] : line_word_pairs) {
-            std::cout << "line " << line << ", position " << word_pos << "\n";
+    for (auto const& [word, line_word_pairs] : words) 
+    {
+        if (line_word_pairs.size() == 1)
+        {
+        std::cout << "\"" << word << "\" occurs " << line_word_pairs.size() << " time and is located at: \n";
         }
-        std::cout << "\n";
+        else
+        {
+            std::cout << "\"" << word << "\" occurs " << line_word_pairs.size() << " times and is located at: \n";
+
+        }
+        for (auto const& [line, word_pos] : line_word_pairs) 
+        {
+            std::cout << "\tline: " << line << ", position: " << word_pos << "\n";
+        }
     }
 
     }
