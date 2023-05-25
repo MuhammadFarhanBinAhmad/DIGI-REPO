@@ -1,3 +1,3 @@
 ﻿  Iterators.cpp
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week13\Practice\Iterators\Iterators\Iterators.cpp(18,1): warning C4227: anachronism used: qualifiers on reference are ignored
-  Iterators.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week13\Practice\Iterators\x64\Debug\Iterators.exe
+C:\Others\DIGI-REPO\Tri 2\CSD1170\Week13\Practice\Iterators\Iterators\Iterators.cpp(19,1): warning C4227: anachronism used: qualifiers on reference are ignored
+  Iterators.vcxproj -> C:\Others\DIGI-REPO\Tri 2\CSD1170\Week13\Practice\Iterators\x64\Debug\Iterators.exe
