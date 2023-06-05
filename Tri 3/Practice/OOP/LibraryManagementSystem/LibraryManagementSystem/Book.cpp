@@ -13,13 +13,18 @@ Book::Book() :
 	ISBN{ 0000000000000 }
 {}
 
-Book::Book(Book& copy_Book) :
+Book::Book(const Book& copy_Book) :
 	Title{ copy_Book.Title },
 	Aurthor { copy_Book.Aurthor},
 	Lender{copy_Book.Lender},
 	ISBN{copy_Book.ISBN}
 {
 
+}
+
+Book::~Book()
+{
+	//nothing much to do here unless something dynamically allocated is done here
 }
 
 Book& Book::operator=(const Book& copy_book)

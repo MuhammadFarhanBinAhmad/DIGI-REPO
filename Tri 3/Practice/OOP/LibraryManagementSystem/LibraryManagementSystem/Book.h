@@ -13,7 +13,10 @@ private:
 
 public:
 	Book();
-	Book(Book &copy_Book);//copy constructor
+	Book(const Book &copy_Book);//copy constructor
+	//Need set to const because want to copy. If not set to const, can cause unexpected behaviour
+	~Book();
+
 	Book& operator=(const Book &copy_book);//copy assignment
 
 
