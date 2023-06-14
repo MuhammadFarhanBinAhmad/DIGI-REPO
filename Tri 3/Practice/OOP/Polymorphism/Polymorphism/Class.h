@@ -3,6 +3,7 @@
 #include <iostream>
 #include <utility>
 #include <vector>
+
 struct Item
 {
 	std::string Name;
@@ -10,7 +11,7 @@ struct Item
 };
 class Class
 {
-private:
+protected:
 	std::string Name;
 	std::string Role;
 
@@ -24,4 +25,5 @@ public:
 	virtual void SetStats();
 	void SetInventory(std::string N, short A);
 	virtual void SetSkills();
+	void PrintStats();
 };

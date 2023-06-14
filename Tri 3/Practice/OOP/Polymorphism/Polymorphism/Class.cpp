@@ -25,3 +25,22 @@ void Class::SetSkills()
 {
 	Skills.push_back("NULL");
 }
+void Class::PrintStats()
+{
+	std::cout <<
+		"Role:" << Name << '\n' <<
+		"Name:" << Role << '\n' << '\n' <<
+		"Stats" << '\n'<<
+		"Strength:" << strength << '\n' <<
+		"Wisdom:" << wisdom << '\n' <<
+		"Intelligence:" << intelligence << '\n' <<
+		"Charisma:" << charisma << '\n' <<
+		"Agility:" << agility << '\n' << '\n';
+
+	std::cout << "Skills" << '\n';
+	for (std::string s : Skills)
+	{
+		std::cout << s << std::endl;
+	}
+	std::cout << '\n';
+}
