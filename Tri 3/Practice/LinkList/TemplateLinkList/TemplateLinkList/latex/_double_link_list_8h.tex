@@ -1,0 +1,289 @@
+\doxysection{Double\+Link\+List.\+h File Reference}
+\hypertarget{_double_link_list_8h}{}\label{_double_link_list_8h}\index{DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}}
+\item 
+struct \mbox{\hyperlink{struct_d_llist}{DLlist}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_double_link_list_8h_aa0d4f63eb92818bcbb083aaf3a552a11}{Retrive\+Data}} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Get the data of a specific \doxylink{struct_node}{Node}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_af86bbd3e73c8611ce1be590a0c5e810e}{Change\+Data}} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}node, int value)
+\begin{DoxyCompactList}\small\item\em Change value of data of selected \doxylink{struct_node}{Node}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_double_link_list_8h_aeb45d9d435b922adaf1dc376dc315eca}{Empty}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}List)
+\begin{DoxyCompactList}\small\item\em Check if list is empty. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{_double_link_list_8h_a4f4b212f59f8b453649378ce853a329e}{Size}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}List)
+\begin{DoxyCompactList}\small\item\em Check the size of Linklist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_a14ad3e3049e8c655cc8d6f834df1feb2}{Destroy\+List}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}List)
+\begin{DoxyCompactList}\small\item\em Destroy entire list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_adb95a99ca55fc610fe1dbede4d8148e1}{Push\+Front}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}List, int value)
+\begin{DoxyCompactList}\small\item\em Add new node at the front of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_aacd78b42e1b119e36dfe29d042bc415c}{Push\+Back}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}List, int value)
+\begin{DoxyCompactList}\small\item\em Add new node at the back of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_a0720197ac030d28c58236f0b51f70c8b}{Remove\+Front}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}List)
+\begin{DoxyCompactList}\small\item\em Remove first node in the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_ab0f72228ea85fadbd207ea2009a80256}{Remove\+Last}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}List)
+\begin{DoxyCompactList}\small\item\em Remove last node in the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_a091d46ff344fca20c2b746524cf47f48}{Remove}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}List, int index)
+\begin{DoxyCompactList}\small\item\em Remove a desired node in the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_abf4df5ecf39e255be5d40c2cfa8ca9c0}{Add}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} List, int value, int index)
+\begin{DoxyCompactList}\small\item\em Add a desired node in the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_a962945ed7c663b8c1b77b8284512132b}{Move}} (\mbox{\hyperlink{struct_d_llist}{DLlist}}, int index)
+\begin{DoxyCompactList}\small\item\em Move an element from the list to another position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_double_link_list_8h_ac21bfc542df5aaf52b7440e02530a38a}{Find\+Node}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}List, int value)
+\begin{DoxyCompactList}\small\item\em Find and return specific node in the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_double_link_list_8h_a8f72433039c6fd2a2c9ee91ca4bf7a73}{Display}} (\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}List)
+\begin{DoxyCompactList}\small\item\em Display all the node value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Farhan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+April 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_double_link_list_8h_abf4df5ecf39e255be5d40c2cfa8ca9c0}\label{_double_link_list_8h_abf4df5ecf39e255be5d40c2cfa8ca9c0} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!Add@{Add}}
+\index{Add@{Add}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}}}]{List,  }\item[{int}]{value,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Add a desired node in the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to add a node \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & The value you wish to add \\
+\hline
+\mbox{\texttt{ in}}  & {\em index} & The element index position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_af86bbd3e73c8611ce1be590a0c5e810e}\label{_double_link_list_8h_af86bbd3e73c8611ce1be590a0c5e810e} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!ChangeData@{ChangeData}}
+\index{ChangeData@{ChangeData}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{ChangeData()}{ChangeData()}}
+{\footnotesize\ttfamily void Change\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Change value of data of selected \doxylink{struct_node}{Node}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_node}{Node}} & Give which \doxylink{struct_node}{Node} which data you wish to change \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & What value you wish to change to \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_a14ad3e3049e8c655cc8d6f834df1feb2}\label{_double_link_list_8h_a14ad3e3049e8c655cc8d6f834df1feb2} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!DestroyList@{DestroyList}}
+\index{DestroyList@{DestroyList}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{DestroyList()}{DestroyList()}}
+{\footnotesize\ttfamily void Destroy\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}}]{List }\end{DoxyParamCaption})}
+
+
+
+Destroy entire list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to destroy \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_a8f72433039c6fd2a2c9ee91ca4bf7a73}\label{_double_link_list_8h_a8f72433039c6fd2a2c9ee91ca4bf7a73} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!Display@{Display}}
+\index{Display@{Display}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{Display()}{Display()}}
+{\footnotesize\ttfamily void Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}}]{List }\end{DoxyParamCaption})}
+
+
+
+Display all the node value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to check \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_aeb45d9d435b922adaf1dc376dc315eca}\label{_double_link_list_8h_aeb45d9d435b922adaf1dc376dc315eca} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!Empty@{Empty}}
+\index{Empty@{Empty}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{Empty()}{Empty()}}
+{\footnotesize\ttfamily bool Empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}}]{List }\end{DoxyParamCaption})}
+
+
+
+Check if list is empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to check if its empty \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & Return bool state if list is empty or not \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_ac21bfc542df5aaf52b7440e02530a38a}\label{_double_link_list_8h_ac21bfc542df5aaf52b7440e02530a38a} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!FindNode@{FindNode}}
+\index{FindNode@{FindNode}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{FindNode()}{FindNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} Find\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}}]{List,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Find and return specific node in the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to check \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & Value you wish to find \\
+\hline
+\mbox{\texttt{ out}}  & {\em Node\texorpdfstring{$\ast$}{*}} & Return node containing the value you desire \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_a962945ed7c663b8c1b77b8284512132b}\label{_double_link_list_8h_a962945ed7c663b8c1b77b8284512132b} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!Move@{Move}}
+\index{Move@{Move}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily void Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}}}]{,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Move an element from the list to another position. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to check \\
+\hline
+\mbox{\texttt{ in}}  & {\em index} & Index position you wish to place it in the list \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_aacd78b42e1b119e36dfe29d042bc415c}\label{_double_link_list_8h_aacd78b42e1b119e36dfe29d042bc415c} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!PushBack@{PushBack}}
+\index{PushBack@{PushBack}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{PushBack()}{PushBack()}}
+{\footnotesize\ttfamily void Push\+Back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}}]{List,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Add new node at the back of the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to add new node \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & Value of new node \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_adb95a99ca55fc610fe1dbede4d8148e1}\label{_double_link_list_8h_adb95a99ca55fc610fe1dbede4d8148e1} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!PushFront@{PushFront}}
+\index{PushFront@{PushFront}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{PushFront()}{PushFront()}}
+{\footnotesize\ttfamily void Push\+Front (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}}]{List,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Add new node at the front of the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to add new node \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & Value of new node \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_a091d46ff344fca20c2b746524cf47f48}\label{_double_link_list_8h_a091d46ff344fca20c2b746524cf47f48} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!Remove@{Remove}}
+\index{Remove@{Remove}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}}]{List,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Remove a desired node in the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to remove the node \\
+\hline
+\mbox{\texttt{ in}}  & {\em index} & The element index you wish to remove \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_a0720197ac030d28c58236f0b51f70c8b}\label{_double_link_list_8h_a0720197ac030d28c58236f0b51f70c8b} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!RemoveFront@{RemoveFront}}
+\index{RemoveFront@{RemoveFront}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{RemoveFront()}{RemoveFront()}}
+{\footnotesize\ttfamily void Remove\+Front (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}}]{List }\end{DoxyParamCaption})}
+
+
+
+Remove first node in the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to remove the node \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_ab0f72228ea85fadbd207ea2009a80256}\label{_double_link_list_8h_ab0f72228ea85fadbd207ea2009a80256} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!RemoveLast@{RemoveLast}}
+\index{RemoveLast@{RemoveLast}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{RemoveLast()}{RemoveLast()}}
+{\footnotesize\ttfamily void Remove\+Last (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} \texorpdfstring{$\ast$}{*}}]{List }\end{DoxyParamCaption})}
+
+
+
+Remove last node in the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to remove the node \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_aa0d4f63eb92818bcbb083aaf3a552a11}\label{_double_link_list_8h_aa0d4f63eb92818bcbb083aaf3a552a11} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!RetriveData@{RetriveData}}
+\index{RetriveData@{RetriveData}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{RetriveData()}{RetriveData()}}
+{\footnotesize\ttfamily int Retrive\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+
+
+
+Get the data of a specific \doxylink{struct_node}{Node}. 
+
+\DoxyHorRuler{0}
+ 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_node}{Node}} & Give which \doxylink{struct_node}{Node} you wish to get the value\\
+\hline
+\mbox{\texttt{ out}}  & {\em int} & Returns value of data \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_double_link_list_8h_a4f4b212f59f8b453649378ce853a329e}\label{_double_link_list_8h_a4f4b212f59f8b453649378ce853a329e} 
+\index{DoubleLinkList.h@{DoubleLinkList.h}!Size@{Size}}
+\index{Size@{Size}!DoubleLinkList.h@{DoubleLinkList.h}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily size\+\_\+t Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_llist}{DLlist}} const \texorpdfstring{$\ast$}{*}}]{List }\end{DoxyParamCaption})}
+
+
+
+Check the size of Linklist. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \doxylink{struct_d_llist}{DLlist}} & List you wish to check \\
+\hline
+\mbox{\texttt{ out}}  & {\em size\+\_\+t} & Return the size of list \\
+\hline
+\end{DoxyParams}
