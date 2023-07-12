@@ -61,6 +61,11 @@ int main()
 		}
 	}
 
+	for (Book *b: Books_Vector)
+	{
+		std::cout << b->GetAurthor();
+	}
+
 	BookList_File.close();
 
 
