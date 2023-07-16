@@ -1,4 +1,5 @@
 #pragma once
+#include <initializer_list>
 /*****************************************************************//**
  * \file   DoubleLinkList.h
  * \brief
@@ -15,7 +16,7 @@ private:
 		Node* next;
 		int data;
 
-
+		Node(int val) :data(val), prev(nullptr), next(nullptr) {}//Constructor to create new Node
 	};
 public:
 
@@ -23,7 +24,9 @@ public:
 	Node *tail{nullptr};
 	size_t object_Counter;
 
-	DLL();
+	DLL();//Constructor
+	DLL(const DLL&);//Copy Constructor
+	DLL(std::initializer_list<int>);//Will replace this with template
 	~DLL();
 
 
@@ -37,7 +40,7 @@ public:
 	* \param[out] int
 	* Returns value of data
 	*************************************************************************/
-	int RetriveData(Node* node);
+	int RetriveData(int index);
 
 	/*!
 	* \brief
@@ -48,7 +51,7 @@ public:
 	* \param[in] value
 	* What value you wish to change to
 	*/
-	void ChangeData(Node* node, int value);
+	void ChangeData(int index, int value);
 
 	/*!
 	* \brief
@@ -58,7 +61,7 @@ public:
 	* \param[out] bool
 	* Return bool state if list is empty or not
 	 */
-	bool Empty();
+	bool Empty() const;
 
 	/*!
 	* \brief
@@ -165,4 +168,9 @@ public:
 	* List you wish to check
 	 */
 	void Display();
+
+	Node* NewNode(int data);
+
+	void Clear();
+
 };
