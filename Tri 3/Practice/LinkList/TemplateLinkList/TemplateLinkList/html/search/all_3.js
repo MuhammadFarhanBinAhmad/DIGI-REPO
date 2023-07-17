@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['empty_0',['Empty',['../_double_link_list_8h.html#aeb45d9d435b922adaf1dc376dc315eca',1,'DoubleLinkList.h']]]
+  ['empty_0',['Empty',['../class_d_l_l.html#a43f0e9152efca7657495f9e31a6e8438',1,'DLL']]]
 ];

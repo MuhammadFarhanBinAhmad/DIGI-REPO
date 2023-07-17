@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['changedata_0',['ChangeData',['../_double_link_list_8h.html#af86bbd3e73c8611ce1be590a0c5e810e',1,'DoubleLinkList.h']]]
+  ['changedata_0',['ChangeData',['../class_d_l_l.html#a3ebec7a53ffac55eff2ed0ed9e14d9c3',1,'DLL']]],
+  ['clear_1',['Clear',['../class_d_l_l.html#abd6c24d1e2aa02329673339f362995a4',1,'DLL']]]
 ];

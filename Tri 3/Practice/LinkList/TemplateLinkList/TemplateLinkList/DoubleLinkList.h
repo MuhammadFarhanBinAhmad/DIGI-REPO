@@ -1,5 +1,9 @@
 #pragma once
 #include <initializer_list>
+#include <iostream>
+#include <cstddef>
+#include <iomanip>
+
 /*****************************************************************//**
  * \file   DoubleLinkList.h
  * \brief
@@ -15,55 +19,43 @@ private:
 		Node* prev;
 		Node* next;
 		int data;
-
 		Node(int val) :data(val), prev(nullptr), next(nullptr) {}//Constructor to create new Node
 	};
 public:
-
 	Node *head{nullptr};
 	Node *tail{nullptr};
 	size_t object_Counter;
-
 	DLL();//Constructor
 	DLL(const DLL&);//Copy Constructor
 	DLL(std::initializer_list<int>);//Will replace this with template
 	~DLL();
-
-
+	friend std::ostream& operator<<(std::ostream& os, const DLL& List);
 	/*!***********************************************************************
 	* \brief
 	* Get the data of a specific Node
 	*
-	* \param[in] Node
-	* Give which Node you wish to get the value
 	*
-	* \param[out] int
-	* Returns value of data
 	*************************************************************************/
 	int RetriveData(int index);
-
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Change value of data of selected Node
-	*
 	* \param[in] Node
 	* Give which Node which data you wish to change
 	* \param[in] value
 	* What value you wish to change to
-	*/
+	*************************************************************************/
 	void ChangeData(int index, int value);
-
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Check if list is empty
 	* \param[in] DLlist
 	* List you wish to check if its empty
 	* \param[out] bool
 	* Return bool state if list is empty or not
-	 */
+	*************************************************************************/
 	bool Empty() const;
-
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Check the size of Linklist
 	* \param[in] DLlist
@@ -72,105 +64,100 @@ public:
 	* Return the size of list
 	 */
 	size_t Size();
-
-	/*!
-	* \brief
-	* Destroy entire list
-	* \param[in] DLlist
-	* List you wish to destroy
-	 */
-	//void DestroyList(DLlist* List);
-
-	///*!
+	/*!***********************************************************************
 	//* \brief
 	//* Add new node at the front of the list
 	//* \param[in] DLlist
 	//* List you wish to add new node
-	//* \param[in] value
+	//* \param[in] int
 	//* Value of new node
-	// */
-	void PushFront( int value);
-
-	/*!
+	*************************************************************************/
+	void PushFront(int value);
+	/*!***********************************************************************
 	* \brief
 	* Add new node at the back of the list
 	* \param[in] DLlist
 	* List you wish to add new node
-	* \param[in] value
+	* \param[in] int
 	* Value of new node
-	 */
+	*************************************************************************/
 	void PushBack(int value);
-
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Remove first node in the list
 	* \param[in] DLlist
 	* List you wish to remove the node
-	 */
+	*************************************************************************/
 	void RemoveFront();
-
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Remove last node in the list
 	* \param[in] DLlist
 	* List you wish to remove the node
-	 */
+	*************************************************************************/
 	void RemoveLast();
-
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Remove a desired node in the list
 	* \param[in] DLlist
 	* List you wish to remove the node
-	* \param[in] index
+	* \param[in] int
 	* The element index you wish to remove
-	 */
-	void Remove( int index);
-
-	/*!
+	*************************************************************************/
+	void Remove(int index);
+	/*!***********************************************************************
 	* \brief
 	* Add a desired node in the list
 	* \param[in] DLlist
 	* List you wish to add a node
-	* \param[in] value
+	* \param[in] int
 	* The value you wish to add
-	* \param[in] index
+	* \param[in] int
 	* The element index position
-	 */
+	*************************************************************************/
 	void Add(int value, int index);
-
-	/*!
+	/*!***********************************************************************
 	* \brief
-	* Move an element from the list to another position
+	* Swap 2 node position
 	* \param[in] DLlist
 	* List you wish to check
-	* \param[in] index
+	* \param[in] int
 	* Index position you wish to place it in the list
-	 */
-	void Move(int index);
+ * \param index
+	*************************************************************************/
+	void Swap(int currindex, int newindex);
 
-	/*!
+	/*!***********************************************************************
 	* \brief
 	* Find and return specific node in the list
 	* \param[in] DLlist
 	* List you wish to check
-	* \param[in] value
+	* \param[in] int
 	* Value you wish to find
 	* \param[out] Node*
 	* Return node containing the value you desire
-	 */
+	*************************************************************************/
 	Node* FindNode(int value);
 
-	/*!
-	* \brief
-	* Display all the node value
-	* \param[in] DLlist
-	* List you wish to check
-	 */
-	void Display();
 
+	 /*!***********************************************************************
+	 * \brief
+	 * Create a new Node
+	 * \param[in] int
+	 * Data for the new node
+	 * \param[out] Node*
+	 * Return the pointer of the newly created Node
+	 * *************************************************************************/
 	Node* NewNode(int data);
 
+	void Move(int curIndex,int Newindex);
+
+	/*!***********************************************************************
+	* \brief
+	*  Delete the entire list
+	* *************************************************************************/
 	void Clear();
+
+
 
 };

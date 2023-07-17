@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['destroylist_0',['DestroyList',['../_double_link_list_8h.html#a14ad3e3049e8c655cc8d6f834df1feb2',1,'DoubleLinkList.h']]],
-  ['display_1',['Display',['../_double_link_list_8h.html#a8f72433039c6fd2a2c9ee91ca4bf7a73',1,'DoubleLinkList.h']]],
-  ['dllist_2',['DLlist',['../struct_d_llist.html',1,'']]],
-  ['doublelinklist_2eh_3',['DoubleLinkList.h',['../_double_link_list_8h.html',1,'']]]
+  ['dll_0',['DLL',['../class_d_l_l.html',1,'']]],
+  ['doublelinklist_2eh_1',['DoubleLinkList.h',['../_double_link_list_8h.html',1,'']]]
 ];

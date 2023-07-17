@@ -1,5 +1,4 @@
 #include "DoubleLinkList.h"
-#include <iostream>
 
 DLL::DLL() : head{ nullptr }, tail{ nullptr }, object_Counter{0}
 {
@@ -33,7 +32,7 @@ DLL::DLL(std::initializer_list<int> ListToCopy) :DLL()
 }
 DLL::~DLL()
 {
-
+	Clear();
 }
 
 int DLL::RetriveData(int index)
@@ -169,37 +168,92 @@ void DLL::Remove(int index)
 }
 void DLL::Add(int value, int index)
 {
-	//Node* NewN = NewNode(value);
-	//Node* temp = this->head;
-	//int counter = 0;
+	int counter = 0;
+	Node* temp = this->head;
 
-	//while (counter != index)
-	//{
-	//	counter++;
-	//	temp = temp->next;
-	//}
+	if (index == 0)
+	{
+		PushFront(value);
+	}
+	else
+	{
+		while (counter != index)
+		{
+			temp = temp->next;
+			counter++;
+		}
 
+		Node* New_Node = NewNode(value);
+		Node* Prev = temp->prev;
 
+		Prev->next = New_Node;
+		New_Node->next = temp;
+	}
 
-	//temp->next = NewN;
-	
 }
-void DLL::Move(int index)
+void DLL::Swap(int currindex,int newindex)
 {
+	int lhscounter = 0;
+	int rhscounter = 0;
+	Node* lhs = this->head;
+	Node* rhs = this->head;
+
+	//Get both node position
+	while (lhscounter != currindex)
+	{
+		lhscounter++;
+		lhs = lhs->next;
+	}
+	while (rhscounter != newindex)
+	{
+		rhscounter++;
+		rhs = rhs->next;
+	}
+
+	int temp = lhs->data;
+
+	ChangeData(lhscounter, rhs->data);
+	ChangeData(rhscounter, temp);
 
 }
-//DLL::Node* DLL::FindNode(int value)
-//{
-//
-//}
-void DLL::Display()
+DLL::Node* DLL::FindNode(int value)
 {
+	int counter = 0;
+	Node* temp = this->head;
 
+	while (temp->data != value && temp->next != nullptr)
+	{
+		temp = temp->next;
+		counter++;
+	}
+	if (temp->next == nullptr)
+	{
+		return nullptr;
+	}
+	else
+	return temp;
 }
 DLL::Node* DLL::NewNode(int data) 
 { 
 	object_Counter++;
 	return new Node(data); 
+}
+
+void DLL::Move(int curIndex, int Newindex)
+{
+	int counter = 0;
+	int NewposCounter = 0;
+	Node* temp = this->head;
+	Node* NewPos = this->head;
+
+	while (counter < curIndex)
+	{
+		counter++;
+		temp = temp->next;
+		std::cout << temp->prev->data;
+
+	}
+
 }
 
 void DLL::Clear()
@@ -219,3 +273,18 @@ void DLL::Clear()
 	this->tail = nullptr;
 
 }
+
+std::ostream& operator<<(std::ostream& os, const DLL& List)
+{
+	DLL::Node* temp = List.head;
+
+	while (temp !=0)
+	{
+		os << std::setw(4) << temp->data;
+		temp = temp->next;
+	}
+	os << std::endl;
+
+	return os;
+}
+

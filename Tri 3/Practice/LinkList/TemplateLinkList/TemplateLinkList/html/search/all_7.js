@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pushback_0',['PushBack',['../_double_link_list_8h.html#aacd78b42e1b119e36dfe29d042bc415c',1,'DoubleLinkList.h']]],
-  ['pushfront_1',['PushFront',['../_double_link_list_8h.html#adb95a99ca55fc610fe1dbede4d8148e1',1,'DoubleLinkList.h']]]
+  ['pushback_0',['PushBack',['../class_d_l_l.html#aba9b7cc30e55a42cd9a68723930250e5',1,'DLL']]],
+  ['pushfront_1',['PushFront',['../class_d_l_l.html#a3cf522daf1feb068f8f54275c1e8e874',1,'DLL']]]
 ];

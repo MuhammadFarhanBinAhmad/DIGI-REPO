@@ -12,31 +12,41 @@ int main()
 
 	DLL List2(List);
 
-	std::cout << "Index 3 = " << List.RetriveData(3) << std::endl;
+	std::cout << List;
+	std::cout << "ChangeData at index 4\n";
 	List.ChangeData(3, 8);
-	std::cout << "Index 3 = " << List.RetriveData(3) << std::endl;
-	List.PushFront(9);
+	std::cout << List;
+
+
 	std::cout << "PushFront\n";
-	std::cout << "Index 0 = " << List.RetriveData(0) << std::endl;
-	List.RemoveFront();
+	List.PushFront(9);
+	std::cout << List;
+
 	std::cout << "RemoveFront\n";
-	std::cout << "Index 0 = " << List.RetriveData(0) << std::endl;
-	std::cout << "Remove Index 2\n";
-	std::cout << "Index 2 = " << List.RetriveData(2) << std::endl ;
+	List.RemoveFront();
+	std::cout << List;
+
+	std::cout << "Remove index 0\n";
 	List.Remove(0);
-	std::cout << "Index 0 = " << List.RetriveData(0) << std::endl;
-	std::cout << "Remove Last\n";
+	std::cout << List;
 
-	std::cout << "Last index =" << List.RetriveData(List.Size()-1) << std::endl;
+	std::cout << "RemoveLast\n";
 	List.RemoveLast();
-	std::cout << "Last index =" << List.RetriveData(List.Size()-1) << std::endl;
+	std::cout << List;
 
-	std::cout << "Index 1 = " << List.RetriveData(1) << std::endl;
+	std::cout << "Add 9 at index 1\n";
 	List.Add(9, 1);
-	std::cout << "Index 1 = " << List.RetriveData(1) << std::endl;
+	std::cout << List;
+	
+	std::cout << "Find Node with Value 44 = " << List.FindNode(44) << std::endl;
 
-	List.Clear();
-	List2.Clear();
+	std::cout << "Swap index 1 and index 4\n";
+	List.Swap(1, 4);
+	std::cout << List;
+
+	std::cout << "Move index 1 and index 4\n";
+	List.Move(1, 4);
+	std::cout << List;
 
 	//   MY BEST FRIEND AND WORST ENEMY :)
 //Enable run-time memory check for debug builds.

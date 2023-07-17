@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dllist_0',['DLlist',['../struct_d_llist.html',1,'']]]
+  ['dll_0',['DLL',['../class_d_l_l.html',1,'']]]
 ];

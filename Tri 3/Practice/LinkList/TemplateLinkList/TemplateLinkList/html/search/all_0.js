@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['add_0',['Add',['../_double_link_list_8h.html#abf4df5ecf39e255be5d40c2cfa8ca9c0',1,'DoubleLinkList.h']]]
+  ['add_0',['Add',['../class_d_l_l.html#a5656394c413247cb775572af06a65468',1,'DLL']]]
 ];

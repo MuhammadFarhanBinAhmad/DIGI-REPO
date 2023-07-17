@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['remove_0',['Remove',['../_double_link_list_8h.html#a091d46ff344fca20c2b746524cf47f48',1,'DoubleLinkList.h']]],
-  ['removefront_1',['RemoveFront',['../_double_link_list_8h.html#a0720197ac030d28c58236f0b51f70c8b',1,'DoubleLinkList.h']]],
-  ['removelast_2',['RemoveLast',['../_double_link_list_8h.html#ab0f72228ea85fadbd207ea2009a80256',1,'DoubleLinkList.h']]],
-  ['retrivedata_3',['RetriveData',['../_double_link_list_8h.html#aa0d4f63eb92818bcbb083aaf3a552a11',1,'DoubleLinkList.h']]]
+  ['remove_0',['Remove',['../class_d_l_l.html#acc1a5a5308f4ae8fb0e273e892e0de81',1,'DLL']]],
+  ['removefront_1',['RemoveFront',['../class_d_l_l.html#a7dc0e42bbcbe1ba8633ee727182660e0',1,'DLL']]],
+  ['removelast_2',['RemoveLast',['../class_d_l_l.html#a0c02f682b1345c034b035ba162a13841',1,'DLL']]],
+  ['retrivedata_3',['RetriveData',['../class_d_l_l.html#abb8c91c8a0acc32e00d76ec6547607c3',1,'DLL']]]
 ];
