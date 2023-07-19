@@ -1,9 +1,10 @@
 #pragma once
-#include <initializer_list>
-#include <iostream>
 #include <cstddef>
+#include <iostream>
+#include <initializer_list>
+#include <stdexcept>
+#include <utility>
 #include <iomanip>
-
 /*****************************************************************//**
  * \file   DoubleLinkList.h
  * \brief
@@ -29,7 +30,15 @@ public:
 	DLL(const DLL&);//Copy Constructor
 	DLL(std::initializer_list<int>);//Will replace this with template
 	~DLL();
+
+	//Operators
 	friend std::ostream& operator<<(std::ostream& os, const DLL& List);
+	DLL& operator=( DLL& rhs);
+	DLL& operator=(std::initializer_list<int> rhs);
+
+	int operator[](size_t index);
+	const int operator[](size_t index) const;
+
 	/*!***********************************************************************
 	* \brief
 	* Get the data of a specific Node
@@ -72,6 +81,7 @@ public:
 	//* \param[in] int
 	//* Value of new node
 	*************************************************************************/
+
 	void PushFront(int value);
 	/*!***********************************************************************
 	* \brief
@@ -125,7 +135,7 @@ public:
 	* Index position you wish to place it in the list
  * \param index
 	*************************************************************************/
-	void Swap(int currindex, int newindex);
+	void SwapValue(int currindex, int newindex);
 
 	/*!***********************************************************************
 	* \brief
@@ -150,7 +160,6 @@ public:
 	 * *************************************************************************/
 	Node* NewNode(int data);
 
-	void Move(int curIndex,int Newindex);
 
 	/*!***********************************************************************
 	* \brief
@@ -159,5 +168,5 @@ public:
 	void Clear();
 
 
-
+	void Swap(DLL& rhs);
 };

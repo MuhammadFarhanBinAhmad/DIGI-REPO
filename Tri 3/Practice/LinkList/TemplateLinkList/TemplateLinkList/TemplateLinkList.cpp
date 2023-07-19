@@ -40,13 +40,13 @@ int main()
 	
 	std::cout << "Find Node with Value 44 = " << List.FindNode(44) << std::endl;
 
-	std::cout << "Swap index 1 and index 4\n";
-	List.Swap(1, 4);
+
+	List = List2;
+
+
 	std::cout << List;
 
-	std::cout << "Move index 1 and index 4\n";
-	List.Move(1, 4);
-	std::cout << List;
+	std::cout << List2[2];
 
 	//   MY BEST FRIEND AND WORST ENEMY :)
 //Enable run-time memory check for debug builds.

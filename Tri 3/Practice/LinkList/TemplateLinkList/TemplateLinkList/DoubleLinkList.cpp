@@ -35,6 +35,48 @@ DLL::~DLL()
 	Clear();
 }
 
+DLL& DLL::operator=( DLL& rhs)
+{
+	Swap(rhs);
+
+	return *this;
+}
+
+DLL& DLL::operator=(std::initializer_list<int> rhs)
+{
+
+	DLL temp(rhs);
+	Swap(temp);
+
+	return *this;
+}
+int DLL::operator[](size_t index)
+{
+	Node* temp = this->head;
+	size_t counter = 0;
+
+	while (counter != index)
+	{
+		counter++;
+		temp = temp->next;
+	}
+
+	return temp->data;
+}
+const int DLL::operator[](size_t index) const
+{
+	Node* temp = this->head;
+	size_t counter = 0;
+
+	while (counter != index)
+	{
+		counter++;
+		temp = temp->next;
+	}
+
+	return temp->data;
+}
+
 int DLL::RetriveData(int index)
 {
 	int counter = 0;
@@ -191,7 +233,7 @@ void DLL::Add(int value, int index)
 	}
 
 }
-void DLL::Swap(int currindex,int newindex)
+void DLL::SwapValue(int currindex,int newindex)
 {
 	int lhscounter = 0;
 	int rhscounter = 0;
@@ -239,22 +281,6 @@ DLL::Node* DLL::NewNode(int data)
 	return new Node(data); 
 }
 
-void DLL::Move(int curIndex, int Newindex)
-{
-	int counter = 0;
-	int NewposCounter = 0;
-	Node* temp = this->head;
-	Node* NewPos = this->head;
-
-	while (counter < curIndex)
-	{
-		counter++;
-		temp = temp->next;
-		std::cout << temp->prev->data;
-
-	}
-
-}
 
 void DLL::Clear()
 {
@@ -272,6 +298,12 @@ void DLL::Clear()
 	this->head = nullptr;
 	this->tail = nullptr;
 
+}
+
+void DLL::Swap(DLL& rhs)
+{
+	std::swap(this->head, rhs.head);
+	std::swap(this->tail, rhs.tail);
 }
 
 std::ostream& operator<<(std::ostream& os, const DLL& List)
