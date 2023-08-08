@@ -1,0 +1,71 @@
+
+<!-- saved from url=(0069)https://faculty.digipen.edu/~mmead/www/Courses/CS170/STL-Error-2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="./STLError2_files/new.css">
+<title>STL-Error-2</title>
+</head>
+
+<body>  
+<center><h1>Example STL Error Message</h1></center>
+
+<!--Be very careful not to mix up forward iterators with reverse iterators:-->
+
+This function:
+
+<pre class="sourcecode"><code><b>template</b> &lt;<b>typename</b> T&gt;
+<b>void</b> print4(T&amp; v)
+{
+  T::iterator iter;
+  <b>for</b> (iter = v.begin(); iter != v.end(); ++iter)
+    std::cout &lt;&lt; *iter &lt;&lt; <font color="#9933CC">"  "</font>;
+  std::cout &lt;&lt; std::endl;
+}</code></pre>
+
+called with this code:
+
+<blockquote><pre>  <font color="#003399"><i>// Create a list of strings</i></font>
+std::list&lt;std::string&gt; cont1;
+cont1.push_back(<font color="#9933CC">"one"</font>);
+cont1.push_back(<font color="#9933CC">"two"</font>);
+cont1.push_back(<font color="#9933CC">"three"</font>);
+cont1.push_back(<font color="#9933CC">"four"</font>);
+
+  <font color="#003399"><i>// Create a copy of the list of strings</i></font>
+<b>const</b> std::list&lt;std::string&gt; cont2(cont1);
+
+print4(cont1);  <font color="#003399"><i>// Print the first list of strings</i></font>
+print4(cont2);  <font color="#003399"><i>// Print the second list of strings</i></font>
+</pre></blockquote>
+
+
+produces the error message below. Why?
+
+<blockquote><pre>main.cpp(598) : error C2679: binary '=' : 
+no operator defined which takes a right-hand operand of type 
+'class std::list<class std::basic_string<char,="" struct="" std::char_traits<char="">,class std::allocator<char> &gt;,
+class std::allocator<class std::basic_string<char,="" struct="" std::char_traits<char="">,class std::allocator<char> &gt; &gt; &gt;::const_iterator' 
+(or there is no acceptable conversion)
+main.cpp(663) : see reference to function template instantiation 
+'void __cdecl print4(const class std::list<class std::basic_string<char,="" struct="" std::char_traits<char="">,class std::allocator<char> &gt;,class
+std::allocator<class std::basic_string<char,struct="" std::char_traits<char="">,
+class std::allocator<char> &gt; &gt; &gt; &amp;)' being compiled
+main.cpp(598) : error C2679: binary '!=' : 
+no operator defined which takes a right-hand operand of type 
+'class std::list<class std::basic_string<char,struct="" std::char_traits<char="">,
+class std::allocator<char> &gt;,class std::allocator<class std::basic_string<char,="" struct="" std::char_traits<char="">,class std::allocator<char> &gt; &gt; &gt;::const_iterator' 
+(or there is no acceptable conversion)
+main.cpp(663) : see reference to function template instantiation 
+'void __cdecl print4(const class std::list<class std::basic_string<char,="" struct="" std::char_traits<char="">,class std::allocator<char> &gt;,class
+std::allocator<class std::basic_string<char,struct="" std::char_traits<char="">,
+class std::allocator<char> &gt; &gt; &gt; &amp;)' being compiled
+</char></class></char></class></char></class></char></class></char></class></char></class></char></class></char></class></pre></blockquote>
+
+
+
+
+
+
+
+<blockquote><pre></pre></blockquote>
+
+</body></html>

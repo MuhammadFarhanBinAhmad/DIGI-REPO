@@ -1,0 +1,291 @@
+
+<!-- saved from url=(0072)https://faculty.digipen.edu/~mmead/www/Courses/CS170/Maps-Example-1.html -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="./MapExample_files/new.css">
+<title>STL map Example</title>
+</head>
+
+<body>  
+<center><h1>A Simple STL map Example</h1></center>
+
+<!--
+<a href="STL-Intro.html">Basic introduction to the Standard Template Library</a>
+-->
+<p>
+
+
+The initial problem:
+</p><p>
+Given a text file, count the number of occurrences of each word in the file, then print the
+all of the words alphabetically with their corresponding count. For example, if a file contained
+this line:
+</p><blockquote><pre>a line of text that has a word that occurs more than once in the line
+</pre></blockquote>
+
+it would be presented like this:
+
+<blockquote><pre>2 a
+1 has
+1 in
+2 line
+1 more
+1 occurs
+1 of
+1 once
+1 text
+1 than
+2 that
+1 the
+1 word
+</pre></blockquote>
+
+Before implementing this algorithm with <tt>std::map</tt>, how would you implement it without using 
+any STL containers? In other words, using only arrays, linked-lists, or other data structure that
+you might invent.
+<p>
+
+
+<!-- ************************************************************************************************ -->
+<!-- ************************************************************************************************ -->
+</p><hr>
+<h2>A First Attempt</h2>
+
+The algorithm goes like this:
+<ol>
+<li>Open a file for input
+</li><li>While there are more words
+<ol>
+<li>Read a word.
+</li><li>Find the word in the map. (<tt><b>map::find</b></tt>)
+</li><li>If the word is in the map, increment the count by 1.
+</li><li>If the word is not in the map, add it to the map (<tt><b>map::insert</b></tt>) and set its count to 1.
+</li></ol>
+</li><li>Print out the counts and the words sorted alphabetically (by word, of course).
+</li></ol>
+
+Sample code:
+<p>
+
+</p><pre class="sourcecode"><code><b>void</b> CountWords1(<b>void</b>)
+{
+    <font color="#003399"><i>// For convenience</i></font>
+  <b>typedef</b> std::map&lt;std::string, <b>int</b>&gt; FreqMap;
+
+  std::string word; <font color="#003399"><i>// the input word</i></font>
+  FreqMap wf;       <font color="#003399"><i>// the frequencies of each word</i></font>
+
+    <font color="#003399"><i>// Open some text file</i></font>
+  std::ifstream infile(<font color="#9933CC">"C:\\line.txt"</font>);
+
+    <font color="#003399"><i>// Read all words from the file</i></font>
+  <b>while</b> (infile &gt;&gt; word)
+  {
+      <font color="#003399"><i>// See if the key/value pair is already</i></font>
+      <font color="#003399"><i>// in the map</i></font>
+    FreqMap::iterator it = wf.find(word);
+
+      <font color="#003399"><i>// If it is present, increment the count (value)</i></font>
+    <b>if</b> (it != wf.end())
+      it-&gt;second++;  <font color="#003399"><i>// Same as: (*it).second++</i></font>
+    <b>else</b>
+    {
+        <font color="#003399"><i>// Create a new pair with value set to 1</i></font>
+      std::pair&lt;std::string, <b>int</b>&gt; pr(word, 1);
+      wf.insert(pr);
+    }
+  }
+
+    <font color="#003399"><i>// Print out all of the key/value pairs</i></font>
+  <b>for</b> (FreqMap::iterator it = wf.begin(); it != wf.end(); ++it)
+    std::cout &lt;&lt; it-&gt;second &lt;&lt; <font color="#9933CC">" "</font> &lt;&lt; it-&gt;first &lt;&lt; std::endl;
+}</code></pre>
+
+
+<!-- ************************************************************************************************ -->
+<!-- ************************************************************************************************ -->
+<p>
+</p><hr width="90%">
+<p>
+
+</p><h2>A Slight Modification</h2>
+<p>
+
+We can take advantage of the subscript operator that is implemented by <tt>std::map</tt>. This
+has a couple of very handy features. 
+</p><p>
+</p><ul>
+<li>You can "index" into the map just as if it was an array. The difference is that the
+index doesn't have to be an integer. (It's the <i>key</i>). For example:
+
+<blockquote><pre>  <font color="#003399"><i>// Create a map with std::strings for keys (indexes) and <b>int</b> values.</i></font>
+std::map&lt;std::string, <b>int</b>&gt; MyMap;
+
+MyMap["foo"] = 10;       <font color="#003399"><i>// Add the value 10 at index "foo"</i></font>
+MyMap["foo"] = 15;       <font color="#003399"><i>// Change the value at index "foo" to 15</i></font>
+std::cout &lt;&lt; map["foo"]; <font color="#003399"><i>// Reads the value at index "foo" (15)</i></font>
+</pre></blockquote>
+
+</li><li>If the item at the index doesn't exist, it is added. (Very different than array subscripts.)
+</li></ul>
+
+Only the loop is modified:
+<p>
+
+</p><blockquote><pre>  <font color="#003399"><i>// Read all words from the file</i></font>
+<b>while</b> (infile &gt;&gt; word)
+{
+    <font color="#003399"><i>// See if the key/value pair is already</i></font>
+    <font color="#003399"><i>// in the map</i></font>
+  FreqMap::iterator it = wf.find(word);
+
+    <font color="#003399"><i>// If it is present</i></font>
+  <b>if</b> (it != wf.end())
+    it-&gt;second++;  <font color="#003399"><i>// increment existing value</i></font>
+  <b>else</b>
+    wf[word] = 1;  <font color="#003399"><i>// else "add" key with value set to 1</i></font>
+}
+</pre></blockquote>
+
+Given the knowledge of the subscript operator, we can do better at this point. We don't have to 
+call <tt>find</tt> to locate the item. We can just add it with the subscript operator and it
+will find it for us:
+<p>
+
+
+</p><blockquote><pre>  <font color="#003399"><i>// Read all words from the file</i></font>
+<b>while</b> (infile &gt;&gt; word)
+{
+  <b>int</b> count = wf[word]; <font color="#003399"><i>// Get current value</i></font>
+  wf[word] = count + 1; <font color="#003399"><i>//   and update it</i></font>
+}
+</pre></blockquote>
+
+
+Of course, we can go further and be more like C++:
+<p>
+
+</p><blockquote><pre>  <font color="#003399"><i>// Read all words from the file and update the count in the map</i></font>
+<b>while</b> (infile &gt;&gt; word)
+  ++wf[word];
+</pre></blockquote>
+
+
+Ironically, the code to print the contents of the map is more than the code needed to build of the map.
+<p>
+
+The final (so far) version:
+</p><p>
+
+</p><pre class="sourcecode"><code><b>void</b> CountWords4(<b>void</b>)
+{
+    <font color="#003399"><i>// For convenience</i></font>
+  <b>typedef</b> std::map&lt;std::string, <b>int</b>&gt; FreqMap;
+
+  std::string word; <font color="#003399"><i>// the input word</i></font>
+  FreqMap wf;       <font color="#003399"><i>// the frequencies of each word</i></font>
+
+    <font color="#003399"><i>// Open some text file</i></font>
+  std::ifstream infile(<font color="#9933CC">"C:\\preamble.txt"</font>);
+
+    <font color="#003399"><i>// Read all words from the file and update the count in the map</i></font>
+  <b>while</b> (infile &gt;&gt; word)
+    ++wf[word];
+
+    <font color="#003399"><i>// Print out all of the key/value pairs</i></font>
+  <b>for</b> (FreqMap::iterator it = wf.begin(); it != wf.end(); ++it)
+    std::cout &lt;&lt; it-&gt;second &lt;&lt; <font color="#9933CC">" "</font> &lt;&lt; it-&gt;first &lt;&lt; std::endl;
+}</code></pre>
+
+Given a file containing this text:
+<p>
+</p><blockquote><pre>When, in the course of human events, it becomes necessary for a people to advance from that 
+subordination in which they have hitherto remained, and to assume among the powers of the 
+earth, the equal and independent station to which the laws of nature and of nature's god 
+entitle them, a decent respect to the opinions of mankind requires that they should declare the 
+causes which impel them to the change.
+</pre></blockquote>
+
+We would get this (formatted with columns for the browser):
+<p>
+
+</p><blockquote>
+<table>
+<tbody><tr valign="top">
+<td>
+</td><td><pre>1 When,
+2 a
+1 advance
+1 among
+3 and
+1 assume
+1 becomes
+1 causes
+1 change.
+1 course
+1 decent
+1 declare
+1 earth,
+1 entitle
+1 equal
+1 events,
+</pre></td>
+<td width="20"></td>
+<td><pre>1 for
+1 from
+1 god
+1 have
+1 hitherto
+1 human
+1 impel
+2 in
+1 independent
+1 it
+1 laws
+1 mankind
+1 nature
+1 nature's
+1 necessary
+5 of
+</pre></td>
+<td width="20"></td>
+<td><pre>1 opinions
+1 people
+1 powers
+1 remained,
+1 requires
+1 respect
+1 should
+1 station
+1 subordination
+2 that
+8 the
+1 them
+1 them,
+2 they
+5 to
+3 which
+</pre></td>
+</tr></tbody></table>
+</blockquote>
+
+<p>
+
+
+Future modifications:
+</p><ul>
+<li>Find the one word that occurs the most. (May be more than one)
+</li><li>Print sorted by occurrences instead of alphabetically. (Sort by value, not key)
+</li><li>Find all of the words of a specific length (e.g. find all of the 4-letter words.)
+</li><li>Remove the loops from the program.
+</li><li>Other stuff...
+</li></ul>
+
+<!-- ************************************************************************************************ -->
+<!-- ************************************************************************************************ -->
+<hr>
+<h2></h2>
+
+<blockquote><pre></pre></blockquote>
+</body></html>

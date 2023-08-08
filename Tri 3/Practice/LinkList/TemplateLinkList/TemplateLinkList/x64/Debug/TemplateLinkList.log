@@ -1,4 +1,7 @@
-﻿  DoubleLinkList.cpp
-  TemplateLinkList.cpp
-  Generating Code...
+﻿  TemplateLinkList.cpp
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\LinkList\TemplateLinkList\TemplateLinkList\DoubleLinkList.h(273,1): warning C4114: same type qualifier used more than once
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\LinkList\TemplateLinkList\TemplateLinkList\DoubleLinkList.h(527,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\LinkList\TemplateLinkList\TemplateLinkList\DoubleLinkList.h(521): message : while compiling class template member function 'void DLL<int>::ReverseList(void)'
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\LinkList\TemplateLinkList\TemplateLinkList\TemplateLinkList.cpp(102): message : see reference to function template instantiation 'void DLL<int>::ReverseList(void)' being compiled
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\LinkList\TemplateLinkList\TemplateLinkList\TemplateLinkList.cpp(81): message : see reference to class template instantiation 'DLL<int>' being compiled
   TemplateLinkList.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\LinkList\TemplateLinkList\x64\Debug\TemplateLinkList.exe

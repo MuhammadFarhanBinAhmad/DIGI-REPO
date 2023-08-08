@@ -1,0 +1,6 @@
+the choice of a storage medium and format for persistent resources usually has
+far reaching consequences on both the design and the ergonomy of an application
+If we have formally expressed requirements that favor one medium or format over
+all others we will let those dictate our choice however there are situations in 
+which the functionality we are implementing demands some form of persistent storage
+but no particular choice of medium or format seems to be particularly appropriate
