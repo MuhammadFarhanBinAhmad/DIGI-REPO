@@ -1,0 +1,8 @@
+﻿  common.cpp
+  common_platform.cpp
+  Driver.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 103 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  GLFW_FMOD.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\GLFW_FMOD\GLFW_FMOD\x64\Release\GLFW_FMOD.exe

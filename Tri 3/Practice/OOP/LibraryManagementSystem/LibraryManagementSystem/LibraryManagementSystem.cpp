@@ -63,7 +63,7 @@ int main()
 
 	for (Book *b: Books_Vector)
 	{
-		std::cout << b->GetAurthor();
+		std::cout << b->GetAurthor() << '\n';
 	}
 
 	BookList_File.close();
@@ -78,5 +78,8 @@ int main()
 	// Clear the vector
 	Books_Vector.clear();
 
+#if defined(DEBUG) | defined(_DEBUG)
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
 
 }

@@ -46,6 +46,7 @@ int main()
 	std::for_each(v.begin(), v.end(), 
 		[d,&f](int x)
 		{
+			//is x divisible of d
 			if (x % *d == 0)
 			{
 				std::cout << x << " is divisible by " << *d << '\n';
