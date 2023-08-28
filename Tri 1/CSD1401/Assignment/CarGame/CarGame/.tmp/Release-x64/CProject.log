@@ -1,6 +1,0 @@
-﻿  main.c
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1092,5): error MSB6006: "link.exe" exited with code 1120.
-mainmenu.obj : error LNK2001: unresolved external symbol test_init
-mainmenu.obj : error LNK2001: unresolved external symbol test_exit
-mainmenu.obj : error LNK2001: unresolved external symbol test_update
-C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\CarGame\CarGame\bin\Release-x64\CProject.exe : fatal error LNK1120: 3 unresolved externals

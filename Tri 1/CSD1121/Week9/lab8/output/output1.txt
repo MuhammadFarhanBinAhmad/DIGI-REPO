@@ -1,5 +1,0 @@
-    a    b    c    d    e    f    g    h    i    j    k    l    m    n    o    p    q    r    s    t    u    v    w    x    y    z
-    8    4    1   21    9   21    1    1   12    1    1    1    2   16   11    2    1    1    7   20    6    1    1    2    3    3
-Latin chars             :   157
-Non-Latin non-ctrl chars:   109
-Control chars           :    13

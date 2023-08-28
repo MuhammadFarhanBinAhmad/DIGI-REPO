@@ -1,7 +1,0 @@
-﻿  Main.cpp
-C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1450\Week1\MyDemo\MyDemo\Main.cpp(111,23): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1450\Week1\MyDemo\MyDemo\Main.cpp(119,23): warning C4305: '-=': truncation from 'double' to 'float'
-  MyDemo.vcxproj -> C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\Tri 2\CSD1450\Week1\MyDemo\bin\Debug-x64\MyDemo.exe
-  4 File(s) copied
-  1 File(s) copied
-  1 File(s) copied

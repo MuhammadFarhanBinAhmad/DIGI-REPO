@@ -1,7 +1,0 @@
-Character before # and after calling to_upper(ch): #
-Character before a and after calling to_upper(ch): A
-Character before b and after calling to_upper(ch): B
-singapore
-SINGAPORE
-SINGAPORE
-SINGAPORE

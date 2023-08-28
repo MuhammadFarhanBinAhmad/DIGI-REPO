@@ -1,1 +1,0 @@
-gcc -std=c11 -pedantic-errors -Wstrict-prototypes -Wall -Wextra -Werror -Wconversion gamelib.c qdriver.c -o q.out

@@ -1,3 +1,0 @@
-﻿  Grid.c
-C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\CarGame\CarGame\Src\Grid.c(33,2): warning C4013: 'CreateSpace' undefined; assuming extern returning int
-C:\Users\user\Desktop\Digipen Repo\DigipenAssignment\Digipen\CSD1401\Assignment\CarGame\CarGame\Src\Grid.c(35,6): error C2371: 'CreateSpace': redefinition; different basic types

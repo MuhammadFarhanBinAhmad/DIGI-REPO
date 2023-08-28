@@ -1,1 +1,0 @@
-gcc -std=c11 -pedantic-errors -Wstrict-prototypes q.c qdriver.c -o q.out

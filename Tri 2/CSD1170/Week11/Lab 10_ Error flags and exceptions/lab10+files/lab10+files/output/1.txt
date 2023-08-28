@@ -1,4 +1,0 @@
-Calling function #1.
-
-Exception was thrown: Division by zero: 60 / 0!
-

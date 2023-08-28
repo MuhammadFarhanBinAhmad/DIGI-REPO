@@ -1,1 +1,0 @@
-gcc -Wall -Werror -Wextra -Wconversion -Wstrict-prototypes -pedantic-errors -std=c11 TestString.c FString.c -o q.out

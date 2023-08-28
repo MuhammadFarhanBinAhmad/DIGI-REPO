@@ -1,8 +1,0 @@
-﻿  puncstream-driver.cpp
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week12\Lab 11_ Associative Containers and Input Streams\puncstream-driver.cpp(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
-  puncstream.cpp
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week12\Lab 11_ Associative Containers and Input Streams\puncstream.cpp(50,82): error C2572: 'hlp2::print': redefinition of default argument: parameter 1
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week12\Lab 11_ Associative Containers and Input Streams\puncstream.hpp(31): message : see declaration of 'hlp2::print'
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week12\Lab 11_ Associative Containers and Input Streams\puncstream.cpp(50,112): error C2572: 'hlp2::print': redefinition of default argument: parameter 2
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 2\CSD1170\Week12\Lab 11_ Associative Containers and Input Streams\puncstream.hpp(31): message : see declaration of 'hlp2::print'
-  Generating Code...

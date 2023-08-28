@@ -1,5 +1,0 @@
-    a    b    c    d    e    f    g    h    i    j    k    l    m    n    o    p    q    r    s    t    u    v    w    x    y    z
- 1157  297  882  690 1155  687  638  521 1673   16   22  637  426 1326  690   22   14  344 1005  873  440  223   20   28  690   17
-Latin chars             : 14493
-Non-Latin non-ctrl chars:  2807
-Control chars           :   362

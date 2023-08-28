@@ -1,4 +1,0 @@
-﻿  game.c
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1092,5): error MSB6006: "link.exe" exited with code 1120.
-MSVCRT.lib(exe_main.obj) : error LNK2001: unresolved external symbol main
-C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 1\CSD1401\Assignment\GameOfLife\CProject\CProject\bin\Release-x64\CProject.exe : fatal error LNK1120: 1 unresolved externals
