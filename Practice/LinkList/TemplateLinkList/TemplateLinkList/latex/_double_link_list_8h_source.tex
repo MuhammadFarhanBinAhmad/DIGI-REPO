@@ -1,0 +1,158 @@
+\doxysection{Double\+Link\+List.\+h}
+\hypertarget{_double_link_list_8h_source}{}\label{_double_link_list_8h_source}\mbox{\hyperlink{_double_link_list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <initializer\_list>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_l_l}{DLL}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{struct\ }Node}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ Node*\ prev;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Node*\ next;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ data;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ Node(\textcolor{keywordtype}{int}\ val)\ :data(val),\ prev(\textcolor{keyword}{nullptr}),\ next(\textcolor{keyword}{nullptr})\ \{\}\textcolor{comment}{//Constructor\ to\ create\ new\ Node}}
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ Node\ *head\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00026\ \ \ \ \ Node\ *tail\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ object\_Counter;}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_d_l_l}{DLL}}();\textcolor{comment}{//Constructor}}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_d_l_l}{DLL}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_d_l_l}{DLL}}\&);\textcolor{comment}{//Copy\ Constructor}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_d_l_l}{DLL}}(std::initializer\_list<int>);\textcolor{comment}{//Will\ replace\ this\ with\ template}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_d_l_l}{\string~DLL}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_d_l_l}{DLL}}\&\ List);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ *\ Get\ the\ data\ of\ a\ specific\ Node}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_d_l_l_abb8c91c8a0acc32e00d76ec6547607c3}{RetriveData}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ *\ Change\ value\ of\ data\ of\ selected\ Node}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ Node}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ *\ Give\ which\ Node\ which\ data\ you\ wish\ to\ change}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ value}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ \ *\ What\ value\ you\ wish\ to\ change\ to}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_a3ebec7a53ffac55eff2ed0ed9e14d9c3}{ChangeData}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ *\ Check\ if\ list\ is\ empty}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ check\ if\ its\ empty}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[out]\ bool}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ \ *\ Return\ bool\ state\ if\ list\ is\ empty\ or\ not}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_l_l_a43f0e9152efca7657495f9e31a6e8438}{Empty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ \ *\ Check\ the\ size\ of\ Linklist}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ check}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[out]\ size\_t}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ \ *\ Return\ the\ size\ of\ list}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_d_l_l_a65a9cbdbd81542a141a6ab598dab03d3}{Size}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ //*\ \(\backslash\)brief}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ //*\ Add\ new\ node\ at\ the\ front\ of\ the\ list}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ //*\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ //*\ List\ you\ wish\ to\ add\ new\ node}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ //*\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ //*\ Value\ of\ new\ node}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_a3cf522daf1feb068f8f54275c1e8e874}{PushFront}}(\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ *\ Add\ new\ node\ at\ the\ back\ of\ the\ list}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ add\ new\ node}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ *\ Value\ of\ new\ node}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_aba9b7cc30e55a42cd9a68723930250e5}{PushBack}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ *\ Remove\ first\ node\ in\ the\ list}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ remove\ the\ node}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_a7dc0e42bbcbe1ba8633ee727182660e0}{RemoveFront}}();}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ *\ Remove\ last\ node\ in\ the\ list}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ remove\ the\ node}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_a0c02f682b1345c034b035ba162a13841}{RemoveLast}}();}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ \ *\ Remove\ a\ desired\ node\ in\ the\ list}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ remove\ the\ node}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ *\ The\ element\ index\ you\ wish\ to\ remove}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_acc1a5a5308f4ae8fb0e273e892e0de81}{Remove}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00110\ \textcolor{comment}{\ \ \ \ *\ Add\ a\ desired\ node\ in\ the\ list}}
+\DoxyCodeLine{00111\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00112\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ add\ a\ node}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ \ \ *\ The\ value\ you\ wish\ to\ add}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ \ *\ The\ element\ index\ position}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_a5656394c413247cb775572af06a65468}{Add}}(\textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ \ *\ Move\ an\ element\ from\ the\ list\ to\ another\ position}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ check}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ \ *\ Index\ position\ you\ wish\ to\ place\ it\ in\ the\ list}}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ *\ \(\backslash\)param\ index}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_aa833bb19e1b6bcbc64d6fb6e2c76aadd}{Move}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ \ *\ Find\ and\ return\ specific\ node\ in\ the\ list}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ DLlist}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ \ *\ List\ you\ wish\ to\ check}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ *\ Value\ you\ wish\ to\ find}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param[out]\ Node*}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ \ *\ Return\ node\ containing\ the\ value\ you\ desire}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ *************************************************************************/}}
+\DoxyCodeLine{00140\ \ \ \ \ Node*\ \mbox{\hyperlink{class_d_l_l_a7ba05317608d4ad95d066fd5ef270160}{FindNode}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ \ \ *\ Create\ a\ new\ Node}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ \ \ *\ \(\backslash\)param[in]\ int}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ \ \ *\ Data\ for\ the\ new\ node}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ \ \ *\ \(\backslash\)param[out]\ Node*}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ \ \ *\ Return\ the\ pointer\ of\ the\ newly\ created\ Node}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ \ *\ *************************************************************************/}}
+\DoxyCodeLine{00151\ \ \ \ \ Node*\ \mbox{\hyperlink{class_d_l_l_a0b2c6aa2b71e98e0f3aec3fefc26d87c}{NewNode}}(\textcolor{keywordtype}{int}\ data);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{/*!***********************************************************************}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ \ *\ \ Delete\ the\ entire\ list}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ \ *\ *************************************************************************/}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_l_l_abd6c24d1e2aa02329673339f362995a4}{Clear}}();}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,13 @@
+﻿  Collider2D.cpp
+  GameObject.cpp
+  RigidBody.cpp
+  Role.cpp
+  Transform.cpp
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\ComponentBased\GameObject\GameObject\Transform.h(6,9): error C3646: 'vec': unknown override specifier
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\ComponentBased\GameObject\GameObject\Transform.h(6,12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\ComponentBased\GameObject\GameObject\Transform.cpp(5,2): error C2065: 'vec': undeclared identifier
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\ComponentBased\GameObject\GameObject\Transform.cpp(6,2): error C2065: 'vec': undeclared identifier
+  Vector2D.cpp
+  Generating Code...
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\ComponentBased\GameObject\GameObject\Vector2D.cpp(7): error C4716: 'Vector2D::operator=': must return a value
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Tri 3\Practice\ComponentBased\GameObject\GameObject\Collider2D.cpp(25): error C4716: 'Collider2D::operator=': must return a value
