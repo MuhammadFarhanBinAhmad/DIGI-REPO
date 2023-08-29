@@ -1,0 +1,47 @@
+// pghali for HLP3
+// 08/30/2022
+// We wish to call a C++ function declared in drawline.hpp [and defined in
+// drawline.cpp] from C functions.
+// We also would like to call C functions declared in calc.h [and defined in
+// calc.cpp] from C++ functions.
+// And, we want to do this in a single C program.
+// How should such a mixed C and C++ program be designed and implemented?
+// We must do five things to create this mixed C and C++ program:
+// 1) drawline.cpp and drawline.h:
+//    drawline.cpp defines a C++ function draw_line() that can be used by
+//    both C and C++ programs and is compiled using C++ compiler:
+//    g++ -std=c++17 -pedantic <additional warning flags> -c drawline.cpp
+//    To prevent name mangling by C++ compilers, we use extern "C" directive
+//    in drawline.h.
+// 2) calc.cpp and calc.h:
+//    calc.cpp defines C functions add() and mul() that can be used by
+//    both C and C++ programs and is compiled using C compiler:
+//    gcc -std=c11 -pedantic <additional warning flags> -c calc.c
+//    To prevent name mangling by C++ compilers, we use extern "C" directive
+//    in calc.h.
+// 3) main-c.c:
+//    We want to create a C program with a main() defined in C that calls
+//    C functions [add() and mul()] and C++ function [draw_line()]. However,
+//    run-time C++ has initialization protocols for constructing C++ static
+//    objects [such as std::cin and std::cout]. Therefore, creating a mixed
+//    C/C++ program with a C main() is a bad idea and will not work in many
+//    situations. Therefore, we must rename C's main() to real_main() which
+//    will be called by a C++ main(). This C++ main will be the entry point 
+//    to the mixed program which will enable the initialization of C++ static
+//    objects followed by a call to C's main() [now renamed as real_main()].
+//    Compile this C source file [with main() renamed as real_main()]:
+//    gcc -std=c11 -pedantic <additional warning flags> -c main-c.c
+// 4) Create a C++ source file main-cpp.cpp that will define main() which in
+//    turn will call C function real_main().
+//    To avoid name mangling, we must use extern "C" directive with name real_main.
+//    To illustrate that C functions can be called by C++ functions, this main()
+//    will call C functions add() and mul() that are declared in calc.h and
+//    defined in calc.o
+//    To illustrate that C++ function designed for C functions can also be called
+//    by C++ functions, main() will make a call to C++ function draw_line() that
+//    is defined in drawline.cpp.
+//    Compile C++ source file main-cpp.cpp:
+//    g++ -std=c++17 -pedantic <additional warning flags> -c main-cpp.cpp
+// 5) Since the entry point into the program is a C++ main(), we must use C++
+//    linker to link both C and C++ functions into a mixed C and C++ program:
+//    g++ drawline.o calc.o main-c.o main-cpp.o -o mixed.exe
