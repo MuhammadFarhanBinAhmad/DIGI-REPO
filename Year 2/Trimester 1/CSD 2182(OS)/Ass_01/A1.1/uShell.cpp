@@ -105,7 +105,7 @@ void uShell::echo(TokenList const& tokenList)
 
 void uShell::setVar(TokenList const& tokenList)
 {
-
+	//regular expression(regex)
 }
 
 int uShell::run()
