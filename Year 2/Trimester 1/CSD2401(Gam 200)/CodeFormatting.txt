@@ -1,0 +1,132 @@
+Code formatting:
+
+Do follow this guide to standardise out codes
+
+1. GET RID OF ALL YOUR WARNINGS
+
+2. Get rid of any printf/std::cout debug in your code
+
+3. Static/extern all your global variables
+
+4. Use snake case for all your variables. Capitalise the second word
+E.g. timer_Counter ✅ timerCounter ❌
+
+5. Set the opening block character to the next line. Name your function with small letter with the first word
+and capital for everythinig else
+E.g. testFunction() 
+{
+*/insert line here*/
+} ✅
+test_Function(){ ❌
+}
+
+6. Include file level documentation at the start of your files
+
+/*****************************
+*File:
+*Author: (include email)
+*Co-Author: (include email if any)
+*Course: GAM100
+*Section: b
+*brief: Short summary of what your code does
+*****************************/
+
+7. Include function level documentation at the top of each function
+
+/*****************************
+*brief:
+*special scenarios:
+*params:
+*return:
+*****************************/
+
+8. Make comments one line above your code.
+
+E.g. 
+//comment comment
+Code code✅
+
+Code code //comment❌
+
+9. If you want to group lines of code together using comments the format is:
+
+/****Variable for stuff****
+*
+*
+**************************/
+
+10. Fix any implicit conversions
+
+
+Example
+
+/* IN .cpp FILE */
+/*****************************
+*File:
+*Author: (include email)
+*Co-Author: (include email if any)
+*Course: csd1450
+*Section: a
+*brief: Short summary of what your code does
+*****************************/
+
+class foo
+{
+	/*****************************
+	*brief: boo does something
+	*special scenarios: null
+	*params: 
+		- int a: first value to add
+		- int b: second value to add
+	*return: total value of a and b in int
+	*****************************/
+	int boo(int a, int b)
+	{
+	  /*insert code here*/
+	}
+	/*****************************
+	*brief: foodoes something
+	*special scenarios: null
+	*params: null
+	*return: null
+	*****************************/
+	void foo_Loo()
+	{
+	  /*insert code here*/
+	}
+}
+
+
+/* IN .hpp FILE */
+
+/*****************************
+*File:
+*Author: (include email)
+*Co-Author: (include email)
+*Course: csd1450
+*Section: a
+*brief: Short summary of what your code does
+*****************************/
+
+class foo
+{
+	/*****************************
+	*brief: boo does something
+	*special scenarios: null
+	*params: 
+		- int a: first value to add
+		- int b: second value to add
+	*return: total value of a and b in int
+	*****************************/
+	int boo(int a, int b);
+	/*****************************
+	*brief: foo does something
+	*special scenarios: null
+	*params: null
+	*return: null
+	*****************************/
+	void foo_Loo()
+}
+
+//total value
+extern int total_Value;
