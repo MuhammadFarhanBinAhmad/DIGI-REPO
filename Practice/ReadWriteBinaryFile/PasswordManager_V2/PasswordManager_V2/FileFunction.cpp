@@ -4,7 +4,7 @@
 void DecipherPassword()
 {
 	std::unique_ptr<PasswordData> pd(new PasswordData());
-	pd->DecipherFile("./Password.dat");
+	pd->DecipherFile("./Password.bin");
 }
 void AddPassword()
 {
@@ -17,7 +17,7 @@ void AddPassword()
 	std::cin >> Password;
 
 	pd->SetData(Website, Password);
-	pd->WriteFile("./Password.dat");
+	pd->WriteFile("./Password.bin");
 }
 void EditPassword()
 {
@@ -28,7 +28,7 @@ void EditPassword()
 	int wb = 0;
 	std::cin >> wb;
 
-	pd->EditPassword("./Password.dat",wb);
+	pd->EditPassword("./Password.bin",wb);
 
 }
 void DeletePassword() 
@@ -40,7 +40,7 @@ void DeletePassword()
 	int wb = 0;
 	std::cin >> wb;
 
-	pd->DeletePassword("./Password.dat",wb);
+	pd->DeletePassword("./Password.bin",wb);
 }
 void ViewPassword()
 {

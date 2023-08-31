@@ -64,7 +64,11 @@ void uShell::tokenize(std::string const& input, TokenList& tokenList) const
 
 bool uShell::replaceVars(TokenList& tokenList) const
 {
+	for (std::string t : tokenList)
+	{
+		//anything thats in front of # = comment
 
+	}
 }
 
 
@@ -77,6 +81,7 @@ bool uShell::isValidVarname(char const* start, char const* end) const
 			return false;
 		}
 	}
+
 	return true;
 }
 
