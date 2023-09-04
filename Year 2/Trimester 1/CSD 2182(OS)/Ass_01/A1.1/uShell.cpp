@@ -1,8 +1,15 @@
 #include "uShell.h"
 #include <iostream>
+#include <functional>
 
-uShell::uShell(bool bFlag)
+using EchoFunction = void (*)(const std::string&);
+using EchoFunction = void (*)(const std::string&);
+
+uShell::uShell(bool bFlag): m_verbose(bFlag), m_exit(false), m_exitCode(0) 
 {
+	//Function pointer for the internal command
+	m_internalCmdList["echo"] = &uShell::echo;
+	m_internalCmdList["setvar"] = &uShell::setVar;
 
 }
 
@@ -11,7 +18,7 @@ bool uShell::getInput(std::string& input) const
 	std::string temp_str = input;
 	if (temp_str.back() == '\r')
 	{
-		temp_str.pop_back();
+		temp_str[temp_str.size() - 1] = '\n';
 		return true;
 	}
 	return false;
@@ -64,11 +71,48 @@ void uShell::tokenize(std::string const& input, TokenList& tokenList) const
 
 bool uShell::replaceVars(TokenList& tokenList) const
 {
+	
 	for (std::string t : tokenList)
 	{
-		//anything thats in front of # = comment
+		size_t pos = 0;
 
+		while((pos = t.find('$',pos)) != std::string::npos)
+		{
+			if (pos + 1 < t.length() && t[pos+1] == '{')
+			{
+				//Find the closing }
+				size_t end_pos = t.find('}',pos+1);
+				if (end_pos != std::string::npos)
+				{
+					//Need to extract the content betwen the "${}"
+					std::string var_Name = t.substr(pos +2 ,end_pos - pos - 2);
+
+					//Check if variable name is valid
+					if(isValidVarname(var_Name.c_str(),var_Name.c_str() + var_Name.length()))
+					{
+						auto var_it = m_vars.find(var_Name);
+						if (var_it != m_vars.end())
+						{
+							t.replace(pos,end_pos-pos + 1,var_it->second);
+						}
+					}
+					else
+					{
+						//Invalid variable name
+						return false;
+					}
+				}
+				else
+				{
+					//Fail to find '}'
+					return false;
+				}
+			}
+			//Move to next '$'
+			pos++;
+		}
 	}
+	return true;
 }
 
 
@@ -110,10 +154,61 @@ void uShell::echo(TokenList const& tokenList)
 
 void uShell::setVar(TokenList const& tokenList)
 {
-	//regular expression(regex)
+	if (tokenList.size() < 2)
+	{
+		std::cout << "not enough var\n";
+		return;
+	}
+
+	std::string var_Name = tokenList[1];
+
+	if (!isalpha(var_Name[0]))
+	{
+		std::cout << "Invalid varible name: " << var_Name << std::endl;
+		return;
+	}
+
+	std::string var_Value = "";
+
+	if (tokenList.size() > 2 )
+	{
+		var_Value = mergeTokens(tokenList,2);
+	}
+
+	m_vars[var_Name] = var_Value;
 }
 
 int uShell::run()
 {
+	while(!m_exit)
+	{
+		std::cout << m_prompt;
 
+		std::string user_Input;
+		if (!getInput(user_Input))
+		{
+			break;
+		}
+
+		TokenList tok_List;
+		tokenize(user_Input,tok_List);
+
+		if (tok_List.empty())
+		{
+			continue;//Continue to the next iteration
+		}
+
+		auto iter = m_internalCmdList.find(tok_List[0]);
+		
+		if(iter != m_internalCmdList.end())
+		{
+			(this->*(iter->second))(tok_List);
+		}
+		else
+		{
+			std::cout << "Unknow Command: " << tok_List[0] << std::endl;
+		}
+
+	}
+	return m_exitCode;
 }
