@@ -3,38 +3,49 @@
 #include <functional>
 
 using EchoFunction = void (*)(const std::string&);
-using EchoFunction = void (*)(const std::string&);
 
-uShell::uShell(bool bFlag): m_verbose(bFlag), m_exit(false), m_exitCode(0) 
+uShell::uShell(bool bFlag): m_verbose(bFlag), m_exit(false), m_exitCode(0)
 {
 	//Function pointer for the internal command
 	m_internalCmdList["echo"] = &uShell::echo;
 	m_internalCmdList["setvar"] = &uShell::setVar;
 
+	m_prompt = "uShell";
 }
 
 bool uShell::getInput(std::string& input) const
 {
+	std::cout << input << std::endl;
 	std::string temp_str = input;
+	
+	if (temp_str.find_first_of("exit"))
+	{
+		return false;
+	}
+	if (temp_str.find_first_not_of(" ") == std::string::npos)
+	{
+		return false;
+	}
+	if (temp_str.empty())
+	{
+		return false;
+	}
+
 	if (temp_str.back() == '\r')
 	{
-		temp_str[temp_str.size() - 1] = '\n';
-		return true;
+		temp_str[temp_str.size() - 1] = '\0';
 	}
-	return false;
+
+	return true;
 }
 
 
 void uShell::printVerbose(std::string const& input)
 {
-	std::string temp_str = input;
-	int pos = temp_str.find_first_of(' ');
-	pos++;//go next char since it's start of a word
-	while (temp_str[pos] != ' ')
-	{
-		std::cout << temp_str[pos];
-		pos++;
-	}
+	int first = input.find_first_not_of("\t\n\r\f\v");
+	int last = input.find_last_not_of("\t\n\r\f\v");
+
+	std::cout << input.substr(first,last-first-1) << std::endl;
 }
 
 void uShell::tokenize(std::string const& input, TokenList& tokenList) const
@@ -71,45 +82,53 @@ void uShell::tokenize(std::string const& input, TokenList& tokenList) const
 
 bool uShell::replaceVars(TokenList& tokenList) const
 {
-	
-	for (std::string t : tokenList)
+
+	std::vector<std::string>::iterator v_it;
+
+
+	if (tokenList.empty())
 	{
-		size_t pos = 0;
+		return false;
+	}
 
-		while((pos = t.find('$',pos)) != std::string::npos)
+
+	//Remove comments
+	for (v_it = tokenList.begin(); v_it!= tokenList.end();v_it++)
+	{
+		if ((*v_it).front() == '#')
 		{
-			if (pos + 1 < t.length() && t[pos+1] == '{')
+			tokenList.erase(v_it,tokenList.end());
+			break;
+		}
+		if ((*v_it).rfind("${"))
+		{
+			int startpos = (*v_it).rfind("${");
+			if ((*v_it).find('}'))
 			{
-				//Find the closing }
-				size_t end_pos = t.find('}',pos+1);
-				if (end_pos != std::string::npos)
+				int endpos = (*v_it).find('}');
+				std::string replace_str;
+				replace_str = (*v_it).substr(startpos+2,endpos-(startpos+2));
+				if (!replace_str.empty())
 				{
-					//Need to extract the content betwen the "${}"
-					std::string var_Name = t.substr(pos +2 ,end_pos - pos - 2);
+					const char* temp_start = replace_str.c_str();
+					const char* temp_end = replace_str.c_str() + replace_str.size();
 
-					//Check if variable name is valid
-					if(isValidVarname(var_Name.c_str(),var_Name.c_str() + var_Name.length()))
+					if (isValidVarname(temp_start,temp_end))
 					{
-						auto var_it = m_vars.find(var_Name);
-						if (var_it != m_vars.end())
+						if (m_vars.count(replace_str))
 						{
-							t.replace(pos,end_pos-pos + 1,var_it->second);
+							replace_str = m_vars.at(replace_str);
+							(*v_it).replace(startpos,endpos,replace_str);
+							break;
+						}
+						else
+						{
+							std::cout << "Error: " << replace_str << " not a defined variable.\n";
+							return false;
 						}
 					}
-					else
-					{
-						//Invalid variable name
-						return false;
-					}
-				}
-				else
-				{
-					//Fail to find '}'
-					return false;
 				}
 			}
-			//Move to next '$'
-			pos++;
 		}
 	}
 	return true;
@@ -118,12 +137,14 @@ bool uShell::replaceVars(TokenList& tokenList) const
 
 bool uShell::isValidVarname(char const* start, char const* end) const
 {
-	while (start != end)
+	char* temp = const_cast<char*>(start);
+	while (temp != end)
 	{
-		if (!isalpha(*start) || !isdigit(*start))
+		if (!isalpha(*temp) && !isdigit(*temp))
 		{
 			return false;
 		}
+		temp++;
 	}
 
 	return true;
@@ -144,58 +165,79 @@ std::string uShell::mergeTokens(TokenList const& tokenList, unsigned startPos) c
 
 void uShell::echo(TokenList const& tokenList)
 {
-	int i = 1;
+	TokenList temp = tokenList;
+	std::vector<std::string>::iterator v_it;
 
-	for (i; i < tokenList.size(); i++)
+	for (v_it = temp.begin() + 1; v_it!= temp.end();v_it++)
 	{
-		std::cout << tokenList[i] << ' ';
+		std::cout << *v_it << ' ';
 	}
+	std::cout << "\n";
 }
 
 void uShell::setVar(TokenList const& tokenList)
 {
-	if (tokenList.size() < 2)
+	if (tokenList.empty())
 	{
-		std::cout << "not enough var\n";
+		return;
+	}
+	const char* temp_start = tokenList[0].c_str();
+	const char* temp_end = tokenList[0].c_str() + tokenList[0].size();
+	std::string key;
+	std::string value;
+
+	if (!isValidVarname(temp_start,temp_end))
+	{
+		key = tokenList[0];
+	}
+	else
+	{
 		return;
 	}
 
-	std::string var_Name = tokenList[1];
+	TokenList temp = tokenList;
+	std::vector<std::string>::iterator str_it;
 
-	if (!isalpha(var_Name[0]))
+	for(str_it = temp.begin()+1; str_it != temp.end();str_it++)
 	{
-		std::cout << "Invalid varible name: " << var_Name << std::endl;
-		return;
+		value += *str_it;
 	}
 
-	std::string var_Value = "";
+	m_vars[key] = value;
 
-	if (tokenList.size() > 2 )
-	{
-		var_Value = mergeTokens(tokenList,2);
-	}
-
-	m_vars[var_Name] = var_Value;
 }
 
 int uShell::run()
 {
 	while(!m_exit)
 	{
-		std::cout << m_prompt;
-
+		std::cout << m_prompt << '>';
 		std::string user_Input;
+		std::cin >> user_Input;
+
 		if (!getInput(user_Input))
 		{
+			m_exit = true;
 			break;
 		}
 
+
 		TokenList tok_List;
-		tokenize(user_Input,tok_List);
+		tokenize(user_Input,tok_List);//
 
 		if (tok_List.empty())
 		{
 			continue;//Continue to the next iteration
+		}
+		
+		if (m_verbose)
+		{
+			printVerbose(user_Input);
+		}
+
+		if (!replaceVars(tok_List))
+		{
+			continue;
 		}
 
 		auto iter = m_internalCmdList.find(tok_List[0]);
@@ -204,11 +246,6 @@ int uShell::run()
 		{
 			(this->*(iter->second))(tok_List);
 		}
-		else
-		{
-			std::cout << "Unknow Command: " << tok_List[0] << std::endl;
-		}
-
 	}
 	return m_exitCode;
 }

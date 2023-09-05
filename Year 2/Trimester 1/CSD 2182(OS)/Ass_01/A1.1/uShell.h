@@ -88,7 +88,6 @@ protected:
     Search and replace from the map all variables in the token list with the value 
     In this function it loop through all tokens in the token list. In each iteration, it checks each
     token for comment. If there is comment sign, it removes all the following tokens (including
-    7
     this) and terminates the loop. Otherwise, it detects if each token has a variable within.
     Furthermore it checks if this token has ‘{’ following the ‘$’ sign. If not, it tries to find the
     next ‘$’ sign. If there is a ‘{’, it then searches for the first instance of ‘}’ after ‘${’. If there
