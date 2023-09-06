@@ -15,3 +15,10 @@ echo ${}{}{}{}
 echo $$haha
 setvar hoho ho # sfsanfjasfnf
 echo ${hoho}
+setvar dasda $%%&^$^$^
+echo ${dasda}
+setvar ${@@@} HAHA
+echo @@@
+echo     
+echo
+echo \n

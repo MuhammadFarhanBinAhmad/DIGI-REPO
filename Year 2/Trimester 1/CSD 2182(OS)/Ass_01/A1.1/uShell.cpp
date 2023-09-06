@@ -1,36 +1,26 @@
 #include "uShell.h"
 #include <iostream>
 #include <functional>
+#include <sstream>
+using EchoFunction = void (*)(const std::string &);
 
-using EchoFunction = void (*)(const std::string&);
-
-uShell::uShell(bool bFlag): m_verbose(bFlag), m_exit(false), m_exitCode(0)
+uShell::uShell(bool bFlag) : m_verbose(bFlag), m_exit(false), m_exitCode(0)
 {
-	//Function pointer for the internal command
+	// Function pointer for the internal command
 	m_internalCmdList["echo"] = &uShell::echo;
 	m_internalCmdList["setvar"] = &uShell::setVar;
 
 	m_prompt = "uShell";
 }
 
-bool uShell::getInput(std::string& input) const
+bool uShell::getInput(std::string &input) const
 {
-	std::cout << input << std::endl;
 	std::string temp_str = input;
-	
-	if (temp_str.find_first_of("exit"))
-	{
-		return false;
-	}
-	if (temp_str.find_first_not_of(" ") == std::string::npos)
-	{
-		return false;
-	}
-	if (temp_str.empty())
-	{
-		return false;
-	}
 
+	if (input.empty())
+	{
+		return false;
+	}
 	if (temp_str.back() == '\r')
 	{
 		temp_str[temp_str.size() - 1] = '\0';
@@ -39,93 +29,72 @@ bool uShell::getInput(std::string& input) const
 	return true;
 }
 
-
-void uShell::printVerbose(std::string const& input)
+void uShell::printVerbose(std::string const &input)
 {
-	int first = input.find_first_not_of("\t\n\r\f\v");
-	int last = input.find_last_not_of("\t\n\r\f\v");
 
-	std::cout << input.substr(first,last-first-1) << std::endl;
+	int first = input.find_first_not_of(" \t\n\r\f\v");
+	int last = input.find_last_not_of(" \t\n\r\f\v");
+
+	std::cout << input.substr(first, last + 1)  << std::endl;
 }
 
-void uShell::tokenize(std::string const& input, TokenList& tokenList) const
+void uShell::tokenize(std::string const &input, TokenList &tokenList) const // works
 {
-	int pos = 0;
-	bool is_space = true;
+	std::string word;
+	std::stringstream iss(input);
 
-	std::string copy_str = input;
-	std::string insert_str;
-
-	//Check for end of string
-	while (copy_str[pos] != '\0')
+	while (iss >> word)
 	{
-		if (copy_str[pos] != ' ')
-		{
-			if (is_space)
-			{
-				is_space = false;
-			}
-			insert_str += copy_str[pos];
-		}
-		else
-		{
-			is_space = true;
-			tokenList.push_back(insert_str);
-			insert_str.clear();
-		}
-		pos++;
+		tokenList.push_back(word);
 	}
-	//Insert last word cause loop break before inserting last word
-	tokenList.push_back(insert_str);
+
 }
 
-
-bool uShell::replaceVars(TokenList& tokenList) const
+bool uShell::replaceVars(TokenList &tokenList) const
 {
-
-	std::vector<std::string>::iterator v_it;
-
-
 	if (tokenList.empty())
 	{
 		return false;
 	}
-
-
-	//Remove comments
-	for (v_it = tokenList.begin(); v_it!= tokenList.end();v_it++)
+	// Remove comments
+	for (size_t i = 0; i < tokenList.size(); i++)
 	{
-		if ((*v_it).front() == '#')
+		if (tokenList[i].front() == '#')
 		{
-			tokenList.erase(v_it,tokenList.end());
+			tokenList.erase(tokenList.begin() + i, tokenList.end());
 			break;
 		}
-		if ((*v_it).rfind("${"))
-		{
-			int startpos = (*v_it).rfind("${");
-			if ((*v_it).find('}'))
-			{
-				int endpos = (*v_it).find('}');
-				std::string replace_str;
-				replace_str = (*v_it).substr(startpos+2,endpos-(startpos+2));
-				if (!replace_str.empty())
-				{
-					const char* temp_start = replace_str.c_str();
-					const char* temp_end = replace_str.c_str() + replace_str.size();
 
-					if (isValidVarname(temp_start,temp_end))
+		size_t start_Pos, end_Pos;
+
+		//Check for ${
+		start_Pos = tokenList[i].rfind("${");
+		if (start_Pos != std::string::npos)
+		{
+			//Check for }
+			//std::cout <<"end";
+			end_Pos = tokenList[i].find_first_of('}',start_Pos);
+			if (end_Pos != std::string::npos)
+			{
+				std::string key_ToReplace = tokenList[i].substr(start_Pos+2,end_Pos - (start_Pos + 2));
+
+				if (isValidVarname(&key_ToReplace.front(),&key_ToReplace.back()))
+				{
+					std::string new_var{};
+					key_ToReplace.erase(0, key_ToReplace.find_first_not_of(" \t\n\r\f\v"));
+
+					if(m_vars.find(key_ToReplace)!= m_vars.end() && !key_ToReplace.empty())
 					{
-						if (m_vars.count(replace_str))
-						{
-							replace_str = m_vars.at(replace_str);
-							(*v_it).replace(startpos,endpos,replace_str);
-							break;
-						}
-						else
-						{
-							std::cout << "Error: " << replace_str << " not a defined variable.\n";
-							return false;
-						}
+						new_var = m_vars.find(key_ToReplace)->second;
+						std::string new_Token = tokenList[i].substr(0, start_Pos);
+						new_Token += new_var;
+						new_Token += tokenList[i].substr(end_Pos + 1);
+						tokenList[i] = new_Token;
+					}
+					else
+					{
+						std::cout << "Error: " << key_ToReplace << " is not a defined variable.\n";
+						return false;
 					}
 				}
 			}
@@ -133,11 +102,9 @@ bool uShell::replaceVars(TokenList& tokenList) const
 	}
 	return true;
 }
-
-
-bool uShell::isValidVarname(char const* start, char const* end) const
+bool uShell::isValidVarname(char const *start, char const *end) const
 {
-	char* temp = const_cast<char*>(start);
+	char *temp = const_cast<char *>(start);
 	while (temp != end)
 	{
 		if (!isalpha(*temp) && !isdigit(*temp))
@@ -150,99 +117,117 @@ bool uShell::isValidVarname(char const* start, char const* end) const
 	return true;
 }
 
-std::string uShell::mergeTokens(TokenList const& tokenList, unsigned startPos) const
+std::string uShell::mergeTokens(TokenList const &tokenList, unsigned startPos) const
 {
 	std::string Word;
 
 	for (unsigned i = startPos; i < tokenList.size(); i++)
 	{
 		Word += tokenList[i];
-		Word += ' ';
 	}
-
 	return Word;
 }
 
-void uShell::echo(TokenList const& tokenList)
+void uShell::echo(TokenList const &tokenList)
 {
+
 	TokenList temp = tokenList;
 	std::vector<std::string>::iterator v_it;
 
-	for (v_it = temp.begin() + 1; v_it!= temp.end();v_it++)
+	for (size_t i = 1; tokenList.begin()+i != tokenList.end();++i)
 	{
-		std::cout << *v_it << ' ';
+		if (i >1)
+		{
+			std::cout << ' ';
+		}
+		std::cout << tokenList[i];
 	}
-	std::cout << "\n";
+	std::cout << std::endl;
+
 }
 
-void uShell::setVar(TokenList const& tokenList)
+void uShell::setVar(TokenList const &tokenList)
 {
+	//set key and value in m_var
 	if (tokenList.empty())
 	{
 		return;
 	}
-	const char* temp_start = tokenList[0].c_str();
-	const char* temp_end = tokenList[0].c_str() + tokenList[0].size();
+	const char *key_start = tokenList[1].c_str();
+	const char *key_end = tokenList[1].c_str() + tokenList[1].size();
 	std::string key;
 	std::string value;
 
-	if (!isValidVarname(temp_start,temp_end))
+	if (isValidVarname(key_start, key_end))
 	{
-		key = tokenList[0];
+		key = tokenList[1];
 	}
 	else
 	{
 		return;
 	}
-
-	TokenList temp = tokenList;
-	std::vector<std::string>::iterator str_it;
-
-	for(str_it = temp.begin()+1; str_it != temp.end();str_it++)
+	
+	for (size_t i = 2 ; i < tokenList.size()-1; i++)
 	{
-		value += *str_it;
+		const char *value_start = tokenList[i].c_str();
+		const char *value_end = tokenList[i].c_str() + tokenList[i].size();
+		if (isValidVarname(value_start, value_end))
+		{
+			value += tokenList[i] + ' ';
+		}
+		else
+		{
+			return;
+		}
 	}
-
-	m_vars[key] = value;
-
-}
+	value += tokenList[tokenList.size()-1];
+	std::map<std::string,std::string>::iterator it;
+	it = m_vars.find(key);
+	if (it != m_vars.end())
+	{
+		it->second = value;
+	}
+	else
+	{
+		m_vars[key] = value;
+	}
+  }
 
 int uShell::run()
 {
-	while(!m_exit)
+	while (!m_exit)
 	{
 		std::cout << m_prompt << '>';
+		
 		std::string user_Input;
-		std::cin >> user_Input;
-
+		getline(std::cin, user_Input);
+		
 		if (!getInput(user_Input))
 		{
 			m_exit = true;
 			break;
 		}
 
-
 		TokenList tok_List;
-		tokenize(user_Input,tok_List);//
+		tokenize(user_Input, tok_List);
 
-		if (tok_List.empty())
-		{
-			continue;//Continue to the next iteration
-		}
-		
 		if (m_verbose)
 		{
 			printVerbose(user_Input);
 		}
-
 		if (!replaceVars(tok_List))
 		{
 			continue;
 		}
+		if (tok_List.empty())
+		{
+			continue; // Continue to the next iteration
+		}
+
 
 		auto iter = m_internalCmdList.find(tok_List[0]);
-		
-		if(iter != m_internalCmdList.end())
+
+		if (iter != m_internalCmdList.end())
 		{
 			(this->*(iter->second))(tok_List);
 		}

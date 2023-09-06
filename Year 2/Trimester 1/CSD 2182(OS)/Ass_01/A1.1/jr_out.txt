@@ -27,4 +27,14 @@ $$haha
 uShell>setvar hoho ho # sfsanfjasfnf
 uShell>echo ${hoho}
 ho
+uShell>setvar dasda $%%&^$^$^
+uShell>echo ${dasda}
+$%%&^$^$^
+uShell>setvar ${@@@} HAHA
+uShell>echo @@@
+@@@
+uShell>echo
+uShell>echo
+uShell>echo \n
+\n
 uShell>

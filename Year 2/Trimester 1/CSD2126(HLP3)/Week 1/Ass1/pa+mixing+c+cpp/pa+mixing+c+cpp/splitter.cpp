@@ -106,24 +106,76 @@ SplitResult split_join(int argc, char *argv[])
 
     int numbering = 1;
 
-    for (size_t count = 0; count < temp_str.size();count += chuncksize)
+    // for (size_t count = 0; count < temp_str.size();count += chuncksize)
+    // {
+    //   //creating a new file
+    //   std::stringstream temp_strstream;
+    //   temp_strstream << output << std::setfill('0') << std::setw(4) << numbering++;
+    //   std::string actualOutput = temp_strstream.str();
+    //   std::ofstream newFile(actualOutput);
+
+    //   //Check file valid
+    //   if (!newFile)
+    //   {
+    //     return SplitResult::E_BAD_SOURCE;
+    //   }
+      
+    //   std::string temp_SubStr = temp_str.substr(count,chuncksize);//copy
+
+    //   newFile<<temp_SubStr;
+    //   newFile.close();
+    // }
+    int byte_Left = temp_str.size();//get total size of file
+    std::stringstream desire_Filesizestr(argv[2]);//get desire value of file
+    int desire_Filesize;
+    desire_Filesizestr >> desire_Filesize;
+    int offset = 0;
+
+    while(byte_Left > 0)
     {
-      //creating a new file
-      std::stringstream temp_strstream;
-      temp_strstream << output << std::setfill('0') << std::setw(4) << numbering++;
-      std::string actualOutput = temp_strstream.str();
-      std::ofstream newFile(actualOutput);
+        std::stringstream temp_strstream;
+        temp_strstream << output << std::setfill('0') << std::setw(4) << numbering++;
+        std::string actualOutput = temp_strstream.str();
+        std::ofstream newFile(actualOutput);
 
-      //Check file valid
-      if (!newFile)
-      {
-        return SplitResult::E_BAD_SOURCE;
-      }
+        if (!newFile)
+        {
+          return SplitResult::E_BAD_SOURCE;
+        }
 
-      std::string temp_SubStr = temp_str.substr(count,chuncksize);
+        int file_SizeLeft = 0;
 
-      newFile<<temp_SubStr;
-      newFile.close();
+        if (byte_Left > desire_Filesize)
+        {
+          file_SizeLeft = desire_Filesize;
+        }
+        else
+        {
+          file_SizeLeft = byte_Left;
+        }
+
+        while (file_SizeLeft > 0)
+        {
+          std::string temp_SubStr;
+          if (file_SizeLeft >= chuncksize)
+          {
+            temp_SubStr = temp_str.substr(offset,chuncksize);//copy
+            offset += chuncksize;
+            file_SizeLeft -= chuncksize;
+            byte_Left -= chuncksize;
+          }
+          else
+          {
+            temp_SubStr = temp_str.substr(offset,file_SizeLeft);//copy
+            offset += file_SizeLeft;
+            byte_Left -= file_SizeLeft;
+            file_SizeLeft -= file_SizeLeft;
+          }
+          newFile<<temp_SubStr;
+        }
+        newFile.close();
+        
+
     }
 
     file.close();
