@@ -10,6 +10,7 @@
 #include <string>
 #include "str.h"
 
+//total 16 bytes
 union U {
   Str s;
   Str s2;

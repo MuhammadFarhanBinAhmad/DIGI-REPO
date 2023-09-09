@@ -1,24 +1,30 @@
+echo           hi       ni mama meiyou mao
+echo noo this   is not ittt
+echo  1231 45435 6  64565
+echo 990213{*#&!*(&dasf fasdifiados4 324324 7382 fds
+efhashfdjkhfjdasgk
+echo     ${}  454huhnfjgsd   *$&(*@&52416 dsaffsd
+setvar 123 niama chibai
+echo  ${123} machibaide
+echo ${} /-/*/*69   507960)(_     *)*9_)*476        324\/,.,/. 
+echo exit 12333213213213
+exit 543
+changeprompt hello
+echo hello ni mama mefdsfds                      fdsfsdf
+echo sdafsadfds         fdsaf       fadsfds
 setvar HAHA hoohoo # assign the value hoohoo to HAHA
-setvar HAHA hoo hoo hoo # assign the value hoohoo to HAHA
-echo ${HAHA} #calling out the value of HAHA
-setvar haha # variable haha is defined and given a default value
-seTvar haha # variable haha is defined and given a default value
-echo ${Haha}123 # Attempting to call out the value of an undefined variable
+echo ${HAHA} # calling out the value of HAHA
+# hoohoo is printed on the screen.
+setvar haha # variable haha is defined and given a default value.
+echo ${Haha}123 # Attempting to call out the value of an undefined variable.
 echo ${HAHA}123 # disambiguate the beginning and end of the var name
-echo ${HAHA }123 # wrong use of curly braces. Would be read as 2 separate words
+echo ${HAHA }123 # wrong use of curly braces. Would be read as 2 separate words.
 echo $${HAHA} # $ sign can be used together with variables
-echo ${${${HAHA}}} # nested use of curly braces are not supported
-echo ${oof}
-echo ${HAHA} ${HAHA}
-echo       ${HAHA}  123  # oof
-echo ${}{}{}{}
-echo $$haha
-setvar hoho ho # sfsanfjasfnf
-echo ${hoho}
-setvar dasda $%%&^$^$^
-echo ${dasda}
-setvar ${@@@} HAHA
-echo @@@
-echo     
+echo ${${HAHA}} # nested use of curly braces are not supported
+# So the replacement only happen once.
 echo
-echo \n
+      echo 				12321 dfsafd ${HAHA}              fds848${123} ma     chi bai
+       echo help
+echo ${a)*&^&58123}
+ec ho 123
+ech o afjdkalfd

@@ -1,42 +1,51 @@
+uShell>echo           hi       ni mama meiyou mao
+hi ni mama meiyou mao
+uShell>echo noo this   is not ittt
+noo this is not ittt
+uShell>echo  1231 45435 6  64565
+1231 45435 6 64565
+uShell>echo 990213{*#&!*(&dasf fasdifiados4 324324 7382 fds
+990213{*#&!*(&dasf fasdifiados4 324324 7382 fds
+uShell>efhashfdjkhfjdasgk
+uShell>echo     ${}  454huhnfjgsd   *$&(*@&52416 dsaffsd
+${} 454huhnfjgsd *$&(*@&52416 dsaffsd
+uShell>setvar 123 niama chibai
+uShell>echo  ${123} machibaide
+niama chibai machibaide
+uShell>echo ${} /-/*/*69   507960)(_     *)*9_)*476        324\/,.,/.
+${} /-/*/*69 507960)(_ *)*9_)*476 324\/,.,/.
+uShell>echo exit 12333213213213
+exit 12333213213213
+uShell>exit 543
+uShell>changeprompt hello
+uShell>echo hello ni mama mefdsfds                      fdsfsdf
+hello ni mama mefdsfds fdsfsdf
+uShell>echo sdafsadfds         fdsaf       fadsfds
+sdafsadfds fdsaf fadsfds
 uShell>setvar HAHA hoohoo # assign the value hoohoo to HAHA
-uShell>setvar HAHA hoo hoo hoo # assign the value hoohoo to HAHA
-uShell>echo ${HAHA} #calling out the value of HAHA
-hoo hoo hoo
-uShell>setvar haha # variable haha is defined and given a default value
-uShell>seTvar haha # variable haha is defined and given a default value
-uShell>echo ${Haha}123 # Attempting to call out the value of an undefined variable
+uShell>echo ${HAHA} # calling out the value of HAHA
+hoohoo
+uShell># hoohoo is printed on the screen.
+uShell>setvar haha # variable haha is defined and given a default value.
+uShell>echo ${Haha}123 # Attempting to call out the value of an undefined variable.
 Error: Haha is not a defined variable.
 uShell>echo ${HAHA}123 # disambiguate the beginning and end of the var name
-hoo hoo hoo123
-uShell>echo ${HAHA }123 # wrong use of curly braces. Would be read as 2 separate words
+hoohoo123
+uShell>echo ${HAHA }123 # wrong use of curly braces. Would be read as 2 separate words.
 ${HAHA }123
 uShell>echo $${HAHA} # $ sign can be used together with variables
-$hoo hoo hoo
-uShell>echo ${${${HAHA}}} # nested use of curly braces are not supported
-${${hoo hoo hoo}}
-uShell>echo ${oof}
-Error: oof is not a defined variable.
-uShell>echo ${HAHA} ${HAHA}
-hoo hoo hoo hoo hoo hoo
-uShell>echo       ${HAHA}  123  # oof
-hoo hoo hoo 123
-uShell>echo ${}{}{}{}
-${}{}{}{}
-uShell>echo $$haha
-$$haha
-uShell>setvar hoho ho # sfsanfjasfnf
-uShell>echo ${hoho}
-ho
-uShell>setvar dasda $%%&^$^$^
-uShell>echo ${dasda}
-$%%&^$^$^
-uShell>setvar ${@@@} HAHA
-uShell>echo @@@
-@@@
+$hoohoo
+uShell>echo ${${HAHA}} # nested use of curly braces are not supported
+${hoohoo}
+uShell># So the replacement only happen once.
 uShell>echo
 
-uShell>echo
-
-uShell>echo \n
-\n
+uShell>echo 				12321 dfsafd ${HAHA}              fds848${123} ma     chi bai
+12321 dfsafd hoohoo fds848niama chibai ma chi bai
+uShell>echo help
+help
+uShell>echo ${a)*&^&58123}
+${a)*&^&58123}
+uShell>ec ho 123
+uShell>ech o afjdkalfd
 uShell>
