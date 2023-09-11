@@ -319,7 +319,6 @@ int uShell::run()
 	while (!m_exit)
 	{
 		std::cout << m_prompt << '>';
-
 		std::string user_Input;
 		getline(std::cin, user_Input, '\n');
 
@@ -344,7 +343,6 @@ int uShell::run()
 		{
 			continue; // Continue to the next iteration
 		}
-
 		//Check all the checks
 		if (tok_List[0] == "echo" && tok_List.size() > 1) 
 		{

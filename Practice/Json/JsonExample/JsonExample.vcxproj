@@ -135,8 +135,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="JsonExample.cpp" />
-    <ClCompile Include="ReadData.cpp" />
+    <ClCompile Include="DataCentre.cpp" />
+    <ClCompile Include="driver.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="SerializeFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DataCentre.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="SerializeFile.h" />
+    <ClInclude Include="Vector2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
