@@ -1,5 +1,3 @@
-
-
 #include "lines.hpp"
 
 int lines(const char* filenames[])
