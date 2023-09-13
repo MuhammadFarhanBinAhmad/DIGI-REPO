@@ -1,8 +1,4 @@
 
-#include <iostream>
-#include <cstddef>
-#include <cstring>
-#include <string>
 
 namespace HLP3
 {

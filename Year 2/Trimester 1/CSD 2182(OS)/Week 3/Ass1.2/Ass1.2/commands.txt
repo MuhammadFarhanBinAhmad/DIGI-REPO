@@ -1,0 +1,9 @@
+uShell>changeprompt asd
+asd>changeprompt gree sad
+gree sad>changeprompt as_Asd fd
+as_Asd fd>changeprompt asfc # sad
+asfc>changeprompt #asd
+#asd>changeprompt asd asd#ds
+asd asd#ds>exit
+#asd>changeprompt MALAY POWER
+MALAY POWER>changeprompt sONic HedgeHog
