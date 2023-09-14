@@ -42,14 +42,18 @@ Obviously, your submission should not have memory leaks or other memory related 
 
 int*** allocate(int F, int R, int C) 
 {
-    int*** myArray = new int**[F];
-    for (int f = 0; f < F; f++) 
+    int* col = new int [F*R*C];
+    int** row = new int* [F * R];
+    int*** fra = new int** [F];
+
+    for (int i = 0; i < F * R; i++)
     {
-        myArray[f] = new int*[R];
-        for (int r = 0; r < R; r++)
-        {
-            myArray[f][r] = new int[C];
-        }
+        row[i] = &col[i * C];
+    }
+
+    for (int i = 0; i < F ; i++)
+    {
+        fra[i] = &row[i * R];
     }
 
     if (!myArray)
@@ -57,30 +61,13 @@ int*** allocate(int F, int R, int C)
       std::cout << "Memory allocation failed\n";
       return nullptr;
     }
+
     return myArray;
 }
 
 void deallocate( int *** ppp ) 
 {
-
-    int f = 0;
-    while (ppp[f] != nullptr) 
-    {
-        int r = 0;
-        while (ppp[f][r] != nullptr) 
-        {
-            delete[] ppp[f][r];
-        }
-        delete[] ppp[f];
-    }
+    delete[] **ppp;
+    delete[] *ppp;
     delete[] ppp;
-    // for (int f = 0; f < F; f++) 
-    // {
-    //     for (int r = 0; r < R; r++)
-    //     {
-    //         delete[] ppp[f][r];
-    //     }
-    //     delete[] ppp[f];
-    // }
-    // delete[] ppp;
 }
