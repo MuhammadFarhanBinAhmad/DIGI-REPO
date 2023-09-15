@@ -1,0 +1,23 @@
+{
+    "ObjectStats":
+    [
+        {
+            "Name" : "NormalEnemy",
+            "Health" : 100,
+            "x" : 10,
+            "y" : 10
+        },
+        {
+            "Name" : "HeavyEnemy",
+            "Health" : 200,
+            "x" : 25,
+            "y" : 30
+        },
+        {
+            "Name" : "ShieldEnemy",
+            "Health" : 300,
+            "x" : 25,
+            "y" : 30
+        }
+    ]
+}

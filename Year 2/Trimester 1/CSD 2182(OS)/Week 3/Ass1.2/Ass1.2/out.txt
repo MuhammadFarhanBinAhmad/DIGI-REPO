@@ -1,1 +1,2144 @@
-uShell> asd> greesad> sad>changepromptas_Asdfd> fd>changepromptasfc> > > asd#ds>exit> asd#ds>exit> POWER>changepromptsONicHedgeHog> 
+uShell> uShell>changeprompt asd
+uShell> asd>changeprompt gree sad
+uShell> gree sad>changeprompt as_Asd fd
+uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> gree sad>changeprompt as_Asd fd
+uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asd>changeprompt gree sad
+uShell> gree sad>changeprompt as_Asd fd
+uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> gree sad>changeprompt as_Asd fd
+uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> as_Asd fd>changeprompt asfc # sad
+uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> asfc>changeprompt #asd
+uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt asd asd#ds
+uShell> asd asd#ds>exit 1
+uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> #asd>changeprompt MALAY POWER
+uShell> MALAY POWER>changeprompt sONic HedgeHog
+uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> foo/goo/bin haha # not using an absolute path.
+uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> uShell> uShell> bin # bin cannot be found in any directories in PATH variable
+uShell> uShell>exit 1
+uShell> uShell> uShell> uShell>exit 1
+uShell> uShell> 

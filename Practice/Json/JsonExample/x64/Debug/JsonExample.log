@@ -1,6 +1,5 @@
 ﻿  DataCentre.cpp
-  driver.cpp
-  GameObject.cpp
   SerializeFile.cpp
+  driver.cpp
   Generating Code...
-  JsonExample.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Practice\Json\JsonExample\x64\Debug\JsonExample.exe
+  JsonExample.vcxproj -> C:\Others\DIGI-REPO\Practice\Json\JsonExample\x64\Debug\JsonExample.exe

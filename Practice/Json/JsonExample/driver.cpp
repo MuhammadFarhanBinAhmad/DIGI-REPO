@@ -5,7 +5,8 @@
 int main()
 {
 	DataCentre dataCentre;
-	SerializeFile("data.json",dataCentre);
-	dataCentre.GrabDefaultGameObjectData();
+	dataCentre.GrabTotalIDSize("ID_File.json");
+	//SerializeFile("Data/data.json",dataCentre);
+	//dataCentre.GrabDefaultGameObjectData();
 
 }

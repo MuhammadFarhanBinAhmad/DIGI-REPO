@@ -1,0 +1,9 @@
+{
+    "GAMEOBJECT":[
+        "Player",
+        "Enemy",
+        "StaticObject"
+        
+    ]
+
+}

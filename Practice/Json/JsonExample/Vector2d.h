@@ -2,7 +2,7 @@
 class Vec2D
 {
 public:
-	int x, y;
+	int x, y,z;
 
 	Vec2D& operator=(const Vec2D& other)
 	{

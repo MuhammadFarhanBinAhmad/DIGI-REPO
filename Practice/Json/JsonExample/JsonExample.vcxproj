@@ -135,14 +135,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Colour.cpp" />
     <ClCompile Include="DataCentre.cpp" />
     <ClCompile Include="driver.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="ID_Reader.cpp" />
     <ClCompile Include="SerializeFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Colour.h" />
     <ClInclude Include="DataCentre.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ID_Reader.h" />
     <ClInclude Include="SerializeFile.h" />
     <ClInclude Include="Vector2d.h" />
   </ItemGroup>

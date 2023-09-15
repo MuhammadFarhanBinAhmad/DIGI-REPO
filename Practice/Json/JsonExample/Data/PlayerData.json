@@ -1,0 +1,11 @@
+{
+    "ObjectStats":
+    [
+        {
+            "Name" : "Player",
+            "Health" : 100,
+            "x" : 10,
+            "y" : 10
+        }
+    ]
+}

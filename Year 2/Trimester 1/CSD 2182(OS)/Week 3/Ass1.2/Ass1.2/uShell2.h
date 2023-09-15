@@ -1,4 +1,3 @@
-#pragma once
 
 #include <string>   // std::string
 #include <vector>   // std::vector
@@ -51,8 +50,7 @@ protected:
     \brief
     Sets up the argument lists required for calling the execvp function, and creates the child process
     This function firstly checks whether the token3
-    list is an empty argument list. It simply
-    returns if the list is empty. Otherwise it gets the merged command line arguments and
+    list is an empty argument list. It simply returns if the list is empty. Otherwise it gets the merged command line arguments and
     creates the argument array to put all the command line arguments. It then finds the
     executable file name and checks if this is an absolute path either started with ‘/’ or ‘./’. If
     so, it calls execvp() with the file name and the arguments. Else, it creates the environment

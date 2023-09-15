@@ -58,6 +58,8 @@
         "numeric": "cpp",
         "random": "cpp",
         "fstream": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "list": "cpp",
+        "xhash": "cpp"
     }
 }

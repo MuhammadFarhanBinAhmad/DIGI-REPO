@@ -1,0 +1,20 @@
+{
+    "ObjectStats":
+    [
+        {
+            "Name" : "Plant",
+            "x" : 10,
+            "y" : 20
+        },
+        {
+            "Name" : "Rock",
+            "x" : 10,
+            "y" : 20
+        },
+        {
+            "Name" : "Table",
+            "x" : 10,
+            "y" : 20
+        }
+    ]
+}
