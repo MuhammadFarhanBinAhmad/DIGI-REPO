@@ -1,9 +1,20 @@
 {
-    "GAMEOBJECT":[
-        "Player",
-        "Enemy",
-        "StaticObject"
-        
-    ]
+    "ID": [
+        {
+            "Type": "Player"
+        },
+        {
+            "Type": "Enemy"
+        },
+        {
+            "Type": "StaticObject"
+        },
+        {
+            "Type": "WindowConfiguration"
+        },
+        {
+            "Type": "Physics"
+        }
 
+    ]
 }

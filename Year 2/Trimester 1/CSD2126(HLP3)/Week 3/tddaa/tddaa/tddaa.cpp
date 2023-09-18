@@ -56,13 +56,13 @@ int*** allocate(int F, int R, int C)
         fra[i] = &row[i * R];
     }
 
-    if (!myArray)
+    if (!col)
     {
       std::cout << "Memory allocation failed\n";
       return nullptr;
     }
 
-    return myArray;
+    return col;
 }
 
 void deallocate( int *** ppp ) 
