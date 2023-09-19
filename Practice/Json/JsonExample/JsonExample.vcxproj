@@ -111,6 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)lib\rapidjson</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +127,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)lib\rapidjson</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,14 +141,12 @@
     <ClCompile Include="DataCentre.cpp" />
     <ClCompile Include="driver.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="ID_Reader.cpp" />
     <ClCompile Include="SerializeFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Colour.h" />
     <ClInclude Include="DataCentre.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="ID_Reader.h" />
     <ClInclude Include="SerializeFile.h" />
     <ClInclude Include="Vector2d.h" />
   </ItemGroup>
