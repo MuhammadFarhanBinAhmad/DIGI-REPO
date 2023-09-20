@@ -2,7 +2,7 @@
     "ObjectStats":
     [
         {
-            "Name" : "NormalEnemy",
+            "1_Name" : "NormalEnemy",
             "Health" : 100,
             "x" : 10,
             "y" : 10

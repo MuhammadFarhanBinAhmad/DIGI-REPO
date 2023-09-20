@@ -1,0 +1,280 @@
+﻿,,,,,,,,,,,
+,No,,,Requirement,Rubric Description,Instructions,,Rubrics are evaluated based on quality or % of completion.,,,
+,1,PENALTY,this column will be hidden eventually,Critical,This rubric is critical to complete. Heavy Penalty.,"Fill in all completed rubrics with ""Explanation"" to help Instructors validate a rubric.",,Waived,The rubric is waived with the Instructors' verification.,,
+,2,PENALTY,,Required,This rubric is required to complete. Medium Penalty.,"No rubric should be left ""Untested"" status. Provide explanation for the completion of each rubric.",,Missing,0 - <30% completion or poor quality work,,
+,3,PENALTY,,Basic,This rubric is a basic feature. Light Penalty.,"Any missing or incompleted Critical, Required, or Basic rubric results in a penalty.",,Minimal,30 - <50% completion or subpar quality work,,
+,4,BONUS,,Advanced,This rubric is an advanced feature.,"If your team did not do the Advanced, Exceptional, or Extra Rubric, please mark as ""Missing"".",,Average,50 - <70% completion or average quality work,,
+,5,BONUS,,Exceptional,This rubric is an exceptional feature.,Please note that you must approach the Instructors to WAIVE the rubrics prior to the submission deadline.,,Above Average,70 - <90% completion or above average quality work,,
+,6,BONUS,,Extra,Pre-req Rubric must be completed to get this Bonus.,Students are advised to complete the rubrics according to the recommend priority.,,Completed,>=90% completion or well-thought quality work,,
+,,,,,,,,,,,
+,,,,JUMP TO:,DESIGN,ART,ARTBFA,TEAM,LIST OF LIBRARIES,,
+,,,,,,,,,,,
+,,,,,,,Some rubrics are untested! Penalty!,,,,
+,ARCHITECTURE,,,,,COMPULSORY RUBRICS FOR EVERY TEAM,,85,107,,
+,No,Category,Sub-category,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,1101,TECH,Architecture,Critical,Window application,"A Window application can be launched using GLFW library or built from scratch using ""main/WinMain"".",Junrong,Untested,Untested,,
+,1102,TECH,Architecture,Required,Game loop with FPS,The application has a basic Game Engine structure with a game loop and FPS control.,Junrong,Untested,Untested,,
+,1103,TECH,Architecture,Required,Input system: Keyboard and Mouse,"The game engine has an input system that supports Keyboard and mouse.
+Using the GLFW library or built from scratch using Windows APIs.",Junrong,Untested,Untested,,
+,1104,TECH,Architecture,Required,Game objects clones,"Can create multiple instances of the same game object type. 
+This must be proven by displaying at least 3 similar game objects at different locations on the screen. A ""Clone"" function is good to have.",Farhan,Untested,Untested,,
+,1105,TECH,Architecture,Required,Game objects are data-driven using game objects factory,"Data-driven at this stage can only be the ""load from a data file"" part without the ""save to a data file"" part. This means De-Serialized (also means ""Data loading"").
+You must load the Game Object's properties from data files. For example, if you have a player game object, its properties like ""position x and y coords"", and ""velocity x and y coords"" must be read from a file at load time.
+The ""levels manager"" is responsible for the creation/destruction of your game objects, using ""objects factory"".
+Examples of data file formats that you can use are: .xml, .json, .txt.",Farhan,Untested,Untested,,
+,1106,TECH,Architecture,Basic,Configuration and tweaking data is data-driven,"Data-driven at this stage can be loading the game configuration from a file (without the saving to a file option). This means De-Serialized (also means ""Data loading""). 
+Configuration and tweaking data means that you can load general game application information (e.g. window resolution ""width"" and ""height""). 
+This file can be named ""config.txt"" or ""config.xml"" or any other readable format.",Junrong,Untested,Untested,,
+,1107,TECH,Architecture,Basic,Using generic container solution (such as STL),"We encourage the usage of STL containers. 
+Under ""Provide explanation"", list at least 2 code files where you are using STL containers.",Everyone,Untested,Untested,,
+,1108,TECH,Architecture,Basic,Custom math library built,"The team must write their own custom math library. 
+e.g. Vector2D, Matrix3x3 or Vector3D, Matrix4x4.
+Note: GLM library can only be used under the ""Graphics"" system code files!",Poh heng,Untested,Untested,,
+,1109,TECH,Architecture,Advanced,Prefabs for game objects,"Prefabs (or Archetypes). A programmer can create/ clone a game object instance, or entity, from a master object copy, known as a prototype or prefab or archetype. 
+A prefab/archetype must be loaded ""De-Serialized"" from a data file, at level's load time.
+Explain usage under ""Provide explanation"".",,Untested,Untested,,
+,1110,TECH,Architecture,Advanced,"Basic messaging system (function pointers, etc.)","Refer to the lecture notes. Explain the location/usage in your code under ""Provide explanation"".",,Untested,Untested,,
+,1111,TECH,Architecture,Advanced,Early Audio System Integration,"The audio system is integrated. At least must play/stop 2 audio files. Can use the ""fmod"" library or a similar library. 
+This must be proven by playing some audio files. Explain the usage under ""Provide explanation"".
+Do not waste your time on this, if your core gameplay mechanics are not related to audio feedback, and if you didn't clear all your essential penalty rubrics first!",Farhan,Untested,Untested,,
+,1112,TECH,Architecture,Advanced,Assets Manager integrated,"A proper assets manager is implemented to arrange all loaded assets.
+An assets manager is a class that holds all your assets containers. Assets are textures, audio files, prefabs, fonts... 
+You can use some helper APIs like standard ""std::filesystem"".",,Untested,Untested,,
+,1113,TECH,Architecture,Advanced,"One advanced architecture feature of your choice. Explain it under ""Provide explanation"". 
+Think of adding only a very unique feature your game engine has! And is not mentioned in the current list.",Simple features are not considered advanced!,,Untested,Untested,,
+,1114,TECH,Architecture,Exceptional,"Scripting language integration (e.g. LUA, C#…)","A scripting language added, mainly, for designers, and non-core (c++) programmers. Enables them to write logic/behaviour for game objects and levels. The aim is to separate the logic from the game engine so that after writing a script, no compilation is needed.
+Explain you integration under ""Provide explanation"".",Farhan,Untested,Untested,,
+,1115,TECH,Architecture,Exceptional,"Architecture is traditional component based or entity-component based ""ECS"".","Can be a normal Component-Based System, as explained in class, or an ECS system and/or variations of that architecture.
+Specify the usage and file location under ""Provide explanation"".",Everyone,Untested,Untested,,
+,,,,,,,,,,,
+,GRAPHICS AND ART PIPELINE,,,,,COMPULSORY RUBRICS FOR EVERY TEAM,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,1201,TECH,Graphics and Art Pipeline,Critical,Graphical content can be displayed,"It will fail if after running your simulation/game, we can't see anything drawn in the viewport. 
+Logging data to the console window does not count here!",Kat Long & Yu Wei,Untested,Untested,,
+,1202,TECH,Graphics and Art Pipeline,Required,Debug drawing capability is demonstrated,"This rubric will fail if the Graphics system can't draw points, lines, rectangles or circles. These geometric drawings use no textures. They are mainly used to draw debugging information. 
+For example, 
+-you can draw the hotspots collision data (if you have any), 
+-you can draw the AABB collision box on top of your sprite game object (if you have any), 
+-you can draw circle collision data (if you have any), 
+-you can draw the velocity direction while the game object is moving (if you have any), 
+-you can draw the grid of your collision map (if you have any), etc...
+Important Note: Do not assume that this will be the wireframe drawing mode as ""Polygon drawing"" mode (mesh drawing mode). And the reason is, your mesh is not always of the same scale as your AABB collision size. For example: You must think and expect that your game object might have a collision AABB (min, max) smaller or bigger than your original mesh scale. Sometimes, you may want to put the AABB collision only at the feet or the head of your character.",Kat Long & Yu Wei,Untested,Untested,,
+,1203,TECH,Graphics and Art Pipeline,Basic,Basic sprites/models can be displayed,"At least, your game objects meshes must be displayed in colour mode.",Kat Long & Yu Wei,Untested,Untested,,
+,1204,TECH,Graphics and Art Pipeline,Basic,Basic background/terrain can be displayed,"At least, your game can display a background (picture) (or layer) (or game object) (or tilemap).",Kat Long & Yu Wei,Untested,Untested,,
+,1205,TECH,Graphics and Art Pipeline,Basic,2D: Sprites can be scaled dynamically,"Your game object can be scaled at runtime (for example by using keyboard user input).
+Cite the input keys usage under ""Provide explanation"".",Kat Long & Yu Wei,Untested,Untested,,
+,1206,TECH,Graphics and Art Pipeline,Basic,2D: Sprites can be rotated dynamically,"Your game object can be rotated at runtime (for example by using keyboard user input).
+Cite the input keys usage under ""Provide explanation"".",Kat Long & Yu Wei,Untested,Untested,,
+,1207,TECH,Graphics and Art Pipeline,Advanced,Basic animations displayed (sequence of frames),Your game object can play 1 sequence of multiple frames: That forms an animation.,Kat Long & Yu Wei,Untested,Untested,,
+,1208,TECH,Graphics and Art Pipeline,Advanced,Multiple animations are shown on one object,"i.e. the main character can change from IDLE animation to JUMP animation at runtime, back and forth (for example by using user keyboard input).
+This must be actually proven in the submitted demo. Cite the input keys usage under ""Provide explanation"".",Kat Long & Yu Wei,Untested,Untested,,
+,1209,TECH,Graphics and Art Pipeline,Advanced,"ADVANCED: Can render 2500 game objects, or more, at different locations, with minimum 60 FPS","Must prove this in your engine demo. All objects must be seen in the viewport. This rubric can't be partially passed. It must be ready to showcase before the delivery deadline. Do explain how to use and run it, in the ""Provide explanation""!",Kat Long & Yu Wei,Untested,Untested,,
+,1210,TECH,Graphics and Art Pipeline,Exceptional,Able to display text objects using proper custom font system,"e.g. Using the FreeType font library.
+Can display at least 2 different text objects (2 different instances) at different locations in the viewport.
+This rubirc will be set to missing if the instructor does not see 2 text objects at runtime.",Kat Long & Yu Wei,Untested,Untested,,
+,,,,,,,,,,,
+,DEBUGGING TOOLS,,,,,COMPULSORY RUBRICS FOR EVERY TEAM,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,1301,TECH,Debugging Tools,Critical,Debugging tools is available,"Engine must have a way to display debugging information. Tools are used to help the programmers visualize information on the game screen. 
+e.g. Win32 console to print out information.",Poh heng,Untested,Untested,,
+,1302,TECH,Debugging Tools,Basic,Performance data is available,"At least you should be able to display/showcase the FPS of the simulation, at runtime.
+The FPS can be displayed, using a font or in the window's title bar, or in the console or using a GUI library. 
+Explain how to check this under ""Provide explanation"".",Poh heng,Untested,Untested,,
+,1303,TECH,Debugging Tools,Advanced,In-game performance viewer,"Able to display each system’s time consumption per game loop, in %, compared to the overall game loop time. 
+Think about it as if you have individual delta-time for each system in your engine. 
+An example of this output can be:
+-Physics system 5% of the total game loop time
+-Graphics system 30% of the total game loop time
+-...
+Having this kind pf performance visualizer will enable the tech people to identify bottle necks e.g. which system is consuming the most of your game loop time.
+Explain how to test this under ""Provide explanation"".",,Untested,Untested,,
+,1304,TECH,Debugging Tools,Advanced,Logging your crashes,"Your program is able to log a crash onto a text file, at any time your game may crashes. You can use safe wrappers like custom smart pointers and/or ""try-catch"" with ""exception safety"".
+Explain the usage and how the instructor can test this rubric, under ""Provide explanation"". If no clear explanation is provided, the rubric will be set to missing!",Daniel,Untested,Untested,,
+,1305,TECH,Debugging Tools,Advanced,"ADVANCED: Extensive and powerful debug console/UI features. This is mainly if you are using a GUI library e.g. IMGui, to generate level data, or to display and construct a level, or to display debug information as simple as using the IMGui text console for logging info.","Students are not supposed to have a level editor at this stage. The following rubrics are advanced and for extra credits purpose, in case the team had progressed fast in the core engine dev!
+This rubric is passed if you can integrate IMGui (or a similar library) into your engine and show that you can render different custom GUI in your application.
+Specify how to turn on/off and test your GUI under ""Provide explanation"".",,Untested,Untested,,
+,1306,TECH,Debugging Tools,Advanced,IMGui Usage: Able to add/remove game objects in the editor.,Using the GUI editor. Explain usage!,Everyone,Untested,Untested,,
+,,,,,,,,,,,
+,PHYSICS AND COLLISION,,,,,POSSIBLE TO WAIVE IF YOUR GAME REQUIRES NO PHYSICS. CONSULT ELIE.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,1401,TECH,Physics and Collision,Critical,Movement is present.,"If your game mechanics/ game genre uses physics, you must intergate the physics formula(s) under a proper physics system. Physics can be at least similar to what you've learned in the CS230/CSD1130 module.
+To pass this rubric, you need to prove it in your visual demo/simulation/game. Specify how to use your physics under ""Provide explanation"".",Daniel,Untested,Untested,,
+,1402,TECH,Physics and Collision,Required,Collision detection is present.,"If your game mechanics/ game genre, uses collision, you must intergate the collision formula(s) under a proper collision or physics system. Collisions can be at least similar to what you've learned in the CS230/CSD1130 module. To pass this rubric, you need to prove it in your demo/simulation/game. Specify how to use your collision detections under ""Provide explanation"".",Daniel,Untested,Untested,,
+,1403,TECH,Physics and Collision,Basic,The main character controller is working with Physics,"You can showcase your main character using your Physics functionalities. e.g. if your original game design is a platformer, your main character should be able to jump with Gravity. Specify how to move your main character under ""Provide explanation"".",Daniel,Untested,Untested,,
+,1404,TECH,Physics and Collision,Advanced,Basic dynamic vs. static collision response,"On collision, the game object stops or bounces or slides on the surface.",Daniel,Untested,Untested,,
+,1405,TECH,Physics and Collision,Advanced,Basic dynamic vs. dynamic collision response,"On collision, both game objects stop or bounce or slide on the surface.",Daniel,Untested,Untested,,
+,1406,TECH,Physics and Collision,Advanced,ADVANCED: Physics can apply step by step visual update based on input. Serves for debugging the Physics,"This can be done as follow: Can have a Step_By_Step Physics mode, where at each key press, the Physics will update only once, in the current game loop.
+Specify usage under ""Provide explanation"".",,Untested,Untested,,
+,,,,,,,,,,,
+,(UXGD) CONCEPT DOCUMENT,,,,,Your team has UXGD. Do not leave any rubric 'Untested'.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,2101,DESIGN-UXGD,(UXGD) Concept Document,Critical,"The Game Concept document contains the necessary basic information that describes the core gameplay mechanics, objective/ goal, theme, genre, game loop, level/ progression design and game references. ","The game concept document should not exceed 15 pages, excluding the Cover, TOC, and Appendices. Please note that you should continuously update this document, and there will be a final submission at M6.",,Untested,Untested,,
+,2102,DESIGN-UXGD,(UXGD) Concept Document,Basic,The Game Concept document is decently written and contains sufficient information to allow readers to understand what the game is about.,"Any unclear parts in the core gameplay mechanics, objective/ goal, theme, genre, game loop, basic level/ progression design and game references may result in a penalty.",,Untested,Untested,,
+,2103,DESIGN-UXGD,(UXGD) Concept Document,Basic,The Game Concept document includes a Feature Design section which considers the technical feasibility and available resources. This must be evaluated with the tech team's help and match the needs of the game design. ,"Technical feasibility can be evaluated with a list of required/planned features in the custom engine, like tile maps, physics, collision, level/ dialogue editor, enemy AI, etc.",,Untested,Untested,,
+,2104,DESIGN-UXGD,(UXGD) Concept Document,Advanced,"[Game Features]
+All game systems, features and mechanics support each other well.","Example: If killing an enemy drops resources, what is the use of the resources in the game? There should not be any system, feature or mechanic with no purpose in the game design.",,Untested,Untested,,
+,2105,DESIGN-UXGD,(UXGD) Concept Document,Advanced,"[Presentation, Clarity and Organization]
+The overall quality of the writing and presentation is clear and concise, with neat formatting and appropriate use of visuals to support the explanation.","This can include an adequate amount of diagrams, images, references, and tables that enhance the explanation of the game concept. The overall quality will be evaluated. Inserting a few images does not automatically mean you have completed the rubric. ",,Untested,Untested,,
+,2106,DESIGN-UXGD,(UXGD) Concept Document,Advanced,"[Additional Information]
+The Game Concept document includes additional quality information that further enhances the readers' understanding of the game concept.",Rubrics 2101 and 2102 must be completed first to complete this rubric. Anything not listed in Rubric 2101 can be considered. Please list down what are the additional information in the explanation. The quality of the information will be evaluated.,,Untested,Untested,,
+,2107,DESIGN-UXGD,(UXGD) Concept Document,Advanced,"[Unique Selling Proposition]
+The Game Concept document clearly explains what differentiates it from existing games of the same genre or category. It highlights innovative approaches or novel ideas not found in most games.","This can include distinctive gameplay mechanics, features, engaging storytelling, or interactions that provide a unique player experience.",,Untested,Untested,,
+,2108,DESIGN-UXGD,(UXGD) Concept Document,Advanced,"[Planning]
+The Game Concept document shows good foresight in its planning, and breakdown of tasks, and is well within Project 2's scope, adaptable to changes.","Do consider must-have features, good-to-have and their implementation priority. You can insert a screenshot of the timeline in Notion.",,Untested,Untested,,
+,,,,,,,,,,,
+,(UXGD) GAME PROTOTYPE,,,,,Your team has UXGD. Do not leave any rubric 'Untested'.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,2201,DESIGN-UXGD,(UXGD) Game Prototype,Required,The M1 Prototype has implemented and accurately reflected the core gameplay mechanics described in the Game Concept document.,You can use any commercial Game engine to create the Prototype.,,Untested,Untested,,
+,2202,DESIGN-UXGD,(UXGD) Game Prototype,Basic,The M1 Prototype is playable without critical crashes or bugs.,Include a Readme document in the submission that describes all the operational controls and instructions on how to play and lists all playable features available in the Prototype. Incomplete or partially completed features can also be listed; please indicate accordingly.,,Untested,Untested,,
+,2203,DESIGN-UXGD,(UXGD) Game Prototype,Advanced,The M1 Prototype has functional controls and sufficient in-game feedback for players to understand what is happening at that moment.,"Feedback can include characters responding well to the controls, HUD displaying critical information, on-hit visuals, audio SFX etc. The quality of the feedback will be evaluated.",,Untested,Untested,,
+,2204,DESIGN-UXGD,(UXGD) Game Prototype,Exceptional,The M1 Prototype demonstrates strong signs of the game's unique selling proposition even if the game is incomplete.,"This can be a unique theme, unique mechanics/ gameplay, a new unique idea that excites players, a scalable game system, etc.",,Untested,Untested,,
+,,,,,,,,,,,
+,(NON-UXGD) GAME CONCEPT,,,,,Your team has UXGD. Please waive these rubrics.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,3101,DESIGN,(NON-UXGD) Game Concept,Critical,"The Game Concept document contains the necessary basic information that describes the core gameplay mechanics, objective/ goal, theme, genre, game loop, level/ progression design and game references. ","The game concept document should not exceed 15 pages, excluding the Cover, TOC, and Appendices. Please note that you should continuously update this document, and there will be a final submission at M6.",,Untested,Untested,,
+,3102,DESIGN,(NON-UXGD) Game Concept,Basic,The Game Concept document contains sufficient information to allow readers to understand what the game is about.,"Any unclear parts in the core gameplay mechanics, objective/ goal, theme, genre, game loop, basic level/ progression design and game references may result in a penalty.",,Untested,Untested,,
+,3103,DESIGN,(NON-UXGD) Game Concept,Basic,The Game Concept document includes a Feature Design section which considers the technical feasibility and available resources. This must be evaluated with the tech team's help and match the needs of the game design. ,"Technical feasibility can be evaluated with a list of required/planned features in the custom engine, like tile maps, physics, collision, level/ dialogue editor, enemy AI, etc. ",,Untested,Untested,,
+,3104,DESIGN,(NON-UXGD) Game Concept,Advanced,"[Game Features]
+All game systems, features and mechanics support each other well.","Example: If killing an enemy drops resources, what is the use of the resources in the game? There should not be any system, feature or mechanic with no purpose in the game design.",,Untested,Untested,,
+,3105,DESIGN,(NON-UXGD) Game Concept,Advanced,"[Presentation, Clarity and Organization]
+The overall quality of the writing and presentation is clear and concise, with neat formatting and appropriate use of visuals to support the explanation.","This can include an adequate amount of diagrams, images, references, and tables that enhance the explanation of the game concept. The overall quality will be evaluated. For example, inserting a few images doesn't mean you have completed the rubrics. ",,Untested,Untested,,
+,3106,DESIGN,(NON-UXGD) Game Concept,Advanced,"[Additional Information]
+The Game Concept document includes additional quality information that further enhances the readers' understanding of the game concept.",Rubrics 2101 and 2102 must be completed first to complete this rubric. Anything not listed in Rubric 2101 can be considered. Please list down what are the additional information in the explanation. The quality of the information will be evaluated.,,Untested,Untested,,
+,3107,DESIGN,(NON-UXGD) Game Concept,Advanced,"[Unique Selling Proposition]
+The Game Concept document clearly explains what differentiates it from existing games of the same genre or category. It highlights innovative approaches or novel ideas not found in most games.","This can include distinctive gameplay mechanics, features, engaging storytelling, or interactions that provide a unique player experience.",,Untested,Untested,,
+,3108,DESIGN,(NON-UXGD) Game Concept,Advanced,"[Planning]
+The Game Concept document shows good foresight in its planning, and breakdown of tasks, and is well within Project 2's scope, adaptable to changes.","Do consider must-have features, good-to-have and their implementation priority. You can insert a screenshot of the timeline in Notion.",,Untested,Untested,,
+,,,,,,,,,,,
+,(NON-UXGD) GAME PROTOTYPE,,,,,Your team has UXGD. Please waive these rubrics.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,3201,DESIGN,(Non-UXGD) Game Prototype,Advanced,The M1 Prototype has implemented and accurately reflected the core gameplay mechanics described in the Game Concept document and is playable without critical crashes or bugs. The M1 Prototype also has basic functional controls.,You can use any commercial Game engine or Custom Engine to create the Prototype. Include a Redme document in the submission that describes all the operational controls and instructions on how to play and lists all playable features available in the Prototype. Incomplete or partially completed features can also be listed; please indicate accordingly.,,Untested,Untested,,
+,3202,DESIGN,(Non-UXGD) Game Prototype,Exceptional,The M1 Prototype has demonstrated strong signs of the game's unique selling proposition even if the game is incomplete.,"This can be a unique theme, unique mechanics/ gameplay, a new unique idea that excites players, a scalable game system, etc.",,Untested,Untested,,
+,,,,,,,,,,,
+,ART PROOF OF CONCEPT,,,,,Your team has BFA. Do not leave any rubric 'Untested'.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,4101,ART-BFA,Art Proof of Concept,Critical,Submit Proof of Concept (POC) in PDF format,Refer to ART Proof of Concept (POC) Submission Guidelines. (uploaded to BFA moodle page),,Untested,Untested,,
+,4102,ART-BFA,Art Proof of Concept,Required,"Overall presentation are put together with decent page layout and design, consistency and organization of materials, and no missing materials",Refer to the Submission Guidelines for checklist.,,Untested,Untested,,
+,4103,ART-BFA,Art Proof of Concept,Required,2 mock-up game screens required.  Main menu and In-game screen mock-ups,"Mock-up screens that are poorly put together and/or missing cruical assets/information will be penalised here. While these mock-up screens are subjected to change as the project progresses, these mock-ups screens should give a clear indication of the overall art direction and gameplay.",,Untested,Untested,,
+,4104,ART-BFA,Art Proof of Concept,Basic,"Description of Game concepts, character(s), environment(s), props (if any), UI and any other relevant information clearly presented. ",Vague or missing write-ups will be penalised here.,,Untested,Untested,,
+,4105,ART-BFA,Art Proof of Concept,Advanced,"Proof of Concept materials are professionally put together. Clear presentation of Game concepts,  Description of art assets, Art direction, Style guide, characters, environments, props, UI elements, VFX designs (if any) and Mockup screens","Art assets created are of good quality. Effort is put into the POC document. Evident in the materials presented. Time and effort are clearly spent on assets. eg. page layout designs, cover page, mockup screens, content page, write-ups etc. Overall good asethetics. ",,Untested,Untested,,
+,4106,ART-BFA,Art Proof of Concept,Extra,Additional Mockup Screens Pre-req of [4103] required.,"Additional mock-up screens are presented to better showcase or explain the gameplay mechanics.  Crucial Art assets (eg, characters, env, UI etc) are in. Overall art direction is consistent and aesthetically pleasing.",,Untested,Untested,,
+,,,,,,,,,,,
+,CONCEPTS - CHARACTERS,,,,,Your team has BFA. Do not leave any rubric 'Untested'.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,4201,ART-BFA,Concepts - Characters,Critical,Conceptual Design works done for Characters. Sufficient concept designs and research done for characters.,Poor character designs or insufficient effort put into research and work will be penalised here. Curate your best conceptual art and put them into the POC. Research materials and work done that are not presented in POC should be featured and explained in your IMR.,,Untested,Untested,,
+,4202,ART-BFA,Concepts - Characters,Required,Main characters design completed. Designs look decent and should showcase your understanding of anatomy. Good draftsmanship of work is expected.,"Your main character and 1 enemy (or NPC) should be completed.  Poor draftsmanship, consistency, and understanding of anatomy will be penalised here.",,Untested,Untested,,
+,4203,ART-BFA,Concepts - Characters,Advanced,Appealing character designs. Consistency in terms of styles and art direction.,"Overall, appealing character designs and good draftsmanship. Designs suit the game concept well.",,Untested,Untested,,
+,4204,ART-BFA,Concepts - Characters,Advanced,"Good presentation of character designs in the form of model sheet, and character studies (key poses, expression etc)",,,Untested,Untested,,
+,4205,ART-BFA,Concepts - Characters,Exceptional,Overall excellent Draftsmanship and consistency in the creation of Characters. Professional work. Great effort all around!,This is a bonus for professional high quality works. ,,Untested,Untested,,
+,,,,,,,,,,,
+,"CONCEPTS - ENVIRONMENT, PROPS & VFX",,,,,Your team has BFA. Do not leave any rubric 'Untested'.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,4301,ART-BFA,"Concepts - Environment, Props & VFX",Critical,"Concept designs and research  done for Environment, props and VFX (if any)",Poor designs or insufficient effort put into research and work will be penalised here. Curate your best conceptual art and put them into the POC. Research materials and work done that are not presented in POC should be featured and explained in your IMR.,,Untested,Untested,,
+,4302,ART-BFA,"Concepts - Environment, Props & VFX",Required,"Key Environment, props and VFX (if any) decently designed.  Good draftsmanship of work is expected. ","Key environment (props and VFX if applicable) clearly designed, rendered and presented. Badly designed environment and/or assets or work doen wth poor draftsmanship will be penalised here. ",,Untested,Untested,,
+,4303,ART-BFA,"Concepts - Environment, Props & VFX",Advanced,2 or more environment created with good draftsmanship. ,This is a bonus rubrics. Create 2 or more environment ONLY if  it is applicable to your game. ,,Untested,Untested,,
+,4304,ART-BFA,"Concepts - Environment, Props & VFX",Advanced,Good amount of research and conceptual design works done before locking down the final designs. The environment art (props and VFX if applicable) is appealing and blends well with characters and UI elements.,Curate your best conceptual art and put them into the POC. Research materials and work done that are not presented in POC should be featured and explained in your IMR.,,Untested,Untested,,
+,4305,ART-BFA,"Concepts - Environment, Props & VFX",Exceptional,"Overall excellent Draftsmanship and consistency in creating Environment art, props and VFX (if any). Professional work. Great effort all around!",This is a bonus for professional high quality works. ,,Untested,Untested,,
+,,,,,,,,,,,
+,CONCEPTS - UI DESIGN,,,,,Your team has BFA. Do not leave any rubric 'Untested'.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,4401,ART-BFA,Concepts - UI Design,Required,The submission has basic concept design or sufficient concept designs and research done for UI designs,Curate your best conceptual art and put them into the POC. Research materials and work done that are not presented in POC should be featured and explained in your IMR.,,Untested,Untested,,
+,4402,ART-BFA,Concepts - UI Design,Required,All designs and art are consistent with each other and/or work well with each other. UI gel with one another and synergise with the game concepts in terms of functionality.,,,Untested,Untested,,
+,4403,ART-BFA,Concepts - UI Design,Basic,"Basic UI design, typography and logo designs are explored. Brand identity of the team and game are well represented. Clarity of UI Elements (eg. HUD)",,,Untested,Untested,,
+,4404,ART-BFA,Concepts - UI Design,Advanced,Work done with good draftsmanship. Appealing designs and suit the game.,Bonus for good quality work done.,,Untested,Untested,,
+,,,,,,,,,,,
+,(NON-BFA) ART PROOF OF CONCEPT,,,,,Your team has BFA. Please waive these rubrics.,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,Provide explanation,Student Input,Teacher Input,Teacher Comments,
+,5101,ART,(NON-BFA) Art Proof of Concept,Required,Submit [Non-BFA Art Proof of Concept] document in PDF format. ,Maximum of 10 pages excluding the cover page and TOC. Suggest using PowerPoint.,,Untested,Untested,,
+,5102,ART,(NON-BFA) Art Proof of Concept,Basic,"The document must include art references or concept art for characters, sprites/ animations, NPCs, menus, environments, menu layouts, or HUD/UI items.  ","If your game has no characters (Tetris/ Match4/ Puzzle), demonstrate concepts for objects and elements instead. Please make sure to include links/ citations of the art references. You may use AI-generated art as references, but they cannot be used in the game. The quality of the document will be evaluated.",,Untested,Untested,,
+,5103,ART,(NON-BFA) Art Proof of Concept,Advanced,"[Clarity and Organization]
+The document is clear, organised, well-formatted and easy to understand.","The overall quality of visuals, descriptions, presentation, and supporting references will be evaluated.",,Untested,Untested,,
+,5104,ART,(NON-BFA) Art Proof of Concept,Advanced,"[Art style guide] 
+The document includes an art style guide which describes the visual direction, choice of fonts, colour palette, background, theme and mood board suits the proposed game concept.",The quality of the art style guide and presentation will be evaluated.,,Untested,Untested,,
+,5105,ART,(NON-BFA) Art Proof of Concept,Advanced,"[Originality and Quality]
+All art mockups and sketches are original, of decent quality, have strong visual appeal, show good varieties and are well-suited to the game's theme and genre.","Please indicate which art assets are created by the team. Art Assets may include sprites, animations, characters, environments, objects, UI, Menus etc. The quality of the art assets will be evaluated.",,Untested,Untested,,
+,5106,ART,(NON-BFA) Art Proof of Concept,Exceptional,"[Uniqueness]
+All art mockups, sketches, and directions have a consistent and unique style that fits the game's theme, mechanics, design and target audience.","Overall creativity, effort, and uniqueness of the art assets will be evaluated.",,Untested,Untested,,
+,,,,,,,,,,,
+,SUBMISSION,,,,,COMPULSORY RUBRICS FOR EVERY TEAM,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,,Student Input,Teacher Input,Teacher Comments,
+,6101,TEAM,Submission,Critical,The team has submitted all the required items as instructed by Instructors before the deadline.,"The production instructor will announce the submission requirements in Week 4. Do not open/ modify the files in the OneDrive folder after submission.
+Above Average: < 6 hours late submission
+Average: < 12 hours late submission
+Minimal: < 24 hours late submission
+Missing:  > 24 hours late submission.",,Waived,Untested,,
+,6102,TEAM,Submission,Required,"No rubrics are left in ""Untested"" status.
+
+If your team has no BFA, please waive Art-BFA.
+If your team has BFA, please waive Art.
+If your team has UXGD, please waive Design.
+If your team has no UXGD, please waive Design-UXGD.","Please check through all the rubrics.
+Above Average: < 4 untested rubrics
+Average: < 8 untested rubrics
+Minimal: < 12 untested rubrics
+Missing:  > 12 untested rubrics",,Waived,Untested,,
+,6103,TEAM,Submission,Required,The team did not open or save the rubric document in Google Sheets.,Please upload the file to OneDrive and open it using Microsoft 365 Excel online or Excel Desktop App so that all the team members can edit the Excel file at the same time. ,,Waived,Untested,,
+,6104,TEAM,Submission,Required,"All the required items for Production have been submitted correctly, as instructed by the Production Instructor.","This includes filling up this document correctly, submitting all the files in the required naming convention and format, updating your Notion timely, etc. Please make sure to watch the Production lecture for the submission requirements.",,Waived,Untested,,
+,6105,TECH,Submission,Critical,The team does not need to resubmit a new build of the Visual Studio project.,"This rubric will only be marked as ""Missing"" when any Instructor requires the Tech to resubmit their project!",,Waived,Untested,,
+,6106,TECH,Submission,Required,"All the required items for Tech have been submitted correctly, as instructed by Tech Instructor. Please fill up the list of libraries used (at the bottom of the sheets).",Please make sure to watch the Production lecture for the submission requirements.,,Waived,Untested,,
+,6107,"DESIGN-UXGD
+DESIGN
+ART",Submission,Required,"All the required items for DesignUXGD, Design and Art have been submitted correctly, as instructed by Design Instructor.",Please make sure to watch the Production lecture for the submission requirements.,,Waived,Untested,,
+,6108,ART-BFA,Submission,Required,"All the required items for ArtBFA have been submitted correctly, as instructed by ArtBFA Instructor.",Please make sure to watch the Production lecture for the submission requirements.,,Waived,Untested,,
+,,,,,,,,,,,
+,PRESENTATION,,,,,COMPULSORY RUBRICS FOR EVERY TEAM,,,,BACK TO TOP,
+,No,Category,,Requirement,Rubric description,Teacher description,,Student Input,Teacher Input,Teacher Comments,
+,6111,TEAM,Presentation,Required,"[Requirements] 
+Presentation is kept within 8 minutes.","If the presentation went over 8 minutes, this rubric will be mark ""Missing"".",,Waived,Untested,,
+,6112,TEAM,Presentation,Basic,"[Requirements] 
+Every team member must participate in at least 2 out of 3 presentations (M1, M2, M3).",Please indicate on Student Sheet who is presenting in the current milestone. Any individual who didn't participate in 2 out of 3 presentations will get a 1-letter grade penalty in their final grade unless they have valid MC or excuses.,,Waived,Untested,,
+,6113,TEAM,Presentation,Basic,"[Requirements] 
+None of the presenters is using a script when presenting and every presenter makes an effort to give eye contact to the audience from time to time.","Please rehearse at the presentation venue and get used to the venue setup, microphone and computer volume.",,Waived,Untested,,
+,6114,TEAM,Presentation,Basic,"[Requirements] 
+Individuals playing the demo should not be presenting.","There should be one individual operating the slides/ demo (can be swopped), while the others present the slide/ demo. Playing the demo while presenting is not considered as you have presented. (Rubric 6111)",,Waived,Untested,,
+,6115,TEAM,Presentation,Basic,"[Presentation]
+Clear introduction and overview of the project with a working Demo without major hiccups.","Teams with UXGD must showcase a working demo of the game concept using Unity. Teams can also showcase their current Custom Engine status.
+Teams without UXGD must showcase a working demo using the Custom Engine.",,Waived,Untested,,
+,6116,TEAM,Presentation,Advanced,"[Presentation]
+Well-prepared presentation, smooth transitions between sections of the presentation and presenters, along with well coordination presenter and slide coordinator.",Rubrics 6115 must be completed.,,Waived,Untested,,
+,6117,TEAM,Presentation,Advanced,"[Presentation]
+The presentation was engaging and outstanding, loud and clear, leaving a good impression.",,,Waived,Untested,,
+,6118,TEAM,Presentation,Exceptional,"[Presentation]
+Most of the presenters showed confidence during the presentation delivery, which was well executed, showing great enthusiasm and high-level energy.",Rubrics 6115 and 6116 needs to be at least Above Average.,,Waived,Untested,,
+,6119,TEAM,Presentation,Advanced,"[Visual Design]
+Consistent and visually appealing presentation slide design that suits the project's theme.",,,Waived,Untested,,
+,6120,TEAM,Presentation,Advanced,"[Visual Design]
+Effective use of colours, fonts, tables, diagrams, images/ gifs, screenshots, animation, transitions or backgrounds enhances readability and presentation. ",The slides' content is not too cluttered and easy to read/ understand.,,Waived,Untested,,
+,6121,TEAM,Presentation,Basic,"[Risk and Mitigations]
+Identify potential risks and mitigations faced by the Tech, Design and Art Team.
+Definition: Risk mitigation is the process the team undertakes to reduce its exposure to the various risks it might face moving forward. ","The team should present risks and mitigations specific to your team rather than general risks like heavy school workload and bad time management. This rubric will be marked as ""Missing"" if the team does not present this during the presentation.",,Waived,Untested,,
+,6122,TEAM,Presentation,Extra,"[Risk and Mitigations]
+Identified unique risks related to the team and showed the effectiveness of proposed mitigation strategies and the feasibility and practicality of the mitigation plans. [Pre-req: 6120]","Rubrics 6120 must be marked as ""Completed"", else this rubric will be marked as ""Missing"".",,Waived,Untested,,
+,6123,TEAM,Presentation,Basic,"[Milestone Plan]
+Shows clarity and coherence of the upcoming milestone plan for the Tech, Design and Art Team.","This rubric will be marked as ""Missing"" if the team does not present this during the presentation.",,Waived,Untested,,
+,6124,TEAM,Presentation,Extra,"[Milestone Plan]
+Realistic objectives and tasks for the upcoming milestone with consideration of dependencies and potential challenges. [Pre-req: 6122]","Rubrics 6122 must be marked as ""Completed"", else this rubric will be marked as ""Missing"".",,Waived,Untested,,
+,,,,,,,,,,,
+,List of libraries used - To be filled by the Tech team,,,,,,,,,BACK TO TOP,
+,No, ,,Library name,Library usage description,Library files and code file name(s), , , ,,
+,7001,Example,LIBRARY,example (GLFW),"example (We are using GLFW for a faster application startup, Keyboard/Mouse input, and OpenGL setup)","example (glfw.lib, glfw.h)", , , ,,
+,7002,Lib 01,LIBRARY, , , , , , ,,
+,7003,Lib 02,LIBRARY, , , , , , ,,
+,7004,Lib 03,LIBRARY, , , , , , ,,
+,7005,Lib 04,LIBRARY, , , , , , ,,
+,7006,Lib 05,LIBRARY, , , , , , ,,
+,7007,Lib 06,LIBRARY, , , , , , ,,
+,7008,Lib 07,LIBRARY, , , , , , ,,
+,7009,Lib 08,LIBRARY, , , , , , ,,
+,7010,Lib 09,LIBRARY, , , , , , ,,
+,7011,Lib 10,LIBRARY, , , , , , ,,
+,7012,Lib 11,LIBRARY, , , , , , ,,
+,7013,Lib 12,LIBRARY, , , , , , ,,
+,7014,Lib 13,LIBRARY, , , , , , ,,
+,7015,Lib 14,LIBRARY, , , , , , ,,
+,7016,Lib 15,LIBRARY, , , , , , ,,
+,7017,Lib 16,LIBRARY, , , , , , ,,
+,7018,Lib 17,LIBRARY, , , , , , ,,
+,7019,Lib 18,LIBRARY, , , , , , ,,
+,7020,Lib 19,LIBRARY, , , , , , ,,
+,7021,Lib 20,LIBRARY, , , , , , ,,
+,,,,,,,,,,,
