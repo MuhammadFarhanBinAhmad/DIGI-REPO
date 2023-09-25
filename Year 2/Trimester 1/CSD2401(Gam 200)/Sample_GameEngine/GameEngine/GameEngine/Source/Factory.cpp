@@ -60,7 +60,7 @@ namespace Framework
 			{
 				//Read the component's name
 				StreamRead(stream,componentName);
-
+				//STUDY THIS
 				//Find the component's creator
 				ComponentMapType::iterator it =  ComponentMap.find( componentName );
 				ErrorIf( it == ComponentMap.end() , "Could not find component creator with name %s" , componentName.c_str() );
