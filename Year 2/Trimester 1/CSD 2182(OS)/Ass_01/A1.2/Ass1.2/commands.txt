@@ -1,0 +1,13 @@
+uShell>changeprompt asd
+asd>changeprompt gree sad
+gree sad>changeprompt as_Asd fd
+as_Asd fd>changeprompt asfc # sad
+asfc>changeprompt #asd
+#asd>changeprompt asd asd#ds
+asd asd#ds>exit 1
+#asd>changeprompt MALAY POWER
+MALAY POWER>changeprompt sONic HedgeHog
+uShell> foo/goo/bin haha # not using an absolute path.
+uShell> /foo/goo/bin haha # example using non-existent path or filename
+uShell> bin # bin cannot be found in any directories in PATH variable
+uShell>exit 1
