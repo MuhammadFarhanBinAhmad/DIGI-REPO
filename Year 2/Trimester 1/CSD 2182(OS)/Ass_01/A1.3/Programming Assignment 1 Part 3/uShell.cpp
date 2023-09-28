@@ -28,7 +28,7 @@ uShell3::ProcessInfo::ProcessInfo(int id, bool state)
 void uShell3::finish(TokenList const & tokenList)
 {
     //Standard check
-    if (tokenList.empty() || tokenList.size() <= 2)
+    if (tokenList.empty() || tokenList.size() != 2)
     {
         std::cerr << "Error: Invalid usage of finish command. Usage: finish <process index>" << std::endl;
         return;
@@ -149,143 +149,143 @@ bool uShell3::exist (TokenList const & tokenList, unsigned startParam, unsigned 
 }
 void uShell3::doExternalCmd(TokenList const & tokenList)
 {
-    if (tokenList.empty())
-    {
-        return;
-    }
+    // if (tokenList.empty())
+    // {
+    //     return;
+    // }
 
-    // Check if the first token is a pipe "|"
-    if (tokenList.front() == "|")
-    {
-        std::cerr << "Error: Invalid use of pipe at the beginning of a command." << std::endl;
-        return;
-    }
+    // // Check if the first token is a pipe "|"
+    // if (tokenList.front() == "|")
+    // {
+    //     std::cerr << "Error: Invalid use of pipe at the beginning of a command." << std::endl;
+    //     return;
+    // }
 
-    //Count amount of pipe in tokenlist
+    // //Count amount of pipe in tokenlist
 
-    int pipe_Count = 0;
-    for (const std::string &token : tokenList)
-    {
-        if (token == "|")
-        {
-            pipe_Count++;
-        }
-    }
+    // int pipe_Count = 0;
+    // for (const std::string &token : tokenList)
+    // {
+    //     if (token == "|")
+    //     {
+    //         pipe_Count++;
+    //     }
+    // }
 
-    //Create list to store pipe info
-    std::vector<PipeInfo> pipeInfo_List(pipe_Count);
+    // //Create list to store pipe info
+    // std::vector<PipeInfo> pipeInfo_List(pipe_Count);
 
-    //Track pipe information
-    int pipe_Start= -1;
-    int pipe_End = -1;
+    // //Track pipe information
+    // int pipe_Start= -1;
+    // int pipe_End = -1;
 
-    for (unsigned i =0; i < tokenList.size();i++)
-    {
-        if (tokenList[i] == "|")
-        {
-            //Check for of theres an empty string in the between the pipes
-            if (pipe_Start == pipe_End +1)
-            {
-                std::cerr << "Error: Syntax error in pipe command." << std::endl;
-                return;
-            }
+    // for (unsigned i =0; i < tokenList.size();i++)
+    // {
+    //     if (tokenList[i] == "|")
+    //     {
+    //         //Check for of theres an empty string in the between the pipes
+    //         if (pipe_Start == pipe_End +1)
+    //         {
+    //             std::cerr << "Error: Syntax error in pipe command." << std::endl;
+    //             return;
+    //         }
 
-            //Create pipe for this command
-            if (pipe(pipeInfo_List[pipe_Start].descriptor) == -1)
-            {
-                std::cerr << "Error: Pipe creation failed." << std::endl;
-                return;
-            }
+    //         //Create pipe for this command
+    //         if (pipe(pipeInfo_List[pipe_Start].descriptor) == -1)
+    //         {
+    //             std::cerr << "Error: Pipe creation failed." << std::endl;
+    //             return;
+    //         }
 
-            //Save position of the pipe toke in the token list
-            pipeInfo_List[pipe_Start].posInToken = i;
+    //         //Save position of the pipe toke in the token list
+    //         pipeInfo_List[pipe_Start].posInToken = i;
 
-            //Update start and end
-            pipe_Start = pipe_End + 1;
-            pipe_End = i;
-        }
+    //         //Update start and end
+    //         pipe_Start = pipe_End + 1;
+    //         pipe_End = i;
+    //     }
 
-        else if (pipe_Start == -1)
-        {
-            //update pipe end
-            pipe_End = i;
-        }
-    }
+    //     else if (pipe_Start == -1)
+    //     {
+    //         //update pipe end
+    //         pipe_End = i;
+    //     }
+    // }
 
-    //Process each command
-    int prev_PipeOut = -1;
-    int childPid = 0;
+    // //Process each command
+    // int prev_PipeOut = -1;
+    // int childPid = 0;
 
-    for (unsigned i = 0; i < pipeInfo_List.size();i++)
-    {
-        childPid = fork();
+    // for (unsigned i = 0; i < pipeInfo_List.size();i++)
+    // {
+    //     childPid = fork();
 
-        if (childPid == -1)
-        {
-            std::cerr << "Error: Forking failed." << std::endl;
-            return;
-        }
-        else if (childPid == 0)
-        {
-            TokenList cmdArgs;
+    //     if (childPid == -1)
+    //     {
+    //         std::cerr << "Error: Forking failed." << std::endl;
+    //         return;
+    //     }
+    //     else if (childPid == 0)
+    //     {
+    //         TokenList cmdArgs;
 
-            for (int j = pipe_Start;j <= pipe_End;j++)
-            {
-                cmdArgs.push_back(tokenList[j]);
-            }
+    //         for (int j = pipe_Start;j <= pipe_End;j++)
+    //         {
+    //             cmdArgs.push_back(tokenList[j]);
+    //         }
 
-            //close unnecessary pipe end
-            if (i > 0)
-            {
-                close(pipeInfo_List[i-1].descriptor[PipeInfo::OUT_DESCRIPTOR]);
-                //int dup2(int oldfd, int newfd)
-                //dup2 is use to duplicate
-                //STDIN_FILENO - just a file descriptor(almost certainly 0)
-                dup2(prev_PipeOut,STDIN_FILENO);
-            }
+    //         //close unnecessary pipe end
+    //         if (i > 0)
+    //         {
+    //             close(pipeInfo_List[i-1].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+    //             //int dup2(int oldfd, int newfd)
+    //             //dup2 is use to duplicate
+    //             //STDIN_FILENO - just a file descriptor(almost certainly 0)
+    //             dup2(prev_PipeOut,STDIN_FILENO);
+    //         }
 
-             if (i < pipeInfo_List.size() - 1)
-            {
-                close(pipeInfo_List[i].descriptor[PipeInfo::IN_DESCRIPTOR]);
-                dup2(pipeInfo_List[i].descriptor[PipeInfo::OUT_DESCRIPTOR], STDOUT_FILENO); // Redirect output to the next pipe
-            }
+    //          if (i < pipeInfo_List.size() - 1)
+    //         {
+    //             close(pipeInfo_List[i].descriptor[PipeInfo::IN_DESCRIPTOR]);
+    //             dup2(pipeInfo_List[i].descriptor[PipeInfo::OUT_DESCRIPTOR], STDOUT_FILENO); // Redirect output to the next pipe
+    //         }
 
-            //Execute command
-            execute(cmdArgs);
+    //         //Execute command
+    //         execute(cmdArgs,0,pipeInfo_List.size());
 
-            //Close pipe
-            close(pipeInfo_List[i].descriptor[PipeInfo::IN_DESCRIPTOR]);
-            close(pipeInfo_List[i].descriptor[PipeInfo::OUT_DESCRIPTOR]);
-            exit(EXIT_FAILURE);
-        }
-        else // parent
-        {
-            //close pipe ends in parent
-            if (i > 0)
-            {
-                close(pipeInfo_List[i-1].descriptor[PipeInfo::OUT_DESCRIPTOR]);
-            }
+    //         //Close pipe
+    //         close(pipeInfo_List[i].descriptor[PipeInfo::IN_DESCRIPTOR]);
+    //         close(pipeInfo_List[i].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+    //         exit(EXIT_FAILURE);
+    //     }
+    //     else // parent
+    //     {
+    //         //close pipe ends in parent
+    //         if (i > 0)
+    //         {
+    //             close(pipeInfo_List[i-1].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+    //         }
 
-            //Add child PID to list
-            ProcessInfo pipe_Process(childPid,true);
-            m_bgProcessList.push_back(pipe_Process);
+    //         //Add child PID to list
+    //         ProcessInfo pipe_Process(childPid,true);
+    //         m_bgProcessList.push_back(pipe_Process);
 
-            prev_PipeOut = pipeInfo_List[i].descriptor[PipeInfo::OUT_DESCRIPTOR];
-        }
-    }
+    //         prev_PipeOut = pipeInfo_List[i].descriptor[PipeInfo::OUT_DESCRIPTOR];
+    //     }
+    // }
 
-    //parent process waits for all child processes to be completed
-    for (unsigned i = 0; i < pipeInfo_List.size(); i++)
-    {
-        int status;
-        waitpid(-1, &status, 0);
+    // //parent process waits for all child processes to be completed
+    // for (unsigned i = 0; i < pipeInfo_List.size(); i++)
+    // {
+    //     int status;
+    //     waitpid(-1, &status, 0);
 
-        // Print the status of the child process
-        std::cout << "Process " << m_bgProcessList[i].PID << " exited with exit status " << status << "." << std::endl;
+    //     // Print the status of the child process
+    //     std::cout << "Process " << m_bgProcessList[i].PID << " exited with exit status " << status << "." << std::endl;
 
-        // Mark the process as inactive
-        m_bgProcessList[i].bActive = false;
-    }
+    //     // Mark the process as inactive
+    //     m_bgProcessList[i].bActive = false;
+    // }
 }
 uShell3::uShell3(bool bFlag) : uShell2(bFlag)
 {
