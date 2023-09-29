@@ -13,7 +13,7 @@
 // include necessary headers ...
 #include <iostream>
 #include <cstring>
-#include <algorithm>    // std::swap
+#include <algorithm>
 #include <exception>
 
 namespace HLP3 
@@ -23,56 +23,132 @@ namespace HLP3
     class Matrix 
     {
         public:
-        // provide common standard library container type definitions
-        // with using keyword ...
+        //Long time no see
         using size_type = size_t;
         using value_type = T;
+        using reference = value_type &;
+        using const_reference = const reference;
         using pointer = value_type *;
-        using const_pointer = const value_type*;
-        using iterator = pointer;
-        using const_iterator = const_pointer;
+        using const_pointer = const value_type *;
 
         public:
         // To allow clients to access values in an object m of type Matrix m
         // using m[r][c] syntax, define a proxy class.
+        
+        
         // Note that this nested class is simply a type and has no inherent access
         // to any of outer class' members. Therefore, proxy class definition
         // declares 2 data members: a Matrix& data member that references Matrix
         // object instantiating the proxy object and a size_type data member
-        // indicating the matrix row. Suppose a call to Matrix object's member
+        // indicating the matrix row.
+
+        // Suppose a call to Matrix object's member
         // function (*this).op[](r) returns a proxy object constructed with a
         // reference to *this and the value of (row) index.
+
         // The proxy class will then define an overload of op[](size_type c) to
         // return the value stored in the Matrix object's data store data[r].
+        class Proxy
+        {
+        private:
+            Matrix& parent;
+            size_type row;
+        public:
+            Proxy(Matrix<T> &p, size_type r);
+            reference operator[](size_type c);
+        };
+
         // a second nested proxy class definition for Matrix const&
-        // ctors, dtor, copy, and move functions ...
-        Matrix(size_type nr, size_type nc) : rows(nr),cols(nc),data(nullptr);
+        class ProxyConst
+        {
+        private:
+            const Matrix& parent;
+            size_type row;
+        public:
+            ProxyConst(const Matrix<T> &p, size_type r);
+            const_reference operator[](size_type c) const;
+        };
+
+        //ctors, dtor, copy, and move functions ...
+        //RO5
+        Matrix(size_type nr, size_type nc);
         Matrix(Matrix const& rhs);
         Matrix(Matrix&& rhs) noexcept;
         Matrix(std::initializer_list<std::initializer_list<value_type>>);
         ~Matrix() noexcept;
+        //Operator
         Matrix& operator=(Matrix const& rhs);
         Matrix& operator=(Matrix&& rhs) noexcept;
+        //Helper function
         size_type get_rows() const noexcept;
         size_type get_cols() const noexcept;
-        proxy-class-for-Matrix operator[](size_type r);
-        proxy-class-for-Matrix-const operator[](size_type r) const;
+        // proxy-class-for-Matrix operator[](size_type r);
+        Proxy operator[](size_type r);
+        // proxy-class-for-Matrix-const operator[](size_type r) const;
+        ProxyConst operator[](size_type r) const;
 
-        private:
+    private:
         size_type rows;
         size_type cols;
-        pointer data;
-        
+        pointer* data;
     };
+
+    //DECLARING GLOBAL OPERATOR
+    ////////////////////////////////////////////////////////////////
+    //+: adding 2 matrix objects
+    template <typename T>
+    Matrix<T> operator+(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    //-: subtracting 2 matrix object
+    template <typename T>
+    Matrix<T> operator-(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    //*: multiplying 2 matrix object
+    template <typename T>
+    Matrix<T> operator*(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    //==: compare 2 matrix object if there are equal
+    template <typename T>
+    Matrix<T> operator==(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    //!=: compare 2 matrix object if there are not equal
+    template <typename T>
+    Matrix<T> operator!=(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    ////////////////////////////////////////////////////////////////
+
+    template<typename T>
+    Matrix<T>::Proxy::Proxy(Matrix<T> &p, size_type r) : parent(p),row (r){}
+
+    template <typename T>
+    typename Matrix<T>::reference Matrix<T>::Proxy::operator[](size_type c) {return parent.data[row][c];}
+
+    template <typename T>
+    typename Matrix<T>::Proxy Matrix<T>::operator[](size_type r) {return Proxy(*this,r);}
+
+    template <typename T>
+    Matrix<T>::ProxyConst::ProxyConst(const Matrix<T> &p, size_type r) : parent(p),row(r){}
+
+    template <typename T>
+    typename Matrix<T>::const_reference Matrix<T>::ProxyConst::operator[](size_type c) const {return parent.data[row][c];}
+
+    template <typename T>
+    typename Matrix<T>::ProxyConst Matrix<T>::operator[](size_type r) const {return ProxyConst(*this,r);}
+
+    template<typename T>
+    size_t Matrix<T>::get_rows() const noexcept {return this->rows;}
+
+    template<typename T>
+    size_t Matrix<T>::get_cols() const noexcept {return this->cols;}
+
     template<typename T>
     Matrix<T>::Matrix(size_type nr, size_type nc) : rows(nr),cols(nc),data(nullptr)
     {
         
-        data = new value_type*[row];
+        data = new pointer[rows];
 
-        for (size_type i = 0; i < rows;i++)
+        for (size_type r = 0; r < rows;r++)
         {
-            data[i] = new value_type[cols];
+            data[r] = new value_type[cols];
+            for (size_type c = 0;c < cols ;c++)
+            {
+                data[r][c] = T();
+            }
         }
     }
     template<typename T>
@@ -81,20 +157,20 @@ namespace HLP3
         this->rows = rhs.rows;
         this->cols = rhs.cols;
 
-        pointer* tmp_data = new pointer[this->rows];
-
-        for (size_type i = 0; i < this->rows; i++)
+        value_type** temp_data = new value_type*[rows];
+        for(size_type r = 0; r < rows; ++r)
         {
-            tmp_data[i] = new value_type[this->cols];
+            temp_data[r] = new value_type[cols];
         }
 
-        for (size_type i = 0; i < this->rows; i++)
+        for(size_type r = 0; r < rows; ++r)
         {
-            for (size_type j = 0;i <  this->cols;i++)
+            for(size_type c = 0; c < cols; ++c)
             {
-                tmp_data[i][j] = rhs.data[i][j];//get other matrix value
+                temp_data[r][c] = rhs.data[r][c];
             }
         }
+        data = temp_data;
     }
     //MOVE CONSTRUCTOR(Imma steal that)
     //Enable resources owned by an rvalue object to be moved to an lvalue without copying - Microsoft
@@ -108,12 +184,12 @@ namespace HLP3
 
         rhs.rows = 0;
         rhs.cols = 0;
-        rhs.data = 0;
+        rhs.data = nullptr;
     }
 
-
+    //Didnt know this stuff was legal
     template <typename T>
-    Matrix<T>::Matrix(std::initializer_list<std::initializer_list<value_type>>list) : rows{list.size()}, cols{0}
+    Matrix<T>::Matrix(std::initializer_list<std::initializer_list<value_type>> list) : rows{list.size()}, cols{0}
     {
         for (auto &m: list)
         {
@@ -124,6 +200,7 @@ namespace HLP3
             else if (m.size() < this->cols)
             {
                 std::cout << "BadList";
+                break;
             }
         }
 
@@ -173,6 +250,13 @@ namespace HLP3
         return *this;
     }
 
+
+    // declare global functions for following operator overloads:
+    // 1. +: adding two Matrix<T> objects
+    // 2. -: subtracting two Matrix<T> objects
+    // 3. *: multiplying two Matrix<T> objects
+    // 4. ==: compare two Matrix<T> objects for equality
+    // 5. !=: compare two Matrix<T> objects for inequality
     template<typename T>
     Matrix<T> operator+(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
@@ -234,7 +318,7 @@ namespace HLP3
                     temp[r][c] = 0;
                     for (typename Matrix<T>::size_type k = 0; k < rhs.get_rows();k++)
                     {
-                        temp[r][c] = temp[c][j] + (lhs[r][k] * rhs[k][c]);
+                        temp[r][c] = temp[c][r] + (lhs[r][k] * rhs[k][c]);
                     }
                 }
             }
@@ -243,21 +327,46 @@ namespace HLP3
     }
 
     template<typename T>
-    Matrix<T> operator==(const Matrix<T> &lhs, const Matrix<T> &rhs)
+    bool operator==(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
-        
+        if(lhs.get_rows() != rhs.get_rows() && lhs.get_cols() != rhs.get_rows())
+        {
+            return false;
+        }
+
+        for (typename Matrix<T>::size_type r = 0 ;r < lhs.get_rows();r++)
+        {
+            for (typename Matrix<T>::size_type c = 0 ;c < lhs.get_cols();c++)
+            {
+                //check if all value in matrix is same
+                if (lhs[r][c] != rhs [r][c])
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     template<typename T>
     Matrix<T> operator!=(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
+        if(lhs.get_rows() == rhs.get_rows() && lhs.get_cols() == rhs.get_cols())
+        {
+            for (typename Matrix<T>::size_type r =0; r < lhs.get_rows();r++)
+            {
+                for (typename Matrix<T>::size_type c =0; c < lhs.get_cols();c++)
+                {
+                    if(lhs[r][c] != rhs[r][c])
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
 
+        return false;
     }
 }
-// declare global functions for following operator overloads:
-// 1. +: adding two Matrix<T> objects
-// 2. -: subtracting two Matrix<T> objects
-// 3. *: multiplying two Matrix<T> objects
-// 4. ==: compare two Matrix<T> objects for equality
-// 5. !=: compare two Matrix<T> objects for inequality
 #endif

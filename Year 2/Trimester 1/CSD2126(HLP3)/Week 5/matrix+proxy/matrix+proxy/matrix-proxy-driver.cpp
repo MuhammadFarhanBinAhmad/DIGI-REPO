@@ -239,133 +239,133 @@ void test1() {
 }
 
 // test 2 for T == double: ctors, dtor, op=, overloaded op[], op==, and op!=
-// void test2() {
-//   using size_type = typename Matrix<double>::size_type;
-//   std::default_random_engine defEngine(99);
-//   std::uniform_real_distribution<double> intDistro(-10.0, 10.0);
+void test2() {
+  using size_type = typename Matrix<double>::size_type;
+  std::default_random_engine defEngine(99);
+  std::uniform_real_distribution<double> intDistro(-10.0, 10.0);
 
-//   // test: ctor (two parameter) and operator[]
-//   Matrix<double> A(2,3);
-//   A[0][0] = 1;  A[0][1] = 2;  A[0][2] = 3;
-//   A[1][0] = 4;  A[1][1] = 5;  A[1][2] = 6;
-//   std::cout << "A:\n" << A << "\n";
+  // test: ctor (two parameter) and operator[]
+  Matrix<double> A(2,3);
+  A[0][0] = 1;  A[0][1] = 2;  A[0][2] = 3;
+  A[1][0] = 4;  A[1][1] = 5;  A[1][2] = 6;
+  std::cout << "A:\n" << A << "\n";
 
-//   size_type rows{6}, cols{5};
-//   Matrix<double> B(rows, cols);
-//   for (size_type i{0}; i < rows; ++i) {
-//     for (size_type j{0}; j < cols; ++j) {
-//       B[i][j] = intDistro(defEngine);
-//     }
-//   }
-//   std::cout << "B:\n" << B << "\n";
+  size_type rows{6}, cols{5};
+  Matrix<double> B(rows, cols);
+  for (size_type i{0}; i < rows; ++i) {
+    for (size_type j{0}; j < cols; ++j) {
+      B[i][j] = intDistro(defEngine);
+    }
+  }
+  std::cout << "B:\n" << B << "\n";
 
-//   // test: copy ctor and op==
-//   Matrix<double> const C{B};
-//   if (B != C) {
-//     std::cout << "problem with copy ctor!!!\n";
-//     return;
-//   }
-//   std::cout << "C:\n" << C << "\n";
+  // test: copy ctor and op==
+  Matrix<double> const C{B};
+  if (B != C) {
+    std::cout << "problem with copy ctor!!!\n";
+    return;
+  }
+  std::cout << "C:\n" << C << "\n";
 
-//   // test: move ctor
-//   Matrix<double> const D(std::move(matrix_generator<double>(C)));
-//   if (false == (D == C)) {
-//     std::cout << "problem with move ctor!!!\n";
-//     return;
-//   }
-//   std::cout << "D:\n" << D << "\n";
+  // test: move ctor
+  Matrix<double> const D(std::move(matrix_generator<double>(C)));
+  if (false == (D == C)) {
+    std::cout << "problem with move ctor!!!\n";
+    return;
+  }
+  std::cout << "D:\n" << D << "\n";
 
-//   Matrix<double> E{
-//     {D[0][0],D[0][1],D[0][2],D[0][3],D[0][4]},
-//     {D[1][0],D[1][1],D[1][2],D[1][3],D[1][4]},
-//     {D[2][0],D[2][1],D[2][2],D[2][3],D[2][4]},
-//     {D[3][0],D[3][1],D[3][2],D[3][3],D[3][4]},
-//     {D[4][0],D[4][1],D[4][2],D[4][3],D[4][4]},
-//     {D[5][0],D[5][1],D[5][2],D[5][3],D[5][4]}
-//   };
-//   if (E != D) {
-//     std::cout << "problem with initializer list ctor!!!\n";
-//     return;
-//   }
-//   std::cout << "E:\n" << E << "\n";
+  Matrix<double> E{
+    {D[0][0],D[0][1],D[0][2],D[0][3],D[0][4]},
+    {D[1][0],D[1][1],D[1][2],D[1][3],D[1][4]},
+    {D[2][0],D[2][1],D[2][2],D[2][3],D[2][4]},
+    {D[3][0],D[3][1],D[3][2],D[3][3],D[3][4]},
+    {D[4][0],D[4][1],D[4][2],D[4][3],D[4][4]},
+    {D[5][0],D[5][1],D[5][2],D[5][3],D[5][4]}
+  };
+  if (E != D) {
+    std::cout << "problem with initializer list ctor!!!\n";
+    return;
+  }
+  std::cout << "E:\n" << E << "\n";
 
-//   // copy op=
-//   E = A;
-//   std::cout << "E:\n" << E << "\n";
+  // copy op=
+  E = A;
+  std::cout << "E:\n" << E << "\n";
 
-//   // move op=
-//   E = {{6.1,5.2},{4.1,3.2},{2.2,1.3}}; // E changes from 6x5 to 3x2 
-//   std::cout << "E:\n" << E << "\n";
+  // move op=
+  E = {{6.1,5.2},{4.1,3.2},{2.2,1.3}}; // E changes from 6x5 to 3x2 
+  std::cout << "E:\n" << E << "\n";
 
-//   try {
-//     Matrix<double> F = {{1.1,2.2,3.3},{4.4,5.5}};
-//     std::cout << F << "\n";
-//   } catch (std::exception &e) {
-//     std::cout << e.what() << "\n";
-//   }
-// }
+  try {
+    Matrix<double> F = {{1.1,2.2,3.3},{4.4,5.5}};
+    std::cout << F << "\n";
+  } catch (std::exception &e) {
+    std::cout << e.what() << "\n";
+  }
+}
 
 // test 3 for T == double: ctors, overloaded op[], op==, op!=, op+, op-, overloaded op*
-// void test3() {
-//   using size_type = Matrix<double>::size_type;
+void test3() {
+  using size_type = Matrix<double>::size_type;
 
-//   std::default_random_engine defEngine(2);
-//   std::uniform_real_distribution<double> intDistro(-10.0,10.0);
-//   size_type rows{7}, cols{6};
-//   Matrix<double> A(rows, cols);
-//   for (size_type i{0}; i < rows; ++i) {
-//     for (size_type j{0}; j < cols; ++j) {
-//       A[i][j] = intDistro(defEngine);
-//     }
-//   }
-//   std::cout << "A:\n" << A << "\n";
+  std::default_random_engine defEngine(2);
+  std::uniform_real_distribution<double> intDistro(-10.0,10.0);
+  size_type rows{7}, cols{6};
+  Matrix<double> A(rows, cols);
+  for (size_type i{0}; i < rows; ++i) {
+    for (size_type j{0}; j < cols; ++j) {
+      A[i][j] = intDistro(defEngine);
+    }
+  }
+  std::cout << "A:\n" << A << "\n";
 
-//   rows = 6; cols = 7;
-//   Matrix<double> B(rows, cols);
-//   for (size_type i{0}; i < rows; ++i) {
-//     for (size_type j{0}; j < cols; ++j) {
-//       B[i][j] = intDistro(defEngine);
-//     }
-//   }
-//   std::cout << "B:\n" << B << "\n";
+  rows = 6; cols = 7;
+  Matrix<double> B(rows, cols);
+  for (size_type i{0}; i < rows; ++i) {
+    for (size_type j{0}; j < cols; ++j) {
+      B[i][j] = intDistro(defEngine);
+    }
+  }
+  std::cout << "B:\n" << B << "\n";
 
-//   Matrix<double> C{std::move(matrix_generator<double>(A.get_rows(), A.get_cols()))};
-//   std::cout << "C:\n" << C << "\n";
+  Matrix<double> C{std::move(matrix_generator<double>(A.get_rows(), A.get_cols()))};
+  std::cout << "C:\n" << C << "\n";
 
-//   // impossible addition, subtraction, multiplication
-//   try {
-//     Matrix<double> Z = A + B;
-//     std::cout << "Z:\n" << Z << "\n";
-//   } catch (std::exception& e) {
-//     std::cout << e.what() << "\n";
-//   }
+  // impossible addition, subtraction, multiplication
+  try {
+    Matrix<double> Z = A + B;
+    std::cout << "Z:\n" << Z << "\n";
+  } catch (std::exception& e) {
+    std::cout << e.what() << "\n";
+  }
 
-//   try {
-//     Matrix<double> Z = A - B;
-//     std::cout << "Z:\n" << Z << "\n";
-//   } catch (std::exception& e) {
-//     std::cout << e.what() << "\n";
-//   }
+  try {
+    Matrix<double> Z = A - B;
+    std::cout << "Z:\n" << Z << "\n";
+  } catch (std::exception& e) {
+    std::cout << e.what() << "\n";
+  }
 
-//   try {
-//     Matrix<double> Z = A * C;
-//     std::cout << "Z:\n" << Z << "\n";
-//   } catch (std::exception& e) {
-//     std::cout << e.what() << "\n";
-//   }
+  try {
+    Matrix<double> Z = A * C;
+    std::cout << "Z:\n" << Z << "\n";
+  } catch (std::exception& e) {
+    std::cout << e.what() << "\n";
+  }
 
-//   Matrix<double> D = A * B; // 7x6 and 6x4 == 7x4
-//   std::cout << "D:\n" << D << "\n";
-//   D = A*(0.9*B);
-//   std::cout << "D:\n" << D << "\n";
+  Matrix<double> D = A * B; // 7x6 and 6x4 == 7x4
+  std::cout << "D:\n" << D << "\n";
+  D = A*(0.9*B);
+  std::cout << "D:\n" << D << "\n";
 
-//   Matrix<double> E = A + C;
-//   std::cout << "E:\n" << E << "\n";
-//   E = A - C;
-//   std::cout << "E:\n" << E << "\n";
+  Matrix<double> E = A + C;
+  std::cout << "E:\n" << E << "\n";
+  E = A - C;
+  std::cout << "E:\n" << E << "\n";
 
-//   Matrix<double> F = D - 0.5*D; 
-//   std::cout << "F:\n" << F << "\n";
-// }
+  Matrix<double> F = D - 0.5*D; 
+  std::cout << "F:\n" << F << "\n";
+}
 
 }
