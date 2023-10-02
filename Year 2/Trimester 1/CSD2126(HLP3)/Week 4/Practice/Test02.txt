@@ -1,0 +1,6 @@
+Constructor: Hello, World!
+Move Constructor: Hello, World!
+Constructor: Goodbye, World!
+Move Assignment: Goodbye, World!
+Destructor: Hello, World!
+Destructor: Goodbye, World!

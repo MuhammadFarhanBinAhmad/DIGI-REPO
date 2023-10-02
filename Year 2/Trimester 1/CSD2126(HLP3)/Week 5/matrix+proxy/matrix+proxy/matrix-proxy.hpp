@@ -1,16 +1,18 @@
-// Don't forget file-header and function-level Doxygen documentation blocks!!!
-
-// First, define the class template. Then, define the member functions of the class template
-// OUTSIDE the class definition. The automatic grader will not be able to check for this - 
-// however, the manual grader can. Occurrences of EACH such function defined in the class definition
-//  will result in a deduction of ONE LETTER GRADE!!! You're forewarned!!!
-
-// This is how you should implement the assignment:
-
+/*****************************************************************//**
+ * \file	matrix-proxy.hpp
+ * \brief	Implement proxy class of a 2d array using move semantics
+ *
+ * \author	FarhanAhmad(ID:2200544)(EMAIL:2200544@sit.SingaporeTech.edu.sg)
+ * 
+ * \note    Trying out something new in how i comment. Atop the standard comments, add bit of thoughts and opinion.
+ *          Reflection time(Basically record down my emotion and thoughts for each line/function. I know emotional attachment and connection can help one rememeber better.So why no try for coding)
+ *          Split to 2 section doxygen part and self reflection part.
+ *
+ * \date	30-SEP-2023
+***********************************************************************/
 #ifndef MATRIX_PROXY_HPP
 #define MATRIX_PROXY_HPP
 
-// include necessary headers ...
 #include <iostream>
 #include <cstring>
 #include <algorithm>
@@ -24,6 +26,8 @@ namespace HLP3
     {
         public:
         //Long time no see
+        //Tbh,while I never usually use them, i do understand their use,i rarely use them on my own
+        //or other school project. I not sure why i dont want to use them tho. But all mean it makes life easier but it seem a part my seem stubborn to use them. Hmm
         using size_type = size_t;
         using value_type = T;
         using reference = value_type &;
@@ -32,6 +36,7 @@ namespace HLP3
         using const_pointer = const value_type *;
 
         public:
+        
         // To allow clients to access values in an object m of type Matrix m
         // using m[r][c] syntax, define a proxy class.
         
@@ -50,7 +55,6 @@ namespace HLP3
         // return the value stored in the Matrix object's data store data[r].
         class Proxy
         {
-        private:
             Matrix& parent;
             size_type row;
         public:
@@ -61,7 +65,6 @@ namespace HLP3
         // a second nested proxy class definition for Matrix const&
         class ProxyConst
         {
-        private:
             const Matrix& parent;
             size_type row;
         public:
@@ -70,11 +73,12 @@ namespace HLP3
         };
 
         //ctors, dtor, copy, and move functions ...
-        //RO5
+        //Rule of 5
         Matrix(size_type nr, size_type nc);
-        Matrix(Matrix const& rhs);
-        Matrix(Matrix&& rhs) noexcept;
-        Matrix(std::initializer_list<std::initializer_list<value_type>>);
+        Matrix(Matrix const& other);
+        //Move constructor. Should explore this more in the future and what its use and restriction
+        Matrix(Matrix&& other) noexcept;
+        Matrix(std::initializer_list<std::initializer_list<value_type>> list);
         ~Matrix() noexcept;
         //Operator
         Matrix& operator=(Matrix const& rhs);
@@ -82,6 +86,8 @@ namespace HLP3
         //Helper function
         size_type get_rows() const noexcept;
         size_type get_cols() const noexcept;
+        //Proxy looks cool. Still not too confident in implementing it. Need to make more proxy class in the future.Wonder if there
+        //is any other type of proxy class
         // proxy-class-for-Matrix operator[](size_type r);
         Proxy operator[](size_type r);
         // proxy-class-for-Matrix-const operator[](size_type r) const;
@@ -92,6 +98,40 @@ namespace HLP3
         size_type cols;
         pointer* data;
     };
+
+    //TBH i thought i could just std::cout to make it work. But it didnt so not too sure if legit need this or maybe i set something wrong.
+    //Senior recommend me to make it anyway cause its good practice anyway.
+    class BadList: public std::exception
+    {
+        virtual const char* what() const throw()
+        {
+            return "bad initializer list";
+        }
+    } BadList;
+
+    class Addition: public std::exception
+    {
+        virtual const char* what() const throw()
+        {
+            return "operands for matrix addition must have same dimensions";
+        }
+    } Addition;
+
+    class Subtraction: public std::exception
+    {
+        virtual const char* what() const throw()
+        {
+            return "operands for matrix subtraction must have same dimensions";
+        }
+    } Subtraction;
+
+    class NotEqual: public std::exception
+    {
+        virtual const char* what() const throw()
+        {
+            return "number of columns in left operand must match number of rows in right operand";
+        }
+    } NotEqual;
 
     //DECLARING GLOBAL OPERATOR
     ////////////////////////////////////////////////////////////////
@@ -106,76 +146,142 @@ namespace HLP3
     Matrix<T> operator*(const Matrix<T> &lhs,const Matrix<T> &rhs);
     //==: compare 2 matrix object if there are equal
     template <typename T>
-    Matrix<T> operator==(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    bool operator==(const Matrix<T> &lhs,const Matrix<T> &rhs);
     //!=: compare 2 matrix object if there are not equal
     template <typename T>
-    Matrix<T> operator!=(const Matrix<T> &lhs,const Matrix<T> &rhs);
+    bool operator!=(const Matrix<T> &lhs,const Matrix<T> &rhs);
     ////////////////////////////////////////////////////////////////
 
-    template<typename T>
+    /*
+    Thoughts:This is really just the same thing as that operator assignment in HLP2.Which meant the same struggle occured.
+             Mostly syntax understanding and what not. Although this seem more "technical" and in depth so was harder for me to see.
+             Again,like the bitset assignment, need spend more time making different variant so that can have a better understanding and
+             fimilarizing with the syntax.Wish it was so touch and go. Sadly in uni i dont have much time to consolidate.
+    */
+
+    /*!*****************************************************************************
+        \brief
+        Proxy constructor
+        \param p
+        Matrix type
+        \param r
+        size_type for row
+    *******************************************************************************/
+    template <typename T>
     Matrix<T>::Proxy::Proxy(Matrix<T> &p, size_type r) : parent(p),row (r){}
+    
+    
+    template <typename T>
+    typename Matrix<T>::reference Matrix<T>::Proxy::operator[](size_type c)
+    {
+        return parent.data[row][c];
+    }
 
     template <typename T>
-    typename Matrix<T>::reference Matrix<T>::Proxy::operator[](size_type c) {return parent.data[row][c];}
-
-    template <typename T>
-    typename Matrix<T>::Proxy Matrix<T>::operator[](size_type r) {return Proxy(*this,r);}
+    typename Matrix<T>::Proxy Matrix<T>::operator[](size_type r)
+    {
+        return Proxy(*this, r);
+    }
 
     template <typename T>
     Matrix<T>::ProxyConst::ProxyConst(const Matrix<T> &p, size_type r) : parent(p),row(r){}
-
+    
     template <typename T>
-    typename Matrix<T>::const_reference Matrix<T>::ProxyConst::operator[](size_type c) const {return parent.data[row][c];}
-
-    template <typename T>
-    typename Matrix<T>::ProxyConst Matrix<T>::operator[](size_type r) const {return ProxyConst(*this,r);}
-
-    template<typename T>
-    size_t Matrix<T>::get_rows() const noexcept {return this->rows;}
-
-    template<typename T>
-    size_t Matrix<T>::get_cols() const noexcept {return this->cols;}
-
-    template<typename T>
-    Matrix<T>::Matrix(size_type nr, size_type nc) : rows(nr),cols(nc),data(nullptr)
+    typename Matrix<T>::const_reference Matrix<T>::ProxyConst::operator[](size_type c) const
     {
-        
-        data = new pointer[rows];
+        return parent.data[row][c];
+    }
 
-        for (size_type r = 0; r < rows;r++)
+    
+    template <typename T>
+    typename Matrix<T>::ProxyConst Matrix<T>::operator[](size_type r) const
+    {
+        return ProxyConst(*this, r);
+    }
+    
+    
+    /*!*****************************************************************************
+        \brief
+        Returns number of matrix rows
+    *******************************************************************************/
+    template<typename T>
+    size_t Matrix<T>::get_rows() const noexcept
+    {
+        return this->rows;
+    }
+
+    
+    /*!*****************************************************************************
+        \brief
+        Returns number of matrix columns
+    *******************************************************************************/
+    template<typename T>
+    size_t Matrix<T>::get_cols() const noexcept
+    {
+        return this->cols;
+    }
+
+    
+    /*!*****************************************************************************
+        \brief
+        Matrix constructor.
+        \param nr
+        Number of rows
+        \param nc
+        Number of columns
+    *******************************************************************************/
+    template <typename T>
+    Matrix<T>::Matrix(size_type nr, size_type nc) : rows{nr}, cols{nc}
+    {
+        data = new pointer[rows];
+        for(size_type r = 0; r < rows; ++r)
         {
             data[r] = new value_type[cols];
-            for (size_type c = 0;c < cols ;c++)
+            for(size_type c = 0; c < cols; ++c)
             {
                 data[r][c] = T();
             }
         }
     }
-    template<typename T>
+
+    
+    /*!*****************************************************************************
+        \brief
+        Copy constructor
+        \param other
+        copy rhs data into this matrix data
+    *******************************************************************************/
+    template <typename T>
     Matrix<T>::Matrix(Matrix const& rhs)
     {
         this->rows = rhs.rows;
         this->cols = rhs.cols;
 
         value_type** temp_data = new value_type*[rows];
-        for(size_type r = 0; r < rows; ++r)
+
+        for(size_type r = 0; r < rows; r++)
         {
             temp_data[r] = new value_type[cols];
         }
 
-        for(size_type r = 0; r < rows; ++r)
+        for(size_type r = 0; r < rows; r++)
         {
-            for(size_type c = 0; c < cols; ++c)
+            for(size_type c = 0; c < cols; c++)
             {
                 temp_data[r][c] = rhs.data[r][c];
             }
         }
         data = temp_data;
     }
-    //MOVE CONSTRUCTOR(Imma steal that)
-    //Enable resources owned by an rvalue object to be moved to an lvalue without copying - Microsoft
-    //Move constructor basically help avoid unnecassry copying data
-    template<typename T>
+
+    
+    /*!*****************************************************************************
+        \brief
+        Move constructor and deep copy
+        \param other
+        Deep copy this matrix into other data
+    *******************************************************************************/
+    template <typename T>
     Matrix<T>::Matrix(Matrix&& rhs) noexcept
     {
         this->rows = rhs.rows;
@@ -184,148 +290,225 @@ namespace HLP3
 
         rhs.rows = 0;
         rhs.cols = 0;
-        rhs.data = nullptr;
+        rhs.data = nullptr; //deleting a nullptr deletes nothing
     }
 
-    //Didnt know this stuff was legal
+    
+    /*!*****************************************************************************
+        \brief
+        Form matrix using a initializer_list list in a initializer_list(cool)
+        If the column is incorrect, will throw exception error
+        \param list
+        run through the list of that matrix
+    *******************************************************************************/
     template <typename T>
-    Matrix<T>::Matrix(std::initializer_list<std::initializer_list<value_type>> list) : rows{list.size()}, cols{0}
+    Matrix<T>::Matrix(std::initializer_list<std::initializer_list<value_type>>list) : rows{list.size()}, cols{0}  
     {
-        for (auto &m: list)
+        for (auto &x : list) // iterate through outer list to find largest inner list
         {
-            if (m.size() > this->cols)
+            if (x.size() > cols)
             {
-                this->cols = m.size();
+                cols = x.size();
             }
-            else if (m.size() < this->cols)
+            else if ( x.size() < cols)
             {
-                std::cout << "BadList";
-                break;
+                throw BadList;
             }
-        }
+        } 
 
-        data = new value_type*[this->rows];
+        data = new value_type* [rows];  
+
         auto it = list.begin();
 
-        for (size_type i = 0; i < this->rows;i++,it++)
+        for (size_type i = 0; i < rows; i++, it++) 
         {
-            data[i] = new value_type[this->cols];
-            std::copy(it->begin(),it->end(),data[i]);//copy current inner list
+            data[i] = new value_type[cols];    
+            std::copy(it->begin(), it->end(), data[i]); // copy current inner list
         }
     }
 
-    template<typename T>
+    
+    /*!*****************************************************************************
+        \brief
+        Destructor
+    *******************************************************************************/
+    template <typename T>
     Matrix<T>::~Matrix() noexcept
     {
-        for (size_type i = 0; i < this->rows;i++)
+        for (size_type i = 0 ; i < rows; i++)
         {
             delete[] data[i];
         }
         delete[] data;
     }
 
-    //Standard copy constructor
+    
+    /*!*****************************************************************************
+        \brief
+        Assignment constructor
+        \param rhs
+        Create a shallow copy
+    *******************************************************************************/
     template<typename T>
     Matrix<T>& Matrix<T>::operator=(Matrix const& rhs)
     {
-        Matrix temp(rhs);
-        std::swap(temp, *this);
+        Matrix tmp(rhs);
+        std::swap(tmp, *this);
         return *this;
     }
 
+    
+    /*!*****************************************************************************
+        \brief
+        Assignment operator.
+        \param rhs
+        Creates a matrix that is a deep copy of matrix other .
+    *******************************************************************************/
     template<typename T>
     Matrix<T>& Matrix<T>::operator=(Matrix&& rhs) noexcept
     {
-        //Need to free allocated 1st
-        this->~Matrix();
+        // rmb to free any storage allocated 1st 
+        // set this matrix to a "clean" state before moving
+        this->~Matrix();   
 
         this->rows = rhs.rows;
         this->cols = rhs.cols;
-        this->data = rhs.data;
+        this->data = rhs.data; 
         
         rhs.rows = 0;
-        rhs.cols = 0;
+        rhs.cols = 0;  
         rhs.data = nullptr;
 
         return *this;
     }
 
 
-    // declare global functions for following operator overloads:
-    // 1. +: adding two Matrix<T> objects
-    // 2. -: subtracting two Matrix<T> objects
-    // 3. *: multiplying two Matrix<T> objects
-    // 4. ==: compare two Matrix<T> objects for equality
-    // 5. !=: compare two Matrix<T> objects for inequality
+    /*!*****************************************************************************
+        \brief
+        adding 2 matrix 
+        \param lhs
+        L-value matrix
+        \param rhs
+        R-value matrix
+    *******************************************************************************/
     template<typename T>
     Matrix<T> operator+(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
         if(lhs.get_rows() != rhs.get_rows() || lhs.get_cols() != rhs.get_cols())
         {
-            std::cout << "Addition wrong size";
+            //Wrong size. Cant add them together
+            throw Addition;
         }
-        else
-        {
-            Matrix<T> temp(lhs.get_rows(),lhs.get_cols());
+        
+        Matrix<T> temp(lhs.get_rows(), lhs.get_cols());
 
-            for (typename Matrix<T>::size_type r = 0; r < lhs.get_rows();r++)
+        for(typename Matrix<T>::size_type r = 0; r < lhs.get_rows(); r++)
+        {
+            for(typename Matrix<T>::size_type c = 0; c < lhs.get_cols(); c++)
             {
-                for (typename Matrix<T>::size_type c = 0; c < lhs.get_cols();c++)
-                {
-                    temp[r][c] = lhs[r][c] + rhs[r][c];
-                }
+                temp[r][c] = lhs[r][c] + rhs[r][c];
             }
-            return temp;
         }
+        return temp;
     }
+
+    
+    /*!*****************************************************************************
+        \brief
+        subtract 2 matrix
+        \param lhs
+        L-value matrix
+        \param rhs
+        R-value matrix
+    *******************************************************************************/
     template<typename T>
     Matrix<T> operator-(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
         if(lhs.get_rows() != rhs.get_rows() || lhs.get_cols() != rhs.get_cols())
         {
-            std::cout << "Subtraction wrong size";
+            //Wrong size. Cant minus them together
+            throw Subtraction;
         }
-        else
-        {
-            Matrix<T> temp(lhs.get_rows(),lhs.get_cols());
+        
+        Matrix<T> temp(lhs.get_rows(), lhs.get_cols());
 
-            for (typename Matrix<T>::size_type r = 0; r < lhs.get_rows();r++)
+        for(typename Matrix<T>::size_type r = 0; r < lhs.get_rows(); r++)
+        {
+            for(typename Matrix<T>::size_type c = 0; c < lhs.get_cols(); c++)
             {
-                for (typename Matrix<T>::size_type c = 0; c < lhs.get_cols();c++)
-                {
-                    temp[r][c] = lhs[r][c] - rhs[r][c];
-                }
+                temp[r][c] = lhs[r][c] - rhs[r][c];
             }
-            return temp;
         }
+        return temp;
     }
 
+    
+    /*!*****************************************************************************
+        \brief
+        multiply 2 matrix
+        \param lhs
+        L-value matrix
+        \param rhs
+        R-value matrix
+    *******************************************************************************/
     template<typename T>
-    Matrix<T> operator*(const Matrix<T> &lhs, const Matrix<T> &rhs)
+    Matrix<T> operator*(const Matrix<T> &lhs, const Matrix<T> &rhs) 
     {
-        if(lhs.get_rows() != rhs.get_rows() || lhs.get_cols() != rhs.get_cols())
+        if(lhs.get_cols() != rhs.get_rows())
         {
-            std::cout << "Multiplication wrong size";
+            //Wrong size. Cant multiple them together
+            throw NotEqual;
         }
-        else
-        {
-            Matrix<T> temp(lhs.get_rows(),lhs.get_cols());
 
-            for (typename Matrix<T>::size_type r = 0; r < lhs.get_rows();r++)
+        Matrix<T> temp(lhs.get_rows(), rhs.get_cols()) ;
+
+        for(typename Matrix<T>::size_type i = 0 ; i < lhs.get_rows() ; i++)
+        {
+            for(typename Matrix<T>::size_type j = 0 ; j < rhs.get_cols() ; j++)
             {
-                for (typename Matrix<T>::size_type c = 0; c < lhs.get_cols();c++)
+                temp[i][j] = 0 ;
+                for(typename Matrix<T>::size_type k= 0 ; k < rhs.get_rows() ; k++)
                 {
-                    temp[r][c] = 0;
-                    for (typename Matrix<T>::size_type k = 0; k < rhs.get_rows();k++)
-                    {
-                        temp[r][c] = temp[c][r] + (lhs[r][k] * rhs[k][c]);
-                    }
+                    temp[i][j] = temp[i][j] + (lhs[i][k]*rhs[k][j]) ;
                 }
             }
-            return temp;
         }
+        return temp;
     }
 
+    
+    /*!*****************************************************************************
+        \brief
+        multiply 2 matrix
+        \param lhs
+        L-value matrix
+        \param rhs
+        R-value matrix
+    *******************************************************************************/
+    template <typename T>
+    Matrix<T> operator*(typename Matrix<T>::value_type value, Matrix<T> matrix)
+    {
+        Matrix<T> temp(matrix.get_rows(), matrix.get_cols());
+
+        for(typename Matrix<T>::size_type r = 0; r < matrix.get_rows(); r++)
+        {
+            for(typename Matrix<T>::size_type c = 0; c < matrix.get_cols(); c++)
+            {
+                temp[r][c] = matrix[r][c] * value;
+            }
+        }
+        return temp;
+    }
+
+    
+    /*!*****************************************************************************
+        \brief
+        Check 2 matrix are the same
+        \param lhs
+        L-value Matrix
+        \param rhs
+        R-value Matrix
+    *******************************************************************************/
     template<typename T>
     bool operator==(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
@@ -334,29 +517,36 @@ namespace HLP3
             return false;
         }
 
-        for (typename Matrix<T>::size_type r = 0 ;r < lhs.get_rows();r++)
+        for(typename Matrix<T>::size_type r = 0; r < lhs.get_rows(); r++)
         {
-            for (typename Matrix<T>::size_type c = 0 ;c < lhs.get_cols();c++)
+            for(typename Matrix<T>::size_type c = 0; c < lhs.get_cols(); c++)
             {
-                //check if all value in matrix is same
-                if (lhs[r][c] != rhs [r][c])
+                if(lhs[r][c] != rhs[r][c])
                 {
                     return false;
                 }
             }
         }
-
         return true;
     }
 
+    
+    /*!*****************************************************************************
+        \brief
+        Check if 2 matrix are unequal
+        \param lhs
+        L-value Matrix
+        \param rhs
+        R-value Matrix
+    *******************************************************************************/
     template<typename T>
-    Matrix<T> operator!=(const Matrix<T> &lhs, const Matrix<T> &rhs)
+    bool operator!=(const Matrix<T> &lhs, const Matrix<T> &rhs)
     {
         if(lhs.get_rows() == rhs.get_rows() && lhs.get_cols() == rhs.get_cols())
         {
-            for (typename Matrix<T>::size_type r =0; r < lhs.get_rows();r++)
+            for(typename Matrix<T>::size_type r = 0; r < lhs.get_rows(); r++)
             {
-                for (typename Matrix<T>::size_type c =0; c < lhs.get_cols();c++)
+                for(typename Matrix<T>::size_type c = 0; c < lhs.get_cols(); c++)
                 {
                     if(lhs[r][c] != rhs[r][c])
                     {
@@ -365,7 +555,6 @@ namespace HLP3
                 }
             }
         }
-
         return false;
     }
 }

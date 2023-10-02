@@ -1,0 +1,5 @@
+uShell>gedit &
+uShell>finish 0
+uShell>gedit &
+uShell>finish 0
+uShell>finish 1

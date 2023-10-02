@@ -1,0 +1,13 @@
+Constructor is called for 10
+Constructor is called for 10
+Copy constructor is called - Deep copy for 10
+Destructor is called for 10
+Constructor is called for 20
+Constructor is called for 20
+Copy constructor is called - Deep copy for 20
+Constructor is called for 10
+Copy constructor is called - Deep copy for 10
+Destructor is called for 10
+Destructor is called for 20
+Destructor is called for 10
+Destructor is called for 20
