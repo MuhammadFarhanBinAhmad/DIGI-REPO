@@ -4,7 +4,7 @@
 \par    email: b.muhammadfarhan@digipen.edu
 \par    Course: CSD 2182
 \par    OS Part 1.3
-\date   09-15-2023
+\date   03-10-2023
 
 \brief 	Create a basic shell program called uShell. A shell program behaves typically in a similar fashion to a command prompt.
         This is a continuation from part 1. Now we can changeprompt, exit the program upon command, and search for file
@@ -13,12 +13,9 @@
 #include "uShell3.h"
 #include <iostream>
 #include <vector>
-#include <cstring>
+#include <string>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <filesystem>
-
-namespace fs = std::filesystem;
 
 uShell3::ProcessInfo::ProcessInfo() : PID(0), bActive(false)
 {
@@ -28,358 +25,383 @@ uShell3::ProcessInfo::ProcessInfo(int id, bool state)
     PID = id;
     bActive = state;
 }
+/*!
+    * \brief
+    *  This function does finish command. It checks for finish command without parameters
+    and indicates the error. If the finish command is with the correct parameters, it convert
+    the argument to process id to wait for that process. It checks if the waited process ID is valid
+    in the m bgProcessList and also checks if the process to be waited for has already done
+    by checking bActive for the process. If everything is OK, it waits and gets the returned
+    status (using waitpid()). At the end it prints the status for the process and then set the
+    process active flag to false.
+*/
 void uShell3::finish(TokenList const & tokenList)
 {
-    // Check if the tokenList contains the required number of arguments
-    if (tokenList.size() != 2)
+    // Check if  tokenList contains the required number of arguments
+    if(tokenList.size() < 1)
     {
-        std::cerr << "Error: Invalid usage of finish. Usage: finish <process index>" << std::endl;
+        std::cout << "Error: no such process index.\n";
         return;
-    }
-
-    // Get the process index from the tokenList
-    int processIndex;
-    try
-    {
-        processIndex = std::stoi(tokenList[1]);
-    }
-    catch (const std::exception &)
-    {
-        std::cerr << "Error: Invalid process index specified." << std::endl;
-        return;
-    }
-
-    // Check if the process index is valid
-    if (processIndex < 0 || static_cast<size_t>(processIndex) >= m_bgProcessList.size())
-    {
-        std::cerr << "Error: Invalid process index specified." << std::endl;
-        return;
-    }
-
-    // Check if the process with the specified index is still active
-    if (m_bgProcessList[processIndex].bActive)
-    {
-        int status;
-        pid_t pid = waitpid(m_bgProcessList[processIndex].PID, &status, 0);
-
-        if (pid != -1)
-        {
-            std::cout << "Process Index " << processIndex << " process " << pid << " exited with exit status " << WEXITSTATUS(status) << "." << std::endl;
-            m_bgProcessList[processIndex].bActive = false;
-        }
-        else
-        {
-            std::cerr << "Error: Failed to wait for process with index " << processIndex << "." << std::endl;
-        }
     }
     else
     {
-        std::cerr << "Error: Process Index " << processIndex << " process " << m_bgProcessList[processIndex].PID << " is no longer a child process." << std::endl;
+        //Get index
+        int index = std::stoi(tokenList[1]);
+
+        if(m_bgProcessList[index].bActive)
+        {
+            int stat{};
+            waitpid(m_bgProcessList[index].PID,&stat,0);
+
+            std::cout << "process " << m_bgProcessList[index].PID << " exited with exit status "<< WEXITSTATUS(stat) << '\n';
+            m_bgProcessList[index].bActive = false;
+        }
+        else
+        {
+            std::cout << "Process Index " << index << " process " << m_bgProcessList[index].PID <<" is no longer a child process.\n";
+        }
+
+        return;
     }
+
+    std::cout << "Error: no such process index.\n";
+
 }
+ /*!
+     * \brief
+     * This function determines whether the command exists or not. It gets the executable file
+        name. If the file carries an absolute path, it checks whether the file exists. Otherwise, it sets
+        up the environment variables list and loop through the list to find whether the file exists.
+     */
 bool uShell3::exist (TokenList const & tokenList, unsigned startParam, unsigned endParam)
 {
     // Ensure that the endParam is within the bounds of the tokenList
-    if (endParam >= tokenList.size())
+    if (endParam >= tokenList.size() || startParam > endParam)
     {
-        std::cerr << "Error: Invalid endParam value." << std::endl;
+        std::cout << "Error: Invalid endParam value." << '\n';
         return false;
     }
 
-    // Get the executable file name
-    std::string command = tokenList[startParam];
-
-    // Check if the file carries an absolute path
-    fs::path filePath = fs::path(command);
-    if (!filePath.is_absolute()) 
+    for (unsigned i{startParam}; i <= endParam; ++i)
     {
-        // Search for the command in the PATH environment variable
-        char *pathEnv = std::getenv("PATH");
-        if (pathEnv == nullptr) 
+        if (!((tokenList[i] == "|" && i+1 <= endParam) || (i == startParam))) 
         {
-            std::cerr << "Error: PATH environment variable not set." << std::endl;
-            return false;
+            continue;
         }
 
-        // Split the PATH variable into directories
-        std::vector<std::string> pathDirs;
-        std::string pathEnvStr(pathEnv);
-        size_t start = 0, end;
+        std::string executable = tokenList[i];
 
-        while ((end = pathEnvStr.find(':', start)) != std::string::npos) 
+        if (executable == "|")
         {
-            pathDirs.push_back(pathEnvStr.substr(start, end - start));
-            start = end + 1;
+            continue;
         }
-        pathDirs.push_back(pathEnvStr.substr(start));
 
-        // Check if the command exists in any of the directories
-        bool found = false;
-        for (const std::string &pathDir : pathDirs) 
+        if (executable[0] == '/' || (executable[0] == '.' && executable[1] == '/'))
         {
-            fs::path fullPath = fs::path(pathDir) / command;
-            if (fs::exists(fullPath)) 
+            if (access(executable.c_str(), F_OK) == 0)
             {
-                found = true;
-                break;
+                continue;
             }
-        }
-
-        if (!found) 
-        {
-            std::cerr << "Error: Command '" << command << "' not found." << std::endl;
             return false;
         }
-    } 
-    else 
-    {
-        // Check if the file with absolute path exists
-        if (!fs::exists(filePath)) 
+        else
         {
-            std::cerr << "Error: Command '" << command << "' not found." << std::endl;
+            //set path
+            const char *path = std::getenv("PATH");
+
+            if (path == nullptr)
+            {
+                return false;
+            }
+
+            bool cmd_Exist = false;
+
+            std::string pathString = path;
+            
+            size_t start = 0;
+            size_t end = pathString.find(':');
+            
+            while (end != std::string::npos)
+            {
+                std::string dir = pathString.substr(start, end - start);
+                std::string fullPath = dir + '/' + executable;
+
+                //check if command exist
+                if (access(fullPath.c_str(), F_OK) == 0)
+                {
+                    cmd_Exist = true;
+                    break;
+                }
+
+                start = end + 1;
+                end = pathString.find(':', start);
+            }
+            if (cmd_Exist)
+            {
+                continue;
+            }
+
+            //Get last directory and full path
+            std::string lastDir = pathString.substr(start);
+            std::string lastFullPath = lastDir + '/' + executable;
+
+            if (access(lastFullPath.c_str(), F_OK) == 0)
+            {
+                continue;
+            }
             return false;
         }
     }
-
     return true;
 }
+
+/*!
+    * \brief
+    *  Calls an external command using the passed parameters.
+    *  The function checks for rare case where first token is a pipe, where nothing will be done.
+    It flushes the buffer and then count the number of pipes in the token list. It adds pipe
+    information to a list typed of std :: vector < P ipeInfo > and creates the pipe (using
+    pipe(). You may save the position of the pipe in the token list so that it can be used to
+    separate the arguments. Once it has obtained the number of processes required, it loops
+    over for further checking. It identifies where the beginning and ending position of the
+    parameters in the token list. Otherwise if there is only a single process, it checks whether
+    there is a background process token. It reports the syntax error if there is an empty string
+    between the pipes. The function checks whether the command in the given token list with
+    the specified starting and ending position of the parameters exists by calling exist() and
+    reports the error accordingly. It returns if there is an error.
+    Otherwise, it starts to create the child processes using fork(). For each fork(), if
+    background process is specified, the parent does not wait and adds the child to the list by
+    pushing into m bgProcessList. Please note you need to print out the status for the child
+    process. Otherwise if no background process is required, the parent just adds the child
+    PID to the list of the processes with piping. For the child process, it sets the arguments
+    to the input in the token list given to the process and call execute(). If the process is
+    not the first one to be created, it closes stdin and replaces with pipe in. If the process is
+    not the last one, it closes stdout and replaces with pipe out. It closes all pipes that are
+    not needed anymore when calling execute() given in uShell2.h. Then the child exits by
+    calling exit(EXIT FAILURE). The parent process should close all pipes before waiting for
+    all the child processes to be done.
+
+    * \param tokenList
+    * The list of tokens to get the data value from
+    */
+//This function was fun to make *sarcasm included
+//COMMAND TO CHECK
+//& - Informs the shell to put the command in the background
+//EDIT - UNIX have that set for you
+//ls - List out all file
+//ls | grep ... - List out all file with same string in it
+//ls | wc - Check amount of word in the text(do we need this???)
 void uShell3::doExternalCmd(TokenList const & tokenList)
 {
-    // Check if tokenList is empty
-    if (tokenList.empty()) 
+    if(tokenList[0] == "|" || tokenList.empty())
     {
         return;
     }
 
-    fs::path currentPath = fs::current_path();
+    unsigned start = 0;
+    std::vector<PipeInfo> pipeList;
+    std::cout.flush();//flush the buffer
 
-    // Check if the first token is a pipe
-    if (tokenList[0] == "|") 
+    for(size_t i = 0; i < tokenList.size();i++)
     {
-        std::cerr << "Syntax error: Missing command before the pipe." << std::endl;
-        return;
-    }
-
-    // Count how many pipes are in the token list
-    int total_Pipe = 0;
-    bool hasPipe = false;
-    for (size_t i = 0; i < tokenList.size(); i++) 
-    {
-        if (tokenList[i] == "|") 
+        if(tokenList[i] == "|")
         {
-            total_Pipe++;
-            hasPipe = true;
-        }
-    }
+            PipeInfo pipe_Found;
 
-    if (!hasPipe)
-    {
-        // Execute the single command directly
-        if (!exist(tokenList, 0, tokenList.size() - 1))
-        {
-            std::cerr << "Error: Command not found." << std::endl;
-            return;
-        }
-        std::cout << "ls\n";
-        execute(tokenList, 0, tokenList.size());
-    }
+            pipe_Found.posInToken = i;
+            pipe(pipe_Found.descriptor);
+            pipeList.push_back(pipe_Found);
 
-    std::vector<PipeInfo> pipes(total_Pipe);
-    int pipe_Index = 0;
-    unsigned paramStart = 0;
-
-    // Set up positions of pipes
-    for (size_t i = 0; i < tokenList.size(); i++) 
-    {
-        if (tokenList[i] == "|") 
-        {
-            if (pipe_Index >= total_Pipe) 
+            //Check for error
+            if((i+1) == tokenList.size() || tokenList[i+1] == "|")
             {
-                std::cerr << "Syntax error: Too many pipes." << std::endl;
+                std::cout << "Error: syntax error\n";
                 return;
             }
 
-            pipes[pipe_Index].posInToken = i;
+            if(!exist(tokenList,i+1,i+1))
+            {
+                std::cout << "Error: " << tokenList[i+1] << " cannot be found\n";
+                return;
+            }
+
+        }
+    }
+    //Check if exist
+    if(!exist(tokenList,0,0))
+    {
+        std::cout << "Error: " << tokenList[0] << " cannot be found\n";
+        return;
+    }
+    //check if empty
+    if(pipeList.empty())
+    {
+        pid_t status = fork();//fork the child
+
+        if(status == 0)
+        {
+            if(tokenList[tokenList.size()-1] == "&")
+            {
+                execute(tokenList,0,tokenList.size()-1);
+            }
+            else
+            {
+                execute(tokenList,0,tokenList.size());
+                _exit(EXIT_FAILURE);
+            }
+        }
+        else
+        {
+            if(tokenList[tokenList.size()-1] == "&")
+            {
+                ProcessInfo process;
+                process.PID = status;
+                process.bActive = true;
+
+                m_bgProcessList.push_back(process);
+                std::cout << "[" << m_bgProcessList.size()-1 << "] process " << process.PID << '\n';
+            }
+            else
+            {
+                wait(NULL);//wait for child
+            }
+        }
+    }
+    else
+    //NEED CHECK FOR STATUS. ALL OF THEM
+    {
+        //STATS 1
+        pid_t status_1 = fork();
+
+        if(status_1== 0)
+        {
+            close(1);
+            close(pipeList[0].descriptor[PipeInfo::IN_DESCRIPTOR]);
+
+            dup(pipeList[0].descriptor[PipeInfo::OUT_DESCRIPTOR]);
             
-            pipe_Index++;
-
-            // Identify the command boundaries
-            unsigned paramEnd = i - 1;
-
-            // Check for empty string between pipes
-            if (paramStart > paramEnd) 
+            for(int i = getdtablesize(); i > 3;) 
             {
-                std::cerr << "Syntax error: Missing command between pipes." << std::endl;
-                return;
+                close(--i);
             }
 
-            // Check if the command exists
-            if (!exist(tokenList, paramStart, paramEnd)) 
-            {
-                std::cerr << "Error: Command not found." << std::endl;
-                return;
-            }
-
-            paramStart = i + 1;
+            execute(tokenList,start,pipeList[0].posInToken);//execute order 66
+            
+            _exit(EXIT_FAILURE);
         }
-    }
-
-    // Check if there's a command after the last pipe
-    if (paramStart < tokenList.size()) 
-    {
-        unsigned paramEnd = tokenList.size() - 1;
-
-        // Check if the command exists
-        if (!exist(tokenList, paramStart, paramEnd)) 
+        else
         {
-            std::cerr << "Error: Command not found." << std::endl;
-            return;
-        }
-    }
-    //single command
-    {
 
-        int numPipes = pipes.size();
-        int pipefds[2];
+            start = pipeList[0].posInToken + 1;
 
-        pid_t child_pid;
-
-        // Initialize pipes
-        for (int i = 0; i < numPipes; i++) 
-        {
-            if (pipe(pipefds) == -1) 
+            //Check for &
+            if(tokenList[tokenList.size()-1] == "&")
             {
-                perror("pipe");
-                _exit(EXIT_FAILURE);
+                ProcessInfo process;
+                process.PID = status_1;
+                process.bActive = true;
+
+                m_bgProcessList.push_back(process);
+                std::cout << "[" << m_bgProcessList.size()-1 << "] process " << process.PID << '\n';
             }
-            pipes[i].descriptor[PipeInfo::IN_DESCRIPTOR] = pipefds[PipeInfo::IN_DESCRIPTOR];
-            pipes[i].descriptor[PipeInfo::OUT_DESCRIPTOR] = pipefds[PipeInfo::OUT_DESCRIPTOR];
-        }
-
-        // Iterate through each command and execute it in a child process
-        int start = 0;
-        for (int i = 0; i <= numPipes; i++) 
-        {
-            bool isLastCommand = (i == numPipes);
-
-            int end = isLastCommand ? tokenList.size() - 1 : pipes[i].posInToken - 1;
-
-            // Create a child process
-            if ((child_pid = fork()) == -1) 
+            for(size_t i = 1; i < pipeList.size(); i++)
             {
-                perror("fork");
-                _exit(EXIT_FAILURE);
-            }
+                //STATS 2
+                pid_t status_2 = fork();
 
-            if (child_pid == 0) // This is the child process
-            {
-                if (!isLastCommand) 
+                if(status_2== 0)
                 {
-                    // Redirect stdout to the write end of the pipe
-                    if (dup2(pipes[i].descriptor[PipeInfo::OUT_DESCRIPTOR], STDOUT_FILENO) == -1) 
-                    {
-                        perror("dup2");
-                        _exit(EXIT_FAILURE);
-                    }
-                }
+                    close(0);
+                    dup(pipeList[i-1].descriptor[PipeInfo::IN_DESCRIPTOR]);
+                    close(1);
+                    dup(pipeList[i].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+                    for(int j = getdtablesize(); j > 3;) close(--j);
 
-                if (i > 0) 
-                {
-                    // Redirect stdin to the read end of the previous pipe
-                    if (dup2(pipes[i - 1].descriptor[PipeInfo::IN_DESCRIPTOR], STDIN_FILENO) == -1) 
-                    {
-                        perror("dup2");
-                        _exit(EXIT_FAILURE);
-                    }
-                }
-
-                // Close pipe descriptors in child
-                for (int j = 0; j < numPipes; j++) 
-                {
-                    close(pipes[j].descriptor[PipeInfo::IN_DESCRIPTOR]);
-                    close(pipes[j].descriptor[PipeInfo::OUT_DESCRIPTOR]);
-                }
-
-                // Build the argument list for execvp
-                char **args = new char *[end - start + 2];
-                for (int j = start; j <= end; j++) 
-                {
-                    args[j - start] = const_cast<char *>(tokenList[j].c_str());
-                }
-                args[end - start + 1] = nullptr;
-
-                // Execute the command
-                execvp(args[0], args);
-
-                // If execvp fails, print an error and exit
-                perror("execvp");
-                _exit(EXIT_FAILURE);
-            } 
-            else // This is the parent process
-            {
-                if (!isLastCommand) 
-                {
-                    // Close the write end of the pipe in the parent process
-                    close(pipes[i].descriptor[PipeInfo::OUT_DESCRIPTOR]);
-                }
-
-                if (i > 0) 
-                {
-                    // Close the read end of the previous pipe in the parent process
-                    close(pipes[i - 1].descriptor[PipeInfo::IN_DESCRIPTOR]);
-                }
-
-                // Wait for the child process to complete
-                int status;
-                if (waitpid(child_pid, &status, 0) == -1) 
-                {
-                    perror("waitpid");
+                    execute(tokenList,start,pipeList[i].posInToken);
                     _exit(EXIT_FAILURE);
                 }
+                else
+                {
+                    if(tokenList[tokenList.size()-1] == "&")
+                    {
+                        ProcessInfo process;
+                        process.PID = status_2;
+                        process.bActive = true;
 
-                // Handle the exit status of the child process
-                if (WIFEXITED(status)) 
-                {
-                    int exit_status = WEXITSTATUS(status);
-                    std::cout << "Child process exited with status " << exit_status << std::endl;
-                } 
-                else 
-                {
-                    std::cerr << "Child process did not exit normally" << std::endl;
+                        m_bgProcessList.push_back(process);
+                        std::cout << "[" << m_bgProcessList.size()-1 << "] process " << process.PID << '\n';
+                    }
+
+                    start = pipeList[i].posInToken + 1;
                 }
             }
+            //STATS 3
+            pid_t status_3 = fork();
 
-            start = pipes[i].posInToken + 1;
+            if(status_3 == 0)
+            {
+                close(0);
+                close(pipeList[pipeList.size()-1].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+                dup(pipeList[pipeList.size()-1].descriptor[PipeInfo::IN_DESCRIPTOR]);
+                
+                for(int i = getdtablesize(); i > 3;)
+                {
+                    close(--i);
+                } 
+                if(tokenList[tokenList.size()-1] == "&")
+                {
+                    execute(tokenList,pipeList[pipeList.size()-1].posInToken + 1,tokenList.size() - 1);
+                }
+                else
+                {
+                    execute(tokenList,pipeList[pipeList.size()-1].posInToken + 1,tokenList.size());
+                }
+
+                _exit(EXIT_FAILURE);
+            }
+            else
+            {
+                if(tokenList[tokenList.size()-1] == "&")
+                {
+                    ProcessInfo process;
+                    process.PID = status_3;
+                    process.bActive = true;
+
+                    m_bgProcessList.push_back(process);
+                    std::cout << "[" << m_bgProcessList.size()-1 << "] process " << process.PID << '\n';
+                }
+            }
         }
 
-        // Close any remaining open pipe descriptors
-        for (int i = 0; i < numPipes; i++) 
+        for(int i = getdtablesize(); i > 3;)
         {
-            close(pipes[i].descriptor[PipeInfo::IN_DESCRIPTOR]);
-            close(pipes[i].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+            close(--i);
         }
-        
-        // Print the result of the last command to the console
-        if (numPipes == 0) 
+
+        if(tokenList[tokenList.size()-1] != "&")
         {
-            // If there are no pipes, print the result directly to the console
-            execute(tokenList,paramStart,tokenList.size()-1);
+            wait(NULL);
+
+            for(unsigned i = 0; i < pipeList.size(); ++i)
+            {
+                wait(NULL);
+            }
+
         }
     }
-    std::cout << "End function\n";
 }
 uShell3::uShell3(bool bFlag) : uShell2(bFlag)
 {
     m_internalCmdList3["finish"] = (fInternalCmd3)&uShell3::finish;
 
-    // m_exit = false;
-    // m_verbose = bFlag;
+    m_exit = false;
+    m_verbose = bFlag;
 }
 int uShell3::run()
 {
     while (m_exit == false)
     {
-        
+
         std::string user_Input;
 
         std::cout << m_prompt << ">";
@@ -412,7 +434,7 @@ int uShell3::run()
             continue;
         }
 
-        // Check all the internal command int the 2 list
+        // Check all the internal command int the 3 list
         if (m_internalCmdList.find(buffer.front()) != m_internalCmdList.end())
         {
             (this->*m_internalCmdList[buffer.front()])(buffer);
