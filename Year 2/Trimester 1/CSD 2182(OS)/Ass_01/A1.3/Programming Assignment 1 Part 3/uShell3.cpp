@@ -64,7 +64,7 @@ void uShell3::finish(TokenList const & tokenList)
         return;
     }
 
-    std::cout << "Error: no such process index.\n";
+    std::cout << "Error: no such process Index.\n";
 
 }
  /*!

@@ -1,0 +1,48 @@
+#please split into test cases 
+finish
+
+grep uShell uShell.h & 
+
+grep uShell uShell.h & 
+finish 0
+finish 0
+
+grep uShell uShell.h &
+finish 1
+finish 0
+finish 2
+grep uShell uShell.h&
+finish 0
+
+ls | sort
+
+ls | grep uShell
+
+ls | grep uShell | wc
+
+ls | grepsas uShell | wc
+
+ls | grep uShell | wc
+ls | | wc 
+
+ls & | grep
+
+# make sure you're not starting another process for nothing
+ls | & 
+
+ls | /grep txt | /usr/bin/sort | wc
+ls | /usr/bin/grep txt | sort | wc
+ls | /usr/bin/hee txt | sort | wc
+
+
+# does your piping really work?
+# make sure you got txt files in your immediate directory if you want non-zero outputs
+ls | grep txt | sort | wc
+
+# This prints nothing and simply moves on to next line (return early if token.front() == "|"?)
+| ls | what | haha
+
+# ws was an invalid command but your ls is not supposed to run
+ws | ls
+
+exit
