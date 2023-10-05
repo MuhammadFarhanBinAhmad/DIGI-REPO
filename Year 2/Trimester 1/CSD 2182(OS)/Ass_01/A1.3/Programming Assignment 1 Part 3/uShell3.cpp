@@ -40,7 +40,7 @@ void uShell3::finish(TokenList const & tokenList)
     // Check if  tokenList contains the required number of arguments
     if(tokenList.size() < 1)
     {
-        std::cout << "Error: no such process index.\n";
+        std::cout << "Error: no such process Index.\n";
         return;
     }
     else
@@ -51,7 +51,7 @@ void uShell3::finish(TokenList const & tokenList)
         if(m_bgProcessList[index].bActive)
         {
             int stat{};
-            waitpid(m_bgProcessList[index].PID,&stat,0);
+            waitpid(m_bgProcessList[index].PID,&stat,WUNTRACED);
 
             std::cout << "process " << m_bgProcessList[index].PID << " exited with exit status "<< WEXITSTATUS(stat) << '\n';
             m_bgProcessList[index].bActive = false;
@@ -392,10 +392,11 @@ void uShell3::doExternalCmd(TokenList const & tokenList)
 }
 uShell3::uShell3(bool bFlag) : uShell2(bFlag)
 {
-    m_internalCmdList3["finish"] = (fInternalCmd3)&uShell3::finish;
-
     m_exit = false;
     m_verbose = bFlag;
+
+    m_vars["PATH"] = getenv("PATH");
+    m_internalCmdList3["finish"] = (fInternalCmd3)&uShell3::finish;
 }
 int uShell3::run()
 {
