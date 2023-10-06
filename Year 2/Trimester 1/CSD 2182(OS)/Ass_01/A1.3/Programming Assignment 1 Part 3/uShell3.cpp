@@ -40,7 +40,7 @@ void uShell3::finish(TokenList const & tokenList)
     // Check if  tokenList contains the required number of arguments
     if(tokenList.size() < 1)
     {
-        std::cout << "Error: no such process Index.\n";
+        std::cout << "Error: no such process index.\n";
         return;
     }
     else
@@ -64,7 +64,7 @@ void uShell3::finish(TokenList const & tokenList)
         return;
     }
 
-    std::cout << "Error: no such process Index.\n";
+    std::cout << "Error: no such process index.\n";
 
 }
  /*!
@@ -275,9 +275,9 @@ void uShell3::doExternalCmd(TokenList const & tokenList)
 
         if(status_1== 0)
         {
-            close(1);
             close(pipeList[0].descriptor[PipeInfo::IN_DESCRIPTOR]);
 
+            close(1);
             dup(pipeList[0].descriptor[PipeInfo::OUT_DESCRIPTOR]);
             
             for(int i = getdtablesize(); i > 3;) 
@@ -340,8 +340,9 @@ void uShell3::doExternalCmd(TokenList const & tokenList)
 
             if(status_3 == 0)
             {
-                close(0);
                 close(pipeList[pipeList.size()-1].descriptor[PipeInfo::OUT_DESCRIPTOR]);
+
+                close(0);
                 dup(pipeList[pipeList.size()-1].descriptor[PipeInfo::IN_DESCRIPTOR]);
                 
                 for(int i = getdtablesize(); i > 3;)
