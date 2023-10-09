@@ -4,16 +4,19 @@
 \par    email: b.muhammadfarhan@digipen.edu
 \par    Course: CSD 2182
 \par    OS Part 1.3
-\date   03-10-2023
+\date   06-10-2023
 
 \brief 	Create a basic shell program called uShell. A shell program behaves typically in a similar fashion to a command prompt.
-        This is a continuation from part 1. Now we can changeprompt, exit the program upon command, and search for file
+        This is a continuation from part 2. Now we continue on finish, exist and externalcmd(Explanation down in comment cause i lazy summarise here)
 **************************************************************************/
 
 #include "uShell3.h"
+#include <cstring>
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -37,35 +40,40 @@ uShell3::ProcessInfo::ProcessInfo(int id, bool state)
 */
 void uShell3::finish(TokenList const & tokenList)
 {
-    // Check if  tokenList contains the required number of arguments
-    if(tokenList.size() < 1)
+    //No process index present
+    if (tokenList.size() < 2)
     {
-        std::cout << "Error: no such process Index.\n";
-        return;
-    }
-    else
-    {
-        //Get index
-        int index = std::stoi(tokenList[1]);
-
-        if(m_bgProcessList[index].bActive)
-        {
-            int stat{};
-            waitpid(m_bgProcessList[index].PID,&stat,WUNTRACED);
-
-            std::cout << "process " << m_bgProcessList[index].PID << " exited with exit status "<< WEXITSTATUS(stat) << '\n';
-            m_bgProcessList[index].bActive = false;
-        }
-        else
-        {
-            std::cout << "Process Index " << index << " process " << m_bgProcessList[index].PID <<" is no longer a child process.\n";
-        }
-
+        std::cout << "Error: no such process index." << std::endl;
         return;
     }
 
-    std::cout << "Error: no such process Index.\n";
+    //Process index
+    size_t index = static_cast<size_t>(std::stoi(tokenList[1]));
 
+    // Check if index larger than the list size
+    if (index >= m_bgProcessList.size())
+    {
+        std::cout << "Error: no such process index." << std::endl;
+        return;
+    }
+
+    // Get process
+    ProcessInfo& process = m_bgProcessList[index];
+
+    if (process.bActive)
+    {
+        int stat = 0;
+        // Wait for active process to exit.
+        waitpid(process.PID, &stat, WUNTRACED);        
+        process.bActive = false;
+
+        std::cout << "process " << process.PID << " exited with exit status " << WEXITSTATUS(stat) << std::endl;
+    } 
+    else 
+    {
+        // Process had already exited.
+        std::cout << "Process Index " << index << " process " << process.PID << " is no longer a child process." << std::endl;
+    }
 }
  /*!
      * \brief
@@ -75,84 +83,58 @@ void uShell3::finish(TokenList const & tokenList)
      */
 bool uShell3::exist (TokenList const & tokenList, unsigned startParam, unsigned endParam)
 {
-    // Ensure that the endParam is within the bounds of the tokenList
-    if (endParam >= tokenList.size() || startParam > endParam)
+    //Standard check
+    if (tokenList.empty()) 
     {
-        std::cout << "Error: Invalid endParam value." << '\n';
         return false;
     }
-
-    for (unsigned i{startParam}; i <= endParam; ++i)
+    
+    //Find if '/' can be found
+    if (tokenList[startParam].find('/') != std::string::npos)
     {
-        if (!((tokenList[i] == "|" && i+1 <= endParam) || (i == startParam))) 
-        {
-            continue;
-        }
-
-        std::string executable = tokenList[i];
-
-        if (executable == "|")
-        {
-            continue;
-        }
-
-        if (executable[0] == '/' || (executable[0] == '.' && executable[1] == '/'))
-        {
-            if (access(executable.c_str(), F_OK) == 0)
-            {
-                continue;
-            }
-            return false;
-        }
-        else
-        {
-            //set path
-            const char *path = std::getenv("PATH");
-
-            if (path == nullptr)
-            {
-                return false;
-            }
-
-            bool cmd_Exist = false;
-
-            std::string pathString = path;
-            
-            size_t start = 0;
-            size_t end = pathString.find(':');
-            
-            while (end != std::string::npos)
-            {
-                std::string dir = pathString.substr(start, end - start);
-                std::string fullPath = dir + '/' + executable;
-
-                //check if command exist
-                if (access(fullPath.c_str(), F_OK) == 0)
-                {
-                    cmd_Exist = true;
-                    break;
-                }
-
-                start = end + 1;
-                end = pathString.find(':', start);
-            }
-            if (cmd_Exist)
-            {
-                continue;
-            }
-
-            //Get last directory and full path
-            std::string lastDir = pathString.substr(start);
-            std::string lastFullPath = lastDir + '/' + executable;
-
-            if (access(lastFullPath.c_str(), F_OK) == 0)
-            {
-                continue;
-            }
-            return false;
-        }
+        return access(tokenList[startParam].c_str(), F_OK) != -1;
     }
-    return true;
+    
+
+    // Get path.
+    const char* path = std::getenv("PATH");
+
+    if (path == nullptr) 
+    {
+        // The PATH enviroment is not set up
+        return false;
+    }
+    
+    // Create path copy
+    char* path_Copy = strdup(path);
+    // Separate path by :
+    char* path_Token = strtok(path_Copy, ":");
+    
+    //Use to check if path exist
+    bool exists = false;
+
+    while (path_Token != nullptr) 
+    {
+        std::string path_Entry = path_Token;
+        std::string full_Path = path_Entry + "/" + tokenList[startParam];
+
+        // Check if path exist not
+        if (access(full_Path.c_str(), X_OK) != -1) 
+        {
+             // Found command. No need continue searching
+            exists = true;
+            break;
+        }
+
+        path_Token = strtok(nullptr, ":");
+    }
+
+    free(path_Copy);
+    
+    // Not even using end param.Bruv
+    endParam = endParam;
+    
+    return exists;
 }
 
 /*!

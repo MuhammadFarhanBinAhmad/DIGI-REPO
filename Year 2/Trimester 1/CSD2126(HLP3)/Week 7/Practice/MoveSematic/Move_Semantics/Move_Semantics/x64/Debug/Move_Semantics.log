@@ -1,0 +1,3 @@
+﻿  Move_Semantics.cpp
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\MoveSematic\Move_Semantics\Move_Semantics\Move_Semantics.cpp(15,1): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Move_Semantics.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\MoveSematic\Move_Semantics\x64\Debug\Move_Semantics.exe
