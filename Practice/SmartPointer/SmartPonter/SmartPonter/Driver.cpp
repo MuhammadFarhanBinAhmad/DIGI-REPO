@@ -8,6 +8,9 @@
 #include <string>
 #include <memory>
 
+
+//The idea of smart pointer is all about ownership and more safety and security than calling new
+
 class Entity
 {
 public:
