@@ -68,3 +68,149 @@ int main()
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 }
+/*****************************************************************//**
+ * \file	Main.cpp
+ * \brief	Entry point of the program, contains main()
+ *
+ * \author	Jun Rong
+ * \date	05-SEP-2023
+***********************************************************************/
+
+#include "Pch.h"
+#include "Engine/Engine.h"
+
+#include "Engine/ANC.h"
+#include "DataSerialize/DataCenter.h"
+#include "Timer/TimerThreadManager.h"
+
+static void Initialize_Engine();
+static void CleanUp();
+
+void TempAutoSave()
+{
+	TimerThreadManager timerManager;
+	timerManager.StartTimerThread();
+	while (true)
+	{
+		// Check for an exit condition and stop the timer thread if needed
+		if (!timerManager.timerRunning)
+		{
+			MainDataCenter.SerializeData(GAMEOBJECT, "Data/DefaultEnemyData.json");
+			break;
+		}
+	}
+}
+
+/*!***********************************************************************
+* \brief
+*	Entry point to the program.
+*
+* \return
+*	0 if exit is good. Else returns the error exit code.
+*************************************************************************/
+
+int WinMain() {
+	Initialize_Engine();
+
+
+	//std::thread anotherThread(TempAutoSave);
+	while (ANC::Core.Run()) {
+		try {
+			// Start profiling.
+			ANC_Debug::ANC_Debug_Profiler::ProfileSystem(ANC_Debug::ANC_Debug_Profiler::MAIN_LOOP);
+			// Update input system.
+			ANC::Input.Update();
+			// Update engine.
+			ANC::Core.Update();
+			// Tick engine's time.
+			ANC::Time.Update();
+			// Update game.
+			//ANC::Game.Update();
+			ECS::SceneMgr.Update();
+			// Render graphics.
+			ANC::Graphics.Update();
+			// Update engine editor. (ImGui interface)
+			ANC::Editor.Update();
+			// DataCenter update
+			MainDataCenter.DataCenterUpdate();
+
+			ANC_Debug::ANC_Debug_Profiler::ProfileSystem("Swap Buffers");
+			// Swap buffers: front <-> back
+			glfwSwapBuffers(ANC::Core.Window());
+			ANC_Debug::ANC_Debug_Profiler::ProfileSystem("Swap Buffers", false);
+
+			// Stop profiling.
+			ANC_Debug::ANC_Debug_Profiler::ProfileSystem(ANC_Debug::ANC_Debug_Profiler::MAIN_LOOP, false);
+		}
+		catch (const std::exception& e) {
+			ANC_Debug::ANC_Crash_Logger crash(e);
+			break;
+		}
+		catch (const std::string& e) {
+			ANC_Debug::ANC_Crash_Logger crash(e.c_str());
+			break;
+		}
+		catch (const char* e) {
+			ANC_Debug::ANC_Crash_Logger crash(e);
+			break;
+		}
+		catch (...) {
+			ANC_Debug::ANC_Crash_Logger crash("Unknown exception caught.");
+			break;
+		}
+	}
+	//Need find better way to end program cause, if not handle properly, may cause mem leak
+	//So far no need worry cause other thread not handling mem allocation
+	//std::exit(0);//Enable program to end to without having to wait for other thread to end
+	//anotherThread.join();
+	CleanUp();
+
+	// Terminate program.
+	return EXIT_SUCCESS;
+}
+
+//========================================================
+//\brief
+//	Initializes the game engine and its associated engine
+//	functions.
+//========================================================
+static void Initialize_Engine() {
+	// Load saved config for engine.
+	ANC_Configs configs;
+	configs.Load();
+
+	if (!configs.Status()) {
+		std::cerr << "CONFIG ERROR: Unable to load configs for engine.";
+		std::exit(EXIT_FAILURE);
+	}
+	MainDataCenter.DeserializeData();
+	// Load main engine functionalities.
+	ANC::Core.Initialize();
+
+	ANC::Resource.Load();
+
+	ANC::Input.Initialize();
+	ANC::Editor.Initialize();
+	ANC::Graphics.Initialize();
+	ECS::SceneMgr.Initialize();
+
+}
+
+//========================================================
+//\brief
+//	Terminates running resources to ensure application
+//	ends correctly.
+//========================================================
+void CleanUp() {
+	//Output Json File
+	MainDataCenter.SerializeData(GAMEOBJECT, "Data/DefaultEnemyData.json");
+	//Free Gameobject
+	MainDataCenter.FreeData();
+	// Stop game first before engine.
+	// Stop input system.
+	ANC::Input.Quit();
+	// Stop engine editor.
+	ANC::Editor.Quit();
+	// Stop core last.
+	ANC::Core.Quit();
+}

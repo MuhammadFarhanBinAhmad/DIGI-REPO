@@ -1,0 +1,6 @@
+﻿  CountTotalElement.cpp
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\ListWithinList\CountTotalElement\CountTotalElement\CountTotalElement.cpp(28,126): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\ListWithinList\CountTotalElement\CountTotalElement\CountTotalElement.cpp(28,126): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\ListWithinList\CountTotalElement\CountTotalElement\CountTotalElement.cpp(20,22): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\ListWithinList\CountTotalElement\CountTotalElement\CountTotalElement.cpp(30): message : see reference to function template instantiation 'int count_total_element<int>(const std::initializer_list<std::initializer_list<int>> &)' being compiled
+  CountTotalElement.vcxproj -> C:\Users\user\Desktop\DigipenRepo\DigipenAssignment\Digipen\Year 2\Trimester 1\CSD2126(HLP3)\Week 7\Practice\ListWithinList\CountTotalElement\x64\Debug\CountTotalElement.exe
