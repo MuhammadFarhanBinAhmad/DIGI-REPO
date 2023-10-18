@@ -12,6 +12,7 @@ void push_value(void*);
 void pull_value(void**);
 const int WAIT_SUCCESSFUL = 0;
 const int NO_THREAD_FOUND = -1;
+//what does this do?
 enum ThreadState : int;
 }
 #endif
