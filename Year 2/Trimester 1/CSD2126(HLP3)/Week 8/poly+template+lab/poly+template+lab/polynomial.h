@@ -6,26 +6,37 @@
 #define POLYNOMIAL_H
 
 #include <iostream> // std::ostream
+#include <vector>
 
-namespace HLP3 {
-template<typename T,size_t N>
+namespace HLP3 
+{
+template<typename CoefficientType,int Degree>
 class Polynomial
 {
     public:
-    Polynomial() = default;
-    Polynomial(const &Polynomial rhs);
-    
-    Polynomial& operator*();
-    T operator[](int index) const;
-    T& operator[](int index);
-    Polynomial& operator=(const &Polynomial rhs);
+    Polynomial();
+    Polynomial(const Polynomial& rhs);
 
+    // Declare non-modifiable operator[]
+    CoefficientType operator[](int index) const;
+
+    // Declare modifiable operator[]
+    CoefficientType& operator[](int index);
+
+    //Declare operator*
+    Polynomial<CoefficientType,Degree> operator*(const Polynomial<CoefficientType,Degree>& rhs) const;
+
+    template <typename OtherType>
+    Polynomial<OtherType, Degree> operator*(const Polynomial<CoefficientType, Degree>& rhs) const;
+
+    //Declare copy assigment
+    Polynomial<CoefficientType,Degree>& operator=(const Polynomial<CoefficientType,Degree>& rhs);
+
+    CoefficientType operator()(CoefficientType rhs) const;
 
     private:
-    T coefficients[N+1];
-
-}
-// declare class template Polynomial
+    CoefficientType coefficients[Degree+1];
+};
 
 }
 
