@@ -4,7 +4,7 @@
 // the purpose of this driver is to test [through unsuccessful compilation] that
 // polynomials with different types [say, int and float] cannot be multiplied!!!
 int main() {   
-  std::cout << "-------- " << __func__ << " --------\n";
+    std::cout << "-------- " << __func__ << " --------\n";
   
   HLP3::Polynomial<int,2> p2;
   p2[0] = 1;
