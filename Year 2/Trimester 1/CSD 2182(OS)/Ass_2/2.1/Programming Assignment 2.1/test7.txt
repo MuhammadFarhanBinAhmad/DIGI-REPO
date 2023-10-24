@@ -1,0 +1,2 @@
+//command - ./a.out 14
+fib(14) is 377

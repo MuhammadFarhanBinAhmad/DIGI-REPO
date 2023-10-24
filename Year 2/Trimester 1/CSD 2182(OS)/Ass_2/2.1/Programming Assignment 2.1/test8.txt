@@ -1,0 +1,11 @@
+//command - ./a.out 6 9 6 9
+wait thread 0 
+wait thread 1 
+wait thread 2 
+wait thread 3 
+wait thread 4 
+wait thread 5 
+wait thread 6 
+wait thread 7 
+wait thread 8 
+Correct solution
