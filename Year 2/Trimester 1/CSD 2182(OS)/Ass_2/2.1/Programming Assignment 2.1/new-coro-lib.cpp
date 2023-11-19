@@ -6,6 +6,9 @@
 \par    OS Part 2.1
 \date   05-11-2023
 
+\note   bless to my friend and senior psuedo code
+        Also they say ucontext easier then asm. they lies. or maybe cause i suck
+
 \brief 	To learn and understand context switching at some specific
         level using setcontext or inline assembly. The student who
         successfully completes this assignment will understand some
@@ -23,17 +26,14 @@
 
 #define ONE_MEGABYTE 1048576
 
-//Note: need use getcontext, setcontext , makecontext
-//Swapcontext need to use?
-
 namespace CORO
 {
     enum Thread_State : int
     {
+        START,
         RUNNING,
         READY,
         WAITING,
-        START,
         DONE
     };
 
@@ -59,7 +59,8 @@ namespace CORO
             Counter++;
         }
     };
-
+    
+    
     // ALL SALAH
     //  int currentThreadID = 0;
     //  int nextThreadID = 1;
@@ -81,7 +82,6 @@ namespace CORO
 
     std::deque<void *> pp; // PushPull teehee
 
-
     //1. Initialization of the thread library:
     void thd_init()
     {
@@ -100,6 +100,28 @@ namespace CORO
         // Set thread 0 to the front and set it to running
         current_Thread = TCB_List.front();
         current_Thread->State = RUNNING;
+    }
+
+    //2. Creation of a user-level thread:
+    ThreadID new_thd(void *(*thd_function_t)(void *), void *param)
+    {
+        // Lock mutex because below is a critical section
+        // std::unique_lock<std::mutex> lock(mutex);
+
+        // Need create the new THread with function point and param(argument)
+        TCB_List.push_back(new ThreadControlBlock());
+        TCB_List.back()->arg = param;
+        TCB_List.back()->funcpointer = thd_function_t;
+
+        // Same as before, need allocate space for stack
+        TCB_List.back()->base = new char[ONE_MEGABYTE];
+        TCB_List.back()->stack = (char *)(TCB_List.back()->base) + ONE_MEGABYTE;
+
+        // add the therad to new queue
+        new_Queue.push(TCB_List.back());
+
+        // return to sender :)
+        return TCB_List.back()->Current_Thread;
     }
 
     //3. Termination of a user-level thread:
@@ -124,28 +146,6 @@ namespace CORO
 
         // yield CPU to next thread in the queue
         thd_yield();
-    }
-
-    //2. Creation of a user-level thread:
-    ThreadID new_thd(void *(*thd_function_t)(void *), void *param)
-    {
-        // Lock mutex because below is a critical section
-        // std::unique_lock<std::mutex> lock(mutex);
-
-        // Need create the new THread with function point and param(argument)
-        TCB_List.push_back(new ThreadControlBlock());
-        TCB_List.back()->arg = param;
-        TCB_List.back()->funcpointer = thd_function_t;
-
-        // Same as before, need allocate space for stack
-        TCB_List.back()->base = new char[ONE_MEGABYTE];
-        TCB_List.back()->stack = (char *)(TCB_List.back()->base) + ONE_MEGABYTE;
-
-        // add the therad to new queue
-        new_Queue.push(TCB_List.back());
-
-        // return to sender :)
-        return TCB_List.back()->Current_Thread;
     }
 
     int wait_thread(ThreadID id, void **value)
@@ -176,6 +176,7 @@ namespace CORO
                 *value = waiting_TCB->ret;
             }
 
+            //loop through all the list ti check
             for (unsigned int i = 0; i < TCB_List.size(); i++)
             {
                 if (TCB_List[i]->Current_Thread == id)
@@ -210,21 +211,74 @@ namespace CORO
         return WAIT_SUCCESSFUL;
     }
 
+    //rmb delete this if no need
+    // void schedule()
+    // {
+    //     //got thread in list
+    //     if (!readyQueue.empty())
+    //     {
+    //         int nextThreadID = readyQueue.front();
+    //         readyQueue.pop();
+
+    //         if (threadsList[nextThreadID].state != WAITING)
+    //         {
+    //             if (currentContext != nullptr)
+    //             {
+    //                 int currentThreadID = currentContext->uc_link == nullptr ? 0 : ((ThreadControlBlock*)currentContext->uc_link)->thread_id;
+    //                 threadsList[currentThreadID].state = READY;
+    //                 readyQueue.push(currentThreadID); // Re-add the current thread to the ready queue
+    //             }
+
+    //             currentContext = &threadsList[nextThreadID].context;
+    //             threadsList[nextThreadID].state = RUNNING;
+    //             swapcontext(&threadsList[0].context, &threadsList[nextThreadID].context);
+    //         }
+    //         else
+    //         {
+    //             currentContext = &threadsList[nextThreadID].context;
+    //             threadsList[nextThreadID].state = RUNNING;
+    //             setcontext(&threadsList[nextThreadID].context);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         // No threads in the ready-to-run queue, check if there are newly created threads
+    //         if (currentThreadID != 0)
+    //         {
+    //             threadsList[currentThreadID].state = READY;
+    //             readyQueue.push(currentThreadID); // Re-add the current thread to the ready queue
+    //         }
+
+    //         // Select the next newly created thread to run (FIFO)
+    //         if (currentThreadID < nextThreadID)
+    //         {
+    //             currentThreadID++;
+    //             threadsList[currentThreadID].state = RUNNING;
+    //             swapcontext(&threadsList[0].context, &threadsList[currentThreadID].context); // Use swapcontext instead of setcontext
+    //         }
+    //     }
+    // }
+
     //TODO: dont use u_context or context switch
     //Getting seg fault dunno why. fed up
     //Should ask other how to do assembly. they say easier
+    //too tired to think
 
     //4. Yield the processor:
     void thd_yield()
     {
         // Lock mutex because below is a critical section
         // std::unique_lock<std::mutex> lock(mutex);
+        
+        // int currentThread = currentThreadID;
+        // readyQueue.push(currentThread);
+        // threadsList[currentThread].state = READY;
+
+        // schedule();
+        
         // NOTE:Find way to use u_context. why seg faul always
         // I dont want to assembly
 
-        //ucontext_t context;
-
-        
         // SAVING CONTEXT
         asm volatile
         (
@@ -249,14 +303,13 @@ namespace CORO
         );
 
         // Pointer holding the next threaed to run
-
         ThreadControlBlock *next_TCB;
 
-        // need find thread from the new queue if its empty
-        if (new_Queue.empty())
+        // Need find thread from teh ready queue if empty
+        if (ready_Queue.empty())
         {
-            // Need find thread from teh ready queue if empty
-            if (ready_Queue.empty())
+            // need find thread from the new queue if its empty
+            if (new_Queue.empty())
             {
                 // restore context
                 // inline asm code to restore stack pointer
@@ -341,6 +394,7 @@ namespace CORO
                 :
                 : "memory"
             );
+
             current_Thread->ret = next_TCB->funcpointer(next_TCB->arg);
             // exit thread
             thread_exit(current_Thread->ret);
@@ -350,7 +404,6 @@ namespace CORO
     //Push and Pull
     void pull_value(void **pulled_value)
     {
-        //while the PP is empty, need yield thread
         while (pp.empty())
         {
             thd_yield();
