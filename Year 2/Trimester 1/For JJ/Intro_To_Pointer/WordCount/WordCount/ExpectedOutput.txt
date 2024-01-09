@@ -1,0 +1,20 @@
+duck.txt
+Total char: 7
+Total line: 30
+Total word: 152
+marylamb.txt
+Total char: 4
+Total line: 23
+Total word: 118
+pg2641.txt
+Total char: 9101
+Total line: 69639
+Total word: 415592
+pg6761.txt
+Total char: 16273
+Total line: 164705
+Total word: 994253
+pg69703.txt
+Total char: 5973
+Total line: 57423
+Total word: 327432
