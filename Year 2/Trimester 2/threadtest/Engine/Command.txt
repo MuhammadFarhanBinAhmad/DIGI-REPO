@@ -1,0 +1,1 @@
+g++ -std=c++17 -pthread testThread.cpp Engine.cpp Thread.cpp Player.cpp BaseClass.cpp StateHandler.cpp EntityState.cpp EnemyState.cpp -o tt.out
