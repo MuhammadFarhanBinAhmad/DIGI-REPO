@@ -707,7 +707,7 @@ void TestExtendedHeaderBlocks(unsigned size)
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
         else
-            cout << "Exception thrown from Allocate in TestExtendedHeaderumasjivmBlocks." << endl;
+            cout << "Exception thrown from Allocate in TestExtendedHeaderBlocks." << endl;
     }
     catch (...)
     {
@@ -2158,128 +2158,128 @@ int main(int argc, char** argv)
         DisableOA();
         cout << endl;
         break;
-    // case 11:
-    //     cout << "============================== Test leak..." << endl;
-    //     TestLeak();
-    //     cout << endl;
-    //     break;
-//     case 12:
-//         cout << "============================== Test validate..." << endl;
-//         TestValidate();
-//         cout << endl;
-//         break;
-//     case 13:
-//         cout << "============================== Test free checking basic (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
-//         cout << endl;
-//         break;
-//     case 14:
-//         cout << "============================== Test free checking extended (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
-//         cout << endl;
-//         break;
-//     case 15:
-//         cout << "============================== Test free checking external (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
-//         cout << endl;
-//         break;
-//     case 16:
-//         cout << "============================== Test stress using new/delete..." << endl;
-//         Stress(true);
-//         cout << endl;
-//         break;
-//     case 17:
-//         cout << "============================== Test stress using allocator..." << endl;
-//         Stress(false);
-//         cout << endl;
-//         break;
-// #if 1
-//     case 18:
-//         cout << "============================== Test alignment..." << endl;
-//         TestAlignment();
-//         cout << endl;
-//         break;
-//     case 19:
-//         cout << "============================== Test free empty pages 1..." << endl;
-//         TestFreeEmptyPages1();
-//         cout << endl;
-//         break;
-//     case 20:
-//         cout << "============================== Test free empty pages 2..." << endl;
-//         TestFreeEmptyPages2();
-//         cout << endl;
-//         break;
-//     case 21:
-//         cout << "============================== Test free empty pages 3..." << endl;
-//         TestFreeEmptyPages3();
-//         cout << endl;
-//         break;
-// #endif
-//     default:
-//         cout << "============================== Students..." << endl;
-//         DoStudents(0, false);
-//         cout << endl;
-//         cout << "============================== Students..." << endl;
-//         DoStudents(0, true);
-//         cout << endl;
-//         cout << "============================== Employees..." << endl;
-//         DoEmployees();
-//         cout << endl;
-//         cout << "============================== Test padding..." << endl;
-//         TestPadding(6);
-//         cout << endl;
-//         cout << "============================== Test padding..." << endl;
-//         TestPadding(10);
-//         cout << endl;
-//         cout << "============================== Test basic header blocks..." << endl;
-//         TestBasicHeaderBlocks();
-//         cout << endl;
-//         cout << "============================== Test extended header blocks(1)..." << endl;
-//         TestExtendedHeaderBlocks(1);
-//         cout << endl;
-//         cout << "============================== Test external header blocks..." << endl;
-//         TestExternalHeaderBlocks();
-//         cout << endl;
-//         cout << "============================== Test corruption..." << endl;
-//         TestCorruption();
-//         cout << endl;
-//         cout << "============================== Test using new/delete..." << endl;
-//         DisableOA();
-//         cout << endl;
-//         cout << "============================== Test leak..." << endl;
-//         TestLeak();
-//         cout << endl;
-//         cout << "============================== Test validate..." << endl;
-//         TestValidate();
-//         cout << endl;
-//         cout << "============================== Test free checking basic (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
-//         cout << endl;
-//         cout << "============================== Test free checking extended (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
-//         cout << endl;
-//         cout << "============================== Test free checking external (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
-//         cout << endl;
-//         cout << "============================== Test stress using new/delete..." << endl;
-//         Stress(true);
-//         cout << endl;
-//         cout << "============================== Test stress using allocator..." << endl;
-//         Stress(false);
-//         cout << endl;
-//         cout << "============================== Test alignment..." << endl;
-//         TestAlignment();
-//         cout << endl;
-//         cout << "============================== Test free empty pages 1..." << endl;
-//         TestFreeEmptyPages1();
-//         cout << endl;
-//         cout << "============================== Test free empty pages 2..." << endl;
-//         TestFreeEmptyPages2();
-//         cout << endl;
-//         cout << "============================== Test free empty pages 3..." << endl;
-//         TestFreeEmptyPages3();
-//         cout << endl;
-//         break;
+    case 11:
+        cout << "============================== Test leak..." << endl;
+        TestLeak();
+        cout << endl;
+        break;
+    case 12:
+        cout << "============================== Test validate..." << endl;
+        TestValidate();
+        cout << endl;
+        break;
+    case 13:
+        cout << "============================== Test free checking basic (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
+        cout << endl;
+        break;
+    case 14:
+        cout << "============================== Test free checking extended (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
+        cout << endl;
+        break;
+    case 15:
+        cout << "============================== Test free checking external (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
+        cout << endl;
+        break;
+    case 16:
+        cout << "============================== Test stress using new/delete..." << endl;
+        Stress(true);
+        cout << endl;
+        break;
+    case 17:
+        cout << "============================== Test stress using allocator..." << endl;
+        Stress(false);
+        cout << endl;
+        break;
+#if 1
+    case 18:
+        cout << "============================== Test alignment..." << endl;
+        TestAlignment();
+        cout << endl;
+        break;
+    case 19:
+        cout << "============================== Test free empty pages 1..." << endl;
+        TestFreeEmptyPages1();
+        cout << endl;
+        break;
+    case 20:
+        cout << "============================== Test free empty pages 2..." << endl;
+        TestFreeEmptyPages2();
+        cout << endl;
+        break;
+    case 21:
+        cout << "============================== Test free empty pages 3..." << endl;
+        TestFreeEmptyPages3();
+        cout << endl;
+        break;
+#endif
+    default:
+        cout << "============================== Students..." << endl;
+        DoStudents(0, false);
+        cout << endl;
+        cout << "============================== Students..." << endl;
+        DoStudents(0, true);
+        cout << endl;
+        cout << "============================== Employees..." << endl;
+        DoEmployees();
+        cout << endl;
+        cout << "============================== Test padding..." << endl;
+        TestPadding(6);
+        cout << endl;
+        cout << "============================== Test padding..." << endl;
+        TestPadding(10);
+        cout << endl;
+        cout << "============================== Test basic header blocks..." << endl;
+        TestBasicHeaderBlocks();
+        cout << endl;
+        cout << "============================== Test extended header blocks(1)..." << endl;
+        TestExtendedHeaderBlocks(1);
+        cout << endl;
+        cout << "============================== Test external header blocks..." << endl;
+        TestExternalHeaderBlocks();
+        cout << endl;
+        cout << "============================== Test corruption..." << endl;
+        TestCorruption();
+        cout << endl;
+        cout << "============================== Test using new/delete..." << endl;
+        DisableOA();
+        cout << endl;
+        cout << "============================== Test leak..." << endl;
+        TestLeak();
+        cout << endl;
+        cout << "============================== Test validate..." << endl;
+        TestValidate();
+        cout << endl;
+        cout << "============================== Test free checking basic (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
+        cout << endl;
+        cout << "============================== Test free checking extended (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
+        cout << endl;
+        cout << "============================== Test free checking external (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
+        cout << endl;
+        cout << "============================== Test stress using new/delete..." << endl;
+        Stress(true);
+        cout << endl;
+        cout << "============================== Test stress using allocator..." << endl;
+        Stress(false);
+        cout << endl;
+        cout << "============================== Test alignment..." << endl;
+        TestAlignment();
+        cout << endl;
+        cout << "============================== Test free empty pages 1..." << endl;
+        TestFreeEmptyPages1();
+        cout << endl;
+        cout << "============================== Test free empty pages 2..." << endl;
+        TestFreeEmptyPages2();
+        cout << endl;
+        cout << "============================== Test free empty pages 3..." << endl;
+        TestFreeEmptyPages3();
+        cout << endl;
+        break;
     }
 
     //OAConfig config(false, 16, 4, false);
