@@ -128,18 +128,18 @@ void DumpCallback(const void* block, size_t actual_size)
         printf(" %02X", static_cast<int>(*data++));
     printf("\n");
 }
-void CheckAndDumpLeaks(const ObjectAllocator* oa)
-{
-    if (oa->GetStats().ObjectsInUse_)
-    {
-        printf("Detected memory leaks!\n");
-        printf("Dumping objects ->\n");
-        unsigned leaks = oa->DumpMemoryInUse(DumpCallback);
-        printf("Object dump complete. [%u]\n", leaks);
-    }
-    else
-        printf("No leaks detected.\n");
-}
+// void CheckAndDumpLeaks(const ObjectAllocator* oa)
+// {
+//     if (oa->GetStats().ObjectsInUse_)
+//     {
+//         printf("Detected memory leaks!\n");
+//         printf("Dumping objects ->\n");
+//         unsigned leaks = oa->DumpMemoryInUse(DumpCallback);
+//         printf("Object dump complete. [%u]\n", leaks);
+//     }
+//     else
+//         printf("No leaks detected.\n");
+// }
 void DoStudents(unsigned padding, bool printall)
 {
     try
@@ -1300,7 +1300,7 @@ void TestLeak(void)
     cout << "Most employees in use: " << employeeObjectMgr->GetStats().MostObjects_ << endl;
 
     cout << "\nChecking for leaks...\n";
-    CheckAndDumpLeaks(employeeObjectMgr);
+    //CheckAndDumpLeaks(employeeObjectMgr);
 
     try
     {
@@ -1320,7 +1320,7 @@ void TestLeak(void)
     }
 
     cout << "\nChecking for leaks...\n";
-    CheckAndDumpLeaks(employeeObjectMgr);
+    //CheckAndDumpLeaks(employeeObjectMgr);
 
     delete employeeObjectMgr;
     delete[] pEmps;

@@ -262,15 +262,17 @@ class ObjectAllocator
   private:
       // Some "suggested" members (only a suggestion!)
     GenericObject *PageList_; //!< the beginning of the list of pages
-    GenericObject *FreeLisst_; //!< the beginning of the list of objects
+    GenericObject *FreeList_; //!< the beginning of the list of objects
     
     // Lots of other private stufEf... 
 
     size_t ObjectSize;
-    size_t PageSize;
-    unsigned PadBytes;
+    size_t OffSet;
+    unsigned MidBlockSize;
     OAConfig Config;
     OAStats Stats;
+
+    void AddPage();
 };
 
 #endif

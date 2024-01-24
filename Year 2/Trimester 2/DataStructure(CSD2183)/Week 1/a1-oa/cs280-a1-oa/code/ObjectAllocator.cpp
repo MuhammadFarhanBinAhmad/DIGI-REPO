@@ -4,239 +4,262 @@
 // Constructor
 // ObjectAllocator constructor
 ObjectAllocator::ObjectAllocator(size_t ObjectSize, const OAConfig &config)
-    : PageList_(nullptr), FreeLisst_(nullptr), ObjectSize(ObjectSize), Config(config)
+    : PageList_(nullptr), FreeLisst_(nullptr), ObjectSize(ObjectSize), Config(config), Stats{}
 {
-    // Calculate the actual size of each block, including padding and headers
-    size_t blockSize = ObjectSize + Config.PadBytes_ + Config.HBlockInfo_.size_;
 
-    // Ensure the block size is aligned according to the specified alignment
+    Stats.ObjectSize_ = ObjectSize;
+
+    // Need check if left allignment need to be calculated
     if (Config.Alignment_ > 1)
     {
-        size_t remainder = blockSize % Config.Alignment_;
-        if (remainder != 0)
-        {
-            blockSize += Config.Alignment_ - remainder;
-        }
+        // Get inter allignment
+        size_t InterBytes = Stats.ObjectSize_ + (Config.PadBytes_ * 2) + Config.HBlockInfo_.size_;
+
+        Config.InterAlignSize_ = Config.Alignment_ - (static_cast<unsigned>(InterBytes) % Config.Alignment_);
+
+        // Calculate byte needed for left alignment
+        size_t LeftBytes = sizeof(void *) + Config.PadBytes_ + Config.HBlockInfo_.size_;
+
+        Config.LeftAlignSize_ = Config.Alignment_ - (static_cast<unsigned>(LeftBytes) & Config.Alignment_);
     }
 
-    // Calculate the page size, including all headers, padding, etc.
-    PageSize = (blockSize + Config.PadBytes_) * Config.ObjectsPerPage_ + sizeof(GenericObject);
+    size_t size{};
 
-    // Set the alignment-related sizes
-    Config.LeftAlignSize_ = (Config.Alignment_ > 1) ? Config.Alignment_ : 0;
-    Config.InterAlignSize_ = (Config.ObjectsPerPage_ > 1) ? (Config.ObjectsPerPage_ - 1) * Config.Alignment_ : 0;
+    // left allignment size
+    // only 1st block has left allignemtn
+    size = sizeof(void *) + Config.LeftAlignSize_;
 
-    // Explicitly set to 0 when the condition is not true
-    if (Config.LeftAlignSize_ == 0)
-        Config.InterAlignSize_ = 0;
+    // Interalign size
+    size += Config.ObjectsPerPage_ * (Config.PadBytes_ + Config.PadBytes_ + Config.HBlockInfo_.size_ + Stats.ObjectSize_);
+    size += (Config.ObjectsPerPage_ - 1) * Config.InterAlignSize_;
 
-    // Allocate the first page
-    GenericObject *newPage = static_cast<GenericObject *>(::operator new(PageSize));
-    newPage->Next = PageList_; // Set Next to the existing PageList
-    PageList_ = newPage;       // Update PageList to point to the new page
+    Stats.PageSize_ = size;
 
-    // Set up the FreeList by splitting the page into blocks
-    FreeLisst_ = newPage;
-    GenericObject *current = newPage;
+    // Calculate offset value
+    OffSet = sizeof(void *) + Config.HBlockInfo_.size_ + Config.PadBytes_ + Config.LeftAlignSize_;
 
-    for (unsigned i = 1; i < Config.ObjectsPerPage_; ++i)
+    // Calculate Midblock size
+    MidBlockSize = Config.HBlockInfo_.size_ + Config.PadBytes_ * 2 + Stats.ObjectSize_ + Config.InterAlignSize_;
+
+    // Calcule pagesize
+    Stats.PageSize_ = sizeof(void *) + Config.LeftAlignSize_ + (Config.ObjectsPerPage_ * MidBlockSize) - Config.InterAlignSize_;
+
+    if (Config.UseCPPMemManager_)
     {
-        // Calculate the offset for the next block with alignment and padding consideration
-        size_t offset = i * blockSize + Config.PadBytes_;
-        if (Config.Alignment_ > 1)
-        {
-            size_t remainder = offset % Config.Alignment_;
-            if (remainder != 0)
-            {
-                offset += Config.Alignment_ - remainder;
-            }
-        }
-
-        GenericObject *nextBlock = reinterpret_cast<GenericObject *>(reinterpret_cast<char *>(current) + offset);
-        nextBlock->Next = FreeLisst_;
-        FreeLisst_ = nextBlock;
-        current = nextBlock;
+        return;
     }
 
-    // Initialize stats
-    Stats.PagesInUse_ = 1;
-    Stats.ObjectsInUse_ = 0;
-    Stats.FreeObjects_ = Config.ObjectsPerPage_;
-    Stats.ObjectSize_ = ObjectSize;
-    Stats.PageSize_ = PageSize;
+    AddPage();
+}
+ObjectAllocator::AddPage()
+{
+    if ((Stats.PagesInUse_ == Config.MaxPages_) && Config.MaxPages_)
+    {
+        throw OAException(OAException::E_NO_PAGES, "Maximum page allocated");
+    }
+
+    GenericObject *newPage;
+
+    try
+    {
+        newPage = reinterpret_cast<GenericObject *>(new u_char[Stats.PageSize_]);
+
+        Stats.PagesInUse_++;
+    }
+    catch (std::bad_alloc &)
+    {
+        throw OAException(OAException::E_NO_PAGES, "Not enough memory to add new page");
+    }
+
+    newPage->Next = PageList_;
+    PageList_ = newPage;
+
+    unsigned char *temp = reinterpret_cast<unsigned char *>(newPage);
+    temp += sizeof(void *);
+
+    std::memset(temp, ALIGN_PATTERN, Config.LeftAlignSize_);
+
+    temp += (OffSet - sizeof(void *));
+
+    for (size_t i = 0; i < Config.ObjectsPerPage_; i++)
+    {
+        Stats.FreeObjects_++;
+
+        if (i != Config.ObjectsPerPage_ - 1)
+        {
+            std::memset(reinterpret_cast<unsigned char *>(temp) + Stats.ObjectSize_ + Config.PadBytes_, ALIGN_PATTERN, Config.InterAlignSize_);
+        }
+
+        if (Config.DebugOn_)
+        {
+            std::memset(temp - Config.PadBytes_ - Config.HBlockInfo_.size_, 0, Config.HBlockInfo_.size_);
+            std::memset(temp - Config.PadBytes_, PAD_PATTERN, Config.PadBytes_);
+            std::memset(temp + Stats.ObjectSize_, PAD_PATTERN, Config.PadBytes_);
+            std::memset(temp, UNALLOCATED_PATTERN, Stats.ObjectSize_);
+        }
+
+        reinterpret_cast<GenericObject *>(temp)->Next = FreeLisst_;
+        FreeLisst_ = reinterpret_cast<GenericObject *>(temp);
+
+        temp += Stats.ObjectSize_ + (2 * Config.PadBytes_) + Config.InterAlignSize_ + Config.HBlockInfo_.size_;
+    }
 }
 ObjectAllocator::~ObjectAllocator()
 {
-    // Free all allocated pages
-    while (PageList_ != nullptr)
-    {
-        GenericObject *nextPage = PageList_->Next;
-        ::operator delete(PageList_);
-        PageList_ = nextPage;
-    }
+    unsigned char *page;
 
-    // Reset FreeList (optional, as the destructor will be called when the program exits)
-    FreeLisst_ = nullptr;
+    while (PageList_ != NULL)
+    {
+        page = reinterpret_cast<unsigned char *>(PageList_);
+
+        PageList_ = PageList_->Next;
+        delete[] page;
+    }
 }
 
 // Allocate
 // ObjectAllocator Allocate function
 void *ObjectAllocator::Allocate(const char *label)
 {
-    if (FreeLisst_ == nullptr)
+    if (Config.UseCPPMemManager_)
     {
-        // No free blocks available, allocate a new page
-        if (Config.MaxPages_ == 0 || Stats.PagesInUse_ < Config.MaxPages_)
+        try
         {
-            // Allocate a new page
-            GenericObject *newPage = static_cast<GenericObject *>(::operator new(PageSize));
-            newPage->Next = PageList_;
-            PageList_ = newPage;
-            ++Stats.PagesInUse_;
-            ++Stats.ObjectsInUse_;
+            u_char *newObj = new u_char[Stats.ObjectSize_];
+            // Upade the OA stats
             ++Stats.Allocations_;
-            // Add new blocks to the FreeList
-            size_t blockSize = ObjectSize + Config.PadBytes_ + Config.HBlockInfo_.size_;
+            ++Stats.ObjectsInUse_;
 
-            // Ensure the block size is aligned according to the specified alignment
-            if (Config.Alignment_ > 1)
+            if (Stats.ObjectsInUse_ > Stats.MostObjects_)
             {
-                size_t remainder = blockSize % Config.Alignment_;
-                if (remainder != 0)
-                {
-                    blockSize += Config.Alignment_ - remainder;
-                }
+                Stats.MostObjects_ = Stats.ObjectsInUse_;
             }
+            --Stats.FreeObjects_;
 
-            GenericObject *current = newPage;
-            for (unsigned i = 1; i < Config.ObjectsPerPage_; ++i)
-            {
-                GenericObject *nextBlock = reinterpret_cast<GenericObject *>(reinterpret_cast<char *>(current) + blockSize);
-                nextBlock->Next = FreeLisst_;
-                FreeLisst_ = nextBlock;
-                current = nextBlock;
-            }
+            return newObj;
+        }
+        catch (std::bad_alloc &)
+        {
+            throw OAException(OAException::E_NO_MEMORY, "Not enough memory!");
+        }
+    }
+
+    // Freelist is emprt, no page allocate
+    if (FreeList_ == NULL)
+    {
+        if (Stats.PagesInUse_ < Config.MaxPages_ || Config.MaxPages_ == 0)
+        {
+            AddPage();
         }
         else
         {
-            // Maximum pages limit reached
-            throw OAException(OAException::E_NO_PAGES, "Maximum pages limit reached.");
+            throw OAException(OAException::E_NO_PAGES, "No available page!");
         }
     }
 
-    // Pop a block from the FreeList
-    GenericObject *allocatedBlock = FreeLisst_;
-    FreeLisst_ = allocatedBlock->Next;
+    GenericObject *object = FreeList_;
+    FreeList_ = FreeList_->Next;
 
-    ++Stats.ObjectsInUse_;
-    ++Stats.Allocations_;
-
-    // Ensure FreeObjects_ doesn't go negative
-    if (Stats.FreeObjects_ > 0)
-        --Stats.FreeObjects_;
-
-    if (Stats.Allocations_ > Stats.MostObjects_)
+    if (Config.DebugOn_)
     {
-        Stats.MostObjects_ = Stats.Allocations_;
+        memset(object, ALLOCATED_PATTERN, Stats.ObjectSize_);
     }
-    return allocatedBlock;
+
+    ++Stats.Allocations_;
+    ++Stats.ObjectsInUse_;
+
+    if (Stats.ObjectsInUse_ > Stats.MostObjects_)
+    {
+        Stats.MostObjects_ = Stats.ObjectsInUse_;
+    }
+    --Stats.FreeObjects_;
+
+    switch (Config.HBlockInfo_.type_)
+    {
+    case OAConfig::hbBasic:
+        unsigned char *HeaderStart = reinterpret_cast<unsigned char *>(object) - Config.HBlockInfo_.size_ - Config.PadBytes_;
+
+        unsigned *AllocationNumber = reinterpret_cast<unsigned *>(HeaderStart);
+        *AllocationNumber = Stats.Allocations_;
+
+        unsigned char *flag = reinterpret_cast<unsigned char *>(HeaderStart + sizeof(unsigned));
+
+        *flag = true;
+
+        break;
+    case OAConfig::hbExternal:
+
+        break;
+    case OAConfig::hbExtended:
+        //Start of flag
+        unsigned char* start = reinterpret_cast<unsigned char*>(object) - sizeof(unsigned char) - Config.PadBytes_;
+
+        *flag = true;
+
+        //Start of allocation number
+        unsigned char* allocNumberStart = flag -  sizeof(unsigned);
+
+        unsigned *allocationNumber = reinterpret_cast<unsigned*>(allocNumberStart);
+
+        *allocationNumber = Stats.Allocations_;
+
+        unsigned char* CountStart = allocNumberStart - sizeof(unsigned short);
+
+        unsigned short* UseCount = reinterpret_cast<unsigned short*>(CountStart);
+
+        (*UseCount)++;
+
+        break;
+    default:
+        break;
+    }
+
+    return object;
 }
 void ObjectAllocator::Free(void *Object)
 {
-    // Handle the case where the provided object is nullptr
-    if (Object == nullptr)
-    {
-        throw OAException(OAException::E_NO_MEMORY, "Attempting to free a nullptr.");
-    }
-
-    // Check if the provided object falls within the boundaries of a valid allocated block
-    GenericObject *allocatedBlock = PageList_;
-    while (allocatedBlock != nullptr)
-    {
-        // Determine the start and end addresses of the allocated block, considering header size
-        char *blockStart = reinterpret_cast<char *>(allocatedBlock) + sizeof(GenericObject) + Config.HBlockInfo_.size_;
-        char *blockEnd = blockStart + PageSize - sizeof(GenericObject);
-
-        // Calculate the address of the provided object
-        char *objectAddress = reinterpret_cast<char *>(Object);
-
-        // Check if the provided object is within the boundaries of this allocated block
-        if (objectAddress >= blockStart && objectAddress < blockEnd)
-        {
-            // Calculate the offset of the provided object from the start of the block
-            size_t offset = objectAddress - blockStart;
-
-            // Adjust the offset for alignment and padding considerations
-            if (Config.Alignment_ > 1)
-            {
-                size_t remainder = offset % Config.Alignment_;
-                if (remainder != 0)
-                {
-                    offset += Config.Alignment_ - remainder;
-                }
-            }
-
-            // Calculate the address of the block to free
-            GenericObject *freedBlock = reinterpret_cast<GenericObject *>(blockStart + offset - Config.HBlockInfo_.size_);
-
-            // Push the block back onto the FreeList
-            freedBlock->Next = FreeLisst_;
-            FreeLisst_ = freedBlock;
-
-            // Update stats
-            --Stats.ObjectsInUse_;
-            ++Stats.Deallocations_;
-            ++Stats.FreeObjects_; // Adjust the count of free objects
-            return;               // Exit the function after successful deallocation
-        }
-
-        allocatedBlock = allocatedBlock->Next;
-    }
-
-    // If the provided object is not within the boundaries of any allocated block, throw an exception
-    throw OAException(OAException::E_BAD_BOUNDARY, "Attempting to free an object with a bad boundary.");
 }
 
-unsigned ObjectAllocator::FreeEmptyPages()
-{
-    unsigned freedPages = 0;
+// unsigned ObjectAllocator::FreeEmptyPages()
+// {
+//     unsigned freedPages = 0;
 
-    // Iterate through pages and free the ones with no allocated blocks
-    GenericObject *current = PageList_;
-    GenericObject *prev = nullptr;
+//     // Iterate through pages and free the ones with no allocated blocks
+//     GenericObject *current = PageList_;
+//     GenericObject *prev = nullptr;
 
-    while (current != nullptr)
-    {
-        if (FreeLisst_ == nullptr)
-        {
-            // No free blocks, free the entire page
-            if (prev == nullptr)
-            {
-                // First page
-                PageList_ = current->Next;
-            }
-            else
-            {
-                prev->Next = current->Next;
-            }
+//     while (current != nullptr)
+//     {
+//         if (FreeLisst_ == nullptr)
+//         {
+//             // No free blocks, free the entire page
+//             if (prev == nullptr)
+//             {
+//                 // First page
+//                 PageList_ = current->Next;
+//             }
+//             else
+//             {
+//                 prev->Next = current->Next;
+//             }
 
-            GenericObject *nextPage = current->Next;
-            ::operator delete(current);
-            current = nextPage;
+//             GenericObject *nextPage = current->Next;
+//             ::operator delete(current);
+//             current = nextPage;
 
-            ++freedPages;
-        }
-        else
-        {
-            prev = current;
-            current = current->Next;
-        }
-    }
+//             ++freedPages;
+//         }
+//         else
+//         {
+//             prev = current;
+//             current = current->Next;
+//         }
+//     }
 
-    Stats.PagesInUse_ -= freedPages;
+//     Stats.PagesInUse_ -= freedPages;
 
-    return freedPages;
-}
+//     return freedPages;
+// }
 // unsigned ObjectAllocator::DumpMemoryInUse(DUMPCALLBACK fn) const
 // {
 
