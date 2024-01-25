@@ -273,6 +273,9 @@ class ObjectAllocator
     OAStats Stats;
 
     void AddPage();
+    bool PageEmpty(GenericObject* page);
+    void RemovePageObjectInFreeList(GenericObject* page);
+    bool IsInPage(GenericObject* pageAddress, u_char* address);
 };
 
 #endif

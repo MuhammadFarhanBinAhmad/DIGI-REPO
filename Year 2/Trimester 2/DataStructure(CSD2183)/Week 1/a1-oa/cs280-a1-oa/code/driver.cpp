@@ -42,13 +42,13 @@ void PrintConfig(const ObjectAllocator *nm);
 void DumpPages(const ObjectAllocator *nm, unsigned width = 16);
 void DumpPagesEx(const ObjectAllocator *nm, unsigned width = 16);
 
-void DoStudents(unsigned padding = 0, bool printall = false);    // debug, padding=X
-void DoEmployees(void);               // debug
-void TestPadding(unsigned size);               // DoStudents(padding=16)
-void TestBasicHeaderBlocks();         // debug, header
-void TestCorruption(void);            // debug, padding=8
-void DisableOA(void);                 // cpp_mem_mgr
-void TestLeak(void);                  // debug
+void DoStudents(unsigned padding = 0, bool printall = false); // debug, padding=X
+void DoEmployees(void);                                       // debug
+void TestPadding(unsigned size);                              // DoStudents(padding=16)
+void TestBasicHeaderBlocks();                                 // debug, header
+void TestCorruption(void);                                    // debug, padding=8
+void DisableOA(void);                                         // cpp_mem_mgr
+void TestLeak(void);                                          // debug
 
 struct Person
 {
@@ -82,7 +82,7 @@ struct Person PEOPLE[] = {
     {"Wright", "Richard", 17000, 9},
     {"Waters", "Roger", 10000, 3},
     {"Gilmore", "David", 19000, 5}};
-void FillEmployee(Employee& emp)
+void FillEmployee(Employee &emp)
 {
     static unsigned int index = 0;
 
@@ -94,14 +94,14 @@ void FillEmployee(Employee& emp)
     if (index >= sizeof(PEOPLE) / sizeof(*PEOPLE))
         index = 0;
 }
-void DumpCallback(const void* block, size_t actual_size)
+void DumpCallback(const void *block, size_t actual_size)
 {
     size_t size = actual_size;
     // limit to 16 bytes
     if (actual_size > 16)
         size = 16;
 
-    unsigned char* data = const_cast<unsigned char*>(static_cast<const unsigned char*>(block));
+    unsigned char *data = const_cast<unsigned char *>(static_cast<const unsigned char *>(block));
 
     if (SHOWADDRESS1)
         printf("Block at 0x%p, %u bytes long.\n", block, static_cast<unsigned>(actual_size));
@@ -123,7 +123,7 @@ void DumpCallback(const void* block, size_t actual_size)
     }
     printf(">");
 
-    data = const_cast<unsigned char*>(static_cast<const unsigned char*>(block));
+    data = const_cast<unsigned char *>(static_cast<const unsigned char *>(block));
     for (unsigned int i = 0; i < size; i++)
         printf(" %02X", static_cast<int>(*data++));
     printf("\n");
@@ -256,6 +256,145 @@ void DoStudents(unsigned padding, bool printall)
     cout << "Most students in use: " << studentObjectMgr->GetStats().MostObjects_ << endl;
     delete studentObjectMgr;
 }
+void DoEmployees(void)
+{
+    try
+    {
+        bool newdel = false;
+        bool debug = true;
+        unsigned padbytes = 0;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbNone);
+        unsigned alignment = 0;
+
+        OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
+        employeeObjectMgr = new ObjectAllocator(sizeof(Employee), config);
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during construction in DoEmployees." << endl;
+        return;
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown during constructor in DoEmployees." << endl;
+    }
+
+    PrintConfig(employeeObjectMgr);
+    PrintCounts(employeeObjectMgr);
+
+    Employee *pEmployee1 = 0, *pEmployee2 = 0, *pEmployee3 = 0;
+    try
+    {
+        pEmployee1 = static_cast<Employee *>(employeeObjectMgr->Allocate());
+        PrintCounts(employeeObjectMgr);
+        pEmployee2 = static_cast<Employee *>(employeeObjectMgr->Allocate());
+        PrintCounts(employeeObjectMgr);
+        pEmployee3 = static_cast<Employee *>(employeeObjectMgr->Allocate());
+        PrintCounts(employeeObjectMgr);
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown from Allocate in DoEmployees." << endl;
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Allocate in DoEmployees." << endl;
+    }
+
+    Employee *pEmployee4[7];
+    for (int i = 0; i < 7; i++)
+    {
+        try
+        {
+            // Need to use /EHa, not /EHs
+            // ******************************************* Puts &employeeObjMgr in ecx
+            pEmployee4[i] = static_cast<Employee *>(employeeObjectMgr->Allocate());
+        }
+        catch (const OAException &e)
+        {
+            if (SHOW_EXCEPTIONS)
+            {
+                // ******************** Hoses the ecx register containing &employeeObjMgr
+                cout << e.what() << endl;
+            }
+            else
+                cout << "Exception thrown from Allocate (2) in DoEmployees." << endl;
+
+            break;
+        }
+        catch (...)
+        {
+            cout << "Unexpected exception thrown from Allocate (2) in DoEmployees." << endl;
+        }
+    }
+    // ************************* blindly pushes ecx as if it still has &empObjMgr
+    PrintCounts(employeeObjectMgr);
+
+    try
+    {
+        employeeObjectMgr->Free(pEmployee1);
+        PrintCounts(employeeObjectMgr);
+        employeeObjectMgr->Free(pEmployee2);
+        PrintCounts(employeeObjectMgr);
+        employeeObjectMgr->Free(pEmployee3);
+        PrintCounts(employeeObjectMgr);
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown from Free in DoEmployees." << endl;
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Free in DoEmployees." << endl;
+    }
+
+    // Free an object twice
+    try
+    {
+        employeeObjectMgr->Free(pEmployee1);
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown from Free (Freeing object twice) in DoEmployees." << endl;
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Free (Freeing object twice) in DoEmployees." << endl;
+    }
+
+    // Free an invalid pointer (bad boundary condition)
+    try
+    {
+        employeeObjectMgr->Free(reinterpret_cast<char *>(pEmployee4[0] + 4));
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown from Free (Freeing address on bad boundary) in DoEmployees." << endl;
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Free (Freeing address on bad boundary) in DoEmployees." << endl;
+    }
+
+    cout << "Most employees in use: " << employeeObjectMgr->GetStats().MostObjects_ << endl;
+    delete employeeObjectMgr;
+}
+
 void TestBasicHeaderBlocks()
 {
     ObjectAllocator *oa = 0;
@@ -342,7 +481,6 @@ void TestBasicHeaderBlocks()
 
     try
     {
-        std::cout << "SHOWN EXCEPTION: " << SHOW_EXCEPTIONS << '\n';
         oa->Free(pStudent2);
     }
     catch (const OAException &e)
@@ -669,6 +807,281 @@ void TestExternalHeaderBlocks()
 
     delete oa;
 }
+void ValidateCallback(const void *block, size_t actual_size)
+{
+    if (SHOWADDRESS2)
+        printf("Block at 0x%p, %u bytes long.\n", block, static_cast<unsigned>(actual_size));
+    else
+        printf("Block at 0x00000000, %u bytes long.\n", static_cast<unsigned>(actual_size));
+
+    if (!block)
+        return;
+}
+//****************************************************************************************************
+void TestValidate(void)
+{
+    ObjectAllocator *oa = 0;
+    unsigned char *p;
+    unsigned i, padbytes = 8;
+    unsigned wrap = 32;
+    Student *pStudent1 = 0, *pStudent2 = 0, *pStudent7 = 0;
+    try
+    {
+        bool newdel = false;
+        bool debug = true;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbBasic);
+        unsigned alignment = 0;
+
+        OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
+        oa = new ObjectAllocator(sizeof(Student), config);
+
+        pStudent1 = static_cast<Student *>(oa->Allocate());
+        pStudent2 = static_cast<Student *>(oa->Allocate());
+        oa->Allocate(); // 3
+        oa->Allocate(); // 4
+        oa->Allocate(); // 5
+        oa->Allocate(); // 6
+        pStudent7 = static_cast<Student *>(oa->Allocate());
+        PrintConfig(oa);
+        PrintCounts(oa);
+        DumpPages(oa, wrap);
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during construction/allocation in TestValidate." << endl;
+        return;
+    }
+
+    try
+    {
+        // Validate a good heap
+        unsigned count = oa->ValidatePages(ValidateCallback);
+        cout << "Number of corruptions: " << count << endl
+             << endl;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+        {
+            if (e.code() == e.E_CORRUPTED_BLOCK)
+                cout << "Exception thrown from Free: E_CORRUPTED_BLOCK on left" << endl;
+            else
+                cout << "****** Unknown OAException thrown from Free in TestValidate. ******" << endl;
+        }
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Free in TestValidate." << endl;
+    }
+
+    // corrupt left pad bytes of 1
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent1)) - padbytes;
+    for (i = 0; i < padbytes - 2; i++)
+        *p++ = 0xFF;
+
+    // corrupt right pad bytes of 2
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent2)) + sizeof(Student);
+    for (i = 0; i < padbytes - 2; i++)
+        *p++ = 0xEE;
+
+    PrintCounts(oa);
+    DumpPages(oa, wrap);
+
+    try
+    {
+        // Validate a corrupted heap
+        unsigned count = oa->ValidatePages(ValidateCallback);
+        cout << "Number of corruptions: " << count << endl
+             << endl;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+        {
+            if (e.code() == e.E_CORRUPTED_BLOCK)
+                cout << "Exception thrown from Free: E_CORRUPTED_BLOCK on left" << endl;
+            else
+                cout << "****** Unknown OAException thrown from Free (2) in TestValidate. ******" << endl;
+        }
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Free (2) in TestValidate." << endl;
+    }
+
+    // corrupt left pad bytes of 7
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent7)) - padbytes;
+    for (i = 0; i < padbytes - 2; i++)
+        *p++ = 0xFF;
+
+    // corrupt right pad bytes of 7
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent7)) + sizeof(Student);
+    for (i = 0; i < padbytes - 2; i++)
+        *p++ = 0xEE;
+
+    PrintCounts(oa);
+    DumpPages(oa, wrap);
+
+    try
+    {
+        // Validate a corrupted heap
+        unsigned count = oa->ValidatePages(ValidateCallback);
+        cout << "Number of corruptions: " << count << endl
+             << endl;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+        {
+            if (e.code() == e.E_CORRUPTED_BLOCK)
+                cout << "Exception thrown from Free: E_CORRUPTED_BLOCK on left" << endl;
+            else
+                cout << "****** Unknown OAException thrown from Free (3) in TestValidate. ******" << endl;
+        }
+    }
+    catch (...)
+    {
+        cout << "Unexpected exception thrown from Free (3) in TestValidate." << endl;
+    }
+    if (oa)
+        delete oa;
+}
+void DumpCallback2(const void *, size_t)
+{
+}
+int RandomInt(int low, int high)
+{
+    // return std::rand() % (high - low + 1) + low;
+    return Digipen::Utils::Random(low, high);
+}
+template <typename T>
+void SwapT(T &a, T &b)
+{
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+template <typename T>
+void Shuffle(T *array, unsigned count)
+{
+    for (unsigned int i = 0; i < count; i++)
+    {
+        int r = RandomInt(i, static_cast<int>(count) - 1);
+        SwapT(array[i], array[r]);
+    }
+}
+const unsigned objects = 4096;
+const unsigned pages = 100;
+const unsigned total = objects * pages;
+void *ptrs[total];
+
+#include <ctime>
+void Stress(bool UseNewDelete)
+{
+    ObjectAllocator *oa;
+
+    try
+    {
+        bool newdel = UseNewDelete;
+        bool debug = false;
+        unsigned padbytes = 0;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbNone);
+        unsigned alignment = 0;
+
+        OAConfig config(newdel, objects, pages, debug, padbytes, header, alignment);
+        oa = new ObjectAllocator(sizeof(Student), config);
+        for (unsigned i = 0; i < total; i++)
+        {
+            void *p = oa->Allocate();
+            ptrs[i] = p;
+        }
+
+        Shuffle(ptrs, total);
+        for (unsigned i = 0; i < total; i++)
+        {
+            oa->Free(ptrs[i]);
+        }
+
+        delete oa;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during construction in Stress." << endl;
+
+        return;
+    }
+}
+void StressFreeChecking(const OAConfig::HeaderBlockInfo &header)
+{
+    unsigned objects;
+    unsigned pages;
+
+    objects = 1000;
+    pages = 10;
+
+    const unsigned total = objects * pages;
+
+    ObjectAllocator *oa;
+
+    char **ptrs = new char *[total];
+
+    try
+    {
+        bool newdel = false;
+        bool debug = true;
+        unsigned padbytes = 0;
+        unsigned alignment = 0;
+
+        OAConfig config(newdel, objects, pages, debug, padbytes, header, alignment);
+        oa = new ObjectAllocator(sizeof(Student), config);
+
+        for (unsigned int i = 0; i < total; i++)
+        {
+            void *p = oa->Allocate();
+            ptrs[i] = static_cast<char *>(p);
+        }
+
+        PrintConfig(oa);
+        PrintCounts(oa);
+        // DumpPagesEx(oa, 42);
+
+        Shuffle(ptrs, total);
+        for (unsigned int i = 0; i < total; i++)
+        {
+            oa->Free(ptrs[i]);
+        }
+
+        oa->DumpMemoryInUse(DumpCallback2);
+        delete oa;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+        {
+            cout << "Exception thrown during StressFreeChecking." << endl;
+            fflush(stdout);
+        }
+
+        return;
+    }
+    delete[] ptrs;
+}
+
 void PrintCounts(const ObjectAllocator *nm)
 {
     OAStats stats = nm->GetStats();
@@ -1096,6 +1509,261 @@ void TestCorruption(void)
 
     delete oa;
 }
+void TestAlignment(void)
+{
+    ObjectAllocator *oa = 0;
+    try
+    {
+        unsigned wrap = 32;
+
+        bool newdel = false;
+        bool debug = true;
+        unsigned padbytes = 2;
+        // unsigned header = 0;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbBasic);
+        unsigned alignment = 8;
+
+        OAConfig config(newdel, 3, 2, debug, padbytes, header, alignment);
+
+        if (!oa)
+            oa = new ObjectAllocator(sizeof(Student), config);
+
+        PrintConfig(oa);
+        PrintCounts(oa);
+        DumpPages(oa, wrap);
+
+        oa->Allocate(); // 1
+        oa->Allocate(); // 2
+        oa->Allocate(); // 3
+        oa->Allocate(); // 4
+        oa->Allocate(); // 5
+        oa->Allocate(); // 6
+
+        PrintCounts(oa);
+        DumpPages(oa, wrap);
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during construction/allocation in TestAlignment." << endl;
+        return;
+    }
+    if (oa)
+        delete oa;
+}
+void TestFreeEmptyPages1(void)
+{
+    ObjectAllocator *oa;
+    const int objects = 4;
+    const int pages = 3;
+    const int total = objects * pages;
+    void *ptrs[total];
+    try
+    {
+        bool newdel = false;
+        bool debug = true;
+        unsigned padbytes = 2;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbNone);
+        unsigned alignment = 0;
+
+        OAConfig config(newdel, objects, pages, debug, padbytes, header, alignment);
+        oa = new ObjectAllocator(sizeof(Student), config);
+
+        unsigned width = 32;
+
+        for (int i = 0; i < total; i++)
+        {
+            void *p = oa->Allocate();
+            ptrs[i] = p;
+        }
+        //****************************************************************************
+        PrintConfig(oa);
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        for (int i = 0; i < objects; i++)
+            oa->Free(ptrs[i + 0]);
+
+        for (int i = 0; i < objects; i++)
+            oa->Free(ptrs[i + 8]);
+
+        //****************************************************************************
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        for (int i = 0; i < objects - 1; i++)
+            oa->Free(ptrs[i + 4]);
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        oa->Free(ptrs[7]);
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        printf("\n\n");
+        void *p = oa->Allocate();
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        oa->Free(p);
+        // oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        delete oa;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during TestFreeEmptyPages1." << endl;
+
+        return;
+    }
+}
+void TestFreeEmptyPages2(void)
+{
+    ObjectAllocator *oa;
+    const int objects = 4;
+    const int pages = 3;
+    const int total = objects * pages;
+    void *ptrs[total];
+    try
+    {
+        bool newdel = false;
+        bool debug = true;
+        unsigned padbytes = 2;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbBasic);
+        unsigned alignment = 16;
+
+        OAConfig config(newdel, objects, pages, debug, padbytes, header, alignment);
+        oa = new ObjectAllocator(sizeof(Student), config);
+
+        unsigned width = 32;
+
+        for (int i = 0; i < total; i++)
+        {
+            void *p = oa->Allocate();
+            ptrs[i] = p;
+        }
+        //****************************************************************************
+        PrintConfig(oa);
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        for (int i = 0; i < objects; i++)
+            oa->Free(ptrs[i + 0]);
+
+        for (int i = 0; i < objects; i++)
+            oa->Free(ptrs[i + 8]);
+
+        //****************************************************************************
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        for (int i = 0; i < objects - 1; i++)
+            oa->Free(ptrs[i + 4]);
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        //****************************************************************************
+        oa->Free(ptrs[7]);
+        oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+
+        delete oa;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during TestFreeEmptyPages2." << endl;
+
+        return;
+    }
+}
+
+void TestFreeEmptyPages3(void)
+{
+    ObjectAllocator *oa;
+    const int objects = 8;
+    const int pages = 48;
+    const int total = objects * pages;
+    //  void *ptrs[total];
+    try
+    {
+        bool newdel = false;
+        bool debug = true;
+        unsigned padbytes = 6;
+        OAConfig::HeaderBlockInfo header(OAConfig::hbExtended, 9);
+        unsigned alignment = 0;
+
+        OAConfig config(newdel, objects, pages, debug, padbytes, header, alignment);
+        oa = new ObjectAllocator(sizeof(Student), config);
+
+        unsigned width = 32;
+
+        for (int i = 0; i < total; i++)
+        {
+            void *p = oa->Allocate();
+            ptrs[i] = p;
+        }
+        PrintConfig(oa);
+        PrintCounts(oa);
+        // DumpPages(oa, width);
+
+        Shuffle(ptrs, total);
+        for (int i = 0; i < total - 5; i++)
+        {
+            oa->Free(ptrs[i]);
+        }
+        PrintCounts(oa);
+        // DumpPages(oa, width);
+
+        unsigned count = oa->FreeEmptyPages();
+        PrintCounts(oa);
+        DumpPages(oa, width);
+        printf("%i pages freed\n", count);
+
+        delete oa;
+    }
+    catch (const OAException &e)
+    {
+        if (SHOW_EXCEPTIONS)
+            cout << e.what() << endl;
+        else
+            cout << "Exception thrown during TestFreeEmptyPages3." << endl;
+
+        return;
+    }
+}
 //****************************************************************************************************
 void DisableOA(void)
 {
@@ -1222,7 +1890,7 @@ void TestPadding(unsigned size)
 void TestLeak(void)
 {
     unsigned count = 0;
-    Employee** pEmps = 0;
+    Employee **pEmps = 0;
 
     try
     {
@@ -1235,7 +1903,7 @@ void TestLeak(void)
         OAConfig config(newdel, 4, 8, debug, padbytes, header, alignment);
         employeeObjectMgr = new ObjectAllocator(sizeof(Employee), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1253,16 +1921,16 @@ void TestLeak(void)
     PrintCounts(employeeObjectMgr);
 
     count = employeeObjectMgr->GetConfig().MaxPages_ * employeeObjectMgr->GetConfig().ObjectsPerPage_;
-    pEmps = new Employee * [count];
+    pEmps = new Employee *[count];
 
     for (unsigned i = 0; i < count; i++)
     {
         try
         {
-            pEmps[i] = static_cast<Employee*>(employeeObjectMgr->Allocate());
+            pEmps[i] = static_cast<Employee *>(employeeObjectMgr->Allocate());
             FillEmployee(*pEmps[i]);
         }
-        catch (const OAException& e)
+        catch (const OAException &e)
         {
             if (SHOW_EXCEPTIONS)
                 cout << e.what() << endl;
@@ -1283,7 +1951,7 @@ void TestLeak(void)
         for (unsigned i = 0; i < count; i += 2)
             employeeObjectMgr->Free(pEmps[i]);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1300,14 +1968,14 @@ void TestLeak(void)
     cout << "Most employees in use: " << employeeObjectMgr->GetStats().MostObjects_ << endl;
 
     cout << "\nChecking for leaks...\n";
-    //CheckAndDumpLeaks(employeeObjectMgr);
+    // CheckAndDumpLeaks(employeeObjectMgr);
 
     try
     {
         for (unsigned i = 1; i < count; i += 2)
             employeeObjectMgr->Free(pEmps[i]);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1320,7 +1988,7 @@ void TestLeak(void)
     }
 
     cout << "\nChecking for leaks...\n";
-    //CheckAndDumpLeaks(employeeObjectMgr);
+    // CheckAndDumpLeaks(employeeObjectMgr);
 
     delete employeeObjectMgr;
     delete[] pEmps;
@@ -1345,6 +2013,16 @@ int main(int argc, char **argv)
     case 1:
         cout << "============================== Students..." << endl;
         DoStudents(0, false);
+        cout << endl;
+        break;
+    case 2:
+        cout << "============================== Students..." << endl;
+        DoStudents(0, true);
+        cout << endl;
+        break;
+    case 3:
+        cout << "============================== Employees..." << endl;
+        DoEmployees();
         cout << endl;
         break;
     case 4:
@@ -1372,7 +2050,6 @@ int main(int argc, char **argv)
         TestExternalHeaderBlocks();
         cout << endl;
         break;
-        return 0;
     case 9:
         cout << "============================== Test corruption..." << endl;
         TestCorruption();
@@ -1386,6 +2063,56 @@ int main(int argc, char **argv)
     case 11:
         cout << "============================== Test leak..." << endl;
         TestLeak();
+        cout << endl;
+        break;
+    case 12:
+        cout << "============================== Test validate..." << endl;
+        TestValidate();
+        cout << endl;
+        break;
+    case 13:
+        cout << "============================== Test free checking basic (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
+        cout << endl;
+        break;
+    case 14:
+        cout << "============================== Test free checking extended (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
+        cout << endl;
+        break;
+    case 15:
+        cout << "============================== Test free checking external (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
+        cout << endl;
+        break;
+    case 16:
+        cout << "============================== Test stress using new/delete..." << endl;
+        Stress(true);
+        cout << endl;
+        break;
+    case 17:
+        cout << "============================== Test stress using allocator..." << endl;
+        Stress(false);
+        cout << endl;
+        break;
+    case 18:
+        cout << "============================== Test alignment..." << endl;
+        TestAlignment();
+        cout << endl;
+        break;
+    case 19:
+        cout << "============================== Test free empty pages 1..." << endl;
+        TestFreeEmptyPages1();
+        cout << endl;
+        break;
+    case 20:
+        cout << "============================== Test free empty pages 2..." << endl;
+        TestFreeEmptyPages2();
+        cout << endl;
+        break;
+    case 21:
+        cout << "============================== Test free empty pages 3..." << endl;
+        TestFreeEmptyPages3();
         cout << endl;
         break;
     }

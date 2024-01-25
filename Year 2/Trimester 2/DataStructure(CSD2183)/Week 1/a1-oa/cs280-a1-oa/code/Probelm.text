@@ -39,3 +39,11 @@
         Most students in use: 9
         All cases:
         Dumping issue
+        case 18:
+	Page size 121. Should be 122
+        case 20:
+        page size wrong
+        201 should be 186
+        case 21:
+        0 page free
+        shoudl be43

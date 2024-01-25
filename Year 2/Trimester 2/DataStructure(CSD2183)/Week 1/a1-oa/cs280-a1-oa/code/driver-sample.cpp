@@ -1,4 +1,4 @@
-#include <iostream> 
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -25,38 +25,37 @@ struct Student
 
 struct Employee
 {
-    Employee* Next;
+    Employee *Next;
     char lastName[12];
     char firstName[12];
     float salary;
     int years;
 };
 
-
-ObjectAllocator* studentObjectMgr;
-ObjectAllocator* employeeObjectMgr;
+ObjectAllocator *studentObjectMgr;
+ObjectAllocator *employeeObjectMgr;
 
 // Support functions
-void PrintCounts(const ObjectAllocator* nm);
-void PrintCounts2(const ObjectAllocator* nm);
-void PrintConfig(const ObjectAllocator* nm);
-void DumpPages(const ObjectAllocator* nm, unsigned width = 16);
-void DumpPagesEx(const ObjectAllocator* nm, unsigned width = 16);
+void PrintCounts(const ObjectAllocator *nm);
+void PrintCounts2(const ObjectAllocator *nm);
+void PrintConfig(const ObjectAllocator *nm);
+void DumpPages(const ObjectAllocator *nm, unsigned width = 16);
+void DumpPagesEx(const ObjectAllocator *nm, unsigned width = 16);
 
-void DoStudents(unsigned padding = 0, bool printall = false);    // debug, padding=X
-void DoEmployees(void);               // debug
-void TestPadding(unsigned size);               // DoStudents(padding=16)
-void TestBasicHeaderBlocks();         // debug, header
-void TestCorruption(void);            // debug, padding=8
-void DisableOA(void);                 // cpp_mem_mgr
-void TestLeak(void);                  // debug
-void TestValidate(void);              // debug, padding=8
-void TestAlignment(void);             // debug, padding=2, align=8
-void TestFreeEmptyPages1(void);       // debug, padding=2
-void TestFreeEmptyPages2(void);       // debug, padding=2, header, align=16
-void TestFreeEmptyPages3(void);       // debug, padding=6
-void StressFreeChecking(void);        //
-void Stress(bool UseNewDelete);       // 
+void DoStudents(unsigned padding = 0, bool printall = false); // debug, padding=X
+void DoEmployees(void);                                       // debug
+void TestPadding(unsigned size);                              // DoStudents(padding=16)
+void TestBasicHeaderBlocks();                                 // debug, header
+void TestCorruption(void);                                    // debug, padding=8
+void DisableOA(void);                                         // cpp_mem_mgr
+void TestLeak(void);                                          // debug
+void TestValidate(void);                                      // debug, padding=8
+void TestAlignment(void);                                     // debug, padding=2, align=8
+void TestFreeEmptyPages1(void);                               // debug, padding=2
+void TestFreeEmptyPages2(void);                               // debug, padding=2, header, align=16
+void TestFreeEmptyPages3(void);                               // debug, padding=6
+void StressFreeChecking(void);                                //
+void Stress(bool UseNewDelete);                               //
 
 struct Person
 {
@@ -67,32 +66,31 @@ struct Person
 };
 
 struct Person PEOPLE[] = {
-  {"Faith", "Ian", 80000, 10},
-  {"Tufnel", "Nigel", 90000, 12},
-  {"Savage", "Viv", 50000, 4},
-  {"Shrimpton", "Mick", 50000, 4},
-  {"Besser", "Joe", 40000, 1},
-  {"Smalls", "Derek", 80000, 10},
-  {"St.Hubbins", "David", 90000, 12},
-  {"Fleckman", "Bobbi", 120000, 8},
-  {"Eton-Hogg", "Denis", 250000, 22},
-  {"Upham", "Denny", 60000, 5},
-  {"McLochness", "Ross", 60000, 5},
-  {"Pudding", "Ronnie", 50000, 2},
-  {"Schindler", "Danny", 60000, 3},
-  {"Pettibone", "Jeanine", 85000, 3},
-  {"Fame", "Duke", 95000, 8},
-  {"Fufkin", "Artie", 45000, 1},
-  {"DiBergi", "Marty", 15000, 7},
-  {"Floyd", "Pink", 25000, 6},
-  {"Zeppelin", "Led", 35000, 3},
-  {"Mason", "Nick", 15000, 7},
-  {"Wright", "Richard", 17000, 9},
-  {"Waters", "Roger", 10000, 3},
-  {"Gilmore", "David", 19000, 5}
-};
+    {"Faith", "Ian", 80000, 10},
+    {"Tufnel", "Nigel", 90000, 12},
+    {"Savage", "Viv", 50000, 4},
+    {"Shrimpton", "Mick", 50000, 4},
+    {"Besser", "Joe", 40000, 1},
+    {"Smalls", "Derek", 80000, 10},
+    {"St.Hubbins", "David", 90000, 12},
+    {"Fleckman", "Bobbi", 120000, 8},
+    {"Eton-Hogg", "Denis", 250000, 22},
+    {"Upham", "Denny", 60000, 5},
+    {"McLochness", "Ross", 60000, 5},
+    {"Pudding", "Ronnie", 50000, 2},
+    {"Schindler", "Danny", 60000, 3},
+    {"Pettibone", "Jeanine", 85000, 3},
+    {"Fame", "Duke", 95000, 8},
+    {"Fufkin", "Artie", 45000, 1},
+    {"DiBergi", "Marty", 15000, 7},
+    {"Floyd", "Pink", 25000, 6},
+    {"Zeppelin", "Led", 35000, 3},
+    {"Mason", "Nick", 15000, 7},
+    {"Wright", "Richard", 17000, 9},
+    {"Waters", "Roger", 10000, 3},
+    {"Gilmore", "David", 19000, 5}};
 
-void FillEmployee(Employee& emp)
+void FillEmployee(Employee &emp)
 {
     static unsigned int index = 0;
 
@@ -105,14 +103,14 @@ void FillEmployee(Employee& emp)
         index = 0;
 }
 
-void DumpCallback(const void* block, size_t actual_size)
+void DumpCallback(const void *block, size_t actual_size)
 {
     size_t size = actual_size;
     // limit to 16 bytes
     if (actual_size > 16)
         size = 16;
 
-    unsigned char* data = const_cast<unsigned char*>(static_cast<const unsigned char*>(block));
+    unsigned char *data = const_cast<unsigned char *>(static_cast<const unsigned char *>(block));
 
     if (SHOWADDRESS1)
         printf("Block at 0x%p, %u bytes long.\n", block, static_cast<unsigned>(actual_size));
@@ -134,17 +132,17 @@ void DumpCallback(const void* block, size_t actual_size)
     }
     printf(">");
 
-    data = const_cast<unsigned char*>(static_cast<const unsigned char*>(block));
+    data = const_cast<unsigned char *>(static_cast<const unsigned char *>(block));
     for (unsigned int i = 0; i < size; i++)
         printf(" %02X", static_cast<int>(*data++));
     printf("\n");
 }
 
-void DumpCallback2(const void*, size_t)
+void DumpCallback2(const void *, size_t)
 {
 }
 
-void CheckAndDumpLeaks(const ObjectAllocator* oa)
+void CheckAndDumpLeaks(const ObjectAllocator *oa)
 {
     if (oa->GetStats().ObjectsInUse_)
     {
@@ -157,7 +155,7 @@ void CheckAndDumpLeaks(const ObjectAllocator* oa)
         printf("No leaks detected.\n");
 }
 
-void ValidateCallback(const void* block, size_t actual_size)
+void ValidateCallback(const void *block, size_t actual_size)
 {
     if (SHOWADDRESS2)
         printf("Block at 0x%p, %u bytes long.\n", block, static_cast<unsigned>(actual_size));
@@ -172,12 +170,12 @@ void ValidateCallback(const void* block, size_t actual_size)
 //****************************************************************************************************
 int RandomInt(int low, int high)
 {
-    //return std::rand() % (high - low + 1) + low;
+    // return std::rand() % (high - low + 1) + low;
     return Digipen::Utils::Random(low, high);
 }
 
 template <typename T>
-void SwapT(T& a, T& b)
+void SwapT(T &a, T &b)
 {
     T temp = a;
     a = b;
@@ -185,7 +183,7 @@ void SwapT(T& a, T& b)
 }
 
 template <typename T>
-void Shuffle(T* array, unsigned count)
+void Shuffle(T *array, unsigned count)
 {
     for (unsigned int i = 0; i < count; i++)
     {
@@ -195,7 +193,7 @@ void Shuffle(T* array, unsigned count)
 }
 
 template <typename T>
-void PrintArray(T* array, unsigned count)
+void PrintArray(T *array, unsigned count)
 {
     for (unsigned i = 0; i < count; i++)
         std::cout << array[i] << std::endl;
@@ -204,12 +202,12 @@ void PrintArray(T* array, unsigned count)
 const unsigned objects = 4096;
 const unsigned pages = 100;
 const unsigned total = objects * pages;
-void* ptrs[total];
+void *ptrs[total];
 
 #include <ctime>
 void Stress(bool UseNewDelete)
 {
-    ObjectAllocator* oa;
+    ObjectAllocator *oa;
 
     try
     {
@@ -223,7 +221,7 @@ void Stress(bool UseNewDelete)
         oa = new ObjectAllocator(sizeof(Student), config);
         for (unsigned i = 0; i < total; i++)
         {
-            void* p = oa->Allocate();
+            void *p = oa->Allocate();
             ptrs[i] = p;
         }
 
@@ -235,7 +233,7 @@ void Stress(bool UseNewDelete)
 
         delete oa;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -246,7 +244,7 @@ void Stress(bool UseNewDelete)
     }
 }
 
-void StressFreeChecking(const OAConfig::HeaderBlockInfo& header)
+void StressFreeChecking(const OAConfig::HeaderBlockInfo &header)
 {
     unsigned objects;
     unsigned pages;
@@ -256,9 +254,9 @@ void StressFreeChecking(const OAConfig::HeaderBlockInfo& header)
 
     const unsigned total = objects * pages;
 
-    ObjectAllocator* oa;
+    ObjectAllocator *oa;
 
-    char** ptrs = new char* [total];
+    char **ptrs = new char *[total];
 
     try
     {
@@ -272,13 +270,13 @@ void StressFreeChecking(const OAConfig::HeaderBlockInfo& header)
 
         for (unsigned int i = 0; i < total; i++)
         {
-            void* p = oa->Allocate();
-            ptrs[i] = static_cast<char*>(p);
+            void *p = oa->Allocate();
+            ptrs[i] = static_cast<char *>(p);
         }
 
         PrintConfig(oa);
         PrintCounts(oa);
-        //DumpPagesEx(oa, 42);
+        // DumpPagesEx(oa, 42);
 
         Shuffle(ptrs, total);
         for (unsigned int i = 0; i < total; i++)
@@ -289,7 +287,7 @@ void StressFreeChecking(const OAConfig::HeaderBlockInfo& header)
         oa->DumpMemoryInUse(DumpCallback2);
         delete oa;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -306,11 +304,11 @@ void StressFreeChecking(const OAConfig::HeaderBlockInfo& header)
 
 void TestFreeEmptyPages1(void)
 {
-    ObjectAllocator* oa;
+    ObjectAllocator *oa;
     const int objects = 4;
     const int pages = 3;
     const int total = objects * pages;
-    void* ptrs[total];
+    void *ptrs[total];
     try
     {
         bool newdel = false;
@@ -326,7 +324,7 @@ void TestFreeEmptyPages1(void)
 
         for (int i = 0; i < total; i++)
         {
-            void* p = oa->Allocate();
+            void *p = oa->Allocate();
             ptrs[i] = p;
         }
         //****************************************************************************
@@ -362,16 +360,15 @@ void TestFreeEmptyPages1(void)
         PrintCounts(oa);
         DumpPages(oa, width);
 
-
         //****************************************************************************
         printf("\n\n");
-        void* p = oa->Allocate();
+        void *p = oa->Allocate();
         oa->FreeEmptyPages();
         PrintCounts(oa);
         DumpPages(oa, width);
 
         oa->Free(p);
-        //oa->FreeEmptyPages();
+        // oa->FreeEmptyPages();
         PrintCounts(oa);
         DumpPages(oa, width);
 
@@ -381,7 +378,7 @@ void TestFreeEmptyPages1(void)
 
         delete oa;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -394,11 +391,11 @@ void TestFreeEmptyPages1(void)
 
 void TestFreeEmptyPages2(void)
 {
-    ObjectAllocator* oa;
+    ObjectAllocator *oa;
     const int objects = 4;
     const int pages = 3;
     const int total = objects * pages;
-    void* ptrs[total];
+    void *ptrs[total];
     try
     {
         bool newdel = false;
@@ -414,7 +411,7 @@ void TestFreeEmptyPages2(void)
 
         for (int i = 0; i < total; i++)
         {
-            void* p = oa->Allocate();
+            void *p = oa->Allocate();
             ptrs[i] = p;
         }
         //****************************************************************************
@@ -452,7 +449,7 @@ void TestFreeEmptyPages2(void)
 
         delete oa;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -465,7 +462,7 @@ void TestFreeEmptyPages2(void)
 
 void TestFreeEmptyPages3(void)
 {
-    ObjectAllocator* oa;
+    ObjectAllocator *oa;
     const int objects = 8;
     const int pages = 48;
     const int total = objects * pages;
@@ -485,12 +482,12 @@ void TestFreeEmptyPages3(void)
 
         for (int i = 0; i < total; i++)
         {
-            void* p = oa->Allocate();
+            void *p = oa->Allocate();
             ptrs[i] = p;
         }
         PrintConfig(oa);
         PrintCounts(oa);
-        //DumpPages(oa, width);
+        // DumpPages(oa, width);
 
         Shuffle(ptrs, total);
         for (int i = 0; i < total - 5; i++)
@@ -498,7 +495,7 @@ void TestFreeEmptyPages3(void)
             oa->Free(ptrs[i]);
         }
         PrintCounts(oa);
-        //DumpPages(oa, width);
+        // DumpPages(oa, width);
 
         unsigned count = oa->FreeEmptyPages();
         PrintCounts(oa);
@@ -507,7 +504,7 @@ void TestFreeEmptyPages3(void)
 
         delete oa;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -522,7 +519,7 @@ void TestFreeEmptyPages3(void)
 //****************************************************************************************************
 void TestBasicHeaderBlocks()
 {
-    ObjectAllocator* oa = 0;
+    ObjectAllocator *oa = 0;
 
     try
     {
@@ -535,7 +532,7 @@ void TestBasicHeaderBlocks()
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
         oa = new ObjectAllocator(sizeof(Student), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -550,12 +547,12 @@ void TestBasicHeaderBlocks()
     PrintCounts(oa);
     DumpPages(oa, wrap);
 
-    Student* pStudent1 = 0;
+    Student *pStudent1 = 0;
     try
     {
-        pStudent1 = static_cast<Student*>(oa->Allocate());
+        pStudent1 = static_cast<Student *>(oa->Allocate());
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -567,12 +564,12 @@ void TestBasicHeaderBlocks()
         cout << "Unexpected exception thrown from Allocate in TestBasicHeaderBlocks." << endl;
     }
 
-    Student* pStudent2 = 0;
+    Student *pStudent2 = 0;
     try
     {
-        pStudent2 = static_cast<Student*>(oa->Allocate());
+        pStudent2 = static_cast<Student *>(oa->Allocate());
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -590,7 +587,7 @@ void TestBasicHeaderBlocks()
     {
         oa->Free(pStudent1);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -608,7 +605,7 @@ void TestBasicHeaderBlocks()
     {
         oa->Free(pStudent2);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -624,9 +621,9 @@ void TestBasicHeaderBlocks()
 
     try
     {
-        pStudent1 = static_cast<Student*>(oa->Allocate());
+        pStudent1 = static_cast<Student *>(oa->Allocate());
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -646,7 +643,7 @@ void TestBasicHeaderBlocks()
 //****************************************************************************************************
 void TestExtendedHeaderBlocks(unsigned size)
 {
-    ObjectAllocator* oa = 0;
+    ObjectAllocator *oa = 0;
     unsigned wrap = 32;
 
     try
@@ -660,7 +657,7 @@ void TestExtendedHeaderBlocks(unsigned size)
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
         oa = new ObjectAllocator(sizeof(Student), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -676,12 +673,12 @@ void TestExtendedHeaderBlocks(unsigned size)
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    Student* pStudent1 = 0;
+    Student *pStudent1 = 0;
     try
     {
-        pStudent1 = static_cast<Student*>(oa->Allocate());
+        pStudent1 = static_cast<Student *>(oa->Allocate());
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -697,12 +694,12 @@ void TestExtendedHeaderBlocks(unsigned size)
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    Student* pStudent2 = 0;
+    Student *pStudent2 = 0;
     try
     {
-        pStudent2 = static_cast<Student*>(oa->Allocate());
+        pStudent2 = static_cast<Student *>(oa->Allocate());
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -722,7 +719,7 @@ void TestExtendedHeaderBlocks(unsigned size)
     {
         oa->Free(pStudent1);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -742,7 +739,7 @@ void TestExtendedHeaderBlocks(unsigned size)
     {
         oa->Free(pStudent2);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -760,10 +757,10 @@ void TestExtendedHeaderBlocks(unsigned size)
     ///////////////////////////////////////////////////////////////////////////////////////////////
     try
     {
-        pStudent1 = static_cast<Student*>(oa->Allocate());
-        //pStudent2 = static_cast<Student *>( oa->Allocate() );
+        pStudent1 = static_cast<Student *>(oa->Allocate());
+        // pStudent2 = static_cast<Student *>( oa->Allocate() );
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -784,10 +781,10 @@ void TestExtendedHeaderBlocks(unsigned size)
         for (int i = 0; i < 5; i++)
         {
             oa->Free(pStudent1);
-            pStudent1 = static_cast<Student*>(oa->Allocate());
+            pStudent1 = static_cast<Student *>(oa->Allocate());
         }
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -805,9 +802,9 @@ void TestExtendedHeaderBlocks(unsigned size)
     ///////////////////////////////////////////////////////////////////////////////////////////////
     try
     {
-        pStudent2 = static_cast<Student*>(oa->Allocate());
+        pStudent2 = static_cast<Student *>(oa->Allocate());
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -827,7 +824,7 @@ void TestExtendedHeaderBlocks(unsigned size)
 //****************************************************************************************************
 void TestExternalHeaderBlocks()
 {
-    ObjectAllocator* oa = 0;
+    ObjectAllocator *oa = 0;
     unsigned wrap = 32;
 
     try
@@ -841,7 +838,7 @@ void TestExternalHeaderBlocks()
         OAConfig config(newdel, 4, 1, debug, padbytes, header, alignment);
         oa = new ObjectAllocator(sizeof(Student), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -855,12 +852,12 @@ void TestExternalHeaderBlocks()
     PrintCounts(oa);
     DumpPagesEx(oa, wrap);
 
-    Student* pStudent1 = 0;
+    Student *pStudent1 = 0;
     try
     {
-        pStudent1 = static_cast<Student*>(oa->Allocate("First student"));
+        pStudent1 = static_cast<Student *>(oa->Allocate("First student"));
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -875,12 +872,12 @@ void TestExternalHeaderBlocks()
     PrintCounts(oa);
     DumpPagesEx(oa, wrap);
 
-    Student* pStudent2 = 0;
+    Student *pStudent2 = 0;
     try
     {
-        pStudent2 = static_cast<Student*>(oa->Allocate("Second student"));
+        pStudent2 = static_cast<Student *>(oa->Allocate("Second student"));
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -899,7 +896,7 @@ void TestExternalHeaderBlocks()
     {
         oa->Free(pStudent1);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -918,7 +915,7 @@ void TestExternalHeaderBlocks()
     {
         oa->Free(pStudent2);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -951,7 +948,7 @@ void DoStudents(unsigned padding, bool printall)
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
         studentObjectMgr = new ObjectAllocator(sizeof(Student), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -969,23 +966,23 @@ void DoStudents(unsigned padding, bool printall)
     PrintCounts(studentObjectMgr);
     DumpPages(studentObjectMgr, wrap);
 
-    Student* pStudent1 = 0, * pStudent2 = 0, * pStudent3 = 0;
+    Student *pStudent1 = 0, *pStudent2 = 0, *pStudent3 = 0;
     try
     {
-        pStudent1 = static_cast<Student*>(studentObjectMgr->Allocate());
+        pStudent1 = static_cast<Student *>(studentObjectMgr->Allocate());
         PrintCounts(studentObjectMgr);
         if (printall)
             DumpPages(studentObjectMgr, wrap);
-        pStudent2 = static_cast<Student*>(studentObjectMgr->Allocate());
+        pStudent2 = static_cast<Student *>(studentObjectMgr->Allocate());
         PrintCounts(studentObjectMgr);
         if (printall)
             DumpPages(studentObjectMgr, wrap);
-        pStudent3 = static_cast<Student*>(studentObjectMgr->Allocate());
+        pStudent3 = static_cast<Student *>(studentObjectMgr->Allocate());
         PrintCounts(studentObjectMgr);
         if (printall)
             DumpPages(studentObjectMgr, wrap);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -997,16 +994,16 @@ void DoStudents(unsigned padding, bool printall)
         cout << "Unexpected exception thrown from Allocate in DoStudents." << endl;
     }
 
-    Student* pStudent4[6];
+    Student *pStudent4[6];
     for (int i = 0; i < 6; i++)
     {
         try
         {
-            pStudent4[i] = static_cast<Student*>(studentObjectMgr->Allocate());
+            pStudent4[i] = static_cast<Student *>(studentObjectMgr->Allocate());
             if (pStudent4[i] == 0)
                 break;
         }
-        catch (const OAException& e)
+        catch (const OAException &e)
         {
             if (SHOW_EXCEPTIONS)
                 cout << e.what() << endl;
@@ -1019,7 +1016,6 @@ void DoStudents(unsigned padding, bool printall)
         {
             cout << "Unexpected exception thrown from Allocate (2) in DoStudents." << endl;
         }
-
     }
     PrintCounts(studentObjectMgr);
     if (printall)
@@ -1040,13 +1036,12 @@ void DoStudents(unsigned padding, bool printall)
         if (printall)
             DumpPages(studentObjectMgr, wrap);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
         else
             cout << "Exception thrown from Free in DoStudents." << endl;
-
     }
     catch (...)
     {
@@ -1079,7 +1074,7 @@ void DoEmployees(void)
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
         employeeObjectMgr = new ObjectAllocator(sizeof(Employee), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1095,17 +1090,17 @@ void DoEmployees(void)
     PrintConfig(employeeObjectMgr);
     PrintCounts(employeeObjectMgr);
 
-    Employee* pEmployee1 = 0, * pEmployee2 = 0, * pEmployee3 = 0;
+    Employee *pEmployee1 = 0, *pEmployee2 = 0, *pEmployee3 = 0;
     try
     {
-        pEmployee1 = static_cast<Employee*>(employeeObjectMgr->Allocate());
+        pEmployee1 = static_cast<Employee *>(employeeObjectMgr->Allocate());
         PrintCounts(employeeObjectMgr);
-        pEmployee2 = static_cast<Employee*>(employeeObjectMgr->Allocate());
+        pEmployee2 = static_cast<Employee *>(employeeObjectMgr->Allocate());
         PrintCounts(employeeObjectMgr);
-        pEmployee3 = static_cast<Employee*>(employeeObjectMgr->Allocate());
+        pEmployee3 = static_cast<Employee *>(employeeObjectMgr->Allocate());
         PrintCounts(employeeObjectMgr);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1117,16 +1112,16 @@ void DoEmployees(void)
         cout << "Unexpected exception thrown from Allocate in DoEmployees." << endl;
     }
 
-    Employee* pEmployee4[7];
+    Employee *pEmployee4[7];
     for (int i = 0; i < 7; i++)
     {
         try
         {
             // Need to use /EHa, not /EHs
             // ******************************************* Puts &employeeObjMgr in ecx
-            pEmployee4[i] = static_cast<Employee*>(employeeObjectMgr->Allocate());
+            pEmployee4[i] = static_cast<Employee *>(employeeObjectMgr->Allocate());
         }
-        catch (const OAException& e)
+        catch (const OAException &e)
         {
             if (SHOW_EXCEPTIONS)
             {
@@ -1155,7 +1150,7 @@ void DoEmployees(void)
         employeeObjectMgr->Free(pEmployee3);
         PrintCounts(employeeObjectMgr);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1168,10 +1163,11 @@ void DoEmployees(void)
     }
 
     // Free an object twice
-    try {
+    try
+    {
         employeeObjectMgr->Free(pEmployee1);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1186,9 +1182,9 @@ void DoEmployees(void)
     // Free an invalid pointer (bad boundary condition)
     try
     {
-        employeeObjectMgr->Free(reinterpret_cast<char*>(pEmployee4[0] + 4));
+        employeeObjectMgr->Free(reinterpret_cast<char *>(pEmployee4[0] + 4));
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1219,7 +1215,7 @@ void DisableOA(void)
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
         studentObjectMgr = new ObjectAllocator(sizeof(Student), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1235,17 +1231,17 @@ void DisableOA(void)
     PrintConfig(studentObjectMgr);
     PrintCounts2(studentObjectMgr);
 
-    Student* pStudent1 = 0, * pStudent2 = 0, * pStudent3 = 0;
+    Student *pStudent1 = 0, *pStudent2 = 0, *pStudent3 = 0;
     try
     {
-        pStudent1 = static_cast<Student*>(studentObjectMgr->Allocate());
+        pStudent1 = static_cast<Student *>(studentObjectMgr->Allocate());
         PrintCounts2(studentObjectMgr);
-        pStudent2 = static_cast<Student*>(studentObjectMgr->Allocate());
+        pStudent2 = static_cast<Student *>(studentObjectMgr->Allocate());
         PrintCounts2(studentObjectMgr);
-        pStudent3 = static_cast<Student*>(studentObjectMgr->Allocate());
+        pStudent3 = static_cast<Student *>(studentObjectMgr->Allocate());
         PrintCounts2(studentObjectMgr);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1257,14 +1253,14 @@ void DisableOA(void)
         cout << "Unexpected exception thrown from Allocate in DisableOA." << endl;
     }
 
-    Student* pStudent4[6];
+    Student *pStudent4[6];
     for (int i = 0; i < 6; i++)
     {
         try
         {
-            pStudent4[i] = static_cast<Student*>(studentObjectMgr->Allocate());
+            pStudent4[i] = static_cast<Student *>(studentObjectMgr->Allocate());
         }
-        catch (const OAException& e)
+        catch (const OAException &e)
         {
             if (SHOW_EXCEPTIONS)
                 cout << e.what() << endl;
@@ -1276,7 +1272,6 @@ void DisableOA(void)
         {
             cout << "Unexpected exception thrown from Allocate (2) in DisableOA." << endl;
         }
-
     }
     PrintCounts2(studentObjectMgr);
 
@@ -1289,7 +1284,7 @@ void DisableOA(void)
         studentObjectMgr->Free(pStudent3);
         PrintCounts2(studentObjectMgr);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1307,7 +1302,7 @@ void DisableOA(void)
         {
             studentObjectMgr->Free(pStudent4[i]);
         }
-        catch (const OAException& e)
+        catch (const OAException &e)
         {
             if (SHOW_EXCEPTIONS)
                 cout << e.what() << endl;
@@ -1319,7 +1314,6 @@ void DisableOA(void)
         {
             cout << "Unexpected exception thrown from Free in DisableOA." << endl;
         }
-
     }
     PrintCounts2(studentObjectMgr);
 
@@ -1331,32 +1325,32 @@ void DisableOA(void)
 //****************************************************************************************************
 void TestCorruption(void)
 {
-    ObjectAllocator* oa = 0;
-    unsigned char* p;
+    ObjectAllocator *oa = 0;
+    unsigned char *p;
     unsigned padbytes = 8;
     unsigned i;
     unsigned wrap = 32;
-    Student* pStudent1, * pStudent2 = 0;
+    Student *pStudent1, *pStudent2 = 0;
     try
     {
         bool newdel = false;
         bool debug = true;
-        //unsigned header = 0;
-        //OAConfig::HBLOCK_TYPE header = OAConfig::hbNone;
+        // unsigned header = 0;
+        // OAConfig::HBLOCK_TYPE header = OAConfig::hbNone;
         OAConfig::HeaderBlockInfo header(OAConfig::hbBasic);
         unsigned alignment = 0;
 
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
-        //OAConfig config(false, 4, 2, true, padbytes);
+        // OAConfig config(false, 4, 2, true, padbytes);
         oa = new ObjectAllocator(sizeof(Student), config);
-        pStudent1 = static_cast<Student*>(oa->Allocate());
-        pStudent2 = static_cast<Student*>(oa->Allocate());
+        pStudent1 = static_cast<Student *>(oa->Allocate());
+        pStudent2 = static_cast<Student *>(oa->Allocate());
 
         PrintConfig(oa);
         PrintCounts(oa);
         DumpPages(oa, wrap);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1367,12 +1361,12 @@ void TestCorruption(void)
     }
 
     // corrupt left pad bytes
-    p = const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(pStudent1)) - padbytes;
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent1)) - padbytes;
     for (i = 0; i < padbytes - 2; i++)
         *p++ = 0xFF;
 
     // corrupt right pad bytes
-    p = const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(pStudent2)) + sizeof(Student);
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent2)) + sizeof(Student);
     for (i = 0; i < padbytes - 2; i++)
         *p++ = 0xEE;
 
@@ -1380,7 +1374,7 @@ void TestCorruption(void)
     {
         oa->Free(pStudent1);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1401,7 +1395,7 @@ void TestCorruption(void)
     {
         oa->Free(pStudent2);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1426,7 +1420,7 @@ void TestCorruption(void)
 void TestLeak(void)
 {
     unsigned count = 0;
-    Employee** pEmps = 0;
+    Employee **pEmps = 0;
 
     try
     {
@@ -1439,7 +1433,7 @@ void TestLeak(void)
         OAConfig config(newdel, 4, 8, debug, padbytes, header, alignment);
         employeeObjectMgr = new ObjectAllocator(sizeof(Employee), config);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1457,16 +1451,16 @@ void TestLeak(void)
     PrintCounts(employeeObjectMgr);
 
     count = employeeObjectMgr->GetConfig().MaxPages_ * employeeObjectMgr->GetConfig().ObjectsPerPage_;
-    pEmps = new Employee * [count];
+    pEmps = new Employee *[count];
 
     for (unsigned i = 0; i < count; i++)
     {
         try
         {
-            pEmps[i] = static_cast<Employee*>(employeeObjectMgr->Allocate());
+            pEmps[i] = static_cast<Employee *>(employeeObjectMgr->Allocate());
             FillEmployee(*pEmps[i]);
         }
-        catch (const OAException& e)
+        catch (const OAException &e)
         {
             if (SHOW_EXCEPTIONS)
                 cout << e.what() << endl;
@@ -1487,7 +1481,7 @@ void TestLeak(void)
         for (unsigned i = 0; i < count; i += 2)
             employeeObjectMgr->Free(pEmps[i]);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1511,7 +1505,7 @@ void TestLeak(void)
         for (unsigned i = 1; i < count; i += 2)
             employeeObjectMgr->Free(pEmps[i]);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1530,16 +1524,15 @@ void TestLeak(void)
     delete[] pEmps;
 }
 
-
 //****************************************************************************************************
 //****************************************************************************************************
 void TestValidate(void)
 {
-    ObjectAllocator* oa = 0;
-    unsigned char* p;
+    ObjectAllocator *oa = 0;
+    unsigned char *p;
     unsigned i, padbytes = 8;
     unsigned wrap = 32;
-    Student* pStudent1 = 0, * pStudent2 = 0, * pStudent7 = 0;
+    Student *pStudent1 = 0, *pStudent2 = 0, *pStudent7 = 0;
     try
     {
         bool newdel = false;
@@ -1550,18 +1543,18 @@ void TestValidate(void)
         OAConfig config(newdel, 4, 2, debug, padbytes, header, alignment);
         oa = new ObjectAllocator(sizeof(Student), config);
 
-        pStudent1 = static_cast<Student*>(oa->Allocate());
-        pStudent2 = static_cast<Student*>(oa->Allocate());
+        pStudent1 = static_cast<Student *>(oa->Allocate());
+        pStudent2 = static_cast<Student *>(oa->Allocate());
         oa->Allocate(); // 3
         oa->Allocate(); // 4
         oa->Allocate(); // 5
         oa->Allocate(); // 6
-        pStudent7 = static_cast<Student*>(oa->Allocate());
+        pStudent7 = static_cast<Student *>(oa->Allocate());
         PrintConfig(oa);
         PrintCounts(oa);
         DumpPages(oa, wrap);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1574,9 +1567,10 @@ void TestValidate(void)
     {
         // Validate a good heap
         unsigned count = oa->ValidatePages(ValidateCallback);
-        cout << "Number of corruptions: " << count << endl << endl;
+        cout << "Number of corruptions: " << count << endl
+             << endl;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1594,12 +1588,12 @@ void TestValidate(void)
     }
 
     // corrupt left pad bytes of 1
-    p = const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(pStudent1)) - padbytes;
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent1)) - padbytes;
     for (i = 0; i < padbytes - 2; i++)
         *p++ = 0xFF;
 
     // corrupt right pad bytes of 2
-    p = const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(pStudent2)) + sizeof(Student);
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent2)) + sizeof(Student);
     for (i = 0; i < padbytes - 2; i++)
         *p++ = 0xEE;
 
@@ -1610,9 +1604,10 @@ void TestValidate(void)
     {
         // Validate a corrupted heap
         unsigned count = oa->ValidatePages(ValidateCallback);
-        cout << "Number of corruptions: " << count << endl << endl;
+        cout << "Number of corruptions: " << count << endl
+             << endl;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1630,12 +1625,12 @@ void TestValidate(void)
     }
 
     // corrupt left pad bytes of 7
-    p = const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(pStudent7)) - padbytes;
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent7)) - padbytes;
     for (i = 0; i < padbytes - 2; i++)
         *p++ = 0xFF;
 
     // corrupt right pad bytes of 7
-    p = const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(pStudent7)) + sizeof(Student);
+    p = const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(pStudent7)) + sizeof(Student);
     for (i = 0; i < padbytes - 2; i++)
         *p++ = 0xEE;
 
@@ -1646,9 +1641,10 @@ void TestValidate(void)
     {
         // Validate a corrupted heap
         unsigned count = oa->ValidatePages(ValidateCallback);
-        cout << "Number of corruptions: " << count << endl << endl;
+        cout << "Number of corruptions: " << count << endl
+             << endl;
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1672,7 +1668,7 @@ void TestValidate(void)
 //****************************************************************************************************
 void TestAlignment(void)
 {
-    ObjectAllocator* oa = 0;
+    ObjectAllocator *oa = 0;
     try
     {
         unsigned wrap = 32;
@@ -1680,7 +1676,7 @@ void TestAlignment(void)
         bool newdel = false;
         bool debug = true;
         unsigned padbytes = 2;
-        //unsigned header = 0;
+        // unsigned header = 0;
         OAConfig::HeaderBlockInfo header(OAConfig::hbBasic);
         unsigned alignment = 8;
 
@@ -1703,7 +1699,7 @@ void TestAlignment(void)
         PrintCounts(oa);
         DumpPages(oa, wrap);
     }
-    catch (const OAException& e)
+    catch (const OAException &e)
     {
         if (SHOW_EXCEPTIONS)
             cout << e.what() << endl;
@@ -1715,8 +1711,7 @@ void TestAlignment(void)
         delete oa;
 }
 
-
-void PrintCounts(const ObjectAllocator* nm)
+void PrintCounts(const ObjectAllocator *nm)
 {
     OAStats stats = nm->GetStats();
     cout << "Pages in use: " << stats.PagesInUse_;
@@ -1726,14 +1721,14 @@ void PrintCounts(const ObjectAllocator* nm)
     cout << ", Frees: " << stats.Deallocations_ << endl;
 }
 
-void PrintCounts2(const ObjectAllocator* nm)
+void PrintCounts2(const ObjectAllocator *nm)
 {
     OAStats stats = nm->GetStats();
     cout << "Allocs: " << stats.Allocations_;
     cout << ", Frees: " << stats.Deallocations_ << endl;
 }
 
-void PrintConfig(const ObjectAllocator* oa)
+void PrintConfig(const ObjectAllocator *oa)
 {
     cout << "Object size = " << oa->GetStats().ObjectSize_;
     cout << ", Page size = " << oa->GetStats().PageSize_;
@@ -1758,10 +1753,10 @@ void PrintConfig(const ObjectAllocator* oa)
     cout << endl;
 }
 
-void DumpPages(const ObjectAllocator* nm, unsigned width)
+void DumpPages(const ObjectAllocator *nm, unsigned width)
 {
-    const unsigned char* pages = static_cast<const unsigned char*>(nm->GetPageList());
-    const unsigned char* realpage = pages;
+    const unsigned char *pages = static_cast<const unsigned char *>(nm->GetPageList());
+    const unsigned char *realpage = pages;
 
     size_t header_size = nm->GetConfig().HBlockInfo_.size_;
 
@@ -1782,15 +1777,14 @@ void DumpPages(const ObjectAllocator* nm, unsigned width)
         // "Next page" pointer in the page
         if (SHOWREAL)
         {
-            for (unsigned i = 0; i < sizeof(void*); i++, count++)
+            for (unsigned i = 0; i < sizeof(void *); i++, count++)
                 printf(" %02X", *pages++);
         }
         else
         {
-            for (unsigned j = 0; j < sizeof(void*); pages++, count++, j++)
+            for (unsigned j = 0; j < sizeof(void *); pages++, count++, j++)
                 printf(" %s", "XX");
         }
-
 
         // Left leading alignment bytes
         if (nm->GetConfig().Alignment_ > 1)
@@ -1847,7 +1841,7 @@ void DumpPages(const ObjectAllocator* nm, unsigned width)
             }
 
             // possible next pointer (zero it out)
-            for (unsigned j = 0; j < sizeof(void*); count++, pages++, j++)
+            for (unsigned j = 0; j < sizeof(void *); count++, pages++, j++)
             {
                 if (count >= width)
                 {
@@ -1861,7 +1855,7 @@ void DumpPages(const ObjectAllocator* nm, unsigned width)
             }
 
             // remaining bytes
-            for (unsigned j = 0; j < nm->GetStats().ObjectSize_ - sizeof(void*); count++, j++)
+            for (unsigned j = 0; j < nm->GetStats().ObjectSize_ - sizeof(void *); count++, j++)
             {
                 if (count >= width)
                 {
@@ -1881,18 +1875,17 @@ void DumpPages(const ObjectAllocator* nm, unsigned width)
                 }
                 printf(" %02X", *pages++);
             }
-
         }
         printf("\n\n");
 
-        pages = reinterpret_cast<const unsigned char*>((reinterpret_cast<const GenericObject*>(realpage))->Next);
+        pages = reinterpret_cast<const unsigned char *>((reinterpret_cast<const GenericObject *>(realpage))->Next);
         realpage = pages;
     }
 }
 
-void DumpExternalHeaders(const ObjectAllocator* oa, const unsigned char* p)
+void DumpExternalHeaders(const ObjectAllocator *oa, const unsigned char *p)
 {
-    unsigned char* page = const_cast<unsigned char*>(p);
+    unsigned char *page = const_cast<unsigned char *>(p);
 
     unsigned padbytes = oa->GetConfig().PadBytes_;
     size_t header_size = oa->GetConfig().HBlockInfo_.size_;
@@ -1901,12 +1894,12 @@ void DumpExternalHeaders(const ObjectAllocator* oa, const unsigned char* p)
     unsigned count = oa->GetConfig().ObjectsPerPage_;
     size_t offset = padbytes * 2 + header_size + interalign + oa->GetStats().ObjectSize_;
 
-    page += sizeof(void*); // the 'next' pointer
+    page += sizeof(void *); // the 'next' pointer
     page += leftalign;      // the left alignment bytes (if any)
 
-      // We're now pointing at the beginning of the header block
+    // We're now pointing at the beginning of the header block
 
-    MemBlockInfo* pm = reinterpret_cast<MemBlockInfo*>(*reinterpret_cast<MemBlockInfo**>(page));
+    MemBlockInfo *pm = reinterpret_cast<MemBlockInfo *>(*reinterpret_cast<MemBlockInfo **>(page));
     cout << "  Label: " << (pm && pm->label ? pm->label : "") << std::endl;
     cout << " In use: " << (pm ? pm->in_use : 0) << std::endl;
     cout << "Alloc #: " << (pm && pm->in_use ? pm->alloc_num : 0) << std::endl;
@@ -1914,17 +1907,17 @@ void DumpExternalHeaders(const ObjectAllocator* oa, const unsigned char* p)
     for (unsigned i = 1; i < count; i++)
     {
         page += offset;
-        MemBlockInfo* pm = reinterpret_cast<MemBlockInfo*>(*reinterpret_cast<MemBlockInfo**>(page));
+        MemBlockInfo *pm = reinterpret_cast<MemBlockInfo *>(*reinterpret_cast<MemBlockInfo **>(page));
         cout << "  Label: " << (pm && pm->label ? pm->label : "") << std::endl;
         cout << " In use: " << (pm ? pm->in_use : 0) << std::endl;
         cout << "Alloc #: " << (pm && pm->in_use ? pm->alloc_num : 0) << std::endl;
     }
 }
 
-void DumpPagesEx(const ObjectAllocator* nm, unsigned width)
+void DumpPagesEx(const ObjectAllocator *nm, unsigned width)
 {
-    const unsigned char* pages = static_cast<const unsigned char*>(nm->GetPageList());
-    const unsigned char* realpage = pages;
+    const unsigned char *pages = static_cast<const unsigned char *>(nm->GetPageList());
+    const unsigned char *realpage = pages;
 
     size_t header_size = nm->GetConfig().HBlockInfo_.size_;
 
@@ -1944,15 +1937,14 @@ void DumpPagesEx(const ObjectAllocator* nm, unsigned width)
 
         if (SHOWREAL)
         {
-            for (unsigned i = 0; i < sizeof(void*); i++, count++)
+            for (unsigned i = 0; i < sizeof(void *); i++, count++)
                 printf(" %02X", *pages++);
         }
         else
         {
-            for (unsigned j = 0; j < sizeof(void*); pages++, count++, j++)
+            for (unsigned j = 0; j < sizeof(void *); pages++, count++, j++)
                 printf(" %s", "XX");
         }
-
 
         // Left leading alignment bytes
         if (nm->GetConfig().Alignment_ > 1)
@@ -2014,7 +2006,7 @@ void DumpPagesEx(const ObjectAllocator* nm, unsigned width)
             }
 
             // possible next pointer (zero it out)
-            for (unsigned j = 0; j < sizeof(void*); count++, pages++, j++)
+            for (unsigned j = 0; j < sizeof(void *); count++, pages++, j++)
             {
                 if (count >= width)
                 {
@@ -2028,7 +2020,7 @@ void DumpPagesEx(const ObjectAllocator* nm, unsigned width)
             }
 
             // remaining bytes
-            for (unsigned j = 0; j < nm->GetStats().ObjectSize_ - sizeof(void*); count++, j++)
+            for (unsigned j = 0; j < nm->GetStats().ObjectSize_ - sizeof(void *); count++, j++)
             {
                 if (count >= width)
                 {
@@ -2045,26 +2037,23 @@ void DumpPagesEx(const ObjectAllocator* nm, unsigned width)
                 {
                     printf("\n");
 
-
-
                     count = 0;
                 }
                 printf(" %02X", *pages++);
             }
-
         }
         printf("\n");
         DumpExternalHeaders(nm, realpage);
         printf("\n");
 
-        pages = reinterpret_cast<const unsigned char*>((reinterpret_cast<const GenericObject*>(realpage))->Next);
+        pages = reinterpret_cast<const unsigned char *>((reinterpret_cast<const GenericObject *>(realpage))->Next);
         realpage = pages;
     }
 }
 
 void Test1(void)
 {
-    ObjectAllocator* oa;
+    ObjectAllocator *oa;
 
     bool newdel = false;
     bool debug = false;
@@ -2084,8 +2073,7 @@ void Test1(void)
     delete oa;
 }
 
-
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 #ifdef _MSC_VER
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -2158,137 +2146,136 @@ int main(int argc, char** argv)
         DisableOA();
         cout << endl;
         break;
-    // case 11:
-    //     cout << "============================== Test leak..." << endl;
-    //     TestLeak();
-    //     cout << endl;
-    //     break;
-//     case 12:
-//         cout << "============================== Test validate..." << endl;
-//         TestValidate();
-//         cout << endl;
-//         break;
-//     case 13:
-//         cout << "============================== Test free checking basic (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
-//         cout << endl;
-//         break;
-//     case 14:
-//         cout << "============================== Test free checking extended (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
-//         cout << endl;
-//         break;
-//     case 15:
-//         cout << "============================== Test free checking external (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
-//         cout << endl;
-//         break;
-//     case 16:
-//         cout << "============================== Test stress using new/delete..." << endl;
-//         Stress(true);
-//         cout << endl;
-//         break;
-//     case 17:
-//         cout << "============================== Test stress using allocator..." << endl;
-//         Stress(false);
-//         cout << endl;
-//         break;
-// #if 1
-//     case 18:
-//         cout << "============================== Test alignment..." << endl;
-//         TestAlignment();
-//         cout << endl;
-//         break;
-//     case 19:
-//         cout << "============================== Test free empty pages 1..." << endl;
-//         TestFreeEmptyPages1();
-//         cout << endl;
-//         break;
-//     case 20:
-//         cout << "============================== Test free empty pages 2..." << endl;
-//         TestFreeEmptyPages2();
-//         cout << endl;
-//         break;
-//     case 21:
-//         cout << "============================== Test free empty pages 3..." << endl;
-//         TestFreeEmptyPages3();
-//         cout << endl;
-//         break;
-// #endif
-//     default:
-//         cout << "============================== Students..." << endl;
-//         DoStudents(0, false);
-//         cout << endl;
-//         cout << "============================== Students..." << endl;
-//         DoStudents(0, true);
-//         cout << endl;
-//         cout << "============================== Employees..." << endl;
-//         DoEmployees();
-//         cout << endl;
-//         cout << "============================== Test padding..." << endl;
-//         TestPadding(6);
-//         cout << endl;
-//         cout << "============================== Test padding..." << endl;
-//         TestPadding(10);
-//         cout << endl;
-//         cout << "============================== Test basic header blocks..." << endl;
-//         TestBasicHeaderBlocks();
-//         cout << endl;
-//         cout << "============================== Test extended header blocks(1)..." << endl;
-//         TestExtendedHeaderBlocks(1);
-//         cout << endl;
-//         cout << "============================== Test external header blocks..." << endl;
-//         TestExternalHeaderBlocks();
-//         cout << endl;
-//         cout << "============================== Test corruption..." << endl;
-//         TestCorruption();
-//         cout << endl;
-//         cout << "============================== Test using new/delete..." << endl;
-//         DisableOA();
-//         cout << endl;
-//         cout << "============================== Test leak..." << endl;
-//         TestLeak();
-//         cout << endl;
-//         cout << "============================== Test validate..." << endl;
-//         TestValidate();
-//         cout << endl;
-//         cout << "============================== Test free checking basic (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
-//         cout << endl;
-//         cout << "============================== Test free checking extended (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
-//         cout << endl;
-//         cout << "============================== Test free checking external (stress)..." << endl;
-//         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
-//         cout << endl;
-//         cout << "============================== Test stress using new/delete..." << endl;
-//         Stress(true);
-//         cout << endl;
-//         cout << "============================== Test stress using allocator..." << endl;
-//         Stress(false);
-//         cout << endl;
-//         cout << "============================== Test alignment..." << endl;
-//         TestAlignment();
-//         cout << endl;
-//         cout << "============================== Test free empty pages 1..." << endl;
-//         TestFreeEmptyPages1();
-//         cout << endl;
-//         cout << "============================== Test free empty pages 2..." << endl;
-//         TestFreeEmptyPages2();
-//         cout << endl;
-//         cout << "============================== Test free empty pages 3..." << endl;
-//         TestFreeEmptyPages3();
-//         cout << endl;
-//         break;
+    case 11:
+        cout << "============================== Test leak..." << endl;
+        TestLeak();
+        cout << endl;
+        break;
+    case 12:
+        cout << "============================== Test validate..." << endl;
+        TestValidate();
+        cout << endl;
+        break;
+    case 13:
+        cout << "============================== Test free checking basic (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
+        cout << endl;
+        break;
+    case 14:
+        cout << "============================== Test free checking extended (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
+        cout << endl;
+        break;
+    case 15:
+        cout << "============================== Test free checking external (stress)..." << endl;
+        StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
+        cout << endl;
+        break;
+    case 16:
+        cout << "============================== Test stress using new/delete..." << endl;
+        Stress(true);
+        cout << endl;
+        break;
+    case 17:
+        cout << "============================== Test stress using allocator..." << endl;
+        Stress(false);
+        cout << endl;
+        break;
+        // #if 1
+    case 18:
+        cout << "============================== Test alignment..." << endl;
+        TestAlignment();
+        cout << endl;
+        break;
+    case 19:
+        cout << "============================== Test free empty pages 1..." << endl;
+        TestFreeEmptyPages1();
+        cout << endl;
+        break;
+            case 20:
+                cout << "============================== Test free empty pages 2..." << endl;
+                TestFreeEmptyPages2();
+                cout << endl;
+                break;
+            case 21:
+                cout << "============================== Test free empty pages 3..." << endl;
+                TestFreeEmptyPages3();
+                cout << endl;
+                break;
+        // #endif
+        //     default:
+        //         cout << "============================== Students..." << endl;
+        //         DoStudents(0, false);
+        //         cout << endl;
+        //         cout << "============================== Students..." << endl;
+        //         DoStudents(0, true);
+        //         cout << endl;
+        //         cout << "============================== Employees..." << endl;
+        //         DoEmployees();
+        //         cout << endl;
+        //         cout << "============================== Test padding..." << endl;
+        //         TestPadding(6);
+        //         cout << endl;
+        //         cout << "============================== Test padding..." << endl;
+        //         TestPadding(10);
+        //         cout << endl;
+        //         cout << "============================== Test basic header blocks..." << endl;
+        //         TestBasicHeaderBlocks();
+        //         cout << endl;
+        //         cout << "============================== Test extended header blocks(1)..." << endl;
+        //         TestExtendedHeaderBlocks(1);
+        //         cout << endl;
+        //         cout << "============================== Test external header blocks..." << endl;
+        //         TestExternalHeaderBlocks();
+        //         cout << endl;
+        //         cout << "============================== Test corruption..." << endl;
+        //         TestCorruption();
+        //         cout << endl;
+        //         cout << "============================== Test using new/delete..." << endl;
+        //         DisableOA();
+        //         cout << endl;
+        //         cout << "============================== Test leak..." << endl;
+        //         TestLeak();
+        //         cout << endl;
+        //         cout << "============================== Test validate..." << endl;
+        //         TestValidate();
+        //         cout << endl;
+        //         cout << "============================== Test free checking basic (stress)..." << endl;
+        //         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbBasic));
+        //         cout << endl;
+        //         cout << "============================== Test free checking extended (stress)..." << endl;
+        //         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExtended, 1));
+        //         cout << endl;
+        //         cout << "============================== Test free checking external (stress)..." << endl;
+        //         StressFreeChecking(OAConfig::HeaderBlockInfo(OAConfig::hbExternal));
+        //         cout << endl;
+        //         cout << "============================== Test stress using new/delete..." << endl;
+        //         Stress(true);
+        //         cout << endl;
+        //         cout << "============================== Test stress using allocator..." << endl;
+        //         Stress(false);
+        //         cout << endl;
+        //         cout << "============================== Test alignment..." << endl;
+        //         TestAlignment();
+        //         cout << endl;
+        //         cout << "============================== Test free empty pages 1..." << endl;
+        //         TestFreeEmptyPages1();
+        //         cout << endl;
+        //         cout << "============================== Test free empty pages 2..." << endl;
+        //         TestFreeEmptyPages2();
+        //         cout << endl;
+        //         cout << "============================== Test free empty pages 3..." << endl;
+        //         TestFreeEmptyPages3();
+        //         cout << endl;
+        //         break;
     }
 
-    //OAConfig config(false, 16, 4, false);
-    //ObjectAllocator a(sizeof(Student), config);
-    //ObjectAllocator b(sizeof(Student), config);
-      // These should fail to compile:
-    //ObjectAllocator c(a);
-    //a = b;
-
+    // OAConfig config(false, 16, 4, false);
+    // ObjectAllocator a(sizeof(Student), config);
+    // ObjectAllocator b(sizeof(Student), config);
+    //  These should fail to compile:
+    // ObjectAllocator c(a);
+    // a = b;
 
     return 0;
 }
