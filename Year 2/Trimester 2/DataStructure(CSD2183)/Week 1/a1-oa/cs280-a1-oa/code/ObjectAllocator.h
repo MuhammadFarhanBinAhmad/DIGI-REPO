@@ -258,24 +258,27 @@ class ObjectAllocator
       // Prevent copy construction and assignment
     ObjectAllocator(const ObjectAllocator &oa) = delete;            //!< Do not implement!
     ObjectAllocator &operator=(const ObjectAllocator &oa) = delete; //!< Do not implement!
-
+    
   private:
-      // Some "suggested" members (only a suggestion!)
+
+    OAConfig Config_;
+    OAStats Stats_;
+
+    // Some "suggested" members (only a suggestion!)
     GenericObject *PageList_; //!< the beginning of the list of pages
     GenericObject *FreeList_; //!< the beginning of the list of objects
     
-    // Lots of other private stufEf... 
-
-    size_t ObjectSize;
-    size_t OffSet;
-    unsigned MidBlockSize;
-    OAConfig Config;
-    OAStats Stats;
-
-    void AddPage();
-    bool PageEmpty(GenericObject* page);
-    void RemovePageObjectInFreeList(GenericObject* page);
-    bool IsInPage(GenericObject* pageAddress, u_char* address);
+    size_t MidBlockSize; 
+    size_t Offset;
+    
+    //add page to the list 
+    void addPage();
+    
+    bool isPageEmpty(GenericObject* page);
+    void freePage(GenericObject* temp);
+    void removePgObjInFreeList(GenericObject* pageAddress);
+    bool inPage(GenericObject* pageAddress, unsigned char* address);
+   
 };
 
 #endif
