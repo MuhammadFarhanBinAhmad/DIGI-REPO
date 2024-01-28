@@ -56,7 +56,7 @@ int main()
 {
     std::cout << "Quick Sort" << std::endl;
     // Initialize a new array
-    int arr[] = {25, 21, 12, 40, 37, 43, 14, 28};
+    int arr[] = {1,25, 21, 12, 40, 37, 43, 14, 28};
     int arrSize = sizeof(arr) / sizeof(*arr);
     // Display the initial array
     std::cout << "Initial array: ";
