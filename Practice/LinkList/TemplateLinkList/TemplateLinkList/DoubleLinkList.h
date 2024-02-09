@@ -297,7 +297,7 @@ void DLL<T>::ChangeData(int index, T value)
 	//Node* temp = this->tail;
 	//int counter = 5;
 	//while (counter != index)
-	//{
+	//
 	//	counter--;
 	//	temp = temp->prev;
 	//}
