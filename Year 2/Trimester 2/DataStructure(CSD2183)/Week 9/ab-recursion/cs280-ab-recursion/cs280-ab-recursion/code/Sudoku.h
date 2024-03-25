@@ -1,3 +1,12 @@
+/******************************************************************************/
+/*!
+\file:		Sudoku.h
+\author:  MuhammadFarhanBinAhmad
+\par email: 2200544@sit.singaporetech.edu.sg
+\date:		March 25, 2024
+\brief		Sudoku solver
+*/
+/******************************************************************************/
 //---------------------------------------------------------------------------
 #ifndef SUDOKUH
 #define SUDOKUH
@@ -31,22 +40,16 @@ class Sudoku
        const char *board,    // one-dimensional array of symbols
        MessageType message,  // type of message
        size_t move,          // the move number
-       int basesize,         // 3, 4, 5, etc. (for 9x9, 16x16, 25x25, etc.)
-       int index,            // index (0-based) of current cell
-       char value,           // symbol (value) in current cell
-       int *dup_indexes      // index of each duplicate sorted from lowest
-                             // index to highest. -1 means no conflict.
-                             // max of 3 duplicates,
-                             // 1 in row,
-                             // 1 in col, and
-                             // 1 "neighbor" in sub-grid.
+       unsigned basesize,    // 3, 4, 5, etc. (for 9x9, 16x16, 25x25, etc.)
+       unsigned index,       // index (0-based) of current cell
+       char value            // symbol (value) in current cell
       );
 
       //! Statistics as the algorithm works
     struct SudokuStats
     {
       int basesize;      //!< 3, 4, 5, etc.
-      int placed;        //!< the number of valid values the algorithm has placed
+      int placed;        //!< number of valid values the algorithm has placed
       size_t moves;      //!< total number of values that have been tried
       size_t backtracks; //!< total number of times the algorithm backtracked
 
@@ -55,13 +58,14 @@ class Sudoku
     };
 
       // Constructor
-    Sudoku(int basesize, SymbolType stype = SYM_NUMBER, SUDOKU_CALLBACK callback = 0);
+    Sudoku(int basesize, SymbolType stype = SYM_NUMBER, 
+            SUDOKU_CALLBACK callback = 0);
 
       // Destructor
     ~Sudoku();
 
       // The client (driver) passed the board in the values parameter
-    void SetupBoard(const char *values, int size);
+    void SetupBoard(const char *values, size_t size);
 
       // Once the board is setup, this will start the search for the solution
     void Solve();
@@ -72,6 +76,18 @@ class Sudoku
 
   private:
   // Other private data members or methods...
+  
+    int board_width;
+    int board_size;
+  
+    char* board_;
+    SudokuStats stats_;
+    
+    SymbolType stype_;
+    SUDOKU_CALLBACK callback_;
+    
+    bool place_value(int value);
+    bool Conflict(int index, char value);
 };
 
 #endif  // SUDOKUH
