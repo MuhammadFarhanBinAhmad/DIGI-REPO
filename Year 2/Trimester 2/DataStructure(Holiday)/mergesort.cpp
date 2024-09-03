@@ -163,38 +163,38 @@ std::vector<int> MergeSort(const std::vector<int>& a)
 int main()
 {
     //Method 1
-    // std::cout << "Merge Sort" << std::endl;
-    // // Initialize a new array
-    // int arr[] = {7, 1, 5, 9, 3, 6, 8, 2};
-    // int arrSize = sizeof(arr) / sizeof(*arr);
-    // // Display the initial array
-    // std::cout << "Initial array: ";
-    // for (int i = 0; i < arrSize; ++i)
-    //     std::cout << arr[i] << " ";
-    // std::cout << std::endl;
-    // // Sort the array with MergeSort algorithm
-    // //MergeSort(arr, 0, arrSize - 1);
-    // // Display the sorted array
-    // std::cout << "Sorted array : ";
-    // for (int i = 0; i < arrSize; ++i)
-    //     std::cout << arr[i] << " ";
-    // std::cout << std::endl;
+     std::cout << "Merge Sort" << std::endl;
+     // Initialize a new array
+     int arr[] = {7, 1, 5, 9, 3, 6, 8, 2};
+     int arrSize = sizeof(arr) / sizeof(*arr);
+     // Display the initial array
+     std::cout << "Initial array: ";
+     for (int i = 0; i < arrSize; ++i)
+         std::cout << arr[i] << " ";
+     std::cout << std::endl;
+     // Sort the array with MergeSort algorithm
+     MergeSort(arr, 0, arrSize - 1);
+     // Display the sorted array
+     std::cout << "Sorted array : ";
+     for (int i = 0; i < arrSize; ++i)
+         std::cout << arr[i] << " ";
+     std::cout << std::endl;
 
     //Method 2
-    std::vector<int> arr {7,1,5,9,3,6,8,2};
-    std::cout << "Initial list\n";
-    for (int a: arr)
-    {
-        std::cout << a << ' ';
-    }
-    std::cout << '\n';
-    arr = MergeSort(arr);
-    std::cout << "Sorted list\n";
-    for (int a: arr)
-    {
-        std::cout << a << ' ';
-    }
-    std::cout << '\n';
+    //std::vector<int> arr {7,1,5,9,3,6,8,2};
+    //std::cout << "Initial list\n";
+    //for (int a: arr)
+    //{
+    //    std::cout << a << ' ';
+    //}
+    //std::cout << '\n';
+    //arr = MergeSort(arr);
+    //std::cout << "Sorted list\n";
+    //for (int a: arr)
+    //{
+    //    std::cout << a << ' ';
+    //}
+    //std::cout << '\n';
 
 
     return 0;
