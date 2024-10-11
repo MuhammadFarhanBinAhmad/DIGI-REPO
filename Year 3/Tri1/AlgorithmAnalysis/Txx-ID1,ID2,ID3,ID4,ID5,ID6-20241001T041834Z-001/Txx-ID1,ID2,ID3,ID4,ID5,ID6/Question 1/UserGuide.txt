@@ -1,0 +1,20 @@
+User Guide
+Qn 1a Run in WSL
+
+Default Test Qn 1a
+make 0
+
+Test 2 Qn 1a
+./o.a studentprefs2.txt hospitalprefs2.txt staffpref.txt 0 >output.txt
+
+Test 3 Qn 1a
+./o.a studentprefs3.txt hospitalprefs3.txt staffpref.txt 0 >output.txt
+
+Qn 1 b
+make 1
+
+Replace the number with any number to run both test at once.
+
+
+Jarran Tan Yan Zhi (2200463)
+Tan Poh Heng (2200619)

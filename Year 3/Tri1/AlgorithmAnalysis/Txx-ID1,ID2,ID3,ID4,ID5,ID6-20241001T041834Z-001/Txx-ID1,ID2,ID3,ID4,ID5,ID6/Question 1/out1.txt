@@ -1,0 +1,43 @@
+=================== Staff Preferences ===================
+Staff #1 (Required Pay: 1000):
+Preference order of sites based on distance: Site 2 -> Site 4 -> Site 1 -> Site 3
+Staff #2 (Required Pay: 1200):
+Preference order of sites based on distance: Site 3 -> Site 2 -> Site 1 -> Site 4
+Staff #3 (Required Pay: 1300):
+Preference order of sites based on distance: Site 1 -> Site 3 -> Site 4 -> Site 2
+Staff #4 (Required Pay: 900):
+Preference order of sites based on distance: Site 4 -> Site 3 -> Site 2 -> Site 1
+Staff #5 (Required Pay: 800):
+Preference order of sites based on distance: Site 3 -> Site 2 -> Site 4 -> Site 1
+Staff #6 (Required Pay: 1000):
+Preference order of sites based on distance: Site 4 -> Site 3 -> Site 1 -> Site 2
+Staff #7 (Required Pay: 2000):
+Preference order of sites based on distance: Site 2 -> Site 3 -> Site 1 -> Site 4
+Staff #8 (Required Pay: 1500):
+Preference order of sites based on distance: Site 3 -> Site 2 -> Site 1 -> Site 4
+
+=================== Site Preferences ====================
+Site #1:
+Preference order of staff based on pay: Staff 5 -> Staff 4 -> Staff 1 -> Staff 6 -> Staff 2 -> Staff 3 -> Staff 8 -> Staff 7
+Site #2:
+Preference order of staff based on pay: Staff 5 -> Staff 4 -> Staff 1 -> Staff 6 -> Staff 2 -> Staff 3 -> Staff 8 -> Staff 7
+Site #3:
+Preference order of staff based on pay: Staff 5 -> Staff 4 -> Staff 1 -> Staff 6 -> Staff 2 -> Staff 3 -> Staff 8 -> Staff 7
+Site #4:
+Preference order of staff based on pay: Staff 5 -> Staff 4 -> Staff 1 -> Staff 6 -> Staff 2 -> Staff 3 -> Staff 8 -> Staff 7
+
+=================== Staff Assignments ===================
+staff [1] is assigned site [2] 
+staff [2] is assigned site [3] 
+staff [3] is assigned site [1] 
+staff [4] is assigned site [4] 
+staff [5] is assigned site [3] 
+staff [6] is assigned site [4] 
+staff [7] is assigned site [1] 
+staff [8] is assigned site [2] 
+
+=================== Site Assignments ===================
+site [1] is assigned staff [ 3 , 7 ] 
+site [2] is assigned staff [ 1 , 8 ] 
+site [3] is assigned staff [ 5 , 2 ] 
+site [4] is assigned staff [ 4 , 6 ] 

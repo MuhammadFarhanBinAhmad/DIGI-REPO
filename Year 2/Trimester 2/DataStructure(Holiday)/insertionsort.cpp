@@ -5,7 +5,7 @@
 //Insertion sort explain
 //https://www.youtube.com/watch?v=JU767SDMDvA
 
-void InsertionSort(int arr[], int arrSize)
+void InsertionSort(char arr[], int arrSize)
 {
     // // iterate all element
     // for (int i = 0; i < arrSize; ++i)
@@ -54,8 +54,8 @@ int main()
 {
     std::cout << "Insertion Sort" << '\n';
     // Initialize a new array
-    int arr[] = {43, 21, 26, 38, 17, 30};
-    int arrSize = sizeof(arr) / sizeof(*arr);
+    char arr[] = {'E','A','S','Y','Q','U','E','S','T','I','O','N'};
+    int arrSize = sizeof(arr);
     // Display the initial array
     std::cout << "Initial array: ";
     for (int i = 0; i < arrSize; ++i)

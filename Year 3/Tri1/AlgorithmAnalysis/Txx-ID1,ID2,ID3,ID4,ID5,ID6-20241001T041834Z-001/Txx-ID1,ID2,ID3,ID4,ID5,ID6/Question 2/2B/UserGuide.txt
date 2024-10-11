@@ -1,0 +1,20 @@
+User Guide
+========================================================
+Program runs and compiles in WSL using g++
+To run the program
+- "make test"
+========================================================
+
+For Tests O(1), O(log(n)), O(n), O(nlog(n)) and O(n^2)
+- Input size can be adjust/changed in "input.txt"
+
+Target for search algorithm for O(log(n) and O(n)
+- Can be change in "target.txt"
+
+For Test O(k^n)
+- Fibonacci input can be change in "Fibonacci.txt"
+
+For Test O(n!)
+- the input for the size of permutation can be change in "PermutationSize.txt"
+- input variables are reused from "input.txt"
+

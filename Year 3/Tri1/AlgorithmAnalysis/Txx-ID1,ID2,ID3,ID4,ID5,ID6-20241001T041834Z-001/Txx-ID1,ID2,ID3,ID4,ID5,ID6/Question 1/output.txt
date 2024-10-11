@@ -1,0 +1,24 @@
+
+=================== Student Preferences ====================
+C > M
+C > M
+C > M
+M > C
+M > C
+
+=================== Hospital Preferences ====================
+ 4 > 0 > 1 > 3 > 2  
+ 4 > 2 > 0 > 1 > 3  
+
+=================== Student Assignment ====================
+student [1] is assigned hospital [C] 
+.student [2] is assigned hospital [C] 
+.student [3] is assigned hospital [M] 
+.student [4] is assigned hospital [none] 
+.student [5] is assigned hospital [M] 
+.student [6] is assigned hospital [none] 
+.
+=================== Hospital Assignments ====================
+hospital [C] is assigned students[ 1 , 2 ] 
+.hospital [M] is assigned students[ 5 , 3 ] 
+.

@@ -1,0 +1,4 @@
+User Guide
+Open Ass1.cpp and run the command
+g++ -std=c++17 -pedantic-errors -Wall -Wextra -Werror Ass1.cpp -o a.out
+to compile
